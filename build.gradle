@@ -1,0 +1,29 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.0-alpha09'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+def joinStringArray(array) {
+    return "{\"" + array.join("\", \"") + "\"}"
+}
+
+ext {
+    androidBuildSdkVersion = 28
+    androidBuildMinSdkVersion = 15
+    androidBuildTargetSdkVersion = 28
+    supportVersion = '1.0.0-rc02'
+    supportTestVersion = '1.1.0-alpha3'
+}
