@@ -16,6 +16,7 @@
 package com.github.util;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 import static android.text.format.DateUtils.DAY_IN_MILLIS;
 
@@ -67,7 +68,7 @@ public class TimeUtils {
         int m1 = expected.get(Calendar.MONTH);
         int d1 = expected.get(Calendar.DAY_OF_MONTH);
 
-        int e2 = expected.get(Calendar.ERA);
+        int e2 = actual.get(Calendar.ERA);
         int y2 = actual.get(Calendar.YEAR);
         int m2 = actual.get(Calendar.MONTH);
         int d2 = actual.get(Calendar.DAY_OF_MONTH);
@@ -83,7 +84,13 @@ public class TimeUtils {
      * @return {@code true} if the time occurs on the same day.
      */
     public static boolean isSameDay(Calendar expected, long actual) {
-        return isSameDay(expected.getTimeInMillis(), actual);
+        /*
+         * DO NOT call #isSameDate(long, long), because time zone is important!
+         * For example, latest kiddush levana for "2018-09-25 00:18 UTC" => "2018-09-24 20:18 New_York"
+         */
+        Calendar calActual = (Calendar) expected.clone();
+        calActual.setTimeInMillis(actual);
+        return isSameDay(expected, calActual);
     }
 
     /**
@@ -94,7 +101,13 @@ public class TimeUtils {
      * @return {@code true} if the time occurs on the same day.
      */
     public static boolean isSameDay(long expected, long actual) {
+        System.out.println("±!@ expected=" + expected);
         final long midnight1 = roundDown(expected, DAY_IN_MILLIS);
+        System.out.println("±!@ midnight1=" + midnight1);
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTimeZone(TimeZone.getTimeZone("UTC"));
+        cal1.setTimeInMillis(midnight1);
+        System.out.println("±!@ cal1=" + cal1);
         final long midnight2 = midnight1 + DAY_IN_MILLIS;
         return (midnight1 <= actual) && (actual < midnight2);
     }

@@ -37,7 +37,7 @@ import static org.junit.Assert.assertTrue;
 public class TimeTests {
 
     @Test
-    public void roundUpSecond() throws Exception {
+    public void roundUpSecond() {
         assertEquals(0L, roundUp(0, SECOND_IN_MILLIS));
         assertEquals(0L, roundUp(111, SECOND_IN_MILLIS));
         assertEquals(0L, roundUp(222, SECOND_IN_MILLIS));
@@ -83,7 +83,7 @@ public class TimeTests {
     }
 
     @Test
-    public void sameDay() throws Exception {
+    public void sameDay() {
         long time;
         Calendar cal;
         final long now = currentTimeMillis();
