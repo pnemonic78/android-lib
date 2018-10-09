@@ -37,7 +37,7 @@ import java.nio.charset.Charset;
 public final class StandardCharsets {
 
     private StandardCharsets() {
-        throw new AssertionError("No java.nio.charset.StandardCharsets instances for you!");
+        throw new AssertionError("No com.github.nio.charset.StandardCharsets instances for you!");
     }
     /**
      * Seven-bit ASCII, a.k.a. ISO646-US, a.k.a. the Basic Latin block of the
