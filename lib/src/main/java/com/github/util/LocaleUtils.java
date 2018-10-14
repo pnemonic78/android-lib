@@ -207,7 +207,7 @@ public class LocaleUtils {
      *
      * @param context the context.
      * @param locale  the locale to set.
-     * @return the locale.
+     * @return the context with the applied locale.
      */
     public static Context applyLocale(@NonNull Context context, @NonNull Locale locale) {
         Locale.setDefault(locale);
@@ -220,6 +220,7 @@ public class LocaleUtils {
         final Configuration config = res.getConfiguration();
         if (VERSION.SDK_INT >= JELLY_BEAN_MR1) {
             config.setLocale(locale);
+            res.updateConfiguration(config, res.getDisplayMetrics());
             return context.createConfigurationContext(config);
         }
         config.locale = locale;
