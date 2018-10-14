@@ -117,4 +117,26 @@ public class TimeTests {
         }
         assertFalse(isSameDay(cal, time));
     }
+
+    @Test
+    public void sameDayLevana() {
+        long levana;
+        Calendar cal;
+
+        // Latest kiddush levana for "2018-09-25 00:18 UTC" => "2018-09-24 20:18 New_York"
+        levana = 1537834718503L;
+        cal = Calendar.getInstance();
+        cal.setTimeZone(TimeZone.getTimeZone("UTC"));
+        cal.setTimeInMillis(levana);
+        assertTrue(isSameDay(cal, levana));
+
+        cal = Calendar.getInstance();
+        cal.setTimeZone(TimeZone.getTimeZone("America/New_York"));
+        cal.set(Calendar.YEAR, 2018);
+        cal.set(Calendar.MONTH, Calendar.SEPTEMBER);
+        cal.set(Calendar.DAY_OF_MONTH, 24);
+        cal.set(Calendar.HOUR_OF_DAY, 9);
+        cal.set(Calendar.MINUTE, 30);
+        assertTrue(isSameDay(cal, levana));
+    }
 }
