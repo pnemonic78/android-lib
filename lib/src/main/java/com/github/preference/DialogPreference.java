@@ -24,6 +24,8 @@ import android.util.AttributeSet;
  * A base class for {@link Preference} objects that are
  * dialog-based. These preferences will, when clicked, open a dialog showing the
  * actual preference controls.
+ *
+ * @author Moshe Waisberg
  */
 public class DialogPreference extends android.preference.DialogPreference {
 
