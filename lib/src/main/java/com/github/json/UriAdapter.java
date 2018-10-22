@@ -16,6 +16,7 @@
 package com.github.json;
 
 import android.net.Uri;
+import android.text.TextUtils;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -35,7 +36,8 @@ import java.lang.reflect.Type;
 public class UriAdapter implements JsonDeserializer<Uri>, JsonSerializer<Uri> {
     @Override
     public Uri deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        return Uri.parse(json.getAsString());
+        String path = json.getAsString();
+        return TextUtils.isEmpty(path) ? Uri.EMPTY : Uri.parse(path);
     }
 
     @Override
