@@ -44,6 +44,10 @@ public class HTTPReader {
      * Content type that is XML text.
      */
     public static final String[] CONTENT_XML = {CONTENT_APP_XML, CONTENT_TEXT_XML};
+    /**
+     * Content type that is JSON text.
+     */
+    public static final String CONTENT_JSON = "application/json";
 
     /**
      * Creates a new reader.
