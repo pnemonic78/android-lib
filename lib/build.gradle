@@ -41,6 +41,9 @@ dependencies {
     // JSON
     api 'com.google.code.gson:gson:2.8.5'
 
+    // Logging
+    api 'com.jakewharton.timber:timber:4.7.1'
+
     // Testing
     testImplementation 'junit:junit:4.12'
     androidTestImplementation "androidx.test:runner:$supportTestVersion"

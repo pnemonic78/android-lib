@@ -1,6 +1,6 @@
 package com.github.util;
 
-import android.util.Log;
+import timber.log.Timber;
 
 /**
  * Logger utilities.
@@ -8,22 +8,22 @@ import android.util.Log;
 public class LogUtils {
 
     public static void e(String tag, String msg, Throwable e) {
-        Log.e(tag, msg, e);
+        Timber.e(e, msg);
     }
 
     public static void e(String tag, String msg) {
-        Log.e(tag, msg);
+        Timber.e(msg);
     }
 
     public static void i(String tag, String msg) {
-        Log.i(tag, msg);
+        Timber.i(msg);
     }
 
     public static void v(String tag, String msg) {
-        Log.v(tag, msg);
+        Timber.v(msg);
     }
 
     public static void w(String tag, String msg) {
-        Log.w(tag, msg);
+        Timber.w(msg);
     }
 }

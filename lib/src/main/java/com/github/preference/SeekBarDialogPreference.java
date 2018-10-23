@@ -27,6 +27,11 @@ import android.widget.TextView;
 
 import com.github.lib.R;
 
+/**
+ * SeekBar dialog preference.
+ *
+ * @author Moshe Waisberg
+ */
 public class SeekBarDialogPreference extends DialogPreference implements OnSeekBarChangeListener {
 
     private static final int[] ATTRIBUTES = {android.R.attr.max};

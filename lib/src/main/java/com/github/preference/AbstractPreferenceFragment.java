@@ -15,6 +15,7 @@
  */
 package com.github.preference;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -40,10 +41,20 @@ import static android.os.Build.VERSION_CODES.O;
 
 /**
  * This fragment shows the preferences for a header.
+ *
+ * @author Moshe Waisberg
  */
 public abstract class AbstractPreferenceFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
     private static final String TAG = "AbstractPreferenceFrag";
+
+    protected Context context;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.context = activity;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
