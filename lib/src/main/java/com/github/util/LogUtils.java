@@ -11,6 +11,10 @@ public class LogUtils {
         Timber.e(e, msg);
     }
 
+    public static void e(String tag, Throwable e) {
+        Timber.e(e);
+    }
+
     public static void e(String tag, String msg) {
         Timber.e(msg);
     }
