@@ -30,10 +30,10 @@ import android.preference.SwitchPreference;
 import android.text.TextUtils;
 
 import com.github.lib.R;
-import com.github.util.LogUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import timber.log.Timber;
 
 import static android.content.pm.PackageManager.MATCH_DEFAULT_ONLY;
 import static android.os.Build.VERSION;
@@ -45,8 +45,6 @@ import static android.os.Build.VERSION_CODES.O;
  * @author Moshe Waisberg
  */
 public abstract class AbstractPreferenceFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
-
-    private static final String TAG = "AbstractPreferenceFrag";
 
     protected Context context;
 
@@ -286,7 +284,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
                     try {
                         context.startActivity(intent);
                     } catch (Exception e) {
-                        LogUtils.e(TAG, "Error launching intent: " + intent, e);
+                        Timber.e(e, "Error launching intent: %s", intent);
                     }
                     return true;
                 }

@@ -30,13 +30,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import com.github.util.LogUtils;
-
 import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
+import timber.log.Timber;
 
 /**
  * Array adapter ported from {@link android.widget.ArrayAdapter} to {@link RecyclerView}.
@@ -376,9 +375,9 @@ public class ArrayAdapter<T, VH extends ArrayAdapter.ArrayViewHolder> extends Re
             try {
                 textView = (TextView) ((fieldId == 0) ? itemView : itemView.findViewById(fieldId));
             } catch (ClassCastException e) {
-                LogUtils.e("ArrayAdapter", "You must supply a resource ID for a TextView");
+                Timber.e(e, "You must supply a resource ID for a TextView");
                 throw new IllegalStateException(
-                        "ArrayAdapter requires the resource ID to be a TextView", e);
+                    "ArrayAdapter requires the resource ID to be a TextView", e);
             }
         }
 

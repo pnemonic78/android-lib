@@ -16,14 +16,14 @@
 package com.github.app;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 
-import com.github.util.LogUtils;
-
 import androidx.annotation.NonNull;
+import timber.log.Timber;
 
 import static android.content.pm.PackageManager.GET_META_DATA;
 import static android.os.Build.VERSION;
@@ -36,8 +36,6 @@ import static android.os.Build.VERSION_CODES.LOLLIPOP;
  */
 public class ActivityUtils {
 
-    private static final String TAG = "ActivityUtils";
-
     private ActivityUtils() {
     }
 
@@ -47,13 +45,14 @@ public class ActivityUtils {
      * @param activity the activity with a title.
      */
     public static void restTitle(Activity activity) {
+        final ComponentName name = activity.getComponentName();
         try {
-            int label = activity.getPackageManager().getActivityInfo(activity.getComponentName(), GET_META_DATA).labelRes;
+            int label = activity.getPackageManager().getActivityInfo(name, GET_META_DATA).labelRes;
             if (label != 0) {
                 activity.setTitle(label);
             }
         } catch (PackageManager.NameNotFoundException e) {
-            LogUtils.e(TAG, "package not found!", e);
+            Timber.e(e, "package not found for %s", name);
         }
     }
 

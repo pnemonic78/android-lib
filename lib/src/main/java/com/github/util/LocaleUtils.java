@@ -27,6 +27,7 @@ import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import timber.log.Timber;
 
 import static android.os.Build.VERSION;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
@@ -40,8 +41,6 @@ import static android.text.TextUtils.isEmpty;
  * @author Moshe Waisberg
  */
 public class LocaleUtils {
-
-    private static final String TAG = "LocaleUtils";
 
     /**
      * ISO 639 language code for "Arabic".
@@ -214,7 +213,7 @@ public class LocaleUtils {
 
         Resources res = context.getResources();
         if (res == null) {
-            LogUtils.w(TAG, "Context resources missing for applying locale!");
+            Timber.w("Context resources missing for applying locale!");
             res = Resources.getSystem();
         }
         final Configuration config = res.getConfiguration();

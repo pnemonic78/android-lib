@@ -25,13 +25,13 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TimePicker;
 
-import com.github.util.LogUtils;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import timber.log.Timber;
 
 /**
  * Preference that shows a time picker.
@@ -44,12 +44,10 @@ import java.util.Locale;
  */
 public class TimePreference extends DialogPreference {
 
-    private static final String TAG = "TimePreference";
-
     /**
      * ISO 8601 time format.
      */
-    protected static final String PATTERN = "HH:mm";
+    private static final String PATTERN = "HH:mm";
 
     private TimePicker picker;
     private String value;
@@ -212,7 +210,7 @@ public class TimePreference extends DialogPreference {
                 time.setTime(date);
                 return time;
             } catch (ParseException e) {
-                LogUtils.e(TAG, "parseTime: " + e.getLocalizedMessage(), e);
+                Timber.e(e, "parse time: %s", timeString);
             }
         }
         return null;
