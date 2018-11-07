@@ -168,11 +168,10 @@ public class LocaleUtils {
     @TargetApi(N)
     @NonNull
     public static Locale getDefaultLocale(@NonNull Configuration config) {
-        Locale locale = null;
         if (VERSION.SDK_INT >= N) {
             return getDefaultLocale(config.getLocales());
         }
-        locale = config.locale;
+        Locale locale = config.locale;
         if (locale == null) {
             locale = Locale.getDefault();
         }
