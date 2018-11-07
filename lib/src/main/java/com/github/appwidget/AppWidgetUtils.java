@@ -34,10 +34,31 @@ public class AppWidgetUtils {
     private AppWidgetUtils() {
     }
 
+    public static int[] getAppWidgetIds(Context context, Class<? extends AppWidgetProvider> appWidgetClass) {
+        return getAppWidgetIds(context, null, appWidgetClass);
+    }
+
+    public static int[] getAppWidgetIds(Context context, AppWidgetManager appWidgetManager, Class<? extends AppWidgetProvider> appWidgetClass) {
+        return getAppWidgetIds(context, appWidgetManager, getProvider(context, appWidgetClass));
+    }
+
+    public static int[] getAppWidgetIds(Context context, ComponentName provider) {
+        return getAppWidgetIds(context, null, provider);
+    }
+
+    public static int[] getAppWidgetIds(Context context, AppWidgetManager appWidgetManager, ComponentName provider) {
+        if (appWidgetManager == null) {
+            appWidgetManager = AppWidgetManager.getInstance(context);
+        }
+        return appWidgetManager.getAppWidgetIds(provider);
+    }
+
+    public static ComponentName getProvider(Context context, Class<? extends AppWidgetProvider> appWidgetClass) {
+        return new ComponentName(context, appWidgetClass);
+    }
+
     public static void notifyAppWidgetsUpdate(Context context, Class<? extends AppWidgetProvider> appWidgetClass) {
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-        ComponentName provider = new ComponentName(context, appWidgetClass);
-        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(provider);
+        int[] appWidgetIds = getAppWidgetIds(context, appWidgetClass);
         if ((appWidgetIds == null) || (appWidgetIds.length == 0)) {
             return;
         }
