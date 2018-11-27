@@ -69,4 +69,11 @@ public class AppWidgetUtils {
         context.sendBroadcast(intent);
     }
 
+    public static void notifyAppWidgetViewDataChanged(Context context, Class<? extends AppWidgetProvider> appWidgetClass, int viewId) {
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+        int[] appWidgetIds = getAppWidgetIds(context, appWidgetManager, appWidgetClass);
+        if ((appWidgetIds != null) && (appWidgetIds.length > 0)) {
+            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, viewId);
+        }
+    }
 }
