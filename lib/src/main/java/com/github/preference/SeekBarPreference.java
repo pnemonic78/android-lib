@@ -163,11 +163,16 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
     protected void persistProgress(int progress) {
         this.progress = progress;
         // Postpone persisting until user finished dragging.
+        PersistTask task = this.task;
         if (task != null)
             task.cancel();
         task = new PersistTask(progress);
-        if (timer == null)
+        this.task = task;
+        Timer timer = this.timer;
+        if (timer == null) {
             timer = new Timer();
+            this.timer = timer;
+        }
         timer.schedule(task, PERSIST_DELAY);
     }
 
@@ -176,9 +181,12 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
         if (this.seekBar == seekBar) {
             if (this.progress != progress) {
                 // FIXME print the progress on the bar instead of toasting.
-                if (toast == null)
+                Toast toast = this.toast;
+                if (toast == null) {
                     toast = Toast.makeText(getContext(), String.valueOf(progress), Toast.LENGTH_SHORT);
-                else {
+                    this.toast = toast;
+                    toast.show();
+                } else {
                     toast.setText(String.valueOf(progress));
                     toast.show();
                 }

@@ -355,8 +355,10 @@ public class ArrayAdapter<T, VH extends ArrayAdapter.ArrayViewHolder> extends Re
     @Override
     @NonNull
     public Filter getFilter() {
+        ArrayFilter filter = this.filter;
         if (filter == null) {
             filter = createFilter();
+            this.filter = filter;
         }
         return filter;
     }

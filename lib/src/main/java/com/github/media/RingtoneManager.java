@@ -92,8 +92,10 @@ public class RingtoneManager extends android.media.RingtoneManager {
 
     @Override
     public Cursor getCursor() {
+        Cursor cursor = this.cursor;
         if ((cursor != null) && cursor.isClosed()) {
             cursor = null;
+            this.cursor = null;
         }
         if (cursor == null) {
             if (includeExternal) {
@@ -106,6 +108,7 @@ public class RingtoneManager extends android.media.RingtoneManager {
             } else {
                 cursor = getInternalRingtones();
             }
+            this.cursor = cursor;
         }
         return cursor;
     }

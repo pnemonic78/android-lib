@@ -326,6 +326,6 @@ public class LocaleUtils {
             locale = parseLocale(values[i]);
             locales.put(locale.toString(), locale);
         }
-        return locales.values().toArray(new Locale[locales.size()]);
+        return locales.values().toArray(new Locale[0]);
     }
 }
