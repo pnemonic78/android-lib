@@ -323,12 +323,14 @@ public class RingtonePreference extends DialogPreference {
     protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
         super.onPrepareDialogBuilder(builder);
 
+        Uri selected = this.selected;
         if (selected == null) {
             selected = onRestoreRingtone();
+            this.selected = selected;
         }
 
         List<CharSequence> entries = getEntries();
-        CharSequence[] items = entries.toArray(new CharSequence[entries.size()]);
+        CharSequence[] items = entries.toArray(new CharSequence[0]);
         builder.setSingleChoiceItems(items, findIndexOfValue(selected), this);
         builder.setPositiveButton(R.string.ok, this);
         builder.setNegativeButton(R.string.cancel, this);
@@ -364,9 +366,13 @@ public class RingtonePreference extends DialogPreference {
     }
 
     private List<CharSequence> getEntries() {
-        if (entries == null) {
+        List<CharSequence> entries = this.entries;
+        List<Uri> entryValues = this.entryValues;
+        if ((entries == null) || (entryValues == null)) {
             entries = new ArrayList<>();
             entryValues = new ArrayList<>();
+            this.entries = entries;
+            this.entryValues = entryValues;
 
             if (showDefault) {
                 String uriPath = ringtoneManager.filterInternalMaybe(defaultRingtoneUri);

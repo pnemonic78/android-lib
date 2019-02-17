@@ -33,8 +33,10 @@ public abstract class ThemedApplication<P extends ThemePreferences> extends Appl
     private ThemeCallbacks<P> themeCallbacks;
 
     private ThemeCallbacks<P> getThemeCallbacks() {
+        ThemeCallbacks<P> themeCallbacks = this.themeCallbacks;
         if (themeCallbacks == null) {
             themeCallbacks = new SimpleThemeCallbacks<P>(this, createPreferences(this));
+            this.themeCallbacks = themeCallbacks;
         }
         return themeCallbacks;
     }

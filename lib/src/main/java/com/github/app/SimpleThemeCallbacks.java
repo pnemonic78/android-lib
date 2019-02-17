@@ -46,8 +46,10 @@ public class SimpleThemeCallbacks<TP extends ThemePreferences> implements ThemeC
 
     @Override
     public TP getThemePreferences() {
+        TP preferences = this.preferences;
         if (preferences == null) {
             preferences = createPreferences(context);
+            this.preferences = preferences;
         }
         return preferences;
     }
