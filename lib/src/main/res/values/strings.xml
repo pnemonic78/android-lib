@@ -41,6 +41,7 @@
     <string name="theme_title" translatable="false">@string/night_mode_title</string>
     <string name="theme_dark" translatable="false">@string/night_mode_yes</string>
     <string name="theme_light" translatable="false">@string/night_mode_no</string>
+    <string name="theme_default">Default theme</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">Language</string>

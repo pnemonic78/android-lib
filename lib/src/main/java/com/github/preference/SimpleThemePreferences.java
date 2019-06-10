@@ -16,7 +16,11 @@
 package com.github.preference;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
+
+import androidx.core.os.BuildCompat;
 
 import com.github.lib.R;
 
@@ -48,7 +52,7 @@ public class SimpleThemePreferences extends SimplePreferences implements ThemePr
      */
     public static void init(Context context) {
         final Resources res = context.getResources();
-        THEME_DEFAULT = res.getString(R.string.theme_defaultValue);
+        THEME_DEFAULT = res.getString(R.string.theme_value_default);
         THEME_DARK = res.getString(R.string.theme_value_dark);
         THEME_LIGHT = res.getString(R.string.theme_value_light);
     }
@@ -75,6 +79,22 @@ public class SimpleThemePreferences extends SimplePreferences implements ThemePr
     public boolean isDarkTheme(String value) {
         if (THEME_LIGHT.equals(value)) {
             return false;
+        }
+        if (THEME_DEFAULT.equals(value)) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (BuildCompat.isAtLeastQ()) {
+                    final int nightMode = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+                    switch (nightMode) {
+                        case Configuration.UI_MODE_NIGHT_NO:
+                            return false;
+                        case Configuration.UI_MODE_NIGHT_YES:
+                            return true;
+                    }
+                }
+
+                // Material
+                return false;
+            }
         }
         return true;
     }

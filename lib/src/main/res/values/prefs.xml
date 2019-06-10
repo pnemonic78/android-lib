@@ -3,6 +3,7 @@
 
     <string name="theme_value_dark" translatable="false">dark</string>
     <string name="theme_value_light" translatable="false">light</string>
-    <string name="theme_defaultValue" translatable="false">@string/theme_value_dark</string>
+    <string name="theme_value_default" translatable="false">default</string>
+    <string name="theme_defaultValue" translatable="false">@string/theme_value_default</string>
 
 </resources>
