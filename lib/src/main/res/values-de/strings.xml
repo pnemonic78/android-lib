@@ -26,6 +26,7 @@
     <string name="night_mode_title">Design</string>
     <string name="night_mode_no">Hell</string>
     <string name="night_mode_yes">Dunkel</string>
+    <string name="theme_default">Standarddesign</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">Sprache</string>

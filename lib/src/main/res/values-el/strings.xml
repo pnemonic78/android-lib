@@ -26,6 +26,7 @@
     <string name="night_mode_title">Θέμα</string>
     <string name="night_mode_no">Ανοιχτόχρωμο</string>
     <string name="night_mode_yes">Σκοτεινός</string>
+    <string name="theme_default">Προεπιλεγμένος θέμα</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">Γλώσσα</string>

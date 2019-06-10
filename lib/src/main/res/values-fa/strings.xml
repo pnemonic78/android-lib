@@ -26,6 +26,7 @@
     <string name="night_mode_title" msgid="6928425617491943384">"طرح‌زمینه"</string>
     <string name="night_mode_no" msgid="7682792841791457238">"روشن"</string>
     <string name="night_mode_yes" msgid="4847655033618591567">"تیره"</string>
+    <string name="theme_default">تم پیش فرض</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">زبان</string>

@@ -26,6 +26,7 @@
     <string name="night_mode_title" msgid="6928425617491943384">"थीम"</string>
     <string name="night_mode_no" msgid="7682792841791457238">"हल्का"</string>
     <string name="night_mode_yes" msgid="4847655033618591567">"गहरा"</string>
+    <string name="theme_default">डिफ़ॉल्ट थीम</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">भाषा</string>

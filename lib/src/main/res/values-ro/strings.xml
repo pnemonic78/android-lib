@@ -26,6 +26,7 @@
     <string name="night_mode_title">Temă</string>
     <string name="night_mode_no">Luminos</string>
     <string name="night_mode_yes">Întunecat</string>
+    <string name="theme_default">Tema prestabilit</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">Limba</string>

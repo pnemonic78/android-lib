@@ -26,6 +26,7 @@
     <string name="night_mode_title">Motyw</string>
     <string name="night_mode_no">Jasny</string>
     <string name="night_mode_yes">Ciemny</string>
+    <string name="theme_default">Domyślny motyw</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">Język</string>

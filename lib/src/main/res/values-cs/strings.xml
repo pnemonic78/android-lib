@@ -26,6 +26,7 @@
     <string name="night_mode_title">Motiv</string>
     <string name="night_mode_no">Světlý</string>
     <string name="night_mode_yes">Tmavý</string>
+    <string name="theme_default">Výchozí motiv</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">Jazyk</string>

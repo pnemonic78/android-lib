@@ -26,6 +26,7 @@
     <string name="night_mode_title">Tema</string>
     <string name="night_mode_no">Šviesi</string>
     <string name="night_mode_yes">Tamsi</string>
+    <string name="theme_default">Numatytasis tema</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">Kalba</string>

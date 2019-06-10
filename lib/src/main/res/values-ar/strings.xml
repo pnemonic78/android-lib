@@ -26,6 +26,7 @@
     <string name="night_mode_title" msgid="6928425617491943384">"المظهر"</string>
     <string name="night_mode_no" msgid="7682792841791457238">"فاتح"</string>
     <string name="night_mode_yes" msgid="4847655033618591567">"داكن"</string>
+    <string name="theme_default">السمة الافتراضية</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">لغة</string>

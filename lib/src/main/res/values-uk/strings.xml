@@ -26,9 +26,10 @@
     <string name="night_mode_title">Тема</string>
     <string name="night_mode_no">Світла</string>
     <string name="night_mode_yes">Темна</string>
+    <string name="theme_default">Тема за умовчанням</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">Мова</string>
-    <string name="locale_default">Мова за замовчуванням</string>
+    <string name="locale_default">Мова за умовчанням</string>
 
 </resources>

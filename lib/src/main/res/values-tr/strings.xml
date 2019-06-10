@@ -26,6 +26,7 @@
     <string name="night_mode_title">Tema</string>
     <string name="night_mode_no">Hafif</string>
     <string name="night_mode_yes">Koyu</string>
+    <string name="theme_default">Varsayılan tema</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">Dil</string>

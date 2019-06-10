@@ -26,6 +26,7 @@
     <string name="night_mode_title">עיצוב</string>
     <string name="night_mode_no">בהיר</string>
     <string name="night_mode_yes">כהה</string>
+    <string name="theme_default">עיצוב ברירת מחדל</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">שפה</string>

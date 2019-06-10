@@ -26,9 +26,10 @@
     <string name="night_mode_title">Teema</string>
     <string name="night_mode_yes">Tume</string>
     <string name="night_mode_no">Hele</string>
+    <string name="theme_default">Teema vaikeheli</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">Keel</string>
-    <string name="locale_default">Vaikekeel</string>
+    <string name="locale_default">Keel vaikeheli</string>
 
 </resources>

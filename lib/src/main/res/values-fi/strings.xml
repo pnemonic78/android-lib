@@ -26,9 +26,10 @@
     <string name="night_mode_title">Teema</string>
     <string name="night_mode_no">Vaalea</string>
     <string name="night_mode_yes">Tumma</string>
+    <string name="theme_default">Teema oletusääni</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">Kieli</string>
-    <string name="locale_default">Oletuskieli</string>
+    <string name="locale_default">Kieli oletusääni</string>
 
 </resources>

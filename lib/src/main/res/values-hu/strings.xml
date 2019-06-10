@@ -26,6 +26,7 @@
     <string name="night_mode_title">Téma</string>
     <string name="night_mode_no">Világos</string>
     <string name="night_mode_yes">Sötét</string>
+    <string name="theme_default">Alapértelmezett téma</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">Nyelv</string>

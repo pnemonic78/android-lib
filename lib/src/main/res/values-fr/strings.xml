@@ -26,6 +26,7 @@
     <string name="night_mode_title">Thème</string>
     <string name="night_mode_no">Clair</string>
     <string name="night_mode_yes">Foncé</string>
+    <string name="theme_default">Thème par défaut</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">Langue</string>

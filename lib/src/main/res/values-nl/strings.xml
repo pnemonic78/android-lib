@@ -26,6 +26,7 @@
     <string name="night_mode_title">Thema</string>
     <string name="night_mode_no">Lichte</string>
     <string name="night_mode_yes">Donker</string>
+    <string name="theme_default">Standaardthema</string>
 
     <!-- Locale (language) -->
     <string name="locale_title">Taal</string>
