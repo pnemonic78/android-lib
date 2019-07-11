@@ -27,7 +27,7 @@ import com.github.preference.LocalePreferences;
 public interface LocaleCallbacks<P extends LocalePreferences> {
 
     /**
-     * Apply the locale here
+     * Apply the locale here.
      *
      * @param context the context with locale.
      * @return the context with the new locale.
@@ -35,7 +35,7 @@ public interface LocaleCallbacks<P extends LocalePreferences> {
     Context attachBaseContext(Context context);
 
     /**
-     * Re-apply the title here.
+     * Re-apply the texts here.
      *
      * @param context the context.
      */

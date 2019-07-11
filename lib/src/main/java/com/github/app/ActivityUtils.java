@@ -44,7 +44,7 @@ public class ActivityUtils {
      *
      * @param activity the activity with a title.
      */
-    public static void restTitle(Activity activity) {
+    public static void resetTitle(Activity activity) {
         final ComponentName name = activity.getComponentName();
         try {
             int label = activity.getPackageManager().getActivityInfo(name, GET_META_DATA).labelRes;
