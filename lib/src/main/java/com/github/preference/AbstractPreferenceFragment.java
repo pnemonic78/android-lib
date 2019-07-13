@@ -215,15 +215,17 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
      * @param preference the preference.
      * @param newValue   the new value.
      */
-    private void updateSummary(ListPreference preference, String newValue) {
-        CharSequence[] values = preference.getEntryValues();
-        CharSequence[] entries = preference.getEntries();
-        int length = values.length;
+    private void updateSummary(ListPreference preference, @Nullable String newValue) {
+        if (newValue != null) {
+            CharSequence[] values = preference.getEntryValues();
+            CharSequence[] entries = preference.getEntries();
+            int length = values.length;
 
-        for (int i = 0; i < length; i++) {
-            if (newValue.equals(values[i])) {
-                preference.setSummary(entries[i]);
-                return;
+            for (int i = 0; i < length; i++) {
+                if (newValue.contentEquals(values[i])) {
+                    preference.setSummary(entries[i]);
+                    return;
+                }
             }
         }
         preference.setSummary(null);
