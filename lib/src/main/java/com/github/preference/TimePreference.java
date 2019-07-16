@@ -130,11 +130,12 @@ public class TimePreference extends DialogPreference {
 
         this.value = timeString;
         this.time = parseTime(timeString);
+
         if ((time == null) && !isEmpty(timeString)) {
             Timber.e("invalid time [%s] for preference [%s]", timeString, getKey());
+        } else {
+            persistString(timeString);
         }
-
-        persistString(timeString);
 
         final boolean isBlocking = shouldDisableDependents();
         if (isBlocking != wasBlocking) {
