@@ -91,7 +91,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
         }
 
         Preference pref = findPreference(key);
-        if ((pref != null) && (pref instanceof ListPreference)) {
+        if (pref instanceof ListPreference) {
             ListPreference list = (ListPreference) pref;
             list.setOnPreferenceChangeListener(this);
             onListPreferenceChange(list, list.getValue());
@@ -106,7 +106,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
         }
 
         Preference pref = findPreference(key);
-        if ((pref != null) && (pref instanceof RingtonePreference)) {
+        if (pref instanceof RingtonePreference) {
             RingtonePreference ring = (RingtonePreference) pref;
             ring.setOnPreferenceChangeListener(this);
             onRingtonePreferenceChange(ring, ring.getValue());
@@ -121,7 +121,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
         }
 
         Preference pref = findPreference(key);
-        if ((pref != null) && (pref instanceof TimePreference)) {
+        if (pref instanceof TimePreference) {
             TimePreference time = (TimePreference) pref;
             time.setNeutralButtonText(R.string.off);
             time.setOnPreferenceChangeListener(this);

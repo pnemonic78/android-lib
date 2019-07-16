@@ -19,7 +19,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
-import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.AttributeSet;
 import android.view.View;
@@ -32,6 +31,8 @@ import java.util.Date;
 import java.util.Locale;
 
 import timber.log.Timber;
+
+import static android.text.TextUtils.isEmpty;
 
 /**
  * Preference that shows a time picker.
@@ -116,7 +117,7 @@ public class TimePreference extends DialogPreference {
 
     @Override
     public boolean shouldDisableDependents() {
-        return TextUtils.isEmpty(value) || super.shouldDisableDependents();
+        return isEmpty(value) || super.shouldDisableDependents();
     }
 
     /**
@@ -129,6 +130,9 @@ public class TimePreference extends DialogPreference {
 
         this.value = timeString;
         this.time = parseTime(timeString);
+        if ((time == null) && !isEmpty(timeString)) {
+            Timber.e("invalid time [%s] for preference [%s]", timeString, getKey());
+        }
 
         persistString(timeString);
 
@@ -146,10 +150,11 @@ public class TimePreference extends DialogPreference {
     public void setTime(Calendar time) {
         final boolean wasBlocking = shouldDisableDependents();
 
-        this.value = (time != null) ? formatIso.format(time.getTime()) : null;
+        String timeString = (time != null) ? formatIso.format(time.getTime()) : null;
+        this.value = timeString;
         this.time = time;
 
-        persistString(value);
+        persistString(timeString);
 
         final boolean isBlocking = shouldDisableDependents();
         if (isBlocking != wasBlocking) {
@@ -203,7 +208,7 @@ public class TimePreference extends DialogPreference {
      * @return the time - {@code null} otherwise.
      */
     public static Calendar parseTime(String timeString) {
-        if (!TextUtils.isEmpty(timeString)) {
+        if (!isEmpty(timeString)) {
             try {
                 Date date = formatIso.parse(timeString);
                 Calendar time = Calendar.getInstance();
