@@ -23,7 +23,10 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceManager;
 
 import com.github.lib.R;
 
@@ -35,7 +38,9 @@ import static android.os.Build.VERSION_CODES.JELLY_BEAN;
  *
  * @author Moshe Waisberg
  */
-public class PreferenceActivity extends android.preference.PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class PreferenceActivity extends android.preference.PreferenceActivity implements
+    SharedPreferences.OnSharedPreferenceChangeListener,
+    PreferenceFragment.OnPreferenceStartFragmentCallback {
 
     private final String packageName;
     private boolean restartParentActivityForUi;
@@ -85,7 +90,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity im
                     String parentActivity = info.parentActivityName;
                     parentIntent = new Intent();
                     parentIntent.setClassName(this, parentActivity);
-                } catch (PackageManager.NameNotFoundException e) {
+                } catch (PackageManager.NameNotFoundException ignore) {
                 }
             }
             if ((parentIntent != null) && shouldUpRecreateTask(parentIntent)) {
@@ -114,5 +119,11 @@ public class PreferenceActivity extends android.preference.PreferenceActivity im
         if (shouldRestartParentActivityForUi(key)) {
             markRestartParentActivityForUi();
         }
+    }
+
+    @Override
+    public boolean onPreferenceStartFragment(PreferenceFragment caller, Preference pref) {
+        startPreferencePanel(pref.getFragment(), pref.getExtras(), 0, pref.getTitle(), caller, 0);
+        return true;
     }
 }

@@ -20,8 +20,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 
-import androidx.core.os.BuildCompat;
-
 import com.github.lib.R;
 
 import static com.github.preference.ThemePreferences.Values.THEME_DARK;

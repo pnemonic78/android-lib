@@ -17,7 +17,8 @@ package com.github.preference;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
 
 import com.github.content.ProviderPreferences;
 

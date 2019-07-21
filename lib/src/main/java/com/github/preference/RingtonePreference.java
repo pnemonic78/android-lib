@@ -16,26 +16,26 @@
 package com.github.preference;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ContentUris;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.media.Ringtone;
 import android.net.Uri;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.preference.Preference;
-import android.text.TextUtils;
 import android.util.AttributeSet;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.res.TypedArrayUtils;
+import androidx.preference.Preference;
+
+import com.github.lib.R;
+import com.github.media.RingtoneManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.github.lib.R;
-import com.github.media.RingtoneManager;
+import static android.text.TextUtils.isEmpty;
 
 /**
  * A {@link Preference} that allows the user to choose a ringtone from those on the device.
@@ -63,7 +63,7 @@ public class RingtonePreference extends DialogPreference {
     private static final String DEFAULT_PATH = RingtoneManager.DEFAULT_PATH;
     private static final Uri DEFAULT_URI = null;
 
-    private static final String SILENT_PATH = RingtoneManager.SILENT_PATH;
+    static final String SILENT_PATH = RingtoneManager.SILENT_PATH;
     private static final Uri SILENT_URI = RingtoneManager.SILENT_URI;
 
     private static final int POS_UNKNOWN = -1;
@@ -73,7 +73,6 @@ public class RingtonePreference extends DialogPreference {
     private boolean showSilent;
     private List<CharSequence> entries;
     private List<Uri> entryValues;
-    private Uri selected;
     private RingtoneManager ringtoneManager;
     private Ringtone ringtoneSample;
 
@@ -136,7 +135,11 @@ public class RingtonePreference extends DialogPreference {
     }
 
     public RingtonePreference(Context context, AttributeSet attrs) {
-        this(context, attrs, android.R.attr.ringtonePreferenceStyle);
+        this(context, attrs, TypedArrayUtils.getAttr(context, R.attr.ringtonePreferenceStyle, android.R.attr.ringtonePreferenceStyle));
+    }
+
+    public RingtonePreference(Context context) {
+        this(context, null);
     }
 
     public void setRingtoneType(int type) {
@@ -157,7 +160,7 @@ public class RingtonePreference extends DialogPreference {
             // Switch to the other default tone?
             String value = getValue();
             boolean preserveDefault = false;
-            if (!TextUtils.isEmpty(value)) {
+            if (!isEmpty(value)) {
                 Uri valueUri = Uri.parse(value);
                 Uri defaultUri = (defaultRingtoneUri != null) ? defaultRingtoneUri : RingtoneManager.getDefaultUri(ringtoneType);
                 preserveDefault = valueUri.equals(defaultUri);
@@ -171,7 +174,6 @@ public class RingtonePreference extends DialogPreference {
                 setDefaultValue(value);
                 getEntries(); // Rebuild the entries for change listener.
                 if (callChangeListener(value)) {
-                    this.selected = defaultRingtoneUri;
                     onSaveRingtone(defaultRingtoneUri);
                     notifyChanged();
                 }
@@ -260,7 +262,7 @@ public class RingtonePreference extends DialogPreference {
         if (uriString == DEFAULT_PATH) {
             return defaultRingtoneUri;
         }
-        return TextUtils.isEmpty(uriString) ? SILENT_URI : Uri.parse(uriString);
+        return isEmpty(uriString) ? SILENT_URI : Uri.parse(uriString);
     }
 
     @Override
@@ -269,22 +271,11 @@ public class RingtonePreference extends DialogPreference {
     }
 
     @Override
-    protected void onSetInitialValue(boolean restorePersistedValue, Object defaultValueObj) {
+    protected void onSetInitialValue(@Nullable Object defaultValueObj) {
         String defaultValue = (String) defaultValueObj;
 
-        /*
-         * This method is normally to make sure the internal state and UI
-         * matches either the persisted value or the default value. Since we
-         * don't show the current value in the UI (until the dialog is opened)
-         * and we don't keep local state, if we are restoring the persisted
-         * value we don't need to do anything.
-         */
-        if (restorePersistedValue) {
-            return;
-        }
-
         // If we are setting to the default value, we should persist it.
-        if (!TextUtils.isEmpty(defaultValue)) {
+        if (!isEmpty(defaultValue)) {
             onSaveRingtone(Uri.parse(defaultValue));
         }
     }
@@ -315,57 +306,11 @@ public class RingtonePreference extends DialogPreference {
         return POS_UNKNOWN;
     }
 
-    private int getValueIndex() {
+    int getValueIndex() {
         return findIndexOfValue(onRestoreRingtone());
     }
 
-    @Override
-    protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
-        super.onPrepareDialogBuilder(builder);
-
-        Uri selected = this.selected;
-        if (selected == null) {
-            selected = onRestoreRingtone();
-            this.selected = selected;
-        }
-
-        List<CharSequence> entries = getEntries();
-        CharSequence[] items = entries.toArray(new CharSequence[0]);
-        builder.setSingleChoiceItems(items, findIndexOfValue(selected), this);
-        builder.setPositiveButton(R.string.ok, this);
-        builder.setNegativeButton(R.string.cancel, this);
-    }
-
-    @Override
-    public void onClick(DialogInterface dialog, int which) {
-        super.onClick(dialog, which);
-
-        if (which >= 0) {
-            // Play clip
-            playRingtone(which);
-        }
-    }
-
-    @Override
-    protected void onDialogClosed(boolean positiveResult) {
-        super.onDialogClosed(positiveResult);
-
-        if (positiveResult) {
-            Uri uri = selected;
-            if (callChangeListener(uri != null ? uri.toString() : SILENT_PATH)) {
-                onSaveRingtone(uri);
-            }
-        }
-    }
-
-    @Override
-    public void onDismiss(DialogInterface dialog) {
-        super.onDismiss(dialog);
-
-        stopAnyPlayingRingtone();
-    }
-
-    private List<CharSequence> getEntries() {
+    public List<CharSequence> getEntries() {
         List<CharSequence> entries = this.entries;
         List<Uri> entryValues = this.entryValues;
         if ((entries == null) || (entryValues == null)) {
@@ -408,9 +353,7 @@ public class RingtonePreference extends DialogPreference {
         return entries;
     }
 
-    private void playRingtone(int position) {
-        selected = getRingtoneUri(position);
-
+    void playRingtone(int position) {
         if (ringtoneSample != null) {
             ringtoneSample.stop();
         }
@@ -430,7 +373,7 @@ public class RingtonePreference extends DialogPreference {
         ringtoneSample = ringtone;
     }
 
-    private void stopAnyPlayingRingtone() {
+    void stopAnyPlayingRingtone() {
         if (ringtoneSample != null) {
             ringtoneSample.stop();
         }
@@ -439,7 +382,7 @@ public class RingtonePreference extends DialogPreference {
         }
     }
 
-    private Uri getRingtoneUri(int position) {
+    Uri getRingtoneUri(int position) {
         return entryValues.get(position);
     }
 
@@ -484,57 +427,5 @@ public class RingtonePreference extends DialogPreference {
             return ringtone.getTitle(context);
         }
         return null;
-    }
-
-    @Override
-    protected Parcelable onSaveInstanceState() {
-        final Parcelable superState = super.onSaveInstanceState();
-
-        final SavedState myState = new SavedState(superState);
-        myState.value = this.selected;
-        return myState;
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Parcelable state) {
-        if (state == null || !(state instanceof SavedState)) {
-            // Didn't save state for us in onSaveInstanceState
-            super.onRestoreInstanceState(state);
-            return;
-        }
-
-        SavedState myState = (SavedState) state;
-        super.onRestoreInstanceState(myState.getSuperState());
-        this.selected = myState.value;
-    }
-
-    private static class SavedState extends BaseSavedState {
-        Uri value;
-
-        public SavedState(Parcel source) {
-            super(source);
-            value = Uri.CREATOR.createFromParcel(source);
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            super.writeToParcel(dest, flags);
-            Uri.writeToParcel(dest, value);
-        }
-
-        public SavedState(Parcelable superState) {
-            super(superState);
-        }
-
-        public static final Parcelable.Creator<SavedState> CREATOR =
-                new Parcelable.Creator<SavedState>() {
-                    public SavedState createFromParcel(Parcel in) {
-                        return new SavedState(in);
-                    }
-
-                    public SavedState[] newArray(int size) {
-                        return new SavedState[size];
-                    }
-                };
     }
 }

@@ -19,8 +19,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.view.View;
-import android.widget.NumberPicker;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.res.TypedArrayUtils;
 
 import com.github.lib.R;
 
@@ -33,22 +34,13 @@ public class NumberPickerPreference extends DialogPreference {
 
     private static final int[] ATTRIBUTES = {android.R.attr.max};
 
-    private NumberPicker picker;
     private int value;
     private int max;
     private int min;
     private boolean progressSet;
 
-    public NumberPickerPreference(Context context, AttributeSet attrs) {
-        this(context, attrs, android.R.attr.dialogPreferenceStyle);
-    }
-
-    public NumberPickerPreference(Context context, AttributeSet attrs, int defStyleAttr) {
-        this(context, attrs, defStyleAttr, 0);
-    }
-
     public NumberPickerPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr);
+        super(context, attrs, defStyleAttr, defStyleRes);
 
         final TypedArray a = context.obtainStyledAttributes(attrs, ATTRIBUTES, defStyleAttr, defStyleRes);
         this.max = a.getInt(0, 100);
@@ -59,44 +51,26 @@ public class NumberPickerPreference extends DialogPreference {
         }
     }
 
-    @Override
-    protected void onBindDialogView(View view) {
-        super.onBindDialogView(view);
-
-        NumberPicker picker = view.findViewById(R.id.picker);
-        this.picker = picker;
-
-        int value = getValue();
-
-        picker.setMinValue(getMin());
-        picker.setMaxValue(getMax());
-        picker.setEnabled(isEnabled());
-        if (value != picker.getValue()) {
-            picker.setValue(value);
-        }
+    public NumberPickerPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+        this(context, attrs, defStyleAttr, 0);
     }
 
-    @Override
-    protected void onDialogClosed(boolean positiveResult) {
-        super.onDialogClosed(positiveResult);
+    public NumberPickerPreference(Context context, AttributeSet attrs) {
+        this(context, attrs, TypedArrayUtils.getAttr(context, R.attr.dialogPreferenceStyle, android.R.attr.dialogPreferenceStyle));
+    }
 
-        if (positiveResult) {
-            picker.clearFocus();
-            int value = picker.getValue();
-            if (callChangeListener(value)) {
-                setValue(value);
-            }
-        }
+    public NumberPickerPreference(Context context) {
+        this(context, null);
     }
 
     @Override
     protected Integer onGetDefaultValue(TypedArray a, int index) {
-        return a.getInt(index, 0);
+        return a.hasValue(0) ? a.getInt(index, 0) : null;
     }
 
     @Override
-    protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
-        setValue(restoreValue ? getPersistedInt(value) : (Integer) defaultValue);
+    protected void onSetInitialValue(@Nullable Object defaultValue) {
+        setValue(defaultValue != null ? (Integer) defaultValue : 0);
     }
 
     /**
@@ -135,9 +109,6 @@ public class NumberPickerPreference extends DialogPreference {
      */
     public void setMax(int max) {
         this.max = max;
-        if (picker != null) {
-            picker.setMaxValue(max);
-        }
     }
 
     /**
@@ -156,9 +127,6 @@ public class NumberPickerPreference extends DialogPreference {
      */
     public void setMin(int min) {
         this.min = min;
-        if (picker != null) {
-            picker.setMinValue(min);
-        }
     }
 
     /**

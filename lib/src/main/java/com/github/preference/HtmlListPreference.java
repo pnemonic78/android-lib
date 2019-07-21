@@ -15,15 +15,14 @@
  */
 package com.github.preference;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
-import android.preference.ListPreference;
 import android.text.Editable;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.util.AttributeSet;
+
+import androidx.preference.ListPreference;
 
 /**
  * List preference that re-parses the entries as HTML.
@@ -32,8 +31,13 @@ import android.util.AttributeSet;
  */
 public class HtmlListPreference extends ListPreference {
 
-    public HtmlListPreference(Context context) {
-        super(context);
+    public HtmlListPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        init();
+    }
+
+    public HtmlListPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         init();
     }
 
@@ -42,15 +46,8 @@ public class HtmlListPreference extends ListPreference {
         init();
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public HtmlListPreference(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init();
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public HtmlListPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
+    public HtmlListPreference(Context context) {
+        super(context);
         init();
     }
 

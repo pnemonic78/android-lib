@@ -15,10 +15,10 @@
  */
 package com.github.preference;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.preference.Preference;
 import android.util.AttributeSet;
+
+import androidx.preference.Preference;
 
 /**
  * A base class for {@link Preference} objects that are
@@ -27,9 +27,13 @@ import android.util.AttributeSet;
  *
  * @author Moshe Waisberg
  */
-public class DialogPreference extends android.preference.DialogPreference {
+public class DialogPreference extends androidx.preference.DialogPreference {
 
     private CharSequence neutralButtonText;
+
+    public DialogPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
 
     public DialogPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -37,6 +41,10 @@ public class DialogPreference extends android.preference.DialogPreference {
 
     public DialogPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
+    }
+
+    public DialogPreference(Context context) {
+        super(context);
     }
 
     /**
@@ -55,7 +63,7 @@ public class DialogPreference extends android.preference.DialogPreference {
      * @see #setNeutralButtonText(CharSequence)
      */
     public void setNeutralButtonText(int neutralButtonTextResId) {
-        setNeutralButtonText(getContext().getText(neutralButtonTextResId));
+        setNeutralButtonText(getContext().getString(neutralButtonTextResId));
     }
 
     /**
@@ -67,10 +75,9 @@ public class DialogPreference extends android.preference.DialogPreference {
         return neutralButtonText;
     }
 
-    @Override
-    protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
-        super.onPrepareDialogBuilder(builder);
-
-        builder.setNeutralButton(getNeutralButtonText(), this);
+    /**
+     * The neutral button was clicked, so reset the value.
+     */
+    public void onNeutralButtonClicked() {
     }
 }

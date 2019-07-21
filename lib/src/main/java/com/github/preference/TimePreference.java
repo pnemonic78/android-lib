@@ -16,13 +16,15 @@
 package com.github.preference;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.text.format.DateFormat;
 import android.util.AttributeSet;
-import android.view.View;
-import android.widget.TimePicker;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.res.TypedArrayUtils;
+
+import com.github.lib.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -50,59 +52,31 @@ public class TimePreference extends DialogPreference {
      */
     private static final String PATTERN = "HH:mm";
 
-    private TimePicker picker;
     private String value;
     private Calendar time;
     private static final java.text.DateFormat formatIso = new SimpleDateFormat(PATTERN, Locale.US);
     private java.text.DateFormat formatPretty;
 
+    public TimePreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+
+        formatPretty = DateFormat.getTimeFormat(context);
+
+        if (getDialogLayoutResource() == 0) {
+            setDialogLayoutResource(R.layout.preference_dialog_timepicker);
+        }
+    }
+
     public TimePreference(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init(context);
+        this(context, attrs, defStyleAttr, 0);
     }
 
     public TimePreference(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context);
+        this(context, attrs, TypedArrayUtils.getAttr(context, R.attr.dialogPreferenceStyle, android.R.attr.dialogPreferenceStyle));
     }
 
-    private void init(Context context) {
-        formatPretty = DateFormat.getTimeFormat(context);
-    }
-
-    @Override
-    protected View onCreateDialogView() {
-        final Context context = getContext();
-        picker = new TimePicker(context);
-        picker.setIs24HourView(DateFormat.is24HourFormat(context));
-
-        return picker;
-    }
-
-    @Override
-    protected void onBindDialogView(View view) {
-        super.onBindDialogView(view);
-
-        if (time != null) {
-            picker.setCurrentHour(time.get(Calendar.HOUR_OF_DAY));
-            picker.setCurrentMinute(time.get(Calendar.MINUTE));
-        }
-    }
-
-    @Override
-    protected void onDialogClosed(boolean positiveResult) {
-        super.onDialogClosed(positiveResult);
-
-        if (positiveResult) {
-            Calendar time = Calendar.getInstance();
-            time.set(Calendar.HOUR_OF_DAY, picker.getCurrentHour());
-            time.set(Calendar.MINUTE, picker.getCurrentMinute());
-            String value = formatIso.format(time.getTime());
-
-            if (callChangeListener(value)) {
-                setTime(time);
-            }
-        }
+    public TimePreference(Context context) {
+        this(context, null);
     }
 
     @Override
@@ -111,8 +85,8 @@ public class TimePreference extends DialogPreference {
     }
 
     @Override
-    protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
-        setTime(restoreValue ? getPersistedString(value) : (String) defaultValue);
+    protected void onSetInitialValue(@Nullable Object defaultValue) {
+        setTime((String) defaultValue);
     }
 
     @Override
@@ -190,18 +164,6 @@ public class TimePreference extends DialogPreference {
         return (time != null) ? formatPretty.format(time.getTime()) : null;
     }
 
-    @Override
-    public void onClick(DialogInterface dialog, int which) {
-        super.onClick(dialog, which);
-
-        if (which == DialogInterface.BUTTON_NEUTRAL) {
-            String value = null;//"off"
-            if (callChangeListener(value)) {
-                setTime(value);
-            }
-        }
-    }
-
     /**
      * Parse the time value.
      *
@@ -220,5 +182,12 @@ public class TimePreference extends DialogPreference {
             }
         }
         return null;
+    }
+
+    @Override
+    public void onNeutralButtonClicked() {
+        if (callChangeListener(null)) {
+            setTime((Calendar) null);
+        }
     }
 }

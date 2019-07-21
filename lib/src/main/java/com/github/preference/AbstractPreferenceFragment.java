@@ -16,23 +16,27 @@
 package com.github.preference;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceGroup;
-import android.preference.PreferenceManager;
-import android.preference.SwitchPreference;
 import android.text.TextUtils;
-
-import com.github.lib.R;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceGroup;
+import androidx.preference.PreferenceManager;
+import androidx.preference.SwitchPreference;
+
+import com.github.lib.R;
+
+import java.util.Calendar;
+
 import timber.log.Timber;
 
 import static android.content.pm.PackageManager.MATCH_DEFAULT_ONLY;
@@ -46,6 +50,8 @@ import static android.os.Build.VERSION_CODES.O;
  */
 public abstract class AbstractPreferenceFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
+    private static final String DIALOG_FRAGMENT_TAG = "com.github.preference.DIALOG";
+
     protected Context context;
 
     @Override
@@ -55,9 +61,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         int xmlId = getPreferencesXml();
         PreferenceManager.setDefaultValues(getActivity(), xmlId, false);
         addPreferencesFromResource(xmlId);
@@ -67,19 +71,19 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
     protected abstract int getPreferencesXml();
 
     protected Preference initPreference(String key) {
-        Preference pref;
+        Preference preference;
 
-        pref = initList(key);
-        if (pref != null) {
-            return pref;
+        preference = initList(key);
+        if (preference != null) {
+            return preference;
         }
-        pref = initRingtone(key);
-        if (pref != null) {
-            return pref;
+        preference = initRingtone(key);
+        if (preference != null) {
+            return preference;
         }
-        pref = initTime(key);
-        if (pref != null) {
-            return pref;
+        preference = initTime(key);
+        if (preference != null) {
+            return preference;
         }
 
         return null;
@@ -90,9 +94,9 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
             return null;
         }
 
-        Preference pref = findPreference(key);
-        if (pref instanceof ListPreference) {
-            ListPreference list = (ListPreference) pref;
+        Preference preference = findPreference(key);
+        if (preference instanceof ListPreference) {
+            ListPreference list = (ListPreference) preference;
             list.setOnPreferenceChangeListener(this);
             onListPreferenceChange(list, list.getValue());
             return list;
@@ -105,9 +109,9 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
             return null;
         }
 
-        Preference pref = findPreference(key);
-        if (pref instanceof RingtonePreference) {
-            RingtonePreference ring = (RingtonePreference) pref;
+        Preference preference = findPreference(key);
+        if (preference instanceof RingtonePreference) {
+            RingtonePreference ring = (RingtonePreference) preference;
             ring.setOnPreferenceChangeListener(this);
             onRingtonePreferenceChange(ring, ring.getValue());
             return ring;
@@ -120,9 +124,9 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
             return null;
         }
 
-        Preference pref = findPreference(key);
-        if (pref instanceof TimePreference) {
-            TimePreference time = (TimePreference) pref;
+        Preference preference = findPreference(key);
+        if (preference instanceof TimePreference) {
+            TimePreference time = (TimePreference) preference;
             time.setNeutralButtonText(R.string.off);
             time.setOnPreferenceChangeListener(this);
             onTimePreferenceChange(time, time.getValue());
@@ -202,10 +206,16 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
      * @param newValue   the possibly new value.
      */
     protected boolean onTimePreferenceChange(TimePreference preference, Object newValue) {
-        String value = (newValue == null) ? null : newValue.toString();
-        //Set the value for the summary.
-        preference.setTime(value);
-        updateSummary(preference, value);
+        if (newValue instanceof Calendar) {
+            Calendar value = (Calendar) newValue;
+            //Set the value for the summary.
+            preference.setTime(value);
+        } else {
+            String value = (newValue == null) ? null : newValue.toString();
+            //Set the value for the summary.
+            preference.setTime(value);
+        }
+        updateSummary(preference, preference.formatTime());
         return true;
     }
 
@@ -271,7 +281,10 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
         validateIntent(findPreference(key));
     }
 
-    protected void validateIntent(Preference preference) {
+    protected void validateIntent(@Nullable Preference preference) {
+        if (preference == null) {
+            return;
+        }
         final Intent intent = preference.getIntent();
         if (intent == null) {
             return;
@@ -360,5 +373,30 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
             return preference.getEntries()[index];
         }
         return null;
+    }
+
+    @Override
+    public void onDisplayPreferenceDialog(Preference preference) {
+        // check if dialog is already showing
+        if (getFragmentManager().findFragmentByTag(DIALOG_FRAGMENT_TAG) != null) {
+            return;
+        }
+
+        final DialogFragment f;
+        if (preference instanceof NumberPickerPreference) {
+            f = NumberPreferenceDialog.newInstance(preference.getKey());
+            f.setTargetFragment(this, 0);
+            f.show(getFragmentManager(), DIALOG_FRAGMENT_TAG);
+        } else if (preference instanceof RingtonePreference) {
+            f = RingtonePreferenceDialog.newInstance(preference.getKey());
+            f.setTargetFragment(this, 0);
+            f.show(getFragmentManager(), DIALOG_FRAGMENT_TAG);
+        } else if (preference instanceof TimePreference) {
+            f = TimePreferenceDialog.newInstance(preference.getKey());
+            f.setTargetFragment(this, 0);
+            f.show(getFragmentManager(), DIALOG_FRAGMENT_TAG);
+        } else {
+            super.onDisplayPreferenceDialog(preference);
+        }
     }
 }
