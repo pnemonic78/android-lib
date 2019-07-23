@@ -70,7 +70,7 @@ public class NumberPickerPreference extends DialogPreference {
 
     @Override
     protected void onSetInitialValue(@Nullable Object defaultValue) {
-        setValue(defaultValue != null ? (Integer) defaultValue : 0);
+        setValue(getPersistedInt((defaultValue != null) ? (Integer) defaultValue : value));
     }
 
     /**
@@ -79,8 +79,7 @@ public class NumberPickerPreference extends DialogPreference {
      * @param value the value.
      */
     public void setValue(int value) {
-        // Always persist/notify the first time; don't assume the field's
-        // default value.
+        // Always persist/notify the first time; don't assume the field's default value.
         final boolean changed = this.value != value;
         if (changed || !progressSet) {
             this.value = value;

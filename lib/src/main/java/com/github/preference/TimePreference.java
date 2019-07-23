@@ -86,7 +86,7 @@ public class TimePreference extends DialogPreference {
 
     @Override
     protected void onSetInitialValue(@Nullable Object defaultValue) {
-        setTime((String) defaultValue);
+        setTime(getPersistedString((String) defaultValue));
     }
 
     @Override

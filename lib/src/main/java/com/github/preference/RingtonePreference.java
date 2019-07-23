@@ -272,7 +272,7 @@ public class RingtonePreference extends DialogPreference {
 
     @Override
     protected void onSetInitialValue(@Nullable Object defaultValueObj) {
-        String defaultValue = (String) defaultValueObj;
+        String defaultValue = getPersistedString((String) defaultValueObj);
 
         // If we are setting to the default value, we should persist it.
         if (!isEmpty(defaultValue)) {
