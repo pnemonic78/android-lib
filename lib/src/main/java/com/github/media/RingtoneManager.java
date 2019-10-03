@@ -38,12 +38,18 @@ import static android.os.Build.VERSION_CODES;
  */
 public class RingtoneManager extends android.media.RingtoneManager {
 
-    /** Invalid {@link Uri} path that means 'default'. */
+    /**
+     * Invalid {@link Uri} path that means 'default'.
+     */
     public static final String DEFAULT_PATH = null;
 
-    /** Empty {@link Uri} that means 'silent'. */
+    /**
+     * Empty {@link Uri} that means 'silent'.
+     */
     public static final Uri SILENT_URI = Uri.EMPTY;
-    /** Empty {@link Uri} path that means 'silent'. */
+    /**
+     * Empty {@link Uri} path that means 'silent'.
+     */
     public static final String SILENT_PATH = SILENT_URI.toString();
 
     private static final String INTERNAL_PATH = MediaStore.Audio.Media.INTERNAL_CONTENT_URI.toString();
@@ -52,14 +58,30 @@ public class RingtoneManager extends android.media.RingtoneManager {
     private static final String FILE_PATH = ContentResolver.SCHEME_FILE + ":/";
 
     private static final String[] INTERNAL_COLUMNS = new String[]{
-            MediaStore.Audio.Media._ID, MediaStore.Audio.Media.TITLE,
-            "\"" + MediaStore.Audio.Media.INTERNAL_CONTENT_URI + "\"",
+            MediaStore.Audio.Media._ID,
+            MediaStore.Audio.Media.TITLE,
+            MediaStore.Audio.Media.TITLE,
             MediaStore.Audio.Media.TITLE_KEY
     };
 
     private static final String[] SETTINGS_COLUMNS = new String[]{
-            Settings.NameValueTable._ID, Settings.NameValueTable.NAME, Settings.NameValueTable.VALUE
+            Settings.NameValueTable._ID,
+            Settings.NameValueTable.NAME,
+            Settings.NameValueTable.VALUE
     };
+
+    /**
+     * The column index (in the cursor} for the row ID.
+     */
+    public static final int ID_COLUMN_INDEX = 0;
+    /**
+     * The column index (in the cursor} for the title.
+     */
+    public static final int TITLE_COLUMN_INDEX = 1;
+    /**
+     * The column index (in the cursor} for the media provider's URI.
+     */
+    public static final int URI_COLUMN_INDEX = 2;
 
     private Context context;
     private Cursor cursor;
@@ -116,8 +138,7 @@ public class RingtoneManager extends android.media.RingtoneManager {
     /**
      * Include external media?
      *
-     * @param include
-     *         whether to include.
+     * @param include whether to include.
      */
     public void setIncludeExternal(boolean include) {
         this.includeExternal = include;
@@ -133,10 +154,11 @@ public class RingtoneManager extends android.media.RingtoneManager {
     }
 
     private Cursor getInternalRingtones() {
-        return query(
+        final Cursor res = query(
                 MediaStore.Audio.Media.INTERNAL_CONTENT_URI, INTERNAL_COLUMNS,
                 constructBooleanTrueWhereClause(filterColumns),
                 null, MediaStore.Audio.Media.DEFAULT_SORT_ORDER);
+        return new ExternalRingtonesCursorWrapper(res, MediaStore.Audio.Media.INTERNAL_CONTENT_URI);
     }
 
     private void setFilterColumnsList(int type) {
@@ -165,29 +187,28 @@ public class RingtoneManager extends android.media.RingtoneManager {
      * (true). This is used to find all matching sounds for the given sound
      * types (ringtone, notifications, etc.)
      *
-     * @param columns
-     *         The columns that must be true.
+     * @param columns The columns that must be true.
      * @return The where clause.
      */
     private static String constructBooleanTrueWhereClause(List<String> columns) {
-
         if (columns == null) return null;
 
-        StringBuilder sb = new StringBuilder();
-        sb.append('(');
+        final int size = columns.size();
+        if (size > 0) {
+            StringBuilder sb = new StringBuilder();
+            sb.append('(');
 
-        for (int i = columns.size() - 1; i >= 0; i--) {
-            sb.append(columns.get(i)).append("=1 or ");
-        }
-
-        if (columns.size() > 0) {
+            for (int i = 0; i < size; i++) {
+                sb.append(columns.get(i)).append("=1 or ");
+            }
             // Remove last ' or '
             sb.setLength(sb.length() - 4);
+
+            sb.append(')');
+            return sb.toString();
         }
 
-        sb.append(')');
-
-        return sb.toString();
+        return null;
     }
 
     private Cursor query(Uri uri,

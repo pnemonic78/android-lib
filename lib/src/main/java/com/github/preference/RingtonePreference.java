@@ -36,6 +36,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import static android.text.TextUtils.isEmpty;
+import static com.github.media.RingtoneManager.ID_COLUMN_INDEX;
+import static com.github.media.RingtoneManager.TITLE_COLUMN_INDEX;
+import static com.github.media.RingtoneManager.URI_COLUMN_INDEX;
 
 /**
  * A {@link Preference} that allows the user to choose a ringtone from those on the device.
@@ -44,19 +47,6 @@ import static android.text.TextUtils.isEmpty;
  * @author Moshe Waisberg
  */
 public class RingtonePreference extends DialogPreference {
-
-    /**
-     * The column index (in the cursor} for the row ID.
-     */
-    public static final int ID_COLUMN_INDEX = 0;
-    /**
-     * The column index (in the cursor} for the title.
-     */
-    private static final int TITLE_COLUMN_INDEX = 1;
-    /**
-     * The column index (in the cursor} for the media provider's URI.
-     */
-    public static final int URI_COLUMN_INDEX = 2;
 
     private static final int[] ATTRIBUTES = {android.R.attr.ringtoneType, android.R.attr.showDefault, android.R.attr.showSilent, android.R.attr.defaultValue};
 
