@@ -16,7 +16,6 @@
 package com.github.preference;
 
 import android.annotation.TargetApi;
-import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -29,9 +28,6 @@ import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceManager;
 
 import com.github.lib.R;
-
-import static android.os.Build.VERSION;
-import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 
 /**
  * Application preferences that populate the settings.
@@ -57,13 +53,6 @@ public class PreferenceActivity extends android.preference.PreferenceActivity im
         setTheme(R.style.Theme_Base_Settings);
         super.onCreate(savedInstanceState);
         PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
-
-        if (VERSION.SDK_INT < JELLY_BEAN) {
-            ActionBar actionBar = getActionBar();
-            if (actionBar != null) {
-                actionBar.setDisplayHomeAsUpEnabled(true);
-            }
-        }
     }
 
     @Override
@@ -81,22 +70,20 @@ public class PreferenceActivity extends android.preference.PreferenceActivity im
     @Override
     public void finish() {
         // Recreate the parent activity in case a theme has changed.
-        if (VERSION.SDK_INT >= JELLY_BEAN) {
-            Intent parentIntent = getParentActivityIntent();
-            if (parentIntent == null) {
-                try {
-                    PackageManager pm = getPackageManager();
-                    ActivityInfo info = pm.getActivityInfo(getComponentName(), 0);
-                    String parentActivity = info.parentActivityName;
-                    parentIntent = new Intent();
-                    parentIntent.setClassName(this, parentActivity);
-                } catch (PackageManager.NameNotFoundException ignore) {
-                }
+        Intent parentIntent = getParentActivityIntent();
+        if (parentIntent == null) {
+            try {
+                PackageManager pm = getPackageManager();
+                ActivityInfo info = pm.getActivityInfo(getComponentName(), 0);
+                String parentActivity = info.parentActivityName;
+                parentIntent = new Intent();
+                parentIntent.setClassName(this, parentActivity);
+            } catch (PackageManager.NameNotFoundException ignore) {
             }
-            if ((parentIntent != null) && shouldUpRecreateTask(parentIntent)) {
-                parentIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(parentIntent);
-            }
+        }
+        if ((parentIntent != null) && shouldUpRecreateTask(parentIntent)) {
+            parentIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(parentIntent);
         }
         super.finish();
     }
