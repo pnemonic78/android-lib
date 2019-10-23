@@ -28,7 +28,6 @@ import androidx.annotation.Nullable;
 import androidx.core.content.res.TypedArrayUtils;
 import androidx.preference.Preference;
 
-import com.github.lib.R;
 import com.github.media.RingtoneManager;
 
 import java.util.ArrayList;
@@ -125,7 +124,7 @@ public class RingtonePreference extends DialogPreference {
     }
 
     public RingtonePreference(Context context, AttributeSet attrs) {
-        this(context, attrs, TypedArrayUtils.getAttr(context, R.attr.ringtonePreferenceStyle, android.R.attr.ringtonePreferenceStyle));
+        this(context, attrs, TypedArrayUtils.getAttr(context, androidx.preference.R.attr.ringtonePreferenceStyle, android.R.attr.ringtonePreferenceStyle));
     }
 
     public RingtonePreference(Context context) {
