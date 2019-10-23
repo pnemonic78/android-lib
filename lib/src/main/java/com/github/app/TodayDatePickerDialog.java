@@ -18,13 +18,11 @@ package com.github.app;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Build;
 
 import com.github.lib.R;
 
 import java.util.Calendar;
-
-import static android.os.Build.VERSION;
-import static android.os.Build.VERSION_CODES.LOLLIPOP;
 
 /**
  * Date picker dialog with a "Today" button.
@@ -51,7 +49,7 @@ public class TodayDatePickerDialog extends DatePickerDialog {
     public void onClick(DialogInterface dialog, int which) {
         if (which == BUTTON_NEUTRAL) {
             setToday();
-            if (VERSION.SDK_INT >= LOLLIPOP)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                 onClick(dialog, BUTTON_POSITIVE);
         }
         super.onClick(dialog, which);

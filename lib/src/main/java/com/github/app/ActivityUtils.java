@@ -19,15 +19,15 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 
 import androidx.annotation.NonNull;
+
 import timber.log.Timber;
 
 import static android.content.pm.PackageManager.GET_META_DATA;
-import static android.os.Build.VERSION;
-import static android.os.Build.VERSION_CODES.LOLLIPOP;
 
 /**
  * Activity utilities.
@@ -84,7 +84,7 @@ public class ActivityUtils {
      */
     public static void restartActivity(Activity activity) {
         Bundle savedState = null;
-        if (VERSION.SDK_INT >= LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             savedState = new Bundle();
             activity.onSaveInstanceState(savedState, null);
         }

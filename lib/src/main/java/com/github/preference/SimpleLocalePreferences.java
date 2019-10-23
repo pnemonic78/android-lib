@@ -23,7 +23,6 @@ import androidx.annotation.NonNull;
 
 import java.util.Locale;
 
-import static android.os.Build.VERSION_CODES.N;
 import static android.text.TextUtils.isEmpty;
 import static com.github.util.LocaleUtils.getDefaultLocale;
 import static com.github.util.LocaleUtils.parseLocale;
@@ -48,7 +47,7 @@ public class SimpleLocalePreferences extends SimplePreferences implements Locale
     public Locale getLocale() {
         String value = getPreferences().getString(KEY_LOCALE, null);
         if (isEmpty(value)) {
-            if (Build.VERSION.SDK_INT >= N) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 return getDefaultLocale(android.os.LocaleList.getAdjustedDefault());
             }
             return getDefaultLocale(Resources.getSystem());

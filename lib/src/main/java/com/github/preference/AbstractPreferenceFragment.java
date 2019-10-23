@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 
@@ -330,7 +331,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
 
         Preference pref = findPreference(key);
         if (pref != null) {
-            if (VERSION.SDK_INT >= O) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 return pref.getParent().removePreference(pref);
             }
             return findPreferenceParent(key).removePreference(pref);

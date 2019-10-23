@@ -19,20 +19,18 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import timber.log.Timber;
 
-import static android.os.Build.VERSION;
-import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
-import static android.os.Build.VERSION_CODES.LOLLIPOP;
-import static android.os.Build.VERSION_CODES.N;
 import static android.text.TextUtils.isEmpty;
 
 /**
@@ -165,10 +163,10 @@ public class LocaleUtils {
      * @param config the configuration with locales.
      * @return the locale.
      */
-    @TargetApi(N)
+    @TargetApi(Build.VERSION_CODES.N)
     @NonNull
     public static Locale getDefaultLocale(@NonNull Configuration config) {
-        if (VERSION.SDK_INT >= N) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             return getDefaultLocale(config.getLocales());
         }
         Locale locale = config.locale;
@@ -184,7 +182,7 @@ public class LocaleUtils {
      * @param locales the list of locales.
      * @return the locale.
      */
-    @TargetApi(N)
+    @TargetApi(Build.VERSION_CODES.N)
     @NonNull
     public static Locale getDefaultLocale(@NonNull android.os.LocaleList locales) {
         Locale locale = null;
@@ -216,7 +214,7 @@ public class LocaleUtils {
             res = Resources.getSystem();
         }
         final Configuration config = res.getConfiguration();
-        if (VERSION.SDK_INT >= JELLY_BEAN_MR1) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             config.setLocale(locale);
             res.updateConfiguration(config, res.getDisplayMetrics());
             return context.createConfigurationContext(config);
@@ -302,7 +300,7 @@ public class LocaleUtils {
     @NonNull
     public static Locale parseLocale(@Nullable String localeValue) {
         if (!isEmpty(localeValue)) {
-            if (VERSION.SDK_INT >= LOLLIPOP) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 return Locale.forLanguageTag(localeValue);
             }
             String[] tokens = localeValue.split("_");
