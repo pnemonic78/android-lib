@@ -17,6 +17,7 @@ package com.github.content;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -33,7 +34,7 @@ public class IntentUtils {
     private IntentUtils() {
     }
 
-    @TargetApi(LOLLIPOP_MR1)
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     public static void putExtras(Intent src, android.os.PersistableBundle dest) {
         Bundle extras = src.getExtras();
         if ((extras == null) || extras.isEmpty()) {
@@ -73,7 +74,7 @@ public class IntentUtils {
         }
     }
 
-    @TargetApi(LOLLIPOP_MR1)
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     public static void readExtras(Intent dest, android.os.PersistableBundle src) {
         if ((src == null) || src.isEmpty()) {
             return;

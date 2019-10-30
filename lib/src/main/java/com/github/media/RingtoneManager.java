@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -29,9 +30,6 @@ import com.github.lib.R;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.os.Build.VERSION;
-import static android.os.Build.VERSION_CODES;
 
 /**
  * Ringtone manager that can ignore external media when not permitted.
@@ -97,7 +95,7 @@ public class RingtoneManager extends android.media.RingtoneManager {
     public RingtoneManager(Context context) {
         super(context);
         this.context = context;
-        setIncludeExternal((VERSION.SDK_INT < VERSION_CODES.KITKAT)
+        setIncludeExternal((Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
                 || (context.checkCallingOrSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED));
     }
 
@@ -230,7 +228,7 @@ public class RingtoneManager extends android.media.RingtoneManager {
             boolean dangerousUri = false;
             if (uriString.startsWith(EXTERNAL_PATH)) {
                 dangerousUri = true;
-            } else if (VERSION.SDK_INT >= VERSION_CODES.N) {
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 if (uriString.startsWith(FILE_PATH)) {
                     dangerousUri = true;
                 } else {
@@ -242,7 +240,7 @@ public class RingtoneManager extends android.media.RingtoneManager {
                 // Try a 'default' tone.
                 uriString = getDefaultUri(type).toString();
 
-                if (VERSION.SDK_INT >= VERSION_CODES.N) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     if (uriString.startsWith(FILE_PATH)) {
                         return SILENT_PATH;
                     }
