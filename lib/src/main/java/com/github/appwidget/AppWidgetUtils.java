@@ -21,6 +21,11 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import timber.log.Timber;
+
 import static android.appwidget.AppWidgetManager.ACTION_APPWIDGET_UPDATE;
 import static android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_IDS;
 
@@ -34,30 +39,34 @@ public class AppWidgetUtils {
     private AppWidgetUtils() {
     }
 
-    public static int[] getAppWidgetIds(Context context, Class<? extends AppWidgetProvider> appWidgetClass) {
+    public static int[] getAppWidgetIds(@NonNull Context context, @NonNull Class<? extends AppWidgetProvider> appWidgetClass) {
         return getAppWidgetIds(context, null, appWidgetClass);
     }
 
-    public static int[] getAppWidgetIds(Context context, AppWidgetManager appWidgetManager, Class<? extends AppWidgetProvider> appWidgetClass) {
+    public static int[] getAppWidgetIds(@NonNull Context context, @Nullable AppWidgetManager appWidgetManager, @NonNull Class<? extends AppWidgetProvider> appWidgetClass) {
         return getAppWidgetIds(context, appWidgetManager, getProvider(context, appWidgetClass));
     }
 
-    public static int[] getAppWidgetIds(Context context, ComponentName provider) {
+    public static int[] getAppWidgetIds(@NonNull Context context, ComponentName provider) {
         return getAppWidgetIds(context, null, provider);
     }
 
-    public static int[] getAppWidgetIds(Context context, AppWidgetManager appWidgetManager, ComponentName provider) {
+    public static int[] getAppWidgetIds(@NonNull Context context, @Nullable AppWidgetManager appWidgetManager, @NonNull ComponentName provider) {
         if (appWidgetManager == null) {
             appWidgetManager = AppWidgetManager.getInstance(context);
+            if (appWidgetManager == null) {
+                Timber.e("no instance of AppWidgetManager!");
+                return null;
+            }
         }
         return appWidgetManager.getAppWidgetIds(provider);
     }
 
-    public static ComponentName getProvider(Context context, Class<? extends AppWidgetProvider> appWidgetClass) {
+    public static ComponentName getProvider(@NonNull Context context, @NonNull Class<? extends AppWidgetProvider> appWidgetClass) {
         return new ComponentName(context, appWidgetClass);
     }
 
-    public static void notifyAppWidgetsUpdate(Context context, Class<? extends AppWidgetProvider> appWidgetClass) {
+    public static void notifyAppWidgetsUpdate(@NonNull Context context, @NonNull Class<? extends AppWidgetProvider> appWidgetClass) {
         int[] appWidgetIds = getAppWidgetIds(context, appWidgetClass);
         if ((appWidgetIds == null) || (appWidgetIds.length == 0)) {
             return;
@@ -69,7 +78,7 @@ public class AppWidgetUtils {
         context.sendBroadcast(intent);
     }
 
-    public static void notifyAppWidgetViewDataChanged(Context context, Class<? extends AppWidgetProvider> appWidgetClass, int viewId) {
+    public static void notifyAppWidgetViewDataChanged(Context context, @NonNull Class<? extends AppWidgetProvider> appWidgetClass, int viewId) {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         int[] appWidgetIds = getAppWidgetIds(context, appWidgetManager, appWidgetClass);
         if ((appWidgetIds != null) && (appWidgetIds.length > 0)) {
