@@ -17,7 +17,6 @@ package com.github.util;
 
 import android.util.Log;
 
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import timber.log.Timber;
@@ -29,17 +28,14 @@ import timber.log.Timber;
  */
 public class LogTree extends Timber.DebugTree {
 
-    private final boolean release;
+    private final boolean debug;
 
     public LogTree(boolean debug) {
-        this.release = !debug;
+        this.debug = debug;
     }
 
     @Override
-    protected void log(int priority, @Nullable String tag, @NotNull String message, @Nullable Throwable t) {
-        if (release && ((priority == Log.DEBUG) || (priority == Log.VERBOSE))) {
-            return;
-        }
-        super.log(priority, tag, message, t);
+    protected boolean isLoggable(@Nullable String tag, int priority) {
+        return (debug || (priority >= Log.INFO)) && super.isLoggable(tag, priority);
     }
 }
