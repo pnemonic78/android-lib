@@ -34,6 +34,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import timber.log.Timber;
+
 import static android.text.TextUtils.isEmpty;
 import static com.github.media.RingtoneManager.ID_COLUMN_INDEX;
 import static com.github.media.RingtoneManager.TITLE_COLUMN_INDEX;
@@ -65,13 +67,19 @@ public class RingtonePreference extends DialogPreference {
     private RingtoneManager ringtoneManager;
     private Ringtone ringtoneSample;
 
-    /** The position in the list of the 'Silent' item. */
+    /**
+     * The position in the list of the 'Silent' item.
+     */
     private int silentPos = POS_UNKNOWN;
 
-    /** The position in the list of the 'Default' item. */
+    /**
+     * The position in the list of the 'Default' item.
+     */
     private int defaultRingtonePos = POS_UNKNOWN;
 
-    /** The Uri to play when the 'Default' item is clicked. */
+    /**
+     * The Uri to play when the 'Default' item is clicked.
+     */
     private Uri defaultRingtoneUri;
 
     private String defaultValue = DEFAULT_PATH;
@@ -413,7 +421,11 @@ public class RingtonePreference extends DialogPreference {
         final Context context = getContext();
         final Ringtone ringtone = RingtoneManager.getRingtone(context, uri);
         if (ringtone != null) {
-            return ringtone.getTitle(context);
+            try {
+                return ringtone.getTitle(context);
+            } catch (Exception e) {
+                Timber.e(e);
+            }
         }
         return null;
     }
