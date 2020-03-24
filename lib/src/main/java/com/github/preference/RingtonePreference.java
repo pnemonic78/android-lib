@@ -25,10 +25,10 @@ import android.net.Uri;
 import android.util.AttributeSet;
 
 import androidx.annotation.Nullable;
-import androidx.core.content.res.TypedArrayUtils;
 import androidx.preference.Preference;
 
 import com.github.media.RingtoneManager;
+import com.github.util.TypedValueUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -132,7 +132,7 @@ public class RingtonePreference extends DialogPreference {
     }
 
     public RingtonePreference(Context context, AttributeSet attrs) {
-        this(context, attrs, TypedArrayUtils.getAttr(context, androidx.preference.R.attr.ringtonePreferenceStyle, android.R.attr.ringtonePreferenceStyle));
+        this(context, attrs, TypedValueUtils.getAttr(context, androidx.preference.R.attr.dialogPreferenceStyle, android.R.attr.ringtonePreferenceStyle));
     }
 
     public RingtonePreference(Context context) {
