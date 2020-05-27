@@ -17,6 +17,7 @@ package com.github.preference;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -41,8 +42,6 @@ import java.util.Calendar;
 import timber.log.Timber;
 
 import static android.content.pm.PackageManager.MATCH_DEFAULT_ONLY;
-import static android.os.Build.VERSION;
-import static android.os.Build.VERSION_CODES.O;
 
 /**
  * This fragment shows the preferences for a header.
@@ -59,6 +58,12 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.context = activity;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
     }
 
     @Override
@@ -378,8 +383,12 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
 
     @Override
     public void onDisplayPreferenceDialog(Preference preference) {
+        final FragmentManager fragmentManager = getFragmentManager();
+        if (fragmentManager == null) {
+            return;
+        }
         // check if dialog is already showing
-        if (getFragmentManager().findFragmentByTag(DIALOG_FRAGMENT_TAG) != null) {
+        if (fragmentManager.findFragmentByTag(DIALOG_FRAGMENT_TAG) != null) {
             return;
         }
 
@@ -387,15 +396,15 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment impl
         if (preference instanceof NumberPickerPreference) {
             f = NumberPreferenceDialog.newInstance(preference.getKey());
             f.setTargetFragment(this, 0);
-            f.show(getFragmentManager(), DIALOG_FRAGMENT_TAG);
+            f.show(fragmentManager, DIALOG_FRAGMENT_TAG);
         } else if (preference instanceof RingtonePreference) {
             f = RingtonePreferenceDialog.newInstance(preference.getKey());
             f.setTargetFragment(this, 0);
-            f.show(getFragmentManager(), DIALOG_FRAGMENT_TAG);
+            f.show(fragmentManager, DIALOG_FRAGMENT_TAG);
         } else if (preference instanceof TimePreference) {
             f = TimePreferenceDialog.newInstance(preference.getKey());
             f.setTargetFragment(this, 0);
-            f.show(getFragmentManager(), DIALOG_FRAGMENT_TAG);
+            f.show(fragmentManager, DIALOG_FRAGMENT_TAG);
         } else {
             super.onDisplayPreferenceDialog(preference);
         }
