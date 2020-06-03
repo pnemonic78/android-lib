@@ -20,13 +20,16 @@ import org.junit.Test;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+import static android.text.format.DateUtils.DAY_IN_MILLIS;
 import static android.text.format.DateUtils.HOUR_IN_MILLIS;
 import static android.text.format.DateUtils.SECOND_IN_MILLIS;
 import static com.github.util.TimeUtils.isSameDay;
+import static com.github.util.TimeUtils.roundDown;
 import static com.github.util.TimeUtils.roundUp;
 import static java.lang.System.currentTimeMillis;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -87,10 +90,12 @@ public class TimeTests {
         long time;
         Calendar cal;
         final long now = currentTimeMillis();
+        TimeZone timeZone = TimeZone.getTimeZone("UTC");
+        assertNotNull(timeZone);
 
         time = now;
         cal = Calendar.getInstance();
-        cal.setTimeZone(TimeZone.getTimeZone("UTC"));
+        cal.setTimeZone(timeZone);
         cal.setTimeInMillis(now);
         assertTrue(isSameDay(cal, time));
 
@@ -116,6 +121,44 @@ public class TimeTests {
             time += HOUR_IN_MILLIS;
         }
         assertFalse(isSameDay(cal, time));
+
+        timeZone = TimeZone.getTimeZone("Asia/Jerusalem");
+        assertNotNull(timeZone);
+        long today = 1591116511014L;
+        cal = Calendar.getInstance(timeZone);
+        cal.setTimeInMillis(today);
+        assertEquals(2020, cal.get(Calendar.YEAR));
+        assertEquals(Calendar.JUNE, cal.get(Calendar.MONTH));
+        assertEquals(2, cal.get(Calendar.DAY_OF_MONTH));
+        assertEquals(19, cal.get(Calendar.HOUR_OF_DAY));
+        assertEquals(48, cal.get(Calendar.MINUTE));
+
+        long midnight1 = roundDown(today, DAY_IN_MILLIS);
+        assertEquals(1591056000000L, midnight1);
+        cal = Calendar.getInstance(timeZone);
+        cal.setTimeInMillis(midnight1);
+        assertEquals(2020, cal.get(Calendar.YEAR));
+        assertEquals(Calendar.JUNE, cal.get(Calendar.MONTH));
+        assertEquals(2, cal.get(Calendar.DAY_OF_MONTH));
+        assertEquals(3, cal.get(Calendar.HOUR_OF_DAY));
+        assertEquals(0, cal.get(Calendar.MINUTE));
+        assertEquals(0, cal.get(Calendar.SECOND));
+        assertEquals(0, cal.get(Calendar.MILLISECOND));
+
+        time = 1591047482685L;//solar midnight
+        cal = Calendar.getInstance(timeZone);
+        cal.setTimeInMillis(time);
+        assertEquals(2020, cal.get(Calendar.YEAR));
+        assertEquals(Calendar.JUNE, cal.get(Calendar.MONTH));
+        assertEquals(2, cal.get(Calendar.DAY_OF_MONTH));
+        assertEquals(0, cal.get(Calendar.HOUR_OF_DAY));
+        assertEquals(38, cal.get(Calendar.MINUTE));
+
+        int offset3 = (int) (3 * HOUR_IN_MILLIS);
+        assertEquals(10800000, offset3);
+        int offset = timeZone.getOffset(time);
+        assertEquals(offset3, offset);
+        assertTrue(isSameDay(today, time, offset));
     }
 
     @Test
