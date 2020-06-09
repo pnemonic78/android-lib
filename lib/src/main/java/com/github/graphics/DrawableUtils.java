@@ -38,15 +38,20 @@ public class DrawableUtils {
 
     /**
      * Get the dominant color of the wallpaper image.
+     * Requires {@link android.Manifest.permission#READ_EXTERNAL_STORAGE} permission since
+     * {@link android.os.Build.VERSION_CODES#M}.
      *
      * @param context the context.
-     * @return the color - {@code {@link android.graphics.Color#TRANSPARENT}} otherwise.
+     * @return the color - {@link android.graphics.Color#TRANSPARENT} otherwise.
      */
     public static int getWallpaperColor(Context context) {
         WallpaperManager wallpaperManager = WallpaperManager.getInstance(context);
         Drawable wallpaper = null;
         try {
             wallpaper = wallpaperManager.peekDrawable();
+            if (wallpaper == null) {
+                wallpaper = wallpaperManager.getDrawable();
+            }
         } catch (Throwable e) {
             // In case of a bad WallpaperService.
             e.printStackTrace();
