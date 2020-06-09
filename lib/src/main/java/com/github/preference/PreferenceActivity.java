@@ -27,8 +27,6 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceManager;
 
-import com.github.lib.R;
-
 /**
  * Application preferences that populate the settings.
  *
@@ -50,7 +48,6 @@ public class PreferenceActivity extends android.preference.PreferenceActivity im
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.Theme_Base_Settings);
         super.onCreate(savedInstanceState);
         PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
     }
