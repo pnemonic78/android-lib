@@ -85,7 +85,7 @@ public class TimeUtils {
     public static boolean isSameDay(Calendar expected, long actual) {
         final long expectedMillis = expected.getTimeInMillis();
         final int offset = expected.getTimeZone().getOffset(expectedMillis);
-        return isSameDay(expectedMillis, actual + offset);
+        return isSameDay(expectedMillis, actual, offset);
     }
 
     /**
@@ -96,8 +96,21 @@ public class TimeUtils {
      * @return {@code true} if the time occurs on the same day.
      */
     public static boolean isSameDay(long expected, long actual) {
+        return isSameDay(expected, actual, 0);
+    }
+
+    /**
+     * Is the time on the same day?
+     *
+     * @param expected       the time with the expected day to check against.
+     * @param actual         the actual time to check.
+     * @param timeZoneOffset the time zone offset.
+     * @return {@code true} if the time occurs on the same day.
+     */
+    public static boolean isSameDay(long expected, long actual, int timeZoneOffset) {
         final long midnight1 = roundDown(expected, DAY_IN_MILLIS);
         final long midnight2 = midnight1 + DAY_IN_MILLIS;
-        return (midnight1 <= actual) && (actual < midnight2);
+        final long actualWithOffset = actual + timeZoneOffset;
+        return (midnight1 <= actualWithOffset) && (actualWithOffset < midnight2);
     }
 }

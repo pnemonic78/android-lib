@@ -11,6 +11,6 @@
 
     <style name="Theme.Base.DayNight" parent="Theme.Base.Light" />
 
-    <style name="Theme.Base.Settings" parent="Theme.Base.DayNight" />
+    <style name="Theme.Base.Settings" parent="Theme.Base.Dark" />
 
 </resources>
