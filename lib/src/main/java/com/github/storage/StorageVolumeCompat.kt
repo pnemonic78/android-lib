@@ -10,7 +10,7 @@ import java.io.File
  * Information about a shared/external storage volume for a specific user.
  * @see `android.os.storage.StorageVolume`
  */
-class StorageVolumeCompat(
+class StorageVolumeCompat private constructor(
         val id: String,
         val directory: File,
         val description: String,
@@ -64,14 +64,14 @@ class StorageVolumeCompat(
         //TODO @TargetApi(Build.VERSION_CODES.R)
         @TargetApi(30)
         private fun toExternalVolume30(
-            context: Context,
-            storageVolume: android.os.storage.StorageVolume
+                context: Context,
+                storageVolume: android.os.storage.StorageVolume
         ): StorageVolumeCompat {
             val id = getString(storageVolume, "getId")!!
             //TODO val directory = storageVolume.directory
             val directory = getFile(storageVolume, "getDirectory")
             val description =
-                getString(storageVolume, "getDescription", Context::class.java, context) ?: ""
+                    getString(storageVolume, "getDescription", Context::class.java, context) ?: ""
             val isPrimary = storageVolume.isPrimary
             val isRemovable = storageVolume.isRemovable
             val isEmulated = storageVolume.isEmulated
@@ -80,16 +80,16 @@ class StorageVolumeCompat(
             val uuid = storageVolume.uuid
             val state = storageVolume.state
             return StorageVolumeCompat(
-                id,
-                directory,
-                description,
-                isPrimary,
-                isRemovable,
-                isEmulated,
-                allowMassStorage,
-                maxFileSize,
-                uuid,
-                state
+                    id,
+                    directory,
+                    description,
+                    isPrimary,
+                    isRemovable,
+                    isEmulated,
+                    allowMassStorage,
+                    maxFileSize,
+                    uuid,
+                    state
             )
         }
 
