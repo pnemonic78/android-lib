@@ -3,6 +3,7 @@ package com.github.storage
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
+import android.os.Environment
 import android.os.storage.StorageManager
 import android.os.storage.StorageVolume
 
@@ -24,20 +25,34 @@ class StorageManagerCompat {
             return emptyList()
         }
 
-        fun getExternalVolume(context: Context): StorageVolumeCompat? {
+        fun getExternalVolume(context: Context, isMounted: Boolean = true, isRemovable: Boolean = false): StorageVolumeCompat? {
             val volumes = getStorageVolumes(context)
             var v: StorageVolumeCompat? = null
 
             for (volume in volumes) {
-                if (volume.isRemovable) {
-                    if ((v == null) || v.isEmulated) {
-                        v = volume
-                    } else if (volume.isPrimary) {
-                        v = volume
+                if (isMounted && (volume.state != Environment.MEDIA_MOUNTED)) {
+                    continue
+                }
+                if (isRemovable && volume.isRemovable) {
+                    if (volume.isPrimary) {
+                        return volume
                     }
+                } else if (volume.isPrimary) {
+                    return volume
+                }
+                if ((v == null) || v.isEmulated) {
+                    v = volume
                 }
             }
             return v
+        }
+
+        /**
+         * Return the primary shared/external storage volume available to the current user. This volume is the same storage device returned by `Environment#getExternalStorageDirectory()` and `Context#getExternalFilesDir(String)`.
+         */
+        fun getPrimaryStorageVolume(context: Context): StorageVolumeCompat {
+            val volumes = getStorageVolumes(context)
+            return volumes.first { it.isPrimary }
         }
     }
 }
