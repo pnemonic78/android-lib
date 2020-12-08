@@ -36,15 +36,8 @@ public class PreferenceActivity extends android.preference.PreferenceActivity im
     SharedPreferences.OnSharedPreferenceChangeListener,
     PreferenceFragment.OnPreferenceStartFragmentCallback {
 
-    private final String packageName;
-    private boolean restartParentActivityForUi;
-
-    /**
-     * Constructs a new preferences.
-     */
-    public PreferenceActivity() {
-        packageName = getClass().getPackage().getName();
-    }
+    private final String packageName = getClass().getPackage().getName();
+    private boolean restartParentActivityForUi = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
