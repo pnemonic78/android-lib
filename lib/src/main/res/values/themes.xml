@@ -13,4 +13,6 @@
 
     <style name="Theme.Base.Settings" parent="Theme.Base.Dark" />
 
+    <style name="Theme.AppCompat.Settings" parent="Theme.AppCompat.DayNight" />
+
 </resources>

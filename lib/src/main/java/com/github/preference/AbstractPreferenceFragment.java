@@ -15,9 +15,6 @@
  */
 package com.github.preference;
 
-import android.app.Activity;
-import android.app.DialogFragment;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -28,9 +25,11 @@ import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreference;
@@ -48,28 +47,15 @@ import static android.content.pm.PackageManager.MATCH_DEFAULT_ONLY;
  *
  * @author Moshe Waisberg
  */
-public abstract class AbstractPreferenceFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
+public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
     private static final String DIALOG_FRAGMENT_TAG = "com.github.preference.DIALOG";
 
-    protected Context context;
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.context = activity;
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
-
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        final Context context = requireContext();
         int xmlId = getPreferencesXml();
-        PreferenceManager.setDefaultValues(getActivity(), xmlId, false);
+        PreferenceManager.setDefaultValues(context, xmlId, false);
         addPreferencesFromResource(xmlId);
         addChangeListeners(getPreferenceScreen());
     }

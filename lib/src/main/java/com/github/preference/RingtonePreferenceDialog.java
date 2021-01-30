@@ -15,10 +15,11 @@
  */
 package com.github.preference;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.github.lib.R;
 
