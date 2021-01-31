@@ -15,7 +15,6 @@
  */
 package com.github.preference;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -23,38 +22,42 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
+
+import com.github.lib.R;
 
 /**
  * Application preferences that populate the settings.
  *
  * @author Moshe Waisberg
  */
-public class PreferenceActivity extends android.preference.PreferenceActivity implements
+public abstract class PreferenceActivity extends AppCompatActivity implements
     SharedPreferences.OnSharedPreferenceChangeListener,
-    PreferenceFragment.OnPreferenceStartFragmentCallback {
+    PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
-    private final String packageName = getClass().getPackage().getName();
     private boolean restartParentActivityForUi = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O);
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
+        setContentView(R.layout.preference_activity);
+        getSupportFragmentManager()
+            .beginTransaction()
+            .replace(R.id.settings_container, createMainFragment())
+            .commit();
     }
+
+    protected abstract PreferenceFragmentCompat createMainFragment();
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
-    }
-
-    @Override
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    protected boolean isValidFragment(String fragmentName) {
-        return fragmentName.startsWith(packageName);
     }
 
     @Override
@@ -99,8 +102,9 @@ public class PreferenceActivity extends android.preference.PreferenceActivity im
     }
 
     @Override
-    public boolean onPreferenceStartFragment(PreferenceFragment caller, Preference pref) {
-        startPreferencePanel(pref.getFragment(), pref.getExtras(), 0, pref.getTitle(), caller, 0);
-        return true;
+    public boolean onPreferenceStartFragment(PreferenceFragmentCompat caller, Preference pref) {
+//        startPreferencePanel(pref.getFragment(), pref.getExtras(), 0, pref.getTitle(), caller, 0);
+//        return true;
+        return false;
     }
 }
