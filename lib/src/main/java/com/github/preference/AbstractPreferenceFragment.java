@@ -25,6 +25,7 @@ import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.XmlRes;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.preference.ListPreference;
@@ -60,6 +61,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
         addChangeListeners(getPreferenceScreen());
     }
 
+    @XmlRes
     protected abstract int getPreferencesXml();
 
     protected Preference initPreference(String key) {
