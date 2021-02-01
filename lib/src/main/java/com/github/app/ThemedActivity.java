@@ -18,6 +18,8 @@ package com.github.app;
 import android.app.Activity;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.github.preference.ThemePreferences;
 
 /**
@@ -26,7 +28,7 @@ import com.github.preference.ThemePreferences;
  * @author Moshe Waisberg
  */
 @Deprecated
-public abstract class ThemedActivity<P extends ThemePreferences> extends Activity implements ThemeCallbacks<P> {
+public abstract class ThemedActivity<P extends ThemePreferences> extends AppCompatActivity implements ThemeCallbacks<P> {
 
     protected final ThemeCallbacks<P> themeCallbacks = new SimpleThemeCallbacks<P>(this);
 
