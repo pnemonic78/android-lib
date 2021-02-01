@@ -62,24 +62,13 @@ public class SimpleThemePreferences extends SimplePreferences implements ThemePr
 
     @Override
     public int getTheme(String value) {
+        if (THEME_DARK.equals(value)) {
+            return R.style.Theme_AppCompat;
+        }
         if (THEME_LIGHT.equals(value)) {
-            return R.style.Theme_Base_Light;
+            return R.style.Theme_AppCompat_Light;
         }
-        if (THEME_DEFAULT.equals(value)) {
-            final int nightMode = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-            switch (nightMode) {
-                case Configuration.UI_MODE_NIGHT_NO:
-                    return R.style.Theme_Base_Light;
-                case Configuration.UI_MODE_NIGHT_YES:
-                    return R.style.Theme_Base;
-            }
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                // Material
-                return R.style.Theme_Base_Light;
-            }
-        }
-        return R.style.Theme_Base;
+        return R.style.Theme_AppCompat_DayNight;
     }
 
     @Override
