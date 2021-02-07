@@ -64,6 +64,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
     @XmlRes
     protected abstract int getPreferencesXml();
 
+    @Nullable
     protected Preference initPreference(String key) {
         Preference preference;
 
@@ -83,6 +84,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
         return null;
     }
 
+    @Nullable
     protected ListPreference initList(String key) {
         if (TextUtils.isEmpty(key)) {
             return null;
@@ -98,6 +100,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
         return null;
     }
 
+    @Nullable
     protected RingtonePreference initRingtone(String key) {
         if (TextUtils.isEmpty(key)) {
             return null;
@@ -113,6 +116,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
         return null;
     }
 
+    @Nullable
     protected TimePreference initTime(String key) {
         if (TextUtils.isEmpty(key)) {
             return null;
