@@ -50,7 +50,7 @@ import static android.content.pm.PackageManager.MATCH_DEFAULT_ONLY;
  */
 public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
-    private static final String DIALOG_FRAGMENT_TAG = "com.github.preference.DIALOG";
+    protected static final String DIALOG_FRAGMENT_TAG = "com.github.preference.DIALOG";
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
