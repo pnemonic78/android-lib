@@ -1,26 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="off">Вимкнено</string>
+    <string name="switch_on_text" msgid="5664542327776075105">"Увімкнено"</string>
+    <string name="switch_off_text" msgid="1315547447393646667">"Вимкнено"</string>
     <string name="add">Додати</string>
 
     <!-- Date -->
-    <string name="today">Сьогодні</string>
+    <string name="today" msgid="8577375020252453006">"Сьогодні"</string>
     <string name="twelve_hour_time_format">h:mm:ss a</string>
     <string name="twenty_four_hour_time_format">H:mm:ss</string>
     <string name="month_day_year" formatted="false">%-e %B %Y р.</string>
 
     <!-- Ringtone -->
+    <string name="preferences_alerts_ringtone_title" msgid="1849706055052358346">"Звук"</string>
     <string name="ringtone_default" msgid="3332469542084549546">"Сигнал дзвінка за умовчанням"</string>
     <string name="notification_sound_default" msgid="5309766396223094324">"Звук сповіщення за умовчанням"</string>
     <string name="alarm_sound_default" msgid="6854264112790616066">"Звук сигналу за умовчанням"</string>
     <string name="ringtone_silent" msgid="7937634392408977062">Немає</string>
+    <string name="alarm_volume_title" msgid="2285597478377758706">"Сповіщ."</string>
+    <string name="notification_volume_title" msgid="2012640760341080408">"Сповіщення"</string>
+
+    <!-- Vibration -->
+    <string name="keywords_vibrate_for_calls" msgid="1019870409730074899">"Вібрація"</string>
 
     <!-- Preferences -->
     <string name="settings_label" msgid="1626402585530130914">Налаштування</string>
     <string name="tts_general_section_title" msgid="4402572014604490502">Загальні</string>
     <string name="pref_appearance_title">Вигляд</string>
-    <string name="pref_about_title">Про</string>
+    <string name="preferences_about_title" msgid="2810624892412097879">"Про"</string>
+    <string name="preferences_build_version" msgid="8242471883413502068">"Версія складання"</string>
 
     <!-- Theme. -->
     <string name="night_mode_title">Тема</string>

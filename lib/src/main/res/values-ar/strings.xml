@@ -1,26 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="off">إيقاف</string>
+    <string name="switch_on_text" msgid="5664542327776075105">"مفعّل"</string>
+    <string name="switch_off_text" msgid="1315547447393646667">"غير مفعّل"</string>
     <string name="add">إضافة</string>
 
     <!-- Date -->
-    <string name="today">اليوم</string>
+    <string name="today" msgid="8577375020252453006">"اليوم"</string>
     <string name="twelve_hour_time_format">h:mm a</string>
     <string name="twenty_four_hour_time_format">H:mm</string>
     <string name="month_day_year" formatted="false">%-e %B، %Y</string>
 
     <!-- Ringtone -->
+    <string name="preferences_alerts_ringtone_title" msgid="1849706055052358346">"الصوت"</string>
     <string name="ringtone_default" msgid="3332469542084549546">"نغمة الرنين الافتراضية"</string>
     <string name="notification_sound_default" msgid="5309766396223094324">"صوت الإشعار الافتراضي"</string>
     <string name="alarm_sound_default" msgid="6854264112790616066">"صوت التنبيه الافتراضي"</string>
     <string name="ringtone_silent" msgid="7937634392408977062">"لا شيء"</string>
+    <string name="alarm_volume_title" msgid="706302621191735343">"المنبّه"</string>
+    <string name="notification_volume_title" msgid="328053763590888609">"التنبيه"</string>
+
+    <!-- Vibration -->
+    <string name="keywords_vibrate_for_calls" msgid="1019870409730074899">"الاهتزاز"</string>
 
     <!-- Preferences -->
     <string name="settings_label" msgid="1626402585530130914">"الإعدادات"</string>
     <string name="tts_general_section_title" msgid="4402572014604490502">"عامة"</string>
     <string name="pref_appearance_title">مظهر</string>
-    <string name="pref_about_title">حول</string>
+    <string name="preferences_about_title" msgid="2810624892412097879">"حول"</string>
+    <string name="preferences_build_version" msgid="8242471883413502068">"نسخة الإصدار"</string>
 
     <!-- Theme. -->
     <string name="night_mode_title" msgid="6928425617491943384">"المظهر"</string>
