@@ -26,7 +26,7 @@
     <!-- Preferences -->
     <string name="settings_label" msgid="943294133671632976">"Instellings"</string>
     <string name="tts_general_section_title" msgid="4402572014604490502">"Algemeen"</string>
-    <!--TODO string name="pref_appearance_title">появяване</string-->
+    <string name="pref_appearance_title">"Voorkoms"</string>
     <string name="preferences_about_title" msgid="2810624892412097879">"Meer oor"</string>
     <string name="preferences_build_version" msgid="8242471883413502068">"Bouweergawe"</string>
 

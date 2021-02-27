@@ -3,12 +3,12 @@
 
     <string name="switch_on_text">"アクティブ"</string>
     <string name="switch_off_text">"非活性"</string>
-    <!--string name="add">Добавяне</string-->
+    <!--TODO string name="add">Добавяне</string-->
 
     <!-- Date -->
     <string name="today" msgid="8577375020252453006">"今日"</string>
-    <!--string name="twelve_hour_time_format">h:mm:ss a</string-->
-    <!--string name="twenty_four_hour_time_format">H:mm:ss</string-->
+    <!--TODO string name="twelve_hour_time_format">h:mm:ss a</string-->
+    <!--TODO string name="twenty_four_hour_time_format">H:mm:ss</string-->
     <string name= "month_day_year" formatted="false">%Y年%-m月%-e日</string>
 
     <!-- Ringtone -->
@@ -26,18 +26,18 @@
     <!-- Preferences -->
     <string name="settings_label" msgid="943294133671632976">"設定"</string>
     <string name="tts_general_section_title" msgid="4402572014604490502">"全般"</string>
-    <!--string name="pref_appearance_title">появяване</string-->
+    <!--TODO string name="pref_appearance_title">появяване</string-->
     <string name="preferences_about_title" msgid="2810624892412097879">"概要"</string>
     <string name="preferences_build_version" msgid="8242471883413502068">"ビルドバージョン"</string>
 
     <!-- Theme. -->
-    <!--string name="night_mode_title">Тема</string-->
-    <!--string name="night_mode_no">Светло</string-->
-    <!--string name="night_mode_yes">Тъмно</string-->
-    <!--string name="theme_default">Стандартна тема</string-->
+    <!--TODO string name="night_mode_title">Тема</string-->
+    <!--TODO string name="night_mode_no">Светло</string-->
+    <!--TODO string name="night_mode_yes">Тъмно</string-->
+    <!--TODO string name="theme_default">Стандартна тема</string-->
 
     <!-- Locale (language) -->
-    <!--string name="locale_title">Език</string-->
-    <!--string name="locale_default">Стандартен език</string-->
+    <!--TODO string name="locale_title">Език</string-->
+    <!--TODO string name="locale_default">Стандартен език</string-->
 
 </resources>
