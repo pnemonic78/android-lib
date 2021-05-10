@@ -65,26 +65,6 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
     protected abstract int getPreferencesXml();
 
     @Nullable
-    protected Preference initPreference(String key) {
-        Preference preference;
-
-        preference = initList(key);
-        if (preference != null) {
-            return preference;
-        }
-        preference = initRingtone(key);
-        if (preference != null) {
-            return preference;
-        }
-        preference = initTime(key);
-        if (preference != null) {
-            return preference;
-        }
-
-        return null;
-    }
-
-    @Nullable
     protected ListPreference initList(String key) {
         if (TextUtils.isEmpty(key)) {
             return null;
@@ -92,10 +72,8 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
 
         Preference preference = findPreference(key);
         if (preference instanceof ListPreference) {
-            ListPreference list = (ListPreference) preference;
-            list.setOnPreferenceChangeListener(this);
-            onListPreferenceChange(list, list.getValue());
-            return list;
+            preference.setSummaryProvider(new ListPreferenceSummaryProvider());
+            return (ListPreference) preference;
         }
         return null;
     }
@@ -140,10 +118,6 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
             SwitchPreference checkBox = (SwitchPreference) preference;
             return onCheckBoxPreferenceChange(checkBox, newValue);
         }
-        if (preference instanceof ListPreference) {
-            ListPreference list = (ListPreference) preference;
-            return onListPreferenceChange(list, newValue);
-        }
         if (preference instanceof RingtonePreference) {
             RingtonePreference ring = (RingtonePreference) preference;
             return onRingtonePreferenceChange(ring, newValue);
@@ -153,22 +127,6 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
             return onTimePreferenceChange(time, newValue);
         }
         return true;
-    }
-
-    /**
-     * Called when a list preference has probably changed its value.
-     * <br>Updates the summary to the new value.
-     *
-     * @param preference the  preference.
-     * @param newValue   the possibly new value.
-     * @return {@code true} if the user value should be set as the preference value (and persisted).
-     */
-    protected boolean onListPreferenceChange(ListPreference preference, Object newValue) {
-        String value = (newValue == null) ? null : newValue.toString();
-        //Set the value for the summary.
-        preference.setValue(value);
-        updateSummary(preference, value);
-        return false;
     }
 
     /**
@@ -215,28 +173,6 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
         }
         updateSummary(preference, preference.formatTime());
         return true;
-    }
-
-    /**
-     * Update the summary that was selected from the list.
-     *
-     * @param preference the preference.
-     * @param newValue   the new value.
-     */
-    private void updateSummary(ListPreference preference, @Nullable String newValue) {
-        if (newValue != null) {
-            CharSequence[] values = preference.getEntryValues();
-            CharSequence[] entries = preference.getEntries();
-            int length = values.length;
-
-            for (int i = 0; i < length; i++) {
-                if (newValue.contentEquals(values[i])) {
-                    preference.setSummary(entries[i]);
-                    return;
-                }
-            }
-        }
-        preference.setSummary(null);
     }
 
     /**
