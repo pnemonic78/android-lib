@@ -18,7 +18,6 @@ package com.github.preference;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
-import android.text.format.DateFormat;
 import android.util.AttributeSet;
 
 import androidx.annotation.Nullable;
@@ -55,12 +54,9 @@ public class TimePreference extends DialogPreference {
     private String value;
     private Calendar time;
     private static final java.text.DateFormat formatIso = new SimpleDateFormat(PATTERN, Locale.US);
-    private java.text.DateFormat formatPretty;
 
     public TimePreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-
-        formatPretty = DateFormat.getTimeFormat(context);
 
         if (getDialogLayoutResource() == 0) {
             setDialogLayoutResource(R.layout.preference_dialog_timepicker);
@@ -109,6 +105,7 @@ public class TimePreference extends DialogPreference {
             Timber.e("invalid time [%s] for preference [%s]", timeString, getKey());
         } else {
             persistString(timeString);
+            notifyChanged();
         }
 
         final boolean isBlocking = shouldDisableDependents();
@@ -130,6 +127,7 @@ public class TimePreference extends DialogPreference {
         this.time = time;
 
         persistString(timeString);
+        notifyChanged();
 
         final boolean isBlocking = shouldDisableDependents();
         if (isBlocking != wasBlocking) {
@@ -153,15 +151,6 @@ public class TimePreference extends DialogPreference {
      */
     public Calendar getTime() {
         return time;
-    }
-
-    /**
-     * Format the time as per user's locale.
-     *
-     * @return the formatted time.
-     */
-    public String formatTime() {
-        return (time != null) ? formatPretty.format(time.getTime()) : null;
     }
 
     /**

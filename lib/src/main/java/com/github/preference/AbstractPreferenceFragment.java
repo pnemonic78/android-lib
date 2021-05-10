@@ -103,7 +103,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
         if (preference instanceof TimePreference) {
             TimePreference time = (TimePreference) preference;
             time.setNeutralButtonText(R.string.off);
-            time.setOnPreferenceChangeListener(this);
+            time.setSummaryProvider(new TimePreferenceSummaryProvider(preference.getContext()));
             onTimePreferenceChange(time, time.getValue());
             return time;
         }
@@ -152,23 +152,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
             //Set the value for the summary.
             preference.setTime(value);
         }
-        updateSummary(preference, preference.formatTime());
         return true;
-    }
-
-    /**
-     * Update the summary that was selected from the time picker.
-     *
-     * @param preference the preference.
-     * @param newValue   the new value.
-     */
-    private void updateSummary(TimePreference preference, String newValue) {
-        String summary = preference.formatTime();
-        if (summary != null) {
-            preference.setSummary(summary);
-        } else {
-            preference.setSummary(R.string.off);
-        }
     }
 
     @Override
