@@ -72,7 +72,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
 
         Preference preference = findPreference(key);
         if (preference instanceof ListPreference) {
-            preference.setSummaryProvider(new ListPreferenceSummaryProvider());
+            preference.setSummaryProvider(ListPreference.SimpleSummaryProvider.getInstance());
             return (ListPreference) preference;
         }
         return null;
@@ -87,8 +87,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
         Preference preference = findPreference(key);
         if (preference instanceof RingtonePreference) {
             RingtonePreference ring = (RingtonePreference) preference;
-            ring.setOnPreferenceChangeListener(this);
-            onRingtonePreferenceChange(ring, ring.getValue());
+            ring.setSummaryProvider(RingtonePreferenceSummaryProvider.Companion.getInstance());
             return ring;
         }
         return null;
@@ -118,28 +117,10 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
             SwitchPreference checkBox = (SwitchPreference) preference;
             return onCheckBoxPreferenceChange(checkBox, newValue);
         }
-        if (preference instanceof RingtonePreference) {
-            RingtonePreference ring = (RingtonePreference) preference;
-            return onRingtonePreferenceChange(ring, newValue);
-        }
         if (preference instanceof TimePreference) {
             TimePreference time = (TimePreference) preference;
             return onTimePreferenceChange(time, newValue);
         }
-        return true;
-    }
-
-    /**
-     * Called when a ringtone preference has changed its value.
-     * <br>Updates the summary to the new ringtone title.
-     *
-     * @param preference the preference.
-     * @param newValue   the new value.
-     * @return {@code true} if the user value should be set as the preference value (and persisted).
-     */
-    protected boolean onRingtonePreferenceChange(RingtonePreference preference, Object newValue) {
-        String value = (newValue == null) ? null : newValue.toString();
-        updateSummary(preference, value);
         return true;
     }
 
@@ -173,16 +154,6 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
         }
         updateSummary(preference, preference.formatTime());
         return true;
-    }
-
-    /**
-     * Update the summary that was selected from the list.
-     *
-     * @param preference the preference.
-     * @param newValue   the new value.
-     */
-    private void updateSummary(RingtonePreference preference, String newValue) {
-        preference.setSummary(preference.getRingtoneTitle(newValue));
     }
 
     /**

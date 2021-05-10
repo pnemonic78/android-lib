@@ -22,6 +22,7 @@ import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.media.Ringtone;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 
 import androidx.annotation.Nullable;
@@ -381,6 +382,30 @@ public class RingtonePreference extends DialogPreference {
 
     Uri getRingtoneUri(int position) {
         return entryValues.get(position);
+    }
+
+    /**
+     * Sets the value of the key. This should be one of the entries.
+     *
+     * @param value The value to set for the key
+     */
+    public void setValue(String value) {
+        // Always persist/notify the first time.
+        final String oldValue = getPersistedString(defaultValue);
+        final boolean changed = !TextUtils.equals(oldValue, value);
+        if (changed) {
+            persistString(value);
+            notifyChanged();
+        }
+    }
+
+    /**
+     * Sets the value of the key. This should be one of the entries.
+     *
+     * @param value The value to set for the key
+     */
+    public void setValue(Uri value) {
+        setValue(value != null ? value.toString() : null);
     }
 
     /**

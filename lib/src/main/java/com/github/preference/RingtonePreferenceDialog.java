@@ -85,7 +85,7 @@ public class RingtonePreferenceDialog extends PreferenceDialog {
         if (positiveResult && (selectedIndex >= 0)) {
             Uri uri = preference.getRingtoneUri(selectedIndex);
             if (preference.callChangeListener(uri != null ? uri.toString() : RingtonePreference.SILENT_PATH)) {
-                preference.onSaveRingtone(uri);
+                preference.setValue(uri);
             }
         }
     }
