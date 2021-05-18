@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Android_Library.iml" filepath="$PROJECT_DIR$/.idea/modules/Android_Library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Android_Library.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/Android_Library.buildSrc.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/Android_Library.lib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/Android_Library.lib.iml" />
     </modules>
   </component>
