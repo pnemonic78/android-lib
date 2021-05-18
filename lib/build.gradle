@@ -33,7 +33,8 @@ android {
 
 dependencies {
     // Kotlin
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    api("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
+    api("org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version")
 
     // Support
     api 'androidx.annotation:annotation:1.2.0'
@@ -54,9 +55,9 @@ dependencies {
     api "com.jakewharton.timber:timber:4.7.1"
 
     // Testing
-    testImplementation "junit:junit:4.13.2"
-    androidTestImplementation "androidx.test:core:$androidTestVersion"
-    androidTestImplementation "androidx.test:rules:$androidTestVersion"
-    androidTestImplementation "androidx.test:runner:$androidTestVersion"
-    androidTestImplementation "androidx.test.ext:junit:1.1.2"
+    testApi "junit:junit:4.13.2"
+    androidTestApi "androidx.test:core:$androidTestVersion"
+    androidTestApi "androidx.test:rules:$androidTestVersion"
+    androidTestApi "androidx.test:runner:$androidTestVersion"
+    androidTestApi "androidx.test.ext:junit:1.1.2"
 }
