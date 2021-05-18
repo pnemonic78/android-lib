@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android-lib.iml" filepath="$PROJECT_DIR$/.idea/modules/android-lib.iml" group="android-lib" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/lib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/lib.iml" group="android-lib/lib" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android-lib.iml" filepath="$PROJECT_DIR$/.idea/modules/android-lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/android-lib.lib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/android-lib.lib.iml" />
     </modules>
   </component>
 </project>
