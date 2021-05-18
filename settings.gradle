@@ -1,1 +1,2 @@
-include ':lib'
+rootProject.name = "Android Library"
+include(":lib")
