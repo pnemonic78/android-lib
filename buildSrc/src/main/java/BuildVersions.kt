@@ -2,7 +2,7 @@ object BuildVersions {
     const val kotlin_version = "1.4.32"
 
     const val minSdkVersion = 16
-    const val compileSdkVersion = 29
+    const val compileSdkVersion = 30
     const val targetSdkVersion = 29
 
     // App dependencies
