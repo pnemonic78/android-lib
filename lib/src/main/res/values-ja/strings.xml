@@ -4,6 +4,7 @@
     <string name="switch_on_text">"アクティブ"</string>
     <string name="switch_off_text">"非活性"</string>
     <!--TODO string name="add">Добавяне</string-->
+    <string name="filter" msgid="2018011724373033887">フィルタ</string>
 
     <!-- Date -->
     <string name="today" msgid="8577375020252453006">"今日"</string>

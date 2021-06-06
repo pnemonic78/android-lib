@@ -3,7 +3,8 @@
 
     <string name="switch_on_text" msgid="5664542327776075105">"Aan"</string>
     <string name="switch_off_text" msgid="1315547447393646667">"Af"</string>
-    <!--TODO string name="add">Добавяне</string-->
+    <string name="add">Add</string>
+    <string name="filter" msgid="2018011724373033887">"Filter"</string>
 
     <!-- Date -->
     <string name="today" msgid="8577375020252453006">"Vandag"</string>

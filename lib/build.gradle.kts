@@ -40,6 +40,12 @@ android {
         disable("RtlHardcoded")
         disable("UnusedResources")
     }
+
+    sourceSets {
+        getByName("main") {
+            res { srcDir(file("../platform/packages/apps/Gallery2/res")) }
+        }
+    }
 }
 
 dependencies {

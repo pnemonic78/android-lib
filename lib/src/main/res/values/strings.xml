@@ -8,6 +8,7 @@
     <string name="off" translatable="false">@string/switch_off_text</string>
     <string name="on" translatable="false">@string/switch_on_text</string>
     <string name="add">Add</string>
+    <string name="filter" msgid="2018011724373033887">"Filter"</string>
 
     <!-- Date -->
     <string name="today">Today</string>

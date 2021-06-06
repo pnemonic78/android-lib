@@ -4,6 +4,7 @@
     <string name="switch_on_text" msgid="5664542327776075105">"مفعّل"</string>
     <string name="switch_off_text" msgid="1315547447393646667">"غير مفعّل"</string>
     <string name="add">إضافة</string>
+    <string name="filter" msgid="2018011724373033887">تصفية</string>
 
     <!-- Date -->
     <string name="today" msgid="8577375020252453006">"اليوم"</string>

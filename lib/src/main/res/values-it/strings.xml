@@ -4,6 +4,7 @@
     <string name="switch_on_text" >"Attivo"</string>
     <string name="switch_off_text">"Non attivo"</string>
     <string name="add">Aggiungere</string>
+    <string name="filter" msgid="2018011724373033887">Filtra</string>
 
     <!-- Date -->
     <string name="today" msgid="8577375020252453006">"Oggi"</string>
