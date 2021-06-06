@@ -33,7 +33,6 @@
     <string name="no_thumbnail" msgid="284723185546429750">"គ្មាន​រូបភាព​តូច"</string>
     <string name="resume_playing_restart" msgid="5471008499835769292">"ចាប់ផ្ដើម"</string>
     <string name="crop_save_text" msgid="152200178986698300">"យល់​ព្រម"</string>
-    <string name="ok" msgid="5296833083983263293">"យល់​ព្រម"</string>
     <string name="multiface_crop_help" msgid="2554690102655855657">"ប៉ះ​មុខ​ ដើម្បី​ចាប់ផ្ដើម​​។"</string>
     <string name="saving_image" msgid="7270334453636349407">"កំពុង​រក្សាទុក​រូបភាព…"</string>
     <string name="filtershow_saving_image" msgid="6659463980581993016">"កំពុង​រក្សាទុក​រូបភាព​ក្នុង <xliff:g id="ALBUM_NAME">%1$s</xliff:g> …"</string>
@@ -55,7 +54,6 @@
     <item quantity="other" msgid="5874316486520635333">"លុប​ធាតុ​ដែល​បាន​ជ្រើស​​​?"</item>
   </plurals>
     <string name="confirm" msgid="8646870096527848520">"បញ្ជាក់"</string>
-    <string name="cancel" msgid="3637516880917356226">"បោះ​បង់"</string>
     <string name="share" msgid="3619042788254195341">"ចែក​រំលែក"</string>
     <string name="share_panorama" msgid="2569029972820978718">"​ចែករំលែក​ទេសភាព"</string>
     <string name="share_as_photo" msgid="8959225188897026149">"ចែករំលែក​ជា​រូបថត"</string>
@@ -221,11 +219,8 @@
     <string name="camera_disabled" msgid="8923911090533439312">"បាន​បិទ​ម៉ាស៊ីន​ថត ដោយ​សារ​តែ​គោលនយោបាយ​សុវត្ថិភាព។"</string>
     <string name="camera_label" msgid="6346560772074764302">"ម៉ាស៊ីន​ថត"</string>
     <string name="wait" msgid="8600187532323801552">"សូម​រង់ចាំ…"</string>
-    <string name="no_storage" product="nosdcard" msgid="7335975356349008814">"ភ្ជាប់​ឧបករណ៍​ផ្ទុក​យូអេសប៊ី​មុន​ពេល​ប្រើ​ម៉ាស៊ីន​ថត។"</string>
     <string name="no_storage" product="default" msgid="5137703033746873624">"បញ្ចូល​កាត​អេសឌី​មុន​នឹង​ប្រើ​ម៉ាស៊ីន​ថត។"</string>
-    <string name="preparing_sd" product="nosdcard" msgid="6104019983528341353">"កំពុង​រៀបចំ​ឧបករណ៍​ផ្ទុក​យូអេសប៊ី…"</string>
     <string name="preparing_sd" product="default" msgid="2914969119574812666">"កំពុង​រៀបចំ​កាត​អេសឌី…"</string>
-    <string name="access_sd_fail" product="nosdcard" msgid="8147993984037859354">"មិន​អាច​ចូល​ដំណើរការ​ឧបករណ៍​ផ្ទុក​យូអេសប៊ី។"</string>
     <string name="access_sd_fail" product="default" msgid="1584968646870054352">"មិន​អាច​ចូល​ដំណើរការ​កាត​អេសឌី។"</string>
     <string name="review_cancel" msgid="8188009385853399254">"បោះ​បង់"</string>
     <string name="review_ok" msgid="1156261588693116433">"រួចរាល់"</string>
@@ -317,7 +312,6 @@
     <string name="pref_camera_id_label_back" msgid="8745553500400332333">"ម៉ាស៊ីន​ថត​មុខ"</string>
     <string name="pref_camera_id_label_front" msgid="8699439330056996709">"ម៉ាស៊ីន​ថត​ខាង​ក្រោយ"</string>
     <string name="dialog_ok" msgid="6263301364153382152">"យល់​ព្រម"</string>
-    <string name="spaceIsLow_content" product="nosdcard" msgid="4401325203349203177">"ឧបករណ៍​ផ្ទុក​យូអេសប៊ី​របស់​អ្នក​ពេញ​ហើយ។ ប្ដូរ​ការ​កំណត់​គុណភាព ឬ​លុប​​រូបភាព ឬ​ឯកសារ​មួយ​ចំនួន​ចេញ។"</string>
     <string name="spaceIsLow_content" product="default" msgid="1732882643101247179">"កាត​អេសឌី​របស់​អ្នក​ពេញ​ហើយ។ ប្ដូរ​ការ​កំណត់​គុណភាព ឬ​លុប​រូបភាព​ ឬ​ឯកសារ​​មួយ​ចំនួន​ចេញ។"</string>
     <string name="video_reach_size_limit" msgid="6179877322015552390">"បាន​ដល់​​ដែន​កំណត់​ទំហំ។"</string>
     <string name="pano_too_fast_prompt" msgid="2823839093291374709">"លឿន​ពេក"</string>

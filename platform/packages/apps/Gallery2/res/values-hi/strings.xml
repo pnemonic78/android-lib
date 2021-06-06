@@ -33,7 +33,6 @@
     <string name="no_thumbnail" msgid="284723185546429750">"कोई थंबनेल नहीं"</string>
     <string name="resume_playing_restart" msgid="5471008499835769292">"पुन: प्रारंभ करें"</string>
     <string name="crop_save_text" msgid="152200178986698300">"ठीक है"</string>
-    <string name="ok" msgid="5296833083983263293">"ठीक है"</string>
     <string name="multiface_crop_help" msgid="2554690102655855657">"शुरू करने के लिए कोई चेहरा स्‍पर्श करें."</string>
     <string name="saving_image" msgid="7270334453636349407">"चित्र सहेज रहा है…"</string>
     <string name="filtershow_saving_image" msgid="6659463980581993016">"चित्र <xliff:g id="ALBUM_NAME">%1$s</xliff:g> में सहेजा जा रहा है …"</string>
@@ -55,7 +54,6 @@
     <item quantity="other" msgid="5874316486520635333">"चयनित आइटम हटाएं?"</item>
   </plurals>
     <string name="confirm" msgid="8646870096527848520">"पुष्टि करें"</string>
-    <string name="cancel" msgid="3637516880917356226">"रद्द करें"</string>
     <string name="share" msgid="3619042788254195341">"साझा करें"</string>
     <string name="share_panorama" msgid="2569029972820978718">"पैनोरामा को साझा करें"</string>
     <string name="share_as_photo" msgid="8959225188897026149">"फ़ोटो के रूप में साझा करें"</string>
@@ -221,11 +219,8 @@
     <string name="camera_disabled" msgid="8923911090533439312">"सुरक्षा नीतियों के कारण कैमरा अक्षम कर दिया गया है."</string>
     <string name="camera_label" msgid="6346560772074764302">"कैमरा"</string>
     <string name="wait" msgid="8600187532323801552">"कृपया प्रतीक्षा करें…"</string>
-    <string name="no_storage" product="nosdcard" msgid="7335975356349008814">"कैमरे का उपयोग करने से पहले USB संग्रहण माउंट करें."</string>
     <string name="no_storage" product="default" msgid="5137703033746873624">"कैमरे का उपयोग करने से पहले SD कार्ड डालें."</string>
-    <string name="preparing_sd" product="nosdcard" msgid="6104019983528341353">"USB संग्रहण तैयार कर रहा है…"</string>
     <string name="preparing_sd" product="default" msgid="2914969119574812666">"SD कार्ड तैयार कर रहा है…"</string>
-    <string name="access_sd_fail" product="nosdcard" msgid="8147993984037859354">"USB संग्रहण में नहीं पहुंच सका."</string>
     <string name="access_sd_fail" product="default" msgid="1584968646870054352">"SD कार्ड में नहीं पहुंच सका."</string>
     <string name="review_cancel" msgid="8188009385853399254">"रद्द करें"</string>
     <string name="review_ok" msgid="1156261588693116433">"पूर्ण"</string>
@@ -317,7 +312,6 @@
     <string name="pref_camera_id_label_back" msgid="8745553500400332333">"सामने का कैमरा"</string>
     <string name="pref_camera_id_label_front" msgid="8699439330056996709">"पीछे का कैमरा"</string>
     <string name="dialog_ok" msgid="6263301364153382152">"ठीक है"</string>
-    <string name="spaceIsLow_content" product="nosdcard" msgid="4401325203349203177">"आपके USB संग्रहण में स्थान कम है. गुणवत्ता सेटिंग बदलें या कुछ चित्र या अन्य फ़ाइलें हटाएं."</string>
     <string name="spaceIsLow_content" product="default" msgid="1732882643101247179">"आपके SD कार्ड में स्थान कम है. गुणवत्ता सेटिंग बदलें या कुछ चित्र या अन्य फ़ाइलें हटाएं."</string>
     <string name="video_reach_size_limit" msgid="6179877322015552390">"आकार सीमा पहुंची."</string>
     <string name="pano_too_fast_prompt" msgid="2823839093291374709">"बहुत तेज़"</string>
