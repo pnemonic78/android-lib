@@ -6,8 +6,6 @@
 
     <!-- Preferences -->
     <string name="settings_label" msgid="1626402585530130914">Configuración</string>
-    <string name="preferences_about_title" msgid="2810624892412097879">"Acerca de"</string>
-    <string name="preferences_build_version" msgid="8242471883413502068">"Versión de compilación"</string>
     <string name="filter">Filtro</string>
 
 </resources>

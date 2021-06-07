@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="5452708708398908131">"Жылнаама"</string>
+    <!--string name="app_label" msgid="5452708708398908131">"Жылнаама"</string-->
     <!-- no translation found for what_label (1933578391985810049) -->
     <skip />
     <!-- no translation found for where_label (3472482206065595118) -->
@@ -291,7 +291,7 @@
     <skip />
     <!-- no translation found for preferences_build_version (8242471883413502068) -->
     <skip />
-    <string name="gadget_title" msgid="939918875331310945">"Жылнаама"</string>
+    <!--string name="gadget_title" msgid="939918875331310945">"Жылнаама"</string-->
     <plurals name="month_more_events" formatted="false" msgid="6064683102623394875">
       <item quantity="other">+<xliff:g id="NUMBER">%d</xliff:g></item>
       <item quantity="one">+1</item>

@@ -200,7 +200,7 @@
     <string name="contact_editor_pick_linked_contact_dialog_title" msgid="3332134735168016293">"Обједињени контакти"</string>
     <string name="contact_editor_add_linked_contact" msgid="2895453741206196138">"Додај"</string>
     <string name="contact_editor_unlink_contacts" msgid="8399419729744305687">"Раздвој"</string>
-    <string name="add_account" msgid="3071396624500839020">"Додај налог"</string>
+    <!--string name="add_account" msgid="3071396624500839020">"Додај налог"</string-->
     <string name="add_new_account" msgid="573368229646104110">"Додај нови налог"</string>
     <string name="menu_export_database" msgid="1658249125751926885">"Извези датотеке базе података"</string>
     <string name="action_menu_add_new_contact_button" msgid="1201339383074001291">"Направи нови контакт"</string>

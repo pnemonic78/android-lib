@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="5452708708398908131">"Kalendarz"</string>
+    <!--string name="app_label" msgid="5452708708398908131">"Kalendarz"</string-->
     <string name="what_label" msgid="1933578391985810049">"Co"</string>
     <string name="where_label" msgid="3472482206065595118">"Gdzie"</string>
     <string name="when_label" msgid="894636567327261599">"Kiedy"</string>
@@ -158,7 +158,6 @@
     <string name="yearly_plain" msgid="3652692085322162449">"Co rok"</string>
     <string name="monthly_on_day" msgid="5370155265278821156">"Co miesiąc (<xliff:g id="DAY_OF_MONTH">%s</xliff:g>. każdego miesiąca)"</string>
     <string name="yearly" msgid="8576208380302949002">"Co rok (<xliff:g id="DATES">%s</xliff:g>)"</string>
-    <string name="custom" product="tablet" msgid="3806817351377723249">"Niestandardowo (nie można dostosować na tablecie)"</string>
     <string name="custom" product="default" msgid="4137468716966004993">"Niestandardowo (nie można dostosować na telefonie)"</string>
     <string name="modify_event" msgid="5982876409997142690">"Zmień tylko to wydarzenie"</string>
     <string name="modify_all" msgid="4421657265864209041">"Zmień wszystkie wydarzenia w serii"</string>
@@ -192,7 +191,7 @@
     <string name="preferences_show_week_num_title" msgid="5280734329664503461">"Pokaż numer tygodnia"</string>
     <string name="preferences_about_title" msgid="2810624892412097879">"Informacje"</string>
     <string name="preferences_build_version" msgid="8242471883413502068">"Wersja kompilacji"</string>
-    <string name="gadget_title" msgid="939918875331310945">"Kalendarz"</string>
+    <!--string name="gadget_title" msgid="939918875331310945">"Kalendarz"</string-->
     <plurals name="month_more_events" formatted="false" msgid="6064683102623394875">
       <item quantity="few">+<xliff:g id="NUMBER">%d</xliff:g></item>
       <item quantity="many">+<xliff:g id="NUMBER">%d</xliff:g></item>

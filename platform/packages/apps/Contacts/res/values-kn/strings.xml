@@ -196,7 +196,7 @@
     <string name="contact_editor_pick_linked_contact_dialog_title" msgid="3332134735168016293">"ಲಿಂಕ್ ಮಾಡಲಾದ ಸಂಪರ್ಕಗಳು"</string>
     <string name="contact_editor_add_linked_contact" msgid="2895453741206196138">"ಸೇರಿಸಿ"</string>
     <string name="contact_editor_unlink_contacts" msgid="8399419729744305687">"ಅನ್‌ಲಿಂಕ್‌"</string>
-    <string name="add_account" msgid="3071396624500839020">"ಖಾತೆ ಸೇರಿಸಿ"</string>
+    <!--string name="add_account" msgid="3071396624500839020">"ಖಾತೆ ಸೇರಿಸಿ"</string-->
     <string name="add_new_account" msgid="573368229646104110">"ಹೊಸ ಖಾತೆಯನ್ನು ಸೇರಿಸಿ"</string>
     <string name="menu_export_database" msgid="1658249125751926885">"ಡೇಟಾಬೇಸ್‌‌ ಫೈಲ್‌ಗಳನ್ನು ರಫ್ತು ಮಾಡಿ"</string>
     <string name="action_menu_add_new_contact_button" msgid="1201339383074001291">"ಹೊಸ ಸಂಪರ್ಕ ರಚಿಸಿ"</string>

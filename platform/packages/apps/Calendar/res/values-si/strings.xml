@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="5452708708398908131">"දින දර්ශනය"</string>
+    <!--string name="app_label" msgid="5452708708398908131">"දින දර්ශනය"</string-->
     <string name="what_label" msgid="1933578391985810049">"කුමක්ද"</string>
     <string name="where_label" msgid="3472482206065595118">"කොහේද"</string>
     <string name="when_label" msgid="894636567327261599">"කවදාද"</string>
@@ -152,7 +152,6 @@
     <string name="yearly_plain" msgid="3652692085322162449">"වාර්ෂිකව"</string>
     <string name="monthly_on_day" msgid="5370155265278821156">"මාසිකව (<xliff:g id="DAY_OF_MONTH">%s</xliff:g> දින)"</string>
     <string name="yearly" msgid="8576208380302949002">"වාර්ෂිකව (<xliff:g id="DATES">%s</xliff:g> දින)"</string>
-    <string name="custom" product="tablet" msgid="3806817351377723249">"අභිරුචි (ටැබ්ලටයමත අභිරුචි කළ නොහැක)"</string>
     <string name="custom" product="default" msgid="4137468716966004993">"අභිරුචි (දුරකථනයමත අභිරුචි කළ නොහැක)"</string>
     <string name="modify_event" msgid="5982876409997142690">"මෙම සිදුවීම පමණක් වෙනස් කරන්න"</string>
     <string name="modify_all" msgid="4421657265864209041">"මාලාවේ සියලු සිදුවීම් වෙනස් කරන්න"</string>
@@ -186,7 +185,7 @@
     <string name="preferences_show_week_num_title" msgid="5280734329664503461">"සති අංකය පෙන්වන්න"</string>
     <string name="preferences_about_title" msgid="2810624892412097879">"පිළිබඳ"</string>
     <string name="preferences_build_version" msgid="8242471883413502068">"තැනුම් අනුවාදය"</string>
-    <string name="gadget_title" msgid="939918875331310945">"දින දර්ශනය"</string>
+    <!--string name="gadget_title" msgid="939918875331310945">"දින දර්ශනය"</string-->
     <plurals name="month_more_events" formatted="false" msgid="6064683102623394875">
       <item quantity="one">+<xliff:g id="NUMBER">%d</xliff:g></item>
       <item quantity="other">+<xliff:g id="NUMBER">%d</xliff:g></item>

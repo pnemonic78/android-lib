@@ -204,7 +204,7 @@
     <string name="contact_editor_pick_linked_contact_dialog_title" msgid="3332134735168016293">"Звязаныя кантакты"</string>
     <string name="contact_editor_add_linked_contact" msgid="2895453741206196138">"Дадаць"</string>
     <string name="contact_editor_unlink_contacts" msgid="8399419729744305687">"Выдаліць сувязь"</string>
-    <string name="add_account" msgid="3071396624500839020">"Дадаць уліковы запіс"</string>
+    <!--string name="add_account" msgid="3071396624500839020">"Дадаць уліковы запіс"</string-->
     <string name="add_new_account" msgid="573368229646104110">"Дадаць новы ўліковы запіс"</string>
     <string name="menu_export_database" msgid="1658249125751926885">"Экспарт базы дадзеных файлаў"</string>
     <string name="action_menu_add_new_contact_button" msgid="1201339383074001291">"Новы кантакт"</string>

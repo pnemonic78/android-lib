@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="5452708708398908131">"تقویم"</string>
+    <!--string name="app_label" msgid="5452708708398908131">"تقویم"</string-->
     <string name="what_label" msgid="1933578391985810049">"چه چیزی"</string>
     <string name="where_label" msgid="3472482206065595118">"مکان"</string>
     <string name="when_label" msgid="894636567327261599">"زمان"</string>
@@ -152,7 +152,6 @@
     <string name="yearly_plain" msgid="3652692085322162449">"سالانه"</string>
     <string name="monthly_on_day" msgid="5370155265278821156">"ماهانه (در روز <xliff:g id="DAY_OF_MONTH">%s</xliff:g>)"</string>
     <string name="yearly" msgid="8576208380302949002">"سالانه (در <xliff:g id="DATES">%s</xliff:g>)"</string>
-    <string name="custom" product="tablet" msgid="3806817351377723249">"سفارشی (سفارشی کردن در رایانهٔ لوحی امکان‌پذیر نیست)"</string>
     <string name="custom" product="default" msgid="4137468716966004993">"سفارشی (سفارشی کردن در تلفن امکان‌پذیر نیست)"</string>
     <string name="modify_event" msgid="5982876409997142690">"فقط این رویداد تغییر داده شود"</string>
     <string name="modify_all" msgid="4421657265864209041">"همه رویدادهای موجود در مجموعه‌ها تغییر داده شود"</string>
@@ -186,7 +185,7 @@
     <string name="preferences_show_week_num_title" msgid="5280734329664503461">"شماره هفته نمایش"</string>
     <string name="preferences_about_title" msgid="2810624892412097879">"درباره"</string>
     <string name="preferences_build_version" msgid="8242471883413502068">"نسخه ساخت"</string>
-    <string name="gadget_title" msgid="939918875331310945">"تقویم"</string>
+    <!--string name="gadget_title" msgid="939918875331310945">"تقویم"</string-->
     <plurals name="month_more_events" formatted="false" msgid="6064683102623394875">
       <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g> رویداد دیگر</item>
       <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> رویداد دیگر</item>

@@ -200,7 +200,7 @@
     <string name="contact_editor_pick_linked_contact_dialog_title" msgid="3332134735168016293">"Persoane de contact asociate"</string>
     <string name="contact_editor_add_linked_contact" msgid="2895453741206196138">"Adăugați"</string>
     <string name="contact_editor_unlink_contacts" msgid="8399419729744305687">"Disociați"</string>
-    <string name="add_account" msgid="3071396624500839020">"Adăugați un cont"</string>
+    <!--string name="add_account" msgid="3071396624500839020">"Adăugați un cont"</string-->
     <string name="add_new_account" msgid="573368229646104110">"Adăugați un cont nou"</string>
     <string name="menu_export_database" msgid="1658249125751926885">"Exportați fișierele bazei de date"</string>
     <string name="action_menu_add_new_contact_button" msgid="1201339383074001291">"Contact nou"</string>

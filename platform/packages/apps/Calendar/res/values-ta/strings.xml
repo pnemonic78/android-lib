@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="5452708708398908131">"கேலெண்டர்"</string>
+    <!--string name="app_label" msgid="5452708708398908131">"கேலெண்டர்"</string-->
     <string name="what_label" msgid="1933578391985810049">"என்ன"</string>
     <string name="where_label" msgid="3472482206065595118">"எங்கு"</string>
     <string name="when_label" msgid="894636567327261599">"எப்போது"</string>
@@ -152,7 +152,6 @@
     <string name="yearly_plain" msgid="3652692085322162449">"ஆண்டுதோறும்"</string>
     <string name="monthly_on_day" msgid="5370155265278821156">"மாதந்தோறும் (<xliff:g id="DAY_OF_MONTH">%s</xliff:g> அன்று)"</string>
     <string name="yearly" msgid="8576208380302949002">"ஆண்டுந்தோறும் (<xliff:g id="DATES">%s</xliff:g> அன்று)"</string>
-    <string name="custom" product="tablet" msgid="3806817351377723249">"தனிப்பயன் (டேப்லெட்டில் தனிப்பயனாக்க முடியாது)"</string>
     <string name="custom" product="default" msgid="4137468716966004993">"தனிப்பயன் (தொலைபேசியில் தனிப்பயனாக்க முடியாது)"</string>
     <string name="modify_event" msgid="5982876409997142690">"இந்த நிகழ்வை மட்டும் மாற்று"</string>
     <string name="modify_all" msgid="4421657265864209041">"தொடரில் உள்ள எல்லா நிகழ்வுகளையும் மாற்று"</string>
@@ -186,7 +185,7 @@
     <string name="preferences_show_week_num_title" msgid="5280734329664503461">"வாரத்தின் எண்ணைக் காட்டு"</string>
     <string name="preferences_about_title" msgid="2810624892412097879">"அறிமுகம்"</string>
     <string name="preferences_build_version" msgid="8242471883413502068">"நடப்புப் பதிப்பு"</string>
-    <string name="gadget_title" msgid="939918875331310945">"கேலெண்டர்"</string>
+    <!--string name="gadget_title" msgid="939918875331310945">"கேலெண்டர்"</string-->
     <plurals name="month_more_events" formatted="false" msgid="6064683102623394875">
       <item quantity="other">மேலும் <xliff:g id="NUMBER">%d</xliff:g></item>
       <item quantity="one">மேலும் 1</item>

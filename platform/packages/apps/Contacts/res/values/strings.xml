@@ -568,7 +568,7 @@
     <string name="contact_editor_unlink_contacts">Unlink</string>
 
     <!-- Button label to prompt the user to add an account (when there are 0 existing accounts on the device) [CHAR LIMIT=30] -->
-    <string name="add_account">Add account</string>
+    <!--string name="add_account">Add account</string-->
 
     <!-- Button label to prompt the user to add another account (when there are already existing accounts on the device) [CHAR LIMIT=30] -->
     <string name="add_new_account">Add new account</string>

@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="5452708708398908131">"ಕ್ಯಾಲೆಂಡರ್‌"</string>
+    <!--string name="app_label" msgid="5452708708398908131">"ಕ್ಯಾಲೆಂಡರ್‌"</string-->
     <string name="what_label" msgid="1933578391985810049">"ಏನು"</string>
     <string name="where_label" msgid="3472482206065595118">"ಎಲ್ಲಿ"</string>
     <string name="when_label" msgid="894636567327261599">"ಯಾವಾಗ"</string>
@@ -152,7 +152,6 @@
     <string name="yearly_plain" msgid="3652692085322162449">"ವಾರ್ಷಿಕ"</string>
     <string name="monthly_on_day" msgid="5370155265278821156">"ಮಾಸಿಕ (<xliff:g id="DAY_OF_MONTH">%s</xliff:g> ದಿನದಂದು)"</string>
     <string name="yearly" msgid="8576208380302949002">"ವಾರ್ಷಿಕ (<xliff:g id="DATES">%s</xliff:g> ರಂದು)"</string>
-    <string name="custom" product="tablet" msgid="3806817351377723249">"ಕಸ್ಟಮ್ (ಟ್ಯಾಬ್ಲೆಟ್‌‌ನಲ್ಲಿ ಕಸ್ಟಮೈಸ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ)"</string>
     <string name="custom" product="default" msgid="4137468716966004993">"ಕಸ್ಟಮ್ (ಫೋನ್‌ನಲ್ಲಿ ಕಸ್ಟಮೈಸ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ)"</string>
     <string name="modify_event" msgid="5982876409997142690">"ಈ ಈವೆಂಟ್ ಮಾತ್ರ ಬದಲಾಯಿಸಿ"</string>
     <string name="modify_all" msgid="4421657265864209041">"ಸರಣಿಯಲ್ಲಿರುವ ಎಲ್ಲಾ ಈವೆಂಟ್‌ಗಳನ್ನು ಬದಲಾಯಿಸಿ"</string>
@@ -186,7 +185,7 @@
     <string name="preferences_show_week_num_title" msgid="5280734329664503461">"ವಾರದ ಸಂಖ್ಯೆಯನ್ನು ತೋರಿಸು"</string>
     <string name="preferences_about_title" msgid="2810624892412097879">"ಕುರಿತು"</string>
     <string name="preferences_build_version" msgid="8242471883413502068">"ಬಿಲ್ಡ್ ಆವೃತ್ತಿ"</string>
-    <string name="gadget_title" msgid="939918875331310945">"ಕ್ಯಾಲೆಂಡರ್‌"</string>
+    <!--string name="gadget_title" msgid="939918875331310945">"ಕ್ಯಾಲೆಂಡರ್‌"</string-->
     <plurals name="month_more_events" formatted="false" msgid="6064683102623394875">
       <item quantity="one">+<xliff:g id="NUMBER">%d</xliff:g></item>
       <item quantity="other">+<xliff:g id="NUMBER">%d</xliff:g></item>

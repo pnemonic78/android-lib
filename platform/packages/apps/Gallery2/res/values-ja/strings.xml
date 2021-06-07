@@ -17,7 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name" msgid="1928079047368929634">"ギャラリー"</string>
-    <string name="gadget_title" msgid="259405922673466798">"写真フレーム"</string>
+    <!--string name="gadget_title" msgid="259405922673466798">"写真フレーム"</string-->
     <string name="details_ms" msgid="940634969189855292">"%1$02d:%2$02d"</string>
     <string name="details_hms" msgid="3215779248094151255">"%1$d:%2$02d:%3$02d"</string>
     <string name="movie_view_label" msgid="3526526872644898229">"動画プレーヤー"</string>
@@ -27,7 +27,6 @@
     <string name="resume_playing_title" msgid="8996677350649355013">"動画の再開"</string>
     <string name="resume_playing_message" msgid="5184414518126703481">"再生を%sから再開しますか？"</string>
     <string name="resume_playing_resume" msgid="3847915469173852416">"再生を再開"</string>
-    <string name="loading" msgid="7038208555304563571">"読み込み中…"</string>
     <string name="fail_to_load" msgid="8394392853646664505">"読み込めませんでした"</string>
     <string name="fail_to_load_image" msgid="6155388718549782425">"画像を読み込めませんでした"</string>
     <string name="no_thumbnail" msgid="284723185546429750">"サムネイルなし"</string>

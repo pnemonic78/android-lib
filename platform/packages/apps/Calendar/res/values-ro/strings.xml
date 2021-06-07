@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="5452708708398908131">"Calendar"</string>
+    <!--string name="app_label" msgid="5452708708398908131">"Calendar"</string-->
     <string name="what_label" msgid="1933578391985810049">"Ce"</string>
     <string name="where_label" msgid="3472482206065595118">"Unde"</string>
     <string name="when_label" msgid="894636567327261599">"Când"</string>
@@ -155,7 +155,6 @@
     <string name="yearly_plain" msgid="3652692085322162449">"Anual"</string>
     <string name="monthly_on_day" msgid="5370155265278821156">"Lunar (în zile de <xliff:g id="DAY_OF_MONTH">%s</xliff:g>)"</string>
     <string name="yearly" msgid="8576208380302949002">"Anual (pe <xliff:g id="DATES">%s</xliff:g>)"</string>
-    <string name="custom" product="tablet" msgid="3806817351377723249">"Personalizat (nu se poate personaliza pe tabletă)"</string>
     <string name="custom" product="default" msgid="4137468716966004993">"Personalizat (nu se poate personaliza pe telefon)"</string>
     <string name="modify_event" msgid="5982876409997142690">"Modificați doar acest eveniment"</string>
     <string name="modify_all" msgid="4421657265864209041">"Modificați toate evenimentele din serie"</string>
@@ -189,7 +188,7 @@
     <string name="preferences_show_week_num_title" msgid="5280734329664503461">"Afișați numărul săptămânii"</string>
     <string name="preferences_about_title" msgid="2810624892412097879">"Despre"</string>
     <string name="preferences_build_version" msgid="8242471883413502068">"Versiunea"</string>
-    <string name="gadget_title" msgid="939918875331310945">"Calendar"</string>
+    <!--string name="gadget_title" msgid="939918875331310945">"Calendar"</string-->
     <plurals name="month_more_events" formatted="false" msgid="6064683102623394875">
       <item quantity="few">+<xliff:g id="NUMBER">%d</xliff:g></item>
       <item quantity="other">+<xliff:g id="NUMBER">%d</xliff:g></item>

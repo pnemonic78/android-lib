@@ -196,7 +196,7 @@
     <string name="contact_editor_pick_linked_contact_dialog_title" msgid="3332134735168016293">"Contatti collegati"</string>
     <string name="contact_editor_add_linked_contact" msgid="2895453741206196138">"Aggiungi"</string>
     <string name="contact_editor_unlink_contacts" msgid="8399419729744305687">"Scollega"</string>
-    <string name="add_account" msgid="3071396624500839020">"Aggiungi account"</string>
+    <!--string name="add_account" msgid="3071396624500839020">"Aggiungi account"</string-->
     <string name="add_new_account" msgid="573368229646104110">"Aggiungi nuovo account"</string>
     <string name="menu_export_database" msgid="1658249125751926885">"Esporta file database"</string>
     <string name="action_menu_add_new_contact_button" msgid="1201339383074001291">"Crea nuovo contatto"</string>

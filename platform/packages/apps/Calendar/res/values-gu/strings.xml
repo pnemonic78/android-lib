@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="5452708708398908131">"કેલેન્ડર"</string>
+    <!--string name="app_label" msgid="5452708708398908131">"કેલેન્ડર"</string-->
     <string name="what_label" msgid="1933578391985810049">"શું"</string>
     <string name="where_label" msgid="3472482206065595118">"ક્યાં"</string>
     <string name="when_label" msgid="894636567327261599">"ક્યારે"</string>
@@ -152,7 +152,6 @@
     <string name="yearly_plain" msgid="3652692085322162449">"વાર્ષિક"</string>
     <string name="monthly_on_day" msgid="5370155265278821156">"માસિક (<xliff:g id="DAY_OF_MONTH">%s</xliff:g> ના દિવસે)"</string>
     <string name="yearly" msgid="8576208380302949002">"વાર્ષિક (<xliff:g id="DATES">%s</xliff:g> પર)"</string>
-    <string name="custom" product="tablet" msgid="3806817351377723249">"કસ્ટમ (ટેબ્લેટ પર કસ્ટમાઇઝ કરી શકતાં નથી)"</string>
     <string name="custom" product="default" msgid="4137468716966004993">"કસ્ટમ (ફોન પર કસ્ટમાઇઝ કરી શકતાં નથી)"</string>
     <string name="modify_event" msgid="5982876409997142690">"ફક્ત આ જ ઇવેન્ટ બદલો"</string>
     <string name="modify_all" msgid="4421657265864209041">"શ્રેણીમાંના બધા ઇવેન્ટ્સ બદલો"</string>
@@ -186,7 +185,7 @@
     <string name="preferences_show_week_num_title" msgid="5280734329664503461">"અઠવાડિયા સંખ્યા બતાવો"</string>
     <string name="preferences_about_title" msgid="2810624892412097879">"વિશે"</string>
     <string name="preferences_build_version" msgid="8242471883413502068">"બિલ્ડ સંસ્કરણ"</string>
-    <string name="gadget_title" msgid="939918875331310945">"કેલેન્ડર"</string>
+    <!--string name="gadget_title" msgid="939918875331310945">"કેલેન્ડર"</string-->
     <plurals name="month_more_events" formatted="false" msgid="6064683102623394875">
       <item quantity="one">+<xliff:g id="NUMBER">%d</xliff:g></item>
       <item quantity="other">+<xliff:g id="NUMBER">%d</xliff:g></item>

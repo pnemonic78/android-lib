@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="5452708708398908131">"কেলেণ্ডাৰ"</string>
+    <!--string name="app_label" msgid="5452708708398908131">"কেলেণ্ডাৰ"</string-->
     <!-- no translation found for what_label (1933578391985810049) -->
     <skip />
     <!-- no translation found for where_label (3472482206065595118) -->

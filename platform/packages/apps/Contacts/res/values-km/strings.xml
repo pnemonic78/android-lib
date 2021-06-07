@@ -196,7 +196,7 @@
     <string name="contact_editor_pick_linked_contact_dialog_title" msgid="3332134735168016293">"ទំនាក់ទំនងដែលបានតភ្ជាប់"</string>
     <string name="contact_editor_add_linked_contact" msgid="2895453741206196138">"បញ្ចូល"</string>
     <string name="contact_editor_unlink_contacts" msgid="8399419729744305687">"ផ្តាច់"</string>
-    <string name="add_account" msgid="3071396624500839020">"បញ្ចូល​​គណនី"</string>
+    <!--string name="add_account" msgid="3071396624500839020">"បញ្ចូល​​គណនី"</string-->
     <string name="add_new_account" msgid="573368229646104110">"បន្ថែម​គណនី​ថ្មី"</string>
     <string name="menu_export_database" msgid="1658249125751926885">"នាំចេញ​ឯកសារ​មូលដ្ឋាន​ទិន្នន័យ"</string>
     <string name="action_menu_add_new_contact_button" msgid="1201339383074001291">"បង្កើត​ទំនាក់ទំនង​ថ្មី"</string>

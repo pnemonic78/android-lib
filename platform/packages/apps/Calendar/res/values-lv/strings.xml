@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="5452708708398908131">"Kalendārs"</string>
+    <!--string name="app_label" msgid="5452708708398908131">"Kalendārs"</string-->
     <string name="what_label" msgid="1933578391985810049">"Kas"</string>
     <string name="where_label" msgid="3472482206065595118">"Kur"</string>
     <string name="when_label" msgid="894636567327261599">"Kad"</string>
@@ -155,7 +155,6 @@
     <string name="yearly_plain" msgid="3652692085322162449">"Reizi gadā"</string>
     <string name="monthly_on_day" msgid="5370155265278821156">"Reizi mēnesī (<xliff:g id="DAY_OF_MONTH">%s</xliff:g>. datumā)"</string>
     <string name="yearly" msgid="8576208380302949002">"Reizi gadā (<xliff:g id="DATES">%s</xliff:g>)"</string>
-    <string name="custom" product="tablet" msgid="3806817351377723249">"Pielāgots (nevar pielāgot planšetdatorā)"</string>
     <string name="custom" product="default" msgid="4137468716966004993">"Pielāgots (nevar pielāgot tālrunī)"</string>
     <string name="modify_event" msgid="5982876409997142690">"Mainīt tikai šo pasākumu"</string>
     <string name="modify_all" msgid="4421657265864209041">"Mainīt visus virknes pasākumus"</string>
@@ -189,7 +188,7 @@
     <string name="preferences_show_week_num_title" msgid="5280734329664503461">"Rādīt nedēļas numuru"</string>
     <string name="preferences_about_title" msgid="2810624892412097879">"Par"</string>
     <string name="preferences_build_version" msgid="8242471883413502068">"Būvējuma versija"</string>
-    <string name="gadget_title" msgid="939918875331310945">"Kalendārs"</string>
+    <!--string name="gadget_title" msgid="939918875331310945">"Kalendārs"</string-->
     <plurals name="month_more_events" formatted="false" msgid="6064683102623394875">
       <item quantity="zero">Vēl <xliff:g id="NUMBER">%d</xliff:g></item>
       <item quantity="one">Vēl <xliff:g id="NUMBER">%d</xliff:g></item>

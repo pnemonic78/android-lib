@@ -196,7 +196,7 @@
     <string name="contact_editor_pick_linked_contact_dialog_title" msgid="3332134735168016293">"Συνδεδεμένες επαφές"</string>
     <string name="contact_editor_add_linked_contact" msgid="2895453741206196138">"Προσθήκη"</string>
     <string name="contact_editor_unlink_contacts" msgid="8399419729744305687">"Αποσύνδεση"</string>
-    <string name="add_account" msgid="3071396624500839020">"Προσθήκη λογαριασμού"</string>
+    <!--string name="add_account" msgid="3071396624500839020">"Προσθήκη λογαριασμού"</string-->
     <string name="add_new_account" msgid="573368229646104110">"Προσθήκη νέου λογαριασμού"</string>
     <string name="menu_export_database" msgid="1658249125751926885">"Εξαγωγή αρχείων βάσης δεδομένων"</string>
     <string name="action_menu_add_new_contact_button" msgid="1201339383074001291">"Δημιουργία νέας επαφής"</string>

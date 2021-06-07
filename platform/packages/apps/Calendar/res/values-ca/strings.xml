@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="5452708708398908131">"Calendar"</string>
+    <!--string name="app_label" msgid="5452708708398908131">"Calendar"</string-->
     <string name="what_label" msgid="1933578391985810049">"Què:"</string>
     <string name="where_label" msgid="3472482206065595118">"On"</string>
     <string name="when_label" msgid="894636567327261599">"Quan"</string>
@@ -152,7 +152,6 @@
     <string name="yearly_plain" msgid="3652692085322162449">"Anualment"</string>
     <string name="monthly_on_day" msgid="5370155265278821156">"Mensualment (el dia <xliff:g id="DAY_OF_MONTH">%s</xliff:g>)"</string>
     <string name="yearly" msgid="8576208380302949002">"Anualment (el <xliff:g id="DATES">%s</xliff:g>)"</string>
-    <string name="custom" product="tablet" msgid="3806817351377723249">"Personalitzat (no es pot personalitzar a la tauleta)"</string>
     <string name="custom" product="default" msgid="4137468716966004993">"Personalitzat (no es pot personalitzar al telèfon)"</string>
     <string name="modify_event" msgid="5982876409997142690">"Canvia només aquest esdeveniment"</string>
     <string name="modify_all" msgid="4421657265864209041">"Canvia tots els esdeveniments de la sèrie"</string>
@@ -186,7 +185,7 @@
     <string name="preferences_show_week_num_title" msgid="5280734329664503461">"Mostra el número de setmana"</string>
     <string name="preferences_about_title" msgid="2810624892412097879">"Quant a"</string>
     <string name="preferences_build_version" msgid="8242471883413502068">"Versió de compilació"</string>
-    <string name="gadget_title" msgid="939918875331310945">"Calendari"</string>
+    <!--string name="gadget_title" msgid="939918875331310945">"Calendari"</string-->
     <plurals name="month_more_events" formatted="false" msgid="6064683102623394875">
       <item quantity="other">+ <xliff:g id="NUMBER">%d</xliff:g></item>
       <item quantity="one">+ 1</item>

@@ -196,7 +196,7 @@
     <string name="contact_editor_pick_linked_contact_dialog_title" msgid="3332134735168016293">"සබැඳි සම්බන්ධතා"</string>
     <string name="contact_editor_add_linked_contact" msgid="2895453741206196138">"එක් කරන්න"</string>
     <string name="contact_editor_unlink_contacts" msgid="8399419729744305687">"සබැඳි ඉවත් කර."</string>
-    <string name="add_account" msgid="3071396624500839020">"ගිණුමක් එකතු කරන්න"</string>
+    <!--string name="add_account" msgid="3071396624500839020">"ගිණුමක් එකතු කරන්න"</string-->
     <string name="add_new_account" msgid="573368229646104110">"නව ගිණුමක් එක් කරන්න"</string>
     <string name="menu_export_database" msgid="1658249125751926885">"දත්ත සමුදා ගොනු නිර්යාත කරන්න"</string>
     <string name="action_menu_add_new_contact_button" msgid="1201339383074001291">"නව සම්බන්ධතාව තනන්න"</string>

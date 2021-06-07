@@ -7,13 +7,11 @@
     <string name="filter" msgid="2018011724373033887">تصفية</string>
 
     <!-- Date -->
-    <string name="today" msgid="8577375020252453006">"اليوم"</string>
     <string name="twelve_hour_time_format">h:mm a</string>
     <string name="twenty_four_hour_time_format">H:mm</string>
     <string name="month_day_year" formatted="false">%-e %B، %Y</string>
 
     <!-- Ringtone -->
-    <string name="preferences_alerts_ringtone_title" msgid="1849706055052358346">"الصوت"</string>
     <string name="ringtone_default" msgid="3332469542084549546">"نغمة الرنين الافتراضية"</string>
     <string name="notification_sound_default" msgid="5309766396223094324">"صوت الإشعار الافتراضي"</string>
     <string name="alarm_sound_default" msgid="6854264112790616066">"صوت التنبيه الافتراضي"</string>
@@ -24,9 +22,6 @@
     <string name="settings_label" msgid="1626402585530130914">"الإعدادات"</string>
     <string name="tts_general_section_title" msgid="4402572014604490502">"عامة"</string>
     <string name="pref_appearance_title">مظهر</string>
-    <string name="preferences_about_title" msgid="2810624892412097879">"حول"</string>
-    <string name="preferences_build_version" msgid="8242471883413502068">"نسخة الإصدار"</string>
-
     <!-- Theme. -->
     <string name="settings_screen_theme" msgid="2137262503543943871">"المظهر"</string>
     <string name="night_mode_no" msgid="7682792841791457238">"فاتح"</string>

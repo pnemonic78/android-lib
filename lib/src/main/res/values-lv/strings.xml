@@ -7,13 +7,11 @@
     <string name="filter" msgid="2018011724373033887">Filtrs</string>
 
     <!-- Date -->
-    <string name="today" msgid="8577375020252453006">"Šodien"</string>
     <!--TODO string name="twelve_hour_time_format">h:mm:ss a</string-->
     <!--TODO string name="twenty_four_hour_time_format">H:mm:ss</string-->
     <string name= "month_day_year" formatted="false">%Y. gada %-e. %B</string>
 
     <!-- Ringtone -->
-    <string name="preferences_alerts_ringtone_title" msgid="1849706055052358346">"Skaņa"</string>
     <string name="ringtone_default" msgid="3789758980357696936">"Noklusējuma zvana signāls"</string>
     <string name="notification_sound_default" msgid="8630353701915294299">"Paziņojuma noklusējuma skaņa"</string>
     <string name="alarm_sound_default" msgid="5488847775252870314">"Signāla noklusējuma skaņa"</string>
@@ -23,9 +21,6 @@
     <!-- Preferences -->
     <string name="tts_general_section_title" msgid="4402572014604490502">"Vispārīgi"</string>
     <!--TODO string name="pref_appearance_title">появяване</string-->
-    <string name="preferences_about_title" msgid="2810624892412097879">"Par"</string>
-    <string name="preferences_build_version" msgid="8242471883413502068">"Būvējuma versija"</string>
-
     <!-- Theme. -->
     <!--TODO string name="settings_screen_theme">Тема</string-->
     <!--TODO string name="night_mode_no">Светло</string-->

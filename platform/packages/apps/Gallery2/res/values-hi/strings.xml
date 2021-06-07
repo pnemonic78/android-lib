@@ -17,7 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name" msgid="1928079047368929634">"गैलरी"</string>
-    <string name="gadget_title" msgid="259405922673466798">"चित्र फ़्रेम"</string>
+    <!--string name="gadget_title" msgid="259405922673466798">"चित्र फ़्रेम"</string-->
     <string name="details_ms" msgid="940634969189855292">"%1$02d:%2$02d"</string>
     <string name="details_hms" msgid="3215779248094151255">"%1$d:%2$02d:%3$02d"</string>
     <string name="movie_view_label" msgid="3526526872644898229">"वीडियो प्‍लेयर"</string>
@@ -27,7 +27,6 @@
     <string name="resume_playing_title" msgid="8996677350649355013">"वीडियो फिर से शुरू करें"</string>
     <string name="resume_playing_message" msgid="5184414518126703481">"%s से फिर से चलाना शुरू करें ?"</string>
     <string name="resume_playing_resume" msgid="3847915469173852416">"चलाना फिर से शुरू करें"</string>
-    <string name="loading" msgid="7038208555304563571">"लोड हो रहा है…"</string>
     <string name="fail_to_load" msgid="8394392853646664505">"लोड नहीं कर सका"</string>
     <string name="fail_to_load_image" msgid="6155388718549782425">"चित्र लोड नहीं हो सकी"</string>
     <string name="no_thumbnail" msgid="284723185546429750">"कोई थंबनेल नहीं"</string>

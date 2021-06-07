@@ -196,7 +196,7 @@
     <string name="contact_editor_pick_linked_contact_dialog_title" msgid="3332134735168016293">"లింక్ చేసిన పరిచయాలు"</string>
     <string name="contact_editor_add_linked_contact" msgid="2895453741206196138">"జోడించు"</string>
     <string name="contact_editor_unlink_contacts" msgid="8399419729744305687">"అన్‌లింక్ చేయి"</string>
-    <string name="add_account" msgid="3071396624500839020">"ఖాతాను జోడించు"</string>
+    <!--string name="add_account" msgid="3071396624500839020">"ఖాతాను జోడించు"</string-->
     <string name="add_new_account" msgid="573368229646104110">"కొత్త ఖాతాను జోడించు"</string>
     <string name="menu_export_database" msgid="1658249125751926885">"డేటాబేస్ ఫైల్‌లను ఎగుమతి చేయి"</string>
     <string name="action_menu_add_new_contact_button" msgid="1201339383074001291">"కొత్త పరిచయాన్ని సృష్టిస్తుంది"</string>

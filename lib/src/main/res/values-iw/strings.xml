@@ -7,14 +7,12 @@
     <string name="filter" msgid="2018011724373033887">סינון</string>
 
     <!-- Date -->
-    <string name="today" msgid="8577375020252453006">"היום"</string>
     <string name="twelve_hour_time_format">h:mm:ss a</string>
     <string name="twenty_four_hour_time_format">H:mm:ss</string>
     <string name="month_day_year" formatted="false">%-e ב%B %Y</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"התראה"</string>
 
     <!-- Ringtone -->
-    <string name="preferences_alerts_ringtone_title" msgid="1849706055052358346">"צליל"</string>
     <string name="ringtone_default" msgid="3332469542084549546">"רינגטון ברירת מחדל"</string>
     <string name="notification_sound_default" msgid="5309766396223094324">"צליל ברירת מחדל להתראה"</string>
     <string name="alarm_sound_default" msgid="6854264112790616066">"צליל ברירת מחדל להתרעה"</string>
@@ -24,8 +22,6 @@
     <string name="settings_label" msgid="1626402585530130914">הגדרות</string>
     <string name="tts_general_section_title" msgid="4402572014604490502">כללי</string>
     <string name="pref_appearance_title">מראה</string>
-    <string name="preferences_about_title" msgid="2810624892412097879">"מידע על"</string>
-    <string name="preferences_build_version">"‏גרסה"</string>
 
     <!-- Theme. -->
     <string name="settings_screen_theme">עיצוב</string>
