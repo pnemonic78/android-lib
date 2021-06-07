@@ -22,7 +22,6 @@
     <string name="default_label" msgid="5590025289805630372">"နှိုးစက်"</string>
     <string name="alarm_vibrate" msgid="3476686921490362230">"တုန်ခါရန်"</string>
     <string name="alarm_repeat" msgid="7242985466344233206">"ထပ်လုပ်ရန်"</string>
-    <string name="delete" msgid="5732434972457000541">"ဖျက်ရန်"</string>
     <string name="default_alarm_ringtone_title" msgid="2916376768509623643">"မူရင်းနှိုးစက်သံ"</string>
     <string name="alarm_sound" msgid="8754499591391638405">"နိုးစက်သံ"</string>
     <string name="timer_sound" msgid="896163086604894735">"တိုင်မာသံ"</string>
@@ -104,7 +103,6 @@
     <string name="loading_widget" msgid="5306242862476796500">"ဖွင့်နေသည်…"</string>
     <string name="analog_gadget" msgid="1670505720837152766">"လက်တံနာရီ"</string>
     <string name="digital_gadget" msgid="2326954556720571358">"ဒီဂျစ်တယ်နာရီ"</string>
-    <string name="settings" msgid="5849739030579520686">"ဆက်တင်များ"</string>
     <string name="snooze_duration_title" msgid="1097309861110780483">"မှေးစက်ကာလ"</string>
     <string name="crescendo_duration_title" msgid="8606408542726189528">"တဖြည်းဖြည်း အသံကို ချဲ့ယူပါ"</string>
     <string name="auto_silence_title" msgid="2012754009554434544">"နှိုးစက်သံကြာချိန်"</string>

@@ -22,7 +22,6 @@
     <string name="default_label" msgid="5590025289805630372">"アラーム"</string>
     <string name="alarm_vibrate" msgid="3476686921490362230">"バイブレーション"</string>
     <string name="alarm_repeat" msgid="7242985466344233206">"繰り返し"</string>
-    <string name="delete" msgid="5732434972457000541">"削除"</string>
     <string name="default_alarm_ringtone_title" msgid="2916376768509623643">"デフォルトのアラーム音"</string>
     <string name="alarm_sound" msgid="8754499591391638405">"アラームの音"</string>
     <string name="timer_sound" msgid="896163086604894735">"タイマーの音"</string>
@@ -104,7 +103,6 @@
     <string name="loading_widget" msgid="5306242862476796500">"読み込んでいます…"</string>
     <string name="analog_gadget" msgid="1670505720837152766">"アナログ時計"</string>
     <string name="digital_gadget" msgid="2326954556720571358">"デジタル時計"</string>
-    <string name="settings" msgid="5849739030579520686">"設定"</string>
     <string name="snooze_duration_title" msgid="1097309861110780483">"スヌーズの長さ"</string>
     <string name="crescendo_duration_title" msgid="8606408542726189528">"徐々に音量を上げる"</string>
     <string name="auto_silence_title" msgid="2012754009554434544">"消音までの時間"</string>

@@ -22,7 +22,6 @@
     <string name="default_label" msgid="5590025289805630372">"Wekker"</string>
     <string name="alarm_vibrate" msgid="3476686921490362230">"Vibreer"</string>
     <string name="alarm_repeat" msgid="7242985466344233206">"Herhaal"</string>
-    <string name="delete" msgid="5732434972457000541">"Vee uit"</string>
     <string name="default_alarm_ringtone_title" msgid="2916376768509623643">"Verstekwekkerklank"</string>
     <string name="alarm_sound" msgid="8754499591391638405">"Wekkerklank"</string>
     <string name="timer_sound" msgid="896163086604894735">"Aftellerklank"</string>
@@ -104,7 +103,6 @@
     <string name="loading_widget" msgid="5306242862476796500">"Laai tans..."</string>
     <string name="analog_gadget" msgid="1670505720837152766">"Wyserhorlosie"</string>
     <string name="digital_gadget" msgid="2326954556720571358">"Digitale horlosie"</string>
-    <string name="settings" msgid="5849739030579520686">"Instellings"</string>
     <string name="snooze_duration_title" msgid="1097309861110780483">"Sluimer-duurte"</string>
     <string name="crescendo_duration_title" msgid="8606408542726189528">"Verhoog volume geleidelik"</string>
     <string name="auto_silence_title" msgid="2012754009554434544">"Stilte ná"</string>

@@ -18,8 +18,6 @@
     <string name="notification_sound_default" msgid="5309766396223094324">"Märguande vaikeheli"</string>
     <string name="alarm_sound_default" msgid="6854264112790616066">"Äratuse vaikeheli"</string>
     <string name="ringtone_silent" msgid="7937634392408977062">Puudub</string>
-    <!--TODO string name="alarm_volume_title" msgid="706302621191735343">"Alamu"</string-->
-    <!--TODO string name="notification_volume_title" msgid="328053763590888609">"Isaziso"</string-->
 
     <!-- Vibration -->
     <!--TODO string name="keywords_vibrate_for_calls" msgid="1019870409730074899">"Ukudlidliza"</string-->
@@ -34,7 +32,7 @@
     <string name="preferences_build_version" msgid="8242471883413502068">"Järguversioon"</string>
 
     <!-- Theme. -->
-    <string name="night_mode_title">Teema</string>
+    <string name="settings_screen_theme">Teema</string>
     <string name="night_mode_yes">Tume</string>
     <string name="night_mode_no">Hele</string>
     <string name="theme_default">Teema vaikeheli</string>

@@ -22,7 +22,6 @@
     <string name="default_label" msgid="5590025289805630372">"Budík"</string>
     <string name="alarm_vibrate" msgid="3476686921490362230">"Vibrovať"</string>
     <string name="alarm_repeat" msgid="7242985466344233206">"Opakovať"</string>
-    <string name="delete" msgid="5732434972457000541">"Odstrániť"</string>
     <string name="default_alarm_ringtone_title" msgid="2916376768509623643">"Predvolený zvuk budíka"</string>
     <string name="alarm_sound" msgid="8754499591391638405">"Zvuk budíka"</string>
     <string name="timer_sound" msgid="896163086604894735">"Zvuk časovača"</string>
@@ -120,7 +119,6 @@
     <string name="loading_widget" msgid="5306242862476796500">"Načítava sa…"</string>
     <string name="analog_gadget" msgid="1670505720837152766">"Analógové hodiny"</string>
     <string name="digital_gadget" msgid="2326954556720571358">"Digitálne hodiny"</string>
-    <string name="settings" msgid="5849739030579520686">"Nastavenia"</string>
     <string name="snooze_duration_title" msgid="1097309861110780483">"Dĺžka odloženia zvonenia"</string>
     <string name="crescendo_duration_title" msgid="8606408542726189528">"Postupne zvyšovať hlasitosť"</string>
     <string name="auto_silence_title" msgid="2012754009554434544">"Stíšiť po uplynutí"</string>

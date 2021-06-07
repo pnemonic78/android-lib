@@ -22,7 +22,6 @@
     <string name="default_label" msgid="5590025289805630372">"សំឡេង​រោទ៍"</string>
     <string name="alarm_vibrate" msgid="3476686921490362230">"ញ័រ"</string>
     <string name="alarm_repeat" msgid="7242985466344233206">"រោទ៍ឡើងវិញ"</string>
-    <string name="delete" msgid="5732434972457000541">"លុប"</string>
     <string name="default_alarm_ringtone_title" msgid="2916376768509623643">"សំឡេងម៉ោងរោទិ៍លំនាំដើម"</string>
     <string name="alarm_sound" msgid="8754499591391638405">"សំឡេងម៉ោងរោទ៍"</string>
     <string name="timer_sound" msgid="896163086604894735">"សំឡេងកម្មវិធីកំណត់ពេល"</string>
@@ -104,7 +103,6 @@
     <string name="loading_widget" msgid="5306242862476796500">"កំពុងដំណើរការ..."</string>
     <string name="analog_gadget" msgid="1670505720837152766">"នាឡិកា​អាណាឡូក"</string>
     <string name="digital_gadget" msgid="2326954556720571358">"នាឡិកា​ឌីជីថល"</string>
-    <string name="settings" msgid="5849739030579520686">"ការ​កំណត់"</string>
     <string name="snooze_duration_title" msgid="1097309861110780483">"រយៈពេល​ផ្អាក"</string>
     <string name="crescendo_duration_title" msgid="8606408542726189528">"ដំឡើងសំឡេងសន្សឹមៗ"</string>
     <string name="auto_silence_title" msgid="2012754009554434544">"បិទ​សំឡេង​បន្ទាប់ពី"</string>

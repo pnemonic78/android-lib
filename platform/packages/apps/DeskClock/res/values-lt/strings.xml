@@ -22,7 +22,6 @@
     <string name="default_label" msgid="5590025289805630372">"Signalas"</string>
     <string name="alarm_vibrate" msgid="3476686921490362230">"Vibruoti"</string>
     <string name="alarm_repeat" msgid="7242985466344233206">"Kartoti"</string>
-    <string name="delete" msgid="5732434972457000541">"Ištrinti"</string>
     <string name="default_alarm_ringtone_title" msgid="2916376768509623643">"Numatytasis signalo garsas"</string>
     <string name="alarm_sound" msgid="8754499591391638405">"Įspėjimo garsas"</string>
     <string name="timer_sound" msgid="896163086604894735">"Laikmačio garsas"</string>
@@ -120,7 +119,6 @@
     <string name="loading_widget" msgid="5306242862476796500">"Įkeliama…"</string>
     <string name="analog_gadget" msgid="1670505720837152766">"Analoginis laikrodis"</string>
     <string name="digital_gadget" msgid="2326954556720571358">"Skaitmeninis laikrodis"</string>
-    <string name="settings" msgid="5849739030579520686">"Nustatymai"</string>
     <string name="snooze_duration_title" msgid="1097309861110780483">"Snaudimo trukmė"</string>
     <string name="crescendo_duration_title" msgid="8606408542726189528">"Tolygiai didinti garsumą"</string>
     <string name="auto_silence_title" msgid="2012754009554434544">"Nutildyti po"</string>

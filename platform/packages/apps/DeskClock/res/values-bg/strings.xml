@@ -22,7 +22,6 @@
     <string name="default_label" msgid="5590025289805630372">"Будилник"</string>
     <string name="alarm_vibrate" msgid="3476686921490362230">"Вибриране"</string>
     <string name="alarm_repeat" msgid="7242985466344233206">"Да се повтаря"</string>
-    <string name="delete" msgid="5732434972457000541">"Изтриване"</string>
     <string name="default_alarm_ringtone_title" msgid="2916376768509623643">"Стандартен звук за будилника"</string>
     <string name="alarm_sound" msgid="8754499591391638405">"Звук на будилника"</string>
     <string name="timer_sound" msgid="896163086604894735">"Звук на таймера"</string>
@@ -104,7 +103,6 @@
     <string name="loading_widget" msgid="5306242862476796500">"Зарежда се…"</string>
     <string name="analog_gadget" msgid="1670505720837152766">"Аналогов часовник"</string>
     <string name="digital_gadget" msgid="2326954556720571358">"Цифров часовник"</string>
-    <string name="settings" msgid="5849739030579520686">"Настройки"</string>
     <string name="snooze_duration_title" msgid="1097309861110780483">"Продължителност на отлагането"</string>
     <string name="crescendo_duration_title" msgid="8606408542726189528">"Постепенно увеличаване на силата на звука"</string>
     <string name="auto_silence_title" msgid="2012754009554434544">"Заглушаване след"</string>

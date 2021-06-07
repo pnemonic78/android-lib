@@ -18,11 +18,7 @@
     <string name="notification_sound_default" msgid="5309766396223094324">"Numatytasis pranešimo garsas"</string>
     <string name="alarm_sound_default" msgid="6854264112790616066">"Numatytasis signalo garsas"</string>
     <string name="ringtone_silent" msgid="7937634392408977062">Nėra</string>
-    <string name="alarm_volume_title" msgid="2285597478377758706">"Signalas"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"Pranešimas"</string>
-
-    <!-- Vibration -->
-    <string name="keywords_vibrate_for_calls" msgid="1019870409730074899">"Vibravimas"</string>
 
     <!-- Preferences -->
     <string name="settings_label" msgid="1626402585530130914">Nustatymai</string>
@@ -32,7 +28,7 @@
     <string name="preferences_build_version" msgid="8242471883413502068">"Versija"</string>
 
     <!-- Theme. -->
-    <string name="night_mode_title">Tema</string>
+    <string name="settings_screen_theme">Tema</string>
     <string name="night_mode_no">Šviesi</string>
     <string name="night_mode_yes">Tamsi</string>
     <string name="theme_default">Numatytasis tema</string>

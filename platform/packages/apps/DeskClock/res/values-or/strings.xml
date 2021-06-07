@@ -22,7 +22,6 @@
     <string name="default_label" msgid="5590025289805630372">"ଆଲାର୍ମ"</string>
     <string name="alarm_vibrate" msgid="3476686921490362230">"କମ୍ପନ"</string>
     <string name="alarm_repeat" msgid="7242985466344233206">"ରିପିଟ୍‌ କରନ୍ତୁ"</string>
-    <string name="delete" msgid="5732434972457000541">"ଡିଲିଟ୍ କରନ୍ତୁ"</string>
     <string name="default_alarm_ringtone_title" msgid="2916376768509623643">"ଡିଫଲ୍ଟ ଆଲାର୍ମ ଧ୍ୱନୀ"</string>
     <string name="alarm_sound" msgid="8754499591391638405">"ଆଲାର୍ମ ଶବ୍ଦ"</string>
     <string name="timer_sound" msgid="896163086604894735">"ଟାଇମର୍ ଶବ୍ଦ"</string>
@@ -104,7 +103,6 @@
     <string name="loading_widget" msgid="5306242862476796500">"ଲୋଡ୍ କରୁଛି…"</string>
     <string name="analog_gadget" msgid="1670505720837152766">"ଆନାଲଗ୍ ଘଣ୍ଟା"</string>
     <string name="digital_gadget" msgid="2326954556720571358">"ଡିଜିଟାଲ୍ ଘଣ୍ଟା"</string>
-    <string name="settings" msgid="5849739030579520686">"ସେଟିଙ୍ଗ"</string>
     <string name="snooze_duration_title" msgid="1097309861110780483">"ସ୍ନୁଜ୍ ଦୀର୍ଘତା"</string>
     <string name="crescendo_duration_title" msgid="8606408542726189528">"ଧୀରେ ଧୀରେ ଭଲ୍ୟୁମ୍ ବଢ଼ିବ"</string>
     <string name="auto_silence_title" msgid="2012754009554434544">"ଏହାପରେ ନିରବ କରନ୍ତୁ"</string>

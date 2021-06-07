@@ -18,11 +18,7 @@
     <string name="notification_sound_default" msgid="5309766396223094324">"صوت الإشعار الافتراضي"</string>
     <string name="alarm_sound_default" msgid="6854264112790616066">"صوت التنبيه الافتراضي"</string>
     <string name="ringtone_silent" msgid="7937634392408977062">"لا شيء"</string>
-    <string name="alarm_volume_title" msgid="706302621191735343">"المنبّه"</string>
     <string name="notification_volume_title" msgid="328053763590888609">"التنبيه"</string>
-
-    <!-- Vibration -->
-    <string name="keywords_vibrate_for_calls" msgid="1019870409730074899">"الاهتزاز"</string>
 
     <!-- Preferences -->
     <string name="settings_label" msgid="1626402585530130914">"الإعدادات"</string>
@@ -32,7 +28,7 @@
     <string name="preferences_build_version" msgid="8242471883413502068">"نسخة الإصدار"</string>
 
     <!-- Theme. -->
-    <string name="night_mode_title" msgid="6928425617491943384">"المظهر"</string>
+    <string name="settings_screen_theme" msgid="2137262503543943871">"المظهر"</string>
     <string name="night_mode_no" msgid="7682792841791457238">"فاتح"</string>
     <string name="night_mode_yes" msgid="4847655033618591567">"داكن"</string>
     <string name="theme_default">السمة الافتراضية</string>

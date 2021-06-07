@@ -18,11 +18,7 @@
     <string name="notification_sound_default" msgid="5309766396223094324">"Sunet de notificare prestabilit"</string>
     <string name="alarm_sound_default" msgid="6854264112790616066">"Sunet de alarmă prestabilit"</string>
     <string name="ringtone_silent" msgid="7937634392408977062">Niciunul</string>
-    <string name="alarm_volume_title" msgid="2285597478377758706">"Alarmă"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"Notificare"</string>
-
-    <!-- Vibration -->
-    <string name="keywords_vibrate_for_calls" msgid="1019870409730074899">"Vibrație"</string>
 
     <!-- Preferences -->
     <string name="settings_label" msgid="1626402585530130914">Setări</string>
@@ -32,7 +28,7 @@
     <string name="preferences_build_version" msgid="8242471883413502068">"Versiunea"</string>
 
     <!-- Theme. -->
-    <string name="night_mode_title">Temă</string>
+    <string name="settings_screen_theme">Temă</string>
     <string name="night_mode_no">Luminos</string>
     <string name="night_mode_yes">Întunecat</string>
     <string name="theme_default">Tema prestabilit</string>

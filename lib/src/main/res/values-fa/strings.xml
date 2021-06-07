@@ -18,8 +18,6 @@
     <string name="notification_sound_default" msgid="5309766396223094324">"صدای اعلان پیش‌فرض"</string>
     <string name="alarm_sound_default" msgid="6854264112790616066">"آهنگ زنگ پیش‌فرض"</string>
     <string name="ringtone_silent" msgid="7937634392408977062">"هیچ‌کدام"</string>
-    <!--    <string name="alarm_volume_title" msgid="706302621191735343">"Alamu"</string>-->
-    <!--    <string name="notification_volume_title" msgid="328053763590888609">"Isaziso"</string>-->
 
     <!-- Vibration -->
     <!--    <string name="keywords_vibrate_for_calls" msgid="1019870409730074899">"Ukudlidliza"</string>-->
@@ -32,7 +30,7 @@
     <string name="preferences_build_version" msgid="8242471883413502068">"نسخه ساخت"</string>
 
     <!-- Theme. -->
-    <string name="night_mode_title" msgid="6928425617491943384">"طرح‌زمینه"</string>
+    <string name="settings_screen_theme" msgid="2137262503543943871">"طرح‌زمینه"</string>
     <string name="night_mode_no" msgid="7682792841791457238">"روشن"</string>
     <string name="night_mode_yes" msgid="4847655033618591567">"تیره"</string>
     <string name="theme_default">تم پیش فرض</string>

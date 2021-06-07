@@ -35,9 +35,6 @@
     <!-- Setting labels on Set alarm screen: Repeat -->
     <string name="alarm_repeat">Repeat</string>
 
-    <!-- Setting labels on Set alarm screen: Delete [CHAR LIMIT=15] -->
-    <string name="delete">Delete</string>
-
     <!-- Title of default ringtone played when an alarm triggers [CHAR LIMIT=30] -->
     <string name="default_alarm_ringtone_title">Default alarm sound</string>
 
@@ -242,10 +239,6 @@
 
     <!-- Label for digital clock gadget displayed in the widget picker. [CHAR LIMIT=18] -->
     <string name="digital_gadget">Digital clock</string>
-
-    <!-- Settings activity name -->
-    <!-- Label for the Settings activity displayed on-screen when that activity must be represented to the user. -->
-    <string name="settings">Settings</string>
 
     <!-- Setting title for changing the snooze duration. -->
     <string name="snooze_duration_title">Snooze length</string>
