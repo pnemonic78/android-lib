@@ -692,9 +692,7 @@
     <string name="undo">Undo</string>
 
     <!-- Action string for calling a custom phone number -->
-    <string name="call_custom">Call
-        <xliff:g id="custom_label" example="business">%s</xliff:g>
-    </string>
+    <string name="call_custom">Call <xliff:g id="custom_label" example="business">%s</xliff:g></string>
     <!-- Action string for calling a home phone number -->
     <string name="call_home">Call home</string>
     <!-- Action string for calling a mobile phone number -->

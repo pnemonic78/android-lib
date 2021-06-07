@@ -45,6 +45,7 @@ android {
         getByName("main") {
             res {
                 srcDir(file("../platform/packages/apps/Contacts/res"))
+                srcDir(file("../platform/packages/apps/DeskClock/res"))
                 srcDir(file("../platform/packages/apps/Gallery2/res"))
             }
         }
