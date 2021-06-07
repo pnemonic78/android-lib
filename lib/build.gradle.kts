@@ -43,7 +43,10 @@ android {
 
     sourceSets {
         getByName("main") {
-            res { srcDir(file("../platform/packages/apps/Gallery2/res")) }
+            res {
+                srcDir(file("../platform/packages/apps/Contacts/res"))
+                srcDir(file("../platform/packages/apps/Gallery2/res"))
+            }
         }
     }
 }

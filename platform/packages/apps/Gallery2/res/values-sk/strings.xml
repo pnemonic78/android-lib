@@ -58,7 +58,6 @@
     <string name="share_panorama" msgid="2569029972820978718">"Zdieľať panorámu"</string>
     <string name="share_as_photo" msgid="8959225188897026149">"Zdieľať ako fotografiu"</string>
     <string name="deleted" msgid="6795433049119073871">"Odstránený"</string>
-    <string name="undo" msgid="2930873956446586313">"SPÄŤ"</string>
     <string name="select_all" msgid="3403283025220282175">"Vybrať všetko"</string>
     <string name="deselect_all" msgid="5758897506061723684">"Zrušiť výber všetkých položiek"</string>
     <string name="slideshow" msgid="4355906903247112975">"Prezentácia"</string>
@@ -184,7 +183,6 @@
     <string name="tags" msgid="5539648765482935955">"Značky"</string>
     <string name="group_by" msgid="4308299657902209357">"Zoskupiť podľa"</string>
     <string name="settings" msgid="1534847740615665736">"Nastavenia"</string>
-    <string name="add_account" msgid="4271217504968243974">"Pridať účet"</string>
     <string name="folder_camera" msgid="4714658994809533480">"Fotoaparát"</string>
     <string name="folder_download" msgid="7186215137642323932">"Sťahovanie"</string>
     <string name="folder_edited_online_photos" msgid="6278215510236800181">"Upravené fotografie online"</string>

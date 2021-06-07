@@ -25,7 +25,6 @@
     <string name="keywords_vibrate_for_calls" msgid="1019870409730074899">"진동"</string>
 
     <!-- Preferences -->
-    <string name="settings_label" msgid="943294133671632976">"설정"</string>
     <string name="tts_general_section_title" msgid="4402572014604490502">"기본설정"</string>
     <!--TODO string name="pref_appearance_title">появяване</string-->
     <string name="preferences_about_title" msgid="2810624892412097879">"정보"</string>

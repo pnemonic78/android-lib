@@ -58,7 +58,6 @@
     <string name="share_panorama" msgid="2569029972820978718">"​ចែករំលែក​ទេសភាព"</string>
     <string name="share_as_photo" msgid="8959225188897026149">"ចែករំលែក​ជា​រូបថត"</string>
     <string name="deleted" msgid="6795433049119073871">"បាន​លុប"</string>
-    <string name="undo" msgid="2930873956446586313">"​មិន​​ធ្វើ​វិញ"</string>
     <string name="select_all" msgid="3403283025220282175">"ជ្រើស​ទាំងអស់"</string>
     <string name="deselect_all" msgid="5758897506061723684">"មិន​ជ្រើស​ទាំងអស់"</string>
     <string name="slideshow" msgid="4355906903247112975">"បញ្ចាំង​ស្លាយ"</string>
@@ -184,7 +183,6 @@
     <string name="tags" msgid="5539648765482935955">"ស្លាក"</string>
     <string name="group_by" msgid="4308299657902209357">"ដាក់​ជា​ក្រុម"</string>
     <string name="settings" msgid="1534847740615665736">"ការ​កំណត់"</string>
-    <string name="add_account" msgid="4271217504968243974">"បន្ថែម​គណនី"</string>
     <string name="folder_camera" msgid="4714658994809533480">"ម៉ាស៊ីន​ថត"</string>
     <string name="folder_download" msgid="7186215137642323932">"ទាញ​យក"</string>
     <string name="folder_edited_online_photos" msgid="6278215510236800181">"បាន​កែ​រូបថត​លើ​បណ្ដាញ"</string>

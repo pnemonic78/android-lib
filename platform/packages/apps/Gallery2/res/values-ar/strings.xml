@@ -58,7 +58,6 @@
     <string name="share_panorama" msgid="2569029972820978718">"مشاركة بانوراما"</string>
     <string name="share_as_photo" msgid="8959225188897026149">"مشاركة كصورة"</string>
     <string name="deleted" msgid="6795433049119073871">"تم حذفها"</string>
-    <string name="undo" msgid="2930873956446586313">"تراجع"</string>
     <string name="select_all" msgid="3403283025220282175">"تحديد الكل"</string>
     <string name="deselect_all" msgid="5758897506061723684">"إلغاء تحديد الكل"</string>
     <string name="slideshow" msgid="4355906903247112975">"عرض الشرائح"</string>
@@ -184,7 +183,6 @@
     <string name="tags" msgid="5539648765482935955">"العلامات"</string>
     <string name="group_by" msgid="4308299657902209357">"تجميع بحسب"</string>
     <string name="settings" msgid="1534847740615665736">"الإعدادات"</string>
-    <string name="add_account" msgid="4271217504968243974">"إضافة حساب"</string>
     <string name="folder_camera" msgid="4714658994809533480">"الكاميرا"</string>
     <string name="folder_download" msgid="7186215137642323932">"التنزيل"</string>
     <string name="folder_edited_online_photos" msgid="6278215510236800181">"الصور المعدلة عبر الإنترنت"</string>

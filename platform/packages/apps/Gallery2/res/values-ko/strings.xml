@@ -58,7 +58,6 @@
     <string name="share_panorama" msgid="2569029972820978718">"파노라마 공유"</string>
     <string name="share_as_photo" msgid="8959225188897026149">"사진으로 공유"</string>
     <string name="deleted" msgid="6795433049119073871">"삭제됨"</string>
-    <string name="undo" msgid="2930873956446586313">"실행취소"</string>
     <string name="select_all" msgid="3403283025220282175">"모두 선택"</string>
     <string name="deselect_all" msgid="5758897506061723684">"모두 선택취소"</string>
     <string name="slideshow" msgid="4355906903247112975">"슬라이드쇼"</string>
@@ -184,7 +183,6 @@
     <string name="tags" msgid="5539648765482935955">"태그"</string>
     <string name="group_by" msgid="4308299657902209357">"그룹화 기준"</string>
     <string name="settings" msgid="1534847740615665736">"설정"</string>
-    <string name="add_account" msgid="4271217504968243974">"계정 추가"</string>
     <string name="folder_camera" msgid="4714658994809533480">"카메라"</string>
     <string name="folder_download" msgid="7186215137642323932">"다운로드"</string>
     <string name="folder_edited_online_photos" msgid="6278215510236800181">"수정된 온라인 사진"</string>

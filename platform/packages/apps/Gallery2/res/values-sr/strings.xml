@@ -58,7 +58,6 @@
     <string name="share_panorama" msgid="2569029972820978718">"Дели панораму"</string>
     <string name="share_as_photo" msgid="8959225188897026149">"Дели као слику"</string>
     <string name="deleted" msgid="6795433049119073871">"Избрисана"</string>
-    <string name="undo" msgid="2930873956446586313">"ОПОЗОВИ"</string>
     <string name="select_all" msgid="3403283025220282175">"Изабери све"</string>
     <string name="deselect_all" msgid="5758897506061723684">"Опозови све изборе"</string>
     <string name="slideshow" msgid="4355906903247112975">"Пројекција слајдова"</string>
@@ -184,7 +183,6 @@
     <string name="tags" msgid="5539648765482935955">"Ознаке"</string>
     <string name="group_by" msgid="4308299657902209357">"Групиши према"</string>
     <string name="settings" msgid="1534847740615665736">"Подешавања"</string>
-    <string name="add_account" msgid="4271217504968243974">"Додавање налога"</string>
     <string name="folder_camera" msgid="4714658994809533480">"Камера"</string>
     <string name="folder_download" msgid="7186215137642323932">"Преузето"</string>
     <string name="folder_edited_online_photos" msgid="6278215510236800181">"Измењене слике на мрежи"</string>

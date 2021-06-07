@@ -58,7 +58,6 @@
     <string name="share_panorama" msgid="2569029972820978718">"Partager la vue panoramique"</string>
     <string name="share_as_photo" msgid="8959225188897026149">"Partager en tant que photo"</string>
     <string name="deleted" msgid="6795433049119073871">"Supprimée"</string>
-    <string name="undo" msgid="2930873956446586313">"ANNULER"</string>
     <string name="select_all" msgid="3403283025220282175">"Tout sélectionner"</string>
     <string name="deselect_all" msgid="5758897506061723684">"Tout désélectionner"</string>
     <string name="slideshow" msgid="4355906903247112975">"Diaporama"</string>
@@ -184,7 +183,6 @@
     <string name="tags" msgid="5539648765482935955">"Tags"</string>
     <string name="group_by" msgid="4308299657902209357">"Regrouper par"</string>
     <string name="settings" msgid="1534847740615665736">"Paramètres"</string>
-    <string name="add_account" msgid="4271217504968243974">"Ajouter un compte"</string>
     <string name="folder_camera" msgid="4714658994809533480">"Appareil photo"</string>
     <string name="folder_download" msgid="7186215137642323932">"Téléchargements"</string>
     <string name="folder_edited_online_photos" msgid="6278215510236800181">"Photos en ligne retouchées"</string>

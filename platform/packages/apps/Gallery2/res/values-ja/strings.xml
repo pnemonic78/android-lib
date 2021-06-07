@@ -58,7 +58,6 @@
     <string name="share_panorama" msgid="2569029972820978718">"パノラマ写真を共有"</string>
     <string name="share_as_photo" msgid="8959225188897026149">"写真として共有"</string>
     <string name="deleted" msgid="6795433049119073871">"削除済み"</string>
-    <string name="undo" msgid="2930873956446586313">"元に戻す"</string>
     <string name="select_all" msgid="3403283025220282175">"すべて選択"</string>
     <string name="deselect_all" msgid="5758897506061723684">"選択をすべて解除"</string>
     <string name="slideshow" msgid="4355906903247112975">"スライドショー"</string>
@@ -184,7 +183,6 @@
     <string name="tags" msgid="5539648765482935955">"タグ"</string>
     <string name="group_by" msgid="4308299657902209357">"グループ化"</string>
     <string name="settings" msgid="1534847740615665736">"設定"</string>
-    <string name="add_account" msgid="4271217504968243974">"アカウントを追加"</string>
     <string name="folder_camera" msgid="4714658994809533480">"カメラ"</string>
     <string name="folder_download" msgid="7186215137642323932">"ダウンロード"</string>
     <string name="folder_edited_online_photos" msgid="6278215510236800181">"編集済みのオンライン画像"</string>
