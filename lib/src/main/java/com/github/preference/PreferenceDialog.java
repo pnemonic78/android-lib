@@ -15,14 +15,14 @@
  */
 package com.github.preference;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.preference.PreferenceDialogFragment;
+import androidx.appcompat.app.AlertDialog;
+import androidx.preference.PreferenceDialogFragmentCompat;
 
-public abstract class PreferenceDialog extends PreferenceDialogFragment {
+public abstract class PreferenceDialog extends PreferenceDialogFragmentCompat {
 
     private static final String SAVE_STATE_NEUTRAL_TEXT = "PreferenceDialogFragment.neutralText";
 

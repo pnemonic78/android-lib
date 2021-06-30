@@ -15,10 +15,11 @@
  */
 package com.github.preference;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.github.lib.R;
 
@@ -84,7 +85,7 @@ public class RingtonePreferenceDialog extends PreferenceDialog {
         if (positiveResult && (selectedIndex >= 0)) {
             Uri uri = preference.getRingtoneUri(selectedIndex);
             if (preference.callChangeListener(uri != null ? uri.toString() : RingtonePreference.SILENT_PATH)) {
-                preference.onSaveRingtone(uri);
+                preference.setValue(uri);
             }
         }
     }

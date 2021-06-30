@@ -11,16 +11,16 @@ import java.io.File
  * @see `android.os.storage.StorageVolume`
  */
 class StorageVolumeCompat private constructor(
-        val id: String,
-        val directory: File,
-        val description: String,
-        val isPrimary: Boolean,
-        val isRemovable: Boolean,
-        val isEmulated: Boolean,
-        val allowMassStorage: Boolean,
-        val maxFileSize: Long,
-        val uuid: String?,
-        val state: String
+    val id: String,
+    val directory: File,
+    val description: String,
+    val isPrimary: Boolean,
+    val isRemovable: Boolean,
+    val isEmulated: Boolean,
+    val allowMassStorage: Boolean,
+    val maxFileSize: Long,
+    val uuid: String?,
+    val state: String
 ) {
 
     fun getDescription(context: Context): String {
@@ -45,11 +45,10 @@ class StorageVolumeCompat private constructor(
 
     companion object {
         fun of(
-                context: Context,
-                storageVolume: android.os.storage.StorageVolume
+            context: Context,
+            storageVolume: android.os.storage.StorageVolume
         ): StorageVolumeCompat {
-            //TODO if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (Build.VERSION.SDK_INT >= 30) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 return toExternalVolume30(context, storageVolume)
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -61,17 +60,15 @@ class StorageVolumeCompat private constructor(
             return toExternalVolume19(context, storageVolume)
         }
 
-        //TODO @TargetApi(Build.VERSION_CODES.R)
-        @TargetApi(30)
+        @TargetApi(Build.VERSION_CODES.R)
         private fun toExternalVolume30(
-                context: Context,
-                storageVolume: android.os.storage.StorageVolume
+            context: Context,
+            storageVolume: android.os.storage.StorageVolume
         ): StorageVolumeCompat {
             val id = getString(storageVolume, "getId")!!
-            //TODO val directory = storageVolume.directory
-            val directory = getFile(storageVolume, "getDirectory")
+            val directory = storageVolume.directory ?: getFile(storageVolume, "getDirectory")
             val description =
-                    getString(storageVolume, "getDescription", Context::class.java, context) ?: ""
+                getString(storageVolume, "getDescription", Context::class.java, context) ?: ""
             val isPrimary = storageVolume.isPrimary
             val isRemovable = storageVolume.isRemovable
             val isEmulated = storageVolume.isEmulated
@@ -80,28 +77,28 @@ class StorageVolumeCompat private constructor(
             val uuid = storageVolume.uuid
             val state = storageVolume.state
             return StorageVolumeCompat(
-                    id,
-                    directory,
-                    description,
-                    isPrimary,
-                    isRemovable,
-                    isEmulated,
-                    allowMassStorage,
-                    maxFileSize,
-                    uuid,
-                    state
+                id,
+                directory,
+                description,
+                isPrimary,
+                isRemovable,
+                isEmulated,
+                allowMassStorage,
+                maxFileSize,
+                uuid,
+                state
             )
         }
 
         @TargetApi(Build.VERSION_CODES.N)
         private fun toExternalVolume24(
-                context: Context,
-                storageVolume: android.os.storage.StorageVolume
+            context: Context,
+            storageVolume: android.os.storage.StorageVolume
         ): StorageVolumeCompat {
             val id = getString(storageVolume, "getId")!!
             val directory = getFile(storageVolume, "getPathFile")
             val description =
-                    getString(storageVolume, "getDescription", Context::class.java, context) ?: ""
+                getString(storageVolume, "getDescription", Context::class.java, context) ?: ""
             val isPrimary = storageVolume.isPrimary
             val isRemovable = storageVolume.isRemovable
             val isEmulated = storageVolume.isEmulated
@@ -110,28 +107,28 @@ class StorageVolumeCompat private constructor(
             val uuid = storageVolume.uuid
             val state = storageVolume.state
             return StorageVolumeCompat(
-                    id,
-                    directory,
-                    description,
-                    isPrimary,
-                    isRemovable,
-                    isEmulated,
-                    allowMassStorage,
-                    maxFileSize,
-                    uuid,
-                    state
+                id,
+                directory,
+                description,
+                isPrimary,
+                isRemovable,
+                isEmulated,
+                allowMassStorage,
+                maxFileSize,
+                uuid,
+                state
             )
         }
 
         @TargetApi(Build.VERSION_CODES.LOLLIPOP)
         private fun toExternalVolume21(
-                context: Context,
-                storageVolume: android.os.storage.StorageVolume
+            context: Context,
+            storageVolume: android.os.storage.StorageVolume
         ): StorageVolumeCompat {
             val id = getInt(storageVolume, "getStorageId").toString()
             val directory = getFile(storageVolume, "getPathFile")
             val description =
-                    getString(storageVolume, "getDescription", Context::class.java, context) ?: ""
+                getString(storageVolume, "getDescription", Context::class.java, context) ?: ""
             val isPrimary = getBoolean(storageVolume, "isPrimary")
             val isRemovable = getBoolean(storageVolume, "isRemovable")
             val isEmulated = getBoolean(storageVolume, "isEmulated")
@@ -140,28 +137,28 @@ class StorageVolumeCompat private constructor(
             val uuid = getString(storageVolume, "getUuid")
             val state = getString(storageVolume, "getState")!!
             return StorageVolumeCompat(
-                    id,
-                    directory,
-                    description,
-                    isPrimary,
-                    isRemovable,
-                    isEmulated,
-                    allowMassStorage,
-                    maxFileSize,
-                    uuid,
-                    state
+                id,
+                directory,
+                description,
+                isPrimary,
+                isRemovable,
+                isEmulated,
+                allowMassStorage,
+                maxFileSize,
+                uuid,
+                state
             )
         }
 
         @TargetApi(Build.VERSION_CODES.KITKAT)
         private fun toExternalVolume19(
-                context: Context,
-                storageVolume: android.os.storage.StorageVolume
+            context: Context,
+            storageVolume: android.os.storage.StorageVolume
         ): StorageVolumeCompat {
             val id = getString(storageVolume, "getStorageId")!!
             val directory = getFile(storageVolume, "getPathFile")
             val description =
-                    getString(storageVolume, "getDescription", Context::class.java, context) ?: ""
+                getString(storageVolume, "getDescription", Context::class.java, context) ?: ""
             val isPrimary = getBoolean(storageVolume, "isPrimary")
             val isRemovable = getBoolean(storageVolume, "isRemovable")
             val isEmulated = getBoolean(storageVolume, "isEmulated")
@@ -170,16 +167,16 @@ class StorageVolumeCompat private constructor(
             val uuid = null
             val state = Environment.MEDIA_UNKNOWN
             return StorageVolumeCompat(
-                    id,
-                    directory,
-                    description,
-                    isPrimary,
-                    isRemovable,
-                    isEmulated,
-                    allowMassStorage,
-                    maxFileSize,
-                    uuid,
-                    state
+                id,
+                directory,
+                description,
+                isPrimary,
+                isRemovable,
+                isEmulated,
+                allowMassStorage,
+                maxFileSize,
+                uuid,
+                state
             )
         }
 
@@ -213,7 +210,12 @@ class StorageVolumeCompat private constructor(
             return method.invoke(target) as String
         }
 
-        private fun getString(target: Any, methodName: String, clazz0: Class<*>, arg0: Any): String? {
+        private fun getString(
+            target: Any,
+            methodName: String,
+            clazz0: Class<*>,
+            arg0: Any
+        ): String? {
             val clazz = target.javaClass
             val method = clazz.getMethod(methodName, clazz0)
             return method.invoke(target, arg0) as String

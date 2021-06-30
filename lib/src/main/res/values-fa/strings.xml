@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="off">خاموش</string>
+    <string name="switch_on_text" msgid="5664542327776075105">"روشن"</string>
+    <string name="switch_off_text" msgid="1315547447393646667">"خاموش"</string>
     <string name="add">إضافة</string>
+    <string name="filter" msgid="2018011724373033887">فیلتر</string>
 
     <!-- Date -->
-    <string name="today">امروز</string>
     <string name="twelve_hour_time_format">h:mm a</string>
     <string name="twenty_four_hour_time_format">H:mm</string>
     <string name="month_day_year" formatted="false">%-e %B %Y</string>
@@ -16,14 +17,15 @@
     <string name="alarm_sound_default" msgid="6854264112790616066">"آهنگ زنگ پیش‌فرض"</string>
     <string name="ringtone_silent" msgid="7937634392408977062">"هیچ‌کدام"</string>
 
+    <!-- Vibration -->
+    <!--    <string name="keywords_vibrate_for_calls" msgid="1019870409730074899">"Ukudlidliza"</string>-->
+
     <!-- Preferences -->
     <string name="settings_label" msgid="1626402585530130914">"تنظیمات"</string>
     <string name="tts_general_section_title" msgid="4402572014604490502">"کلی"</string>
     <string name="pref_appearance_title">ظاهر</string>
-    <string name="pref_about_title">در باره</string>
-
     <!-- Theme. -->
-    <string name="night_mode_title" msgid="6928425617491943384">"طرح‌زمینه"</string>
+    <string name="settings_screen_theme" msgid="2137262503543943871">"طرح‌زمینه"</string>
     <string name="night_mode_no" msgid="7682792841791457238">"روشن"</string>
     <string name="night_mode_yes" msgid="4847655033618591567">"تیره"</string>
     <string name="theme_default">تم پیش فرض</string>
