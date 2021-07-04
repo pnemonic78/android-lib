@@ -87,7 +87,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
         Preference preference = findPreference(key);
         if (preference instanceof RingtonePreference) {
             RingtonePreference ring = (RingtonePreference) preference;
-            ring.setSummaryProvider(RingtonePreferenceSummaryProvider.Companion.getInstance());
+            ring.setSummaryProvider(RingtonePreferenceSummaryProvider.getInstance());
             return ring;
         }
         return null;

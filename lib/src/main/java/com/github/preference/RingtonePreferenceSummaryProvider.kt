@@ -19,6 +19,7 @@ class RingtonePreferenceSummaryProvider private constructor() :
          * @return a singleton instance of this simple
          * [androidx.preference.Preference.SummaryProvider] implementation
          */
+        @JvmStatic
         fun getInstance(): RingtonePreferenceSummaryProvider {
             if (summaryProvider == null) {
                 summaryProvider = RingtonePreferenceSummaryProvider()
