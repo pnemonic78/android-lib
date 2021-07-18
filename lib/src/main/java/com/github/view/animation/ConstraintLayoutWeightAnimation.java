@@ -18,16 +18,17 @@ package com.github.view.animation;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
-import android.widget.LinearLayout;
 
-public class LayoutWeightAnimation extends Animation {
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+public class ConstraintLayoutWeightAnimation extends Animation {
 
     private final View view;
     private final float fromWeight;
     private final float toWeight;
     private final boolean increase;
 
-    public LayoutWeightAnimation(View view, float fromWeight, float toWeight) {
+    public ConstraintLayoutWeightAnimation(View view, float fromWeight, float toWeight) {
         this.view = view;
         this.fromWeight = fromWeight;
         this.toWeight = toWeight;
@@ -46,11 +47,11 @@ public class LayoutWeightAnimation extends Animation {
 
     @Override
     protected void applyTransformation(float interpolatedTime, Transformation t) {
-        LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) view.getLayoutParams();
+        ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) view.getLayoutParams();
         if (increase)
-            lp.weight = (toWeight - fromWeight) * interpolatedTime;
+            lp.horizontalWeight = (toWeight - fromWeight) * interpolatedTime;
         else
-            lp.weight = (fromWeight - toWeight) * (1f - interpolatedTime);
+            lp.horizontalWeight = (fromWeight - toWeight) * (1f - interpolatedTime);
         view.setLayoutParams(lp);
     }
 }
