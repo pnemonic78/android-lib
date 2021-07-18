@@ -17,7 +17,7 @@ package com.github.util;
 
 import android.util.Log;
 
-import org.jetbrains.annotations.Nullable;
+import androidx.annotation.Nullable;
 
 import timber.log.Timber;
 
