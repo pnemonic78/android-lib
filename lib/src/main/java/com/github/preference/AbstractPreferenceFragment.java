@@ -54,11 +54,15 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        loadPreferences();
+        addChangeListeners(getPreferenceScreen());
+    }
+
+    protected void loadPreferences() {
         final Context context = requireContext();
         int xmlId = getPreferencesXml();
         PreferenceManager.setDefaultValues(context, xmlId, false);
         addPreferencesFromResource(xmlId);
-        addChangeListeners(getPreferenceScreen());
     }
 
     @XmlRes
