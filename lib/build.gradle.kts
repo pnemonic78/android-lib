@@ -3,18 +3,12 @@ plugins {
     id("kotlin-android")
 }
 
-val versionMajor = (project.properties["LIB_VERSION_MAJOR"] as String).toInt()
-val versionMinor = (project.properties["LIB_VERSION_MINOR"] as String).toInt()
-
 android {
-    compileSdkVersion(BuildVersions.compileSdkVersion)
+    compileSdk = BuildVersions.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion(BuildVersions.minSdkVersion)
-        targetSdkVersion(BuildVersions.targetSdkVersion)
-        versionCode = versionMajor * 100 + versionMinor
-        versionName = "${versionMajor}." + versionMinor.toString().padStart(2, '0')
-        testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
+        minSdk = BuildVersions.minSdkVersion
+        targetSdk = BuildVersions.targetSdkVersion
     }
 
     buildTypes {
@@ -60,13 +54,13 @@ dependencies {
 
     // Support
     api("androidx.annotation:annotation:1.2.0")
-    api("androidx.core:core-ktx:1.3.2")
+    api("androidx.core:core-ktx:1.6.0")
 
     // Events
     api("androidx.localbroadcastmanager:localbroadcastmanager:1.0.0")
 
     // Views
-    api("androidx.recyclerview:recyclerview:1.2.0")
+    api("androidx.recyclerview:recyclerview:1.2.1")
     api("androidx.constraintlayout:constraintlayout:2.0.4")
     api("androidx.preference:preference-ktx:1.1.1")
 
@@ -81,5 +75,5 @@ dependencies {
     androidTestImplementation("androidx.test:core:${BuildVersions.androidTestVersion}")
     androidTestImplementation("androidx.test:rules:${BuildVersions.androidTestVersion}")
     androidTestImplementation("androidx.test:runner:${BuildVersions.androidTestVersion}")
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
 }
