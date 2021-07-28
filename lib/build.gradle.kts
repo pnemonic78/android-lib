@@ -29,7 +29,7 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    lintOptions {
+    lint {
         disable("LocaleFolder")
         disable("RtlHardcoded")
         disable("UnusedResources")
