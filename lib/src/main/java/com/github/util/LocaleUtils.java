@@ -214,14 +214,9 @@ public class LocaleUtils {
             res = Resources.getSystem();
         }
         final Configuration config = res.getConfiguration();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            config.setLocale(locale);
-            res.updateConfiguration(config, res.getDisplayMetrics());
-            return context.createConfigurationContext(config);
-        }
-        config.locale = locale;
+        config.setLocale(locale);
         res.updateConfiguration(config, res.getDisplayMetrics());
-        return context;
+        return context.createConfigurationContext(config);
     }
 
     /**
