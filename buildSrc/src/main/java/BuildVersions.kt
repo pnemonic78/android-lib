@@ -1,7 +1,7 @@
 object BuildVersions {
-    const val kotlin_version = "1.4.32"
+    const val kotlin_version = "1.5.0"
 
-    const val minSdkVersion = 16
+    const val minSdkVersion = 17
     const val compileSdkVersion = 30
     const val targetSdkVersion = 29
 
