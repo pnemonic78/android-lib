@@ -186,16 +186,13 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
         PackageManager pm = context.getPackageManager();
         ResolveInfo info = pm.resolveActivity(intent, MATCH_DEFAULT_ONLY);
         if (info != null) {
-            preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    try {
-                        context.startActivity(intent);
-                    } catch (Exception e) {
-                        Timber.e(e, "Error launching intent: %s", intent);
-                    }
-                    return true;
+            preference.setOnPreferenceClickListener(pref -> {
+                try {
+                    context.startActivity(intent);
+                } catch (Exception e) {
+                    Timber.e(e, "Error launching intent: %s", intent);
                 }
+                return true;
             });
         } else {
             preference.setIntent(null);
