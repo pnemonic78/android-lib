@@ -54,18 +54,18 @@ dependencies {
 
     // Support
     api("androidx.annotation:annotation:1.3.0")
-    api("androidx.core:core-ktx:1.7.0")
+    api("androidx.core:core-ktx:1.8.0")
 
     // Events
-    api("androidx.localbroadcastmanager:localbroadcastmanager:1.0.0")
+    api("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // Views
     api("androidx.recyclerview:recyclerview:1.2.1")
-    api("androidx.constraintlayout:constraintlayout:2.1.2")
-    api("androidx.preference:preference-ktx:1.1.1")
+    api("androidx.constraintlayout:constraintlayout:2.1.4")
+    api("androidx.preference:preference-ktx:1.2.0")
 
     // JSON
-    api("com.google.code.gson:gson:2.8.7")
+    api("com.google.code.gson:gson:2.8.9")
 
     // Logging
     api("com.jakewharton.timber:timber:${BuildVersions.timberVersion}")
