@@ -29,11 +29,11 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    lint {
-        disable("LocaleFolder")
-        disable("RtlHardcoded")
-        disable("UnusedResources")
-    }
+//    lint {
+//        disable("LocaleFolder")
+//        disable("RtlHardcoded")
+//        disable("UnusedResources")
+//    }
 
     sourceSets {
         getByName("main") {
@@ -52,9 +52,11 @@ dependencies {
     api("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${BuildVersions.kotlin_version}")
     api("org.jetbrains.kotlin:kotlin-stdlib-common:${BuildVersions.kotlin_version}")
 
-    // Support
+    // Jetpack
+    api("androidx.activity:activity-ktx:1.4.0")
     api("androidx.annotation:annotation:1.3.0")
     api("androidx.core:core-ktx:1.8.0")
+    api("androidx.fragment:fragment-ktx:1.4.1")
 
     // Events
     api("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
