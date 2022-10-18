@@ -49,8 +49,7 @@ public class TodayDatePickerDialog extends DatePickerDialog {
     public void onClick(DialogInterface dialog, int which) {
         if (which == BUTTON_NEUTRAL) {
             setToday();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                onClick(dialog, BUTTON_POSITIVE);
+            onClick(dialog, BUTTON_POSITIVE);
         }
         super.onClick(dialog, which);
     }

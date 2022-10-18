@@ -56,16 +56,16 @@ public class RingtoneManager extends android.media.RingtoneManager {
     private static final String FILE_PATH = ContentResolver.SCHEME_FILE + ":/";
 
     private static final String[] INTERNAL_COLUMNS = new String[]{
-            MediaStore.Audio.Media._ID,
-            MediaStore.Audio.Media.TITLE,
-            MediaStore.Audio.Media.TITLE,
-            MediaStore.Audio.Media.TITLE_KEY
+        MediaStore.Audio.Media._ID,
+        MediaStore.Audio.Media.TITLE,
+        MediaStore.Audio.Media.TITLE,
+        MediaStore.Audio.Media.TITLE_KEY
     };
 
     private static final String[] SETTINGS_COLUMNS = new String[]{
-            Settings.NameValueTable._ID,
-            Settings.NameValueTable.NAME,
-            Settings.NameValueTable.VALUE
+        Settings.NameValueTable._ID,
+        Settings.NameValueTable.NAME,
+        Settings.NameValueTable.VALUE
     };
 
     /**
@@ -95,8 +95,7 @@ public class RingtoneManager extends android.media.RingtoneManager {
     public RingtoneManager(Context context) {
         super(context);
         this.context = context;
-        setIncludeExternal((Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
-                || (context.checkCallingOrSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED));
+        setIncludeExternal(context.checkCallingOrSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
     }
 
     @Override
@@ -153,9 +152,9 @@ public class RingtoneManager extends android.media.RingtoneManager {
 
     private Cursor getInternalRingtones() {
         final Cursor res = query(
-                MediaStore.Audio.Media.INTERNAL_CONTENT_URI, INTERNAL_COLUMNS,
-                constructBooleanTrueWhereClause(filterColumns),
-                null, MediaStore.Audio.Media.DEFAULT_SORT_ORDER);
+            MediaStore.Audio.Media.INTERNAL_CONTENT_URI, INTERNAL_COLUMNS,
+            constructBooleanTrueWhereClause(filterColumns),
+            null, MediaStore.Audio.Media.DEFAULT_SORT_ORDER);
         return new ExternalRingtonesCursorWrapper(res, MediaStore.Audio.Media.INTERNAL_CONTENT_URI);
     }
 
@@ -214,8 +213,7 @@ public class RingtoneManager extends android.media.RingtoneManager {
                          String selection,
                          String[] selectionArgs,
                          String sortOrder) {
-        return context.getContentResolver().query(uri, projection, selection, selectionArgs,
-                sortOrder);
+        return context.getContentResolver().query(uri, projection, selection, selectionArgs, sortOrder);
     }
 
     public String filterInternal(String uriString) {

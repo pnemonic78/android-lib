@@ -1,9 +1,9 @@
 object BuildVersions {
     const val kotlin_version = "1.6.21"
 
-    const val minSdkVersion = 17
-    const val compileSdkVersion = 31
-    const val targetSdkVersion = 31
+    const val minSdkVersion = 21
+    const val compileSdkVersion = 33
+    const val targetSdkVersion = 33
 
     // App dependencies
     const val androidTestVersion = "1.3.0"

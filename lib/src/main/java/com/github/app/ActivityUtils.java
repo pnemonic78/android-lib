@@ -83,11 +83,8 @@ public class ActivityUtils {
      * @param activity the activity.
      */
     public static void restartActivity(Activity activity) {
-        Bundle savedState = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            savedState = new Bundle();
-            activity.onSaveInstanceState(savedState, null);
-        }
+        Bundle savedState = new Bundle();
+        activity.onSaveInstanceState(savedState, null);
         restartActivity(activity, savedState);
     }
 

@@ -295,18 +295,7 @@ public class LocaleUtils {
     @NonNull
     public static Locale parseLocale(@Nullable String localeValue) {
         if (!isEmpty(localeValue)) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                return Locale.forLanguageTag(localeValue);
-            }
-            String[] tokens = localeValue.split("_");
-            switch (tokens.length) {
-                case 1:
-                    return new Locale(tokens[0]);
-                case 2:
-                    return new Locale(tokens[0], tokens[1]);
-                default:
-                    return new Locale(tokens[0], tokens[1], tokens[2]);
-            }
+            return Locale.forLanguageTag(localeValue);
         }
         return new Locale("");
     }
@@ -315,8 +304,8 @@ public class LocaleUtils {
         Map<String, Locale> locales = new HashMap<>();
         final int length = values.length;
         Locale locale;
-        for (int i = 0; i < length; i++) {
-            locale = parseLocale(values[i]);
+        for (String value : values) {
+            locale = parseLocale(value);
             locales.put(locale.toString(), locale);
         }
         return locales.values().toArray(new Locale[0]);

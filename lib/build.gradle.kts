@@ -12,7 +12,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFile(getDefaultProguardFile("proguard-android.txt"))
             proguardFile("proguard-rules.pro")
@@ -28,12 +28,6 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-
-//    lint {
-//        disable("LocaleFolder")
-//        disable("RtlHardcoded")
-//        disable("UnusedResources")
-//    }
 
     sourceSets {
         getByName("main") {
@@ -53,10 +47,10 @@ dependencies {
     api("org.jetbrains.kotlin:kotlin-stdlib-common:${BuildVersions.kotlin_version}")
 
     // Jetpack
-    api("androidx.activity:activity-ktx:1.4.0")
-    api("androidx.annotation:annotation:1.3.0")
-    api("androidx.core:core-ktx:1.8.0")
-    api("androidx.fragment:fragment-ktx:1.4.1")
+    api("androidx.activity:activity-ktx:1.6.0")
+    api("androidx.annotation:annotation:1.5.0")
+    api("androidx.core:core-ktx:1.9.0")
+    api("androidx.fragment:fragment-ktx:1.5.3")
 
     // Events
     api("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
@@ -67,7 +61,7 @@ dependencies {
     api("androidx.preference:preference-ktx:1.2.0")
 
     // JSON
-    api("com.google.code.gson:gson:2.8.9")
+    api("com.google.code.gson:gson:2.9.0")
 
     // Logging
     api("com.jakewharton.timber:timber:${BuildVersions.timberVersion}")
