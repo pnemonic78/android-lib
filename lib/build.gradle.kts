@@ -43,7 +43,7 @@ android {
 
 dependencies {
     // Kotlin
-    api("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${BuildVersions.kotlin_version}")
+    api("org.jetbrains.kotlin:kotlin-stdlib:${BuildVersions.kotlin_version}")
     api("org.jetbrains.kotlin:kotlin-stdlib-common:${BuildVersions.kotlin_version}")
 
     // Jetpack
