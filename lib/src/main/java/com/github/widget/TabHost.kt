@@ -13,25 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.widget;
+package com.github.widget
 
-import android.content.Context;
-import android.util.AttributeSet;
+import android.content.Context
+import android.util.AttributeSet
 
-public class TabHost extends android.widget.TabHost {
+class TabHost : android.widget.TabHost {
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
 
-    public TabHost(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
+    constructor(context: Context?) : super(context)
 
-    public TabHost(Context context) {
-        super(context);
-    }
-
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
         // Workaround for Issue 2516: TabHost/TabWidget steals focus from EditText
-        this.getViewTreeObserver().removeOnTouchModeChangeListener(this);
+        this.viewTreeObserver.removeOnTouchModeChangeListener(this)
     }
 }

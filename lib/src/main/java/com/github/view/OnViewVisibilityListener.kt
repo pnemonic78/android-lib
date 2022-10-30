@@ -13,25 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.view;
+package com.github.view
 
-import android.view.View;
+import android.view.View
 
 /**
  * Listener for receiving events when views are shown or hidden.
  *
  * @author Moshe Waisberg
  */
-public interface OnViewVisibilityListener {
+interface OnViewVisibilityListener {
     /**
      * Called when the visibility of the view or an ancestor of the view has
      * changed.
      *
-     * @param changedView The view whose visibility changed. May be
-     *                    {@code this} or an ancestor view.
-     * @param visibility  The new visibility, one of {@link View#VISIBLE},
-     *                    {@link View#INVISIBLE} or {@link View#GONE}.
-     * @see View#onVisibilityChanged(View, int)
+     * @param changedView The view whose visibility changed. May be `this` or an ancestor view.
+     * @param visibility The new visibility, one of [View.VISIBLE], [View.INVISIBLE] or [View.GONE].
+     * @see View.onVisibilityChanged
      */
-    void onVisibilityChanged(View changedView, int visibility);
+    fun onVisibilityChanged(changedView: View?, visibility: Int)
 }
