@@ -15,12 +15,12 @@
  */
 package com.github.io
 
-import com.github.nio.charset.StandardCharsets
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Test
 import java.io.ByteArrayInputStream
 import java.io.InputStream
+import java.nio.charset.StandardCharsets
 import java.util.Arrays
 
 /**
