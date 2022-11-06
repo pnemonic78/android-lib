@@ -40,7 +40,7 @@ public class SimpleThemeCallbacks<TP extends ThemePreferences> implements ThemeC
     }
 
     @Override
-    public void onCreate() {
+    public void onPreCreate() {
         context.setTheme(getThemePreferences().getTheme());
     }
 

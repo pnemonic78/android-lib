@@ -25,7 +25,7 @@ import com.github.preference.ThemePreferences;
 public interface ThemeCallbacks<P extends ThemePreferences> {
 
     /** Apply the theme here. */
-    void onCreate();
+    void onPreCreate();
 
     /**
      * Get the theme preferences.

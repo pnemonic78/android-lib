@@ -15,7 +15,6 @@
  */
 package com.github.app;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,13 +33,13 @@ public abstract class ThemedActivity<P extends ThemePreferences> extends AppComp
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        onPreCreate();
         super.onCreate(savedInstanceState);
-        onCreate();
     }
 
     @Override
-    public void onCreate() {
-        themeCallbacks.onCreate();
+    public void onPreCreate() {
+        themeCallbacks.onPreCreate();
     }
 
     @Override

@@ -42,9 +42,9 @@ public abstract class ThemedApplication<P extends ThemePreferences> extends Appl
     }
 
     @Override
-    public void onCreate() {
+    public void onPreCreate() {
         super.onCreate();
-        getThemeCallbacks().onCreate();
+        getThemeCallbacks().onPreCreate();
     }
 
     @Override
