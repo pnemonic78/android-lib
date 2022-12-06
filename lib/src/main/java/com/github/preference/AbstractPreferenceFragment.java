@@ -15,10 +15,10 @@
  */
 package com.github.preference;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -40,8 +40,6 @@ import com.github.lib.R;
 import java.util.Calendar;
 
 import timber.log.Timber;
-
-import static android.content.pm.PackageManager.MATCH_DEFAULT_ONLY;
 
 /**
  * This fragment shows the preferences for a header.
@@ -184,8 +182,8 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragmentCompa
         }
         final Context context = preference.getContext();
         PackageManager pm = context.getPackageManager();
-        ResolveInfo info = pm.resolveActivity(intent, MATCH_DEFAULT_ONLY);
-        if (info != null) {
+        ComponentName name = intent.resolveActivity(pm);
+        if (name != null) {
             preference.setOnPreferenceClickListener(pref -> {
                 try {
                     context.startActivity(intent);
