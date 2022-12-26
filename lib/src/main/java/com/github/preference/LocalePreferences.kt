@@ -13,38 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.app;
+package com.github.preference
 
-import android.content.Context;
-
-import com.github.preference.LocalePreferences;
+import java.util.Locale
 
 /**
- * Contexts that overrides the system locale.
+ * Locale preferences.
  *
  * @author Moshe Waisberg
  */
-public interface LocaleCallbacks<P extends LocalePreferences> {
-
+interface LocalePreferences {
     /**
-     * Apply the locale here.
+     * Get the locale. If no locale was specified, then the default locale.
      *
-     * @param context the context with locale.
-     * @return the context with the new locale.
+     * @return the locale.
      */
-    Context attachBaseContext(Context context);
+    val locale: Locale
 
-    /**
-     * Re-apply the texts here.
-     *
-     * @param context the context.
-     */
-    void onCreate(Context context);
-
-    /**
-     * Get the locale preferences.
-     *
-     * @return the preferences.
-     */
-    P getLocalePreferences();
+    companion object {
+        /** Preference name for the locale. */
+        const val KEY_LOCALE = "locale"
+    }
 }

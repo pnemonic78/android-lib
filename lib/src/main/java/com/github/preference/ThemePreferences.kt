@@ -13,27 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.preference;
+package com.github.preference
 
-import androidx.annotation.StyleRes;
+import androidx.annotation.StyleRes
 
 /**
  * Theme preferences.
  *
  * @author Moshe Waisberg
  */
-public interface ThemePreferences {
-
-    /** Preference name for the theme. */
-    String KEY_THEME = "theme";
-
-    class Values {
+interface ThemePreferences {
+    object Values {
         /** Default theme. */
-        public static String THEME_DEFAULT;
+        @JvmField
+        var THEME_DEFAULT: String? = null
+
         /** Dark theme. */
-        public static String THEME_DARK;
+        @JvmField
+        var THEME_DARK: String? = null
+
         /** Light theme. */
-        public static String THEME_LIGHT;
+        @JvmField
+        var THEME_LIGHT: String? = null
     }
 
     /**
@@ -41,38 +42,43 @@ public interface ThemePreferences {
      *
      * @return the theme value.
      */
-    String getThemeValue();
+    val themeValue: String?
 
     /**
      * Get the theme.
      *
      * @param value the theme value.
      * @return the theme resource id.
-     * @see #getThemeValue()
+     * @see .getThemeValue
      */
     @StyleRes
-    int getTheme(String value);
+    fun getTheme(value: String?): Int
 
     /**
      * Get the theme.
      *
      * @return the theme resource id.
      */
-    @StyleRes
-    int getTheme();
+    @get:StyleRes
+    val theme: Int
 
     /**
      * Is the theme dark?
      *
      * @param value the theme value.
-     * @return {@code true} if the theme has dark backgrounds and light texts.
+     * @return `true` if the theme has dark backgrounds and light texts.
      */
-    boolean isDarkTheme(String value);
+    fun isDarkTheme(value: String?): Boolean
 
     /**
      * Is the theme dark?
      *
-     * @return {@code true} if the theme has dark backgrounds and light texts.
+     * @return `true` if the theme has dark backgrounds and light texts.
      */
-    boolean isDarkTheme();
+    val isDarkTheme: Boolean
+
+    companion object {
+        /** Preference name for the theme. */
+        const val KEY_THEME = "theme"
+    }
 }

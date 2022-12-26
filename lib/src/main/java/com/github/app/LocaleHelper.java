@@ -24,6 +24,8 @@ import com.github.preference.SimpleLocalePreferences;
 import static com.github.app.ActivityUtils.resetTitle;
 import static com.github.util.LocaleUtils.applyLocale;
 
+import androidx.annotation.NonNull;
+
 /**
  * Wraps a callback delegate.
  *
@@ -42,13 +44,14 @@ public class LocaleHelper<P extends LocalePreferences> implements LocaleCallback
         return preferences;
     }
 
+    @NonNull
     @Override
-    public Context attachBaseContext(Context context) {
+    public Context attachBaseContext(@NonNull Context context) {
         return applyLocale(context, preferences.getLocale());
     }
 
     @Override
-    public void onCreate(Context context) {
+    public void onCreate(@NonNull Context context) {
         if (context instanceof Activity) {
             onCreate((Activity) context);
         }

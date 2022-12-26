@@ -13,24 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.app;
+package com.github.app
 
-import com.github.preference.ThemePreferences;
+import android.content.Context
+import com.github.preference.LocalePreferences
 
 /**
- * Contexts that takes its theme from the application.
+ * Contexts that overrides the system locale.
  *
  * @author Moshe Waisberg
  */
-public interface ThemeCallbacks<P extends ThemePreferences> {
-
-    /** Apply the theme here. */
-    void onPreCreate();
+interface LocaleCallbacks<P : LocalePreferences?> {
+    /**
+     * Apply the locale here.
+     *
+     * @param context the context with locale.
+     * @return the context with the new locale.
+     */
+    fun attachBaseContext(context: Context): Context
 
     /**
-     * Get the theme preferences.
+     * Re-apply the texts here.
+     *
+     * @param context the context.
+     */
+    fun onCreate(context: Context)
+
+    /**
+     * Get the locale preferences.
      *
      * @return the preferences.
      */
-    P getThemePreferences();
+    val localePreferences: P
 }

@@ -13,28 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.preference;
+package com.github.app
 
-import java.util.Locale;
-
-import androidx.annotation.NonNull;
+import com.github.preference.ThemePreferences
 
 /**
- * Locale preferences.
+ * Contexts that takes its theme from the application.
  *
  * @author Moshe Waisberg
  */
-public interface LocalePreferences {
-
-    /** Preference name for the locale. */
-    String KEY_LOCALE = "locale";
+interface ThemeCallbacks<P : ThemePreferences?> {
+    /** Apply the theme here. */
+    fun onPreCreate()
 
     /**
-     * Get the locale. If no locale was specified, then the default locale.
+     * Get the theme preferences.
      *
-     * @return the locale.
+     * @return the preferences.
      */
-    @NonNull
-    Locale getLocale();
-
+    val themePreferences: P
 }

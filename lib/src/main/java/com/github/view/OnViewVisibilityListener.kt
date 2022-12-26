@@ -31,5 +31,5 @@ interface OnViewVisibilityListener {
      * @param visibility The new visibility, one of [View.VISIBLE], [View.INVISIBLE] or [View.GONE].
      * @see View.onVisibilityChanged
      */
-    fun onVisibilityChanged(changedView: View?, visibility: Int)
+    fun onVisibilityChanged(changedView: View, visibility: Int)
 }

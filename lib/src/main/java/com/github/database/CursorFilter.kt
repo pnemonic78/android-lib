@@ -13,25 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.database;
+package com.github.database
 
-import android.database.Cursor;
+import android.database.Cursor
 
 /**
- * An interface for filtering {@link Cursor} objects based on their columns or
+ * An interface for filtering [Cursor] objects based on their columns or
  * other information.
  *
  * @author Moshe Waisberg
  */
-public interface CursorFilter {
-
+interface CursorFilter {
     /**
      * Indicating whether a specific database cursor should be included in a
      * query list.
      *
      * @param cursor the cursor to check.
-     * @return {@code true} if the current cursor should be included,
-     * {@code false} otherwise.
+     * @return `true` if the current cursor should be included,
+     * `false` otherwise.
      */
-    boolean accept(Cursor cursor);
+    fun accept(cursor: Cursor): Boolean
 }

@@ -75,14 +75,14 @@ class TypefaceSpan : android.text.style.TypefaceSpan {
     private fun apply(paint: Paint, tf: Typeface?) {
         val oldStyle = paint.typeface?.style ?: Typeface.NORMAL
 
-        val tf = Typeface.create(tf, oldStyle)
-        val fake = oldStyle and tf.style.inv()
+        val typeface = Typeface.create(tf, oldStyle)
+        val fake = oldStyle and typeface.style.inv()
         if (fake and Typeface.BOLD != 0) {
             paint.isFakeBoldText = true
         }
         if (fake and Typeface.ITALIC != 0) {
             paint.textSkewX = -0.25f
         }
-        paint.typeface = tf
+        paint.typeface = typeface
     }
 }
