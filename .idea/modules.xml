@@ -4,7 +4,12 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Android_Library.iml" filepath="$PROJECT_DIR$/.idea/modules/Android_Library.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Android_Library.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/Android_Library.buildSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Android_Library.buildSrc.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Android_Library.buildSrc.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Android_Library.buildSrc.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Android_Library.buildSrc.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/Android_Library.lib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/Android_Library.lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/Android_Library.lib.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/Android_Library.lib.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/Android_Library.lib.main.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/Android_Library.lib.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/Android_Library.lib.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/Android_Library.lib.unitTest.iml" />
     </modules>
   </component>
 </project>
