@@ -25,6 +25,8 @@ import java.net.URLConnection;
 
 import static android.text.TextUtils.isEmpty;
 
+import androidx.annotation.Nullable;
+
 /**
  * HTTP reader.
  *
@@ -78,6 +80,7 @@ public class HTTPReader {
      * @return the data - {@code null} otherwise.
      * @throws IOException if an I/O error occurs.
      */
+    @Nullable
     public static InputStream read(URL url, String contentTypeExpected) throws IOException {
         return read(url, new String[]{contentTypeExpected});
     }
@@ -90,6 +93,7 @@ public class HTTPReader {
      * @return the data - {@code null} otherwise.
      * @throws IOException if an I/O error occurs.
      */
+    @Nullable
     public static InputStream read(URL url, String[] contentTypesExpected) throws IOException {
         URLConnection conn = url.openConnection();
         if (conn == null) {

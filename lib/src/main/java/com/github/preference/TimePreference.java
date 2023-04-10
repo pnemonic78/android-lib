@@ -159,6 +159,7 @@ public class TimePreference extends DialogPreference {
      * @param timeString the time in ISO 8601 format.
      * @return the time - {@code null} otherwise.
      */
+    @Nullable
     public static Calendar parseTime(String timeString) {
         if (!isEmpty(timeString)) {
             try {
