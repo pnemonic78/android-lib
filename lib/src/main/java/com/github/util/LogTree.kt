@@ -1,5 +1,5 @@
 /*
- * Copyright 2018, Moshe Waisberg
+ * Copyright 2012, Moshe Waisberg
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,21 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.io
+package com.github.util
 
-import java.io.ByteArrayOutputStream
+import android.util.Log
+import timber.log.Timber
 
 /**
- * Byte array output stream with raw access to the byte buffer.
+ * Logger tree for Timber.
  *
- * @author moshe on 2018/04/24.
+ * @author Moshe Waisberg
  */
-class RawByteArrayOutputStream : ByteArrayOutputStream {
-
-    constructor() : super()
-
-    constructor(size: Int) : super(size)
-
-    val byteArray: ByteArray
-        get() = buf
+open class LogTree(private val debug: Boolean) : Timber.DebugTree() {
+    override fun isLoggable(tag: String?, priority: Int): Boolean {
+        return (debug || (priority >= Log.INFO)) && super.isLoggable(tag, priority)
+    }
 }

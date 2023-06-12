@@ -1,5 +1,5 @@
 /*
- * Copyright 2018, Moshe Waisberg
+ * Copyright 2012, Moshe Waisberg
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,21 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.io
+package com.github.util
 
-import java.io.ByteArrayOutputStream
+import java.util.Locale
 
 /**
- * Byte array output stream with raw access to the byte buffer.
+ * Locale name comparator.
  *
- * @author moshe on 2018/04/24.
+ * @author Moshe Waisberg
  */
-class RawByteArrayOutputStream : ByteArrayOutputStream {
-
-    constructor() : super()
-
-    constructor(size: Int) : super(size)
-
-    val byteArray: ByteArray
-        get() = buf
+class LocaleNameComparator @JvmOverloads constructor(private val locale: Locale? = null) :
+    Comparator<Locale> {
+    override fun compare(lhs: Locale, rhs: Locale): Int {
+        val name1 = lhs.getDisplayName(locale ?: lhs)
+        val name2 = rhs.getDisplayName(locale ?: rhs)
+        return name1.compareTo(name2)
+    }
 }

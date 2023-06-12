@@ -1,5 +1,5 @@
 /*
- * Copyright 2018, Moshe Waisberg
+ * Copyright 2012, Moshe Waisberg
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,21 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.io
+package com.github.content
 
-import java.io.ByteArrayOutputStream
+import android.content.Context
+import android.content.ContextWrapper
+import android.content.res.Resources
 
 /**
- * Byte array output stream with raw access to the byte buffer.
- *
- * @author moshe on 2018/04/24.
+ * Context wrapper that also wraps resources.
  */
-class RawByteArrayOutputStream : ByteArrayOutputStream {
+class ContextResourcesWrapper(base: Context, private val resources: Resources) :
+    ContextWrapper(base) {
 
-    constructor() : super()
-
-    constructor(size: Int) : super(size)
-
-    val byteArray: ByteArray
-        get() = buf
+    override fun getResources(): Resources {
+        return resources
+    }
 }
