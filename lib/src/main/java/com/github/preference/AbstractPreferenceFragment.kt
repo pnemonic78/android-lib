@@ -91,7 +91,7 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
         return null
     }
 
-    override fun onPreferenceChange(preference: Preference, newValue: Any): Boolean {
+    override fun onPreferenceChange(preference: Preference, newValue: Any?): Boolean {
         notifyPreferenceChanged()
         if (preference is SwitchPreference) {
             return onCheckBoxPreferenceChange(preference, newValue)
@@ -257,6 +257,6 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
     }
 
     companion object {
-        protected const val DIALOG_FRAGMENT_TAG = "com.github.preference.DIALOG"
+        const val DIALOG_FRAGMENT_TAG = "com.github.preference.DIALOG"
     }
 }
