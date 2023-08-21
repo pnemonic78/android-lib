@@ -1,5 +1,5 @@
 object BuildVersions {
-    const val kotlin_version = "1.7.20"
+    const val kotlin_version = "1.8.20"
 
     const val minSdkVersion = 21
     const val compileSdkVersion = 33
