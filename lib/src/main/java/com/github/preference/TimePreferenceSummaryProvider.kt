@@ -8,9 +8,11 @@ import com.github.lib.R
 class TimePreferenceSummaryProvider(private val context: Context) :
     Preference.SummaryProvider<TimePreference> {
 
+    constructor(preference: Preference) : this(preference.context)
+
     private val formatPretty = DateFormat.getTimeFormat(context)
 
-    override fun provideSummary(preference: TimePreference): CharSequence {
+    override fun provideSummary(preference: TimePreference): CharSequence? {
         val time = preference.time ?: return context.getString(R.string.off)
         return formatPretty.format(time.time)
     }

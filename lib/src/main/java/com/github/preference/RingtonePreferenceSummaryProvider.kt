@@ -5,7 +5,7 @@ import androidx.preference.Preference
 class RingtonePreferenceSummaryProvider private constructor() :
     Preference.SummaryProvider<RingtonePreference> {
 
-    override fun provideSummary(preference: RingtonePreference): CharSequence {
+    override fun provideSummary(preference: RingtonePreference): CharSequence? {
         return preference.getRingtoneTitle(preference.value)
     }
 
@@ -21,10 +21,12 @@ class RingtonePreferenceSummaryProvider private constructor() :
          */
         @JvmStatic
         fun getInstance(): RingtonePreferenceSummaryProvider {
-            if (summaryProvider == null) {
-                summaryProvider = RingtonePreferenceSummaryProvider()
+            var provider = summaryProvider
+            if (provider == null) {
+                provider = RingtonePreferenceSummaryProvider()
+                summaryProvider = provider
             }
-            return summaryProvider!!
+            return provider
         }
     }
 }

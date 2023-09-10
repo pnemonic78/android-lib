@@ -17,8 +17,10 @@ package com.github.text.style
 
 import android.graphics.Paint
 import android.graphics.Typeface
+import android.os.Build
 import android.os.Parcel
 import android.text.TextPaint
+import androidx.annotation.RequiresApi
 
 /**
  * Changes the typeface family of the text to which the span is attached.
@@ -44,7 +46,17 @@ class TypefaceSpan : android.text.style.TypefaceSpan {
      *
      * @param tf the typeface.
      */
-    constructor(tf: Typeface) : super("sans-serif") {
+    constructor(tf: Typeface) : super( "sans-serif") {
+        typeface = tf
+    }
+
+    /**
+     * Create a new span.
+     *
+     * @param tf the typeface.
+     */
+    @RequiresApi(Build.VERSION_CODES.P)
+    constructor(tf: Typeface, p: Boolean) : super(tf) {
         typeface = tf
     }
 
@@ -61,7 +73,7 @@ class TypefaceSpan : android.text.style.TypefaceSpan {
      * @return the typeface.
      */
     override fun getTypeface(): Typeface? {
-        return typeface
+        return typeface ?: super.getTypeface()
     }
 
     override fun updateDrawState(ds: TextPaint) {
