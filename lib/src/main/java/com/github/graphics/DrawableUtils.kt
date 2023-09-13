@@ -16,6 +16,7 @@
 package com.github.graphics
 
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.annotation.TargetApi
 import android.app.WallpaperManager
 import android.content.Context
 import android.graphics.Bitmap
@@ -24,6 +25,7 @@ import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import android.os.Build
 import androidx.annotation.RequiresPermission
 import com.github.graphics.BitmapUtils.getPixel
 import timber.log.Timber
@@ -35,7 +37,7 @@ import timber.log.Timber
  */
 object DrawableUtils {
     /**
-     * Get the dominant color of the wallpaper image.
+     * Get the dominant color of the wallpaper.
      * Requires [android.Manifest.permission.READ_EXTERNAL_STORAGE] permission since
      * [android.os.Build.VERSION_CODES.M].
      *
@@ -45,6 +47,22 @@ object DrawableUtils {
     @JvmStatic
     @RequiresPermission(READ_EXTERNAL_STORAGE)
     fun getWallpaperColor(context: Context): Int {
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O) {
+            return getWallpaperColorDrawable(context)
+        }
+        return getWallpaperColorPrimary(context)
+    }
+
+    /**
+     * Get the dominant color of the wallpaper image.
+     * Requires [android.Manifest.permission.READ_EXTERNAL_STORAGE] permission since
+     * [android.os.Build.VERSION_CODES.M].
+     *
+     * @param context the context.
+     * @return the color - [android.graphics.Color.TRANSPARENT] otherwise.
+     */
+    @RequiresPermission(READ_EXTERNAL_STORAGE)
+    fun getWallpaperColorDrawable(context: Context): Int {
         val wallpaperManager = WallpaperManager.getInstance(context)
         var wallpaper: Drawable? = null
         try {
@@ -73,5 +91,18 @@ object DrawableUtils {
             return bg
         }
         return Color.TRANSPARENT
+    }
+
+    /**
+     * Get the dominant color of the wallpaper.
+     *
+     * @param context the context.
+     * @return the color - [android.graphics.Color.TRANSPARENT] otherwise.
+     */
+    @TargetApi(Build.VERSION_CODES.TIRAMISU)
+    fun getWallpaperColorPrimary(context: Context): Int {
+        val wallpaperManager = WallpaperManager.getInstance(context)
+        val colors = wallpaperManager.getWallpaperColors(WallpaperManager.FLAG_SYSTEM)
+        return colors?.primaryColor?.toArgb() ?: Color.TRANSPARENT
     }
 }
