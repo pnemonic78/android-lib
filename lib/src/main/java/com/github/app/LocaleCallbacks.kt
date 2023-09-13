@@ -37,7 +37,7 @@ interface LocaleCallbacks<P : LocalePreferences?> {
      *
      * @param context the context.
      */
-    fun onCreate(context: Context)
+    fun onPreCreate(context: Context)
 
     /**
      * Get the locale preferences.

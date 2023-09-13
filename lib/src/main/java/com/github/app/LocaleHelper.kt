@@ -38,7 +38,7 @@ class LocaleHelper<P : LocalePreferences?>(context: Context) : LocaleCallbacks<P
         return LocaleUtils.applyLocale(context, localePreferences!!.locale)
     }
 
-    override fun onCreate(context: Context) {
+    override fun onPreCreate(context: Context) {
         if (context is Activity) {
             onCreate(context)
         }

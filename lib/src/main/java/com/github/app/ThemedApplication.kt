@@ -31,8 +31,12 @@ abstract class ThemedApplication<P : ThemePreferences?> : Application(), ThemeCa
         SimpleThemeCallbacks(this, createPreferences(this))
     }
 
-    override fun onPreCreate() {
+    override fun onCreate() {
+        onPreCreate()
         super.onCreate()
+    }
+
+    override fun onPreCreate() {
         themeCallbacks.onPreCreate()
     }
 
