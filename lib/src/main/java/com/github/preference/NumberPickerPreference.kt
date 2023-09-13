@@ -28,7 +28,7 @@ import com.github.lib.R
 open class NumberPickerPreference @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.dialogPreferenceStyle,
+    defStyleAttr: Int = androidx.preference.R.attr.dialogPreferenceStyle,
     defStyleRes: Int = 0
 ) : DialogPreference(context, attrs, defStyleAttr, defStyleRes) {
 

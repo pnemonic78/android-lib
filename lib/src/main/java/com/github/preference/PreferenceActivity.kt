@@ -90,7 +90,7 @@ abstract class PreferenceActivity : AppCompatActivity(), OnSharedPreferenceChang
         return false
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
         if (shouldRestartParentActivityForUi(key)) {
             markRestartParentActivityForUi()
         }

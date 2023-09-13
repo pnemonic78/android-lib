@@ -5,6 +5,7 @@ plugins {
 
 android {
     compileSdk = BuildVersions.compileSdkVersion
+    namespace = "com.github.lib"
 
     defaultConfig {
         minSdk = BuildVersions.minSdkVersion
@@ -47,18 +48,18 @@ dependencies {
     api("org.jetbrains.kotlin:kotlin-stdlib-common:${BuildVersions.kotlin_version}")
 
     // Jetpack
-    api("androidx.activity:activity-ktx:1.6.0")
-    api("androidx.annotation:annotation:1.5.0")
-    api("androidx.core:core-ktx:1.9.0")
-    api("androidx.fragment:fragment-ktx:1.5.3")
+    api("androidx.activity:activity-ktx:1.7.2")
+    api("androidx.annotation:annotation:1.7.0")
+    api("androidx.core:core-ktx:1.12.0")
+    api("androidx.fragment:fragment-ktx:1.6.1")
 
     // Events
     api("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // Views
-    api("androidx.recyclerview:recyclerview:1.2.1")
+    api("androidx.recyclerview:recyclerview:1.3.1")
     api("androidx.constraintlayout:constraintlayout:2.1.4")
-    api("androidx.preference:preference-ktx:1.2.0")
+    api("androidx.preference:preference-ktx:1.2.1")
 
     // JSON
     api("com.google.code.gson:gson:2.9.0")
@@ -71,5 +72,5 @@ dependencies {
     androidTestImplementation("androidx.test:core:${BuildVersions.androidTestVersion}")
     androidTestImplementation("androidx.test:rules:${BuildVersions.androidTestVersion}")
     androidTestImplementation("androidx.test:runner:${BuildVersions.androidTestVersion}")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
 }

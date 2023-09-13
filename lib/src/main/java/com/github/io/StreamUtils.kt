@@ -61,8 +61,8 @@ object StreamUtils {
     @Throws(IOException::class)
     fun readFully(`in`: InputStream, size: Int): InputStream {
         val stream = `in`
-        val size = max(size, BUFFER_SIZE)
-        val out = RawByteArrayOutputStream(size)
+        val bufSize = max(size, BUFFER_SIZE)
+        val out = RawByteArrayOutputStream(bufSize)
         val buf = ByteArray(BUFFER_SIZE)
         var count: Int
         while (stream.read(buf).also { count = it } >= 0) {

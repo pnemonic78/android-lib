@@ -41,9 +41,9 @@ open class SimpleThemePreferences(context: Context) : SimplePreferences(context)
 
     override fun getTheme(value: String?): Int {
         return when (value) {
-            THEME_DARK -> R.style.Theme_AppCompat
-            THEME_LIGHT -> R.style.Theme_AppCompat_Light
-            else -> R.style.Theme_AppCompat_DayNight
+            THEME_DARK -> androidx.appcompat.R.style.Theme_AppCompat
+            THEME_LIGHT -> androidx.appcompat.R.style.Theme_AppCompat_Light
+            else -> androidx.appcompat.R.style.Theme_AppCompat_DayNight
         }
     }
 

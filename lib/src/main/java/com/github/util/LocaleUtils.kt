@@ -148,6 +148,7 @@ object LocaleUtils {
      * @param config the configuration with locales.
      * @return the locale.
      */
+    @Suppress("DEPRECATION")
     @JvmStatic
     @TargetApi(Build.VERSION_CODES.N)
     fun getDefaultLocale(config: Configuration): Locale {

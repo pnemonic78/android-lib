@@ -58,10 +58,10 @@ open class RangeInputFilter(
     )
 
     init {
-        val minimum = if (decimal) minimum else round(minimum)
-        val maximum = if (decimal) maximum else round(maximum)
-        this.minimum = if (sign) minimum else max(0.0, minimum)
-        this.maximum = if (sign) maximum else max(0.0, maximum)
+        val mini = if (decimal) minimum else round(minimum)
+        val maxi = if (decimal) maximum else round(maximum)
+        this.minimum = if (sign) mini else max(0.0, mini)
+        this.maximum = if (sign) maxi else max(0.0, maxi)
     }
 
     override fun filter(

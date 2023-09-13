@@ -126,8 +126,8 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
         return context.contentResolver.query(uri, projection, selection, selectionArgs, sortOrder)
     }
 
-    fun filterInternal(uriString: String?): String? {
-        var uriString = uriString ?: return null
+    fun filterInternal(uriStringDangerous: String?): String? {
+        var uriString = uriStringDangerous ?: return null
         if (uriString.isEmpty()) return uriString
         if (uriString.startsWith(INTERNAL_PATH)) {
             // Is definitely internal.
