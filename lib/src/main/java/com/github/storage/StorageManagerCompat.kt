@@ -16,16 +16,17 @@ class StorageManagerCompat {
                 val volumes = storageManager.storageVolumes
                 return volumes.map { StorageVolumeCompat.of(context, it) }
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                val clazz = storageManager.javaClass
-                val method = clazz.getMethod("getVolumeList")
-                val volumes = method.invoke(storageManager) as Array<*>
-                return volumes.map { StorageVolumeCompat.of(context, it as StorageVolume) }
-            }
-            return emptyList()
+            val clazz = storageManager.javaClass
+            val method = clazz.getMethod("getVolumeList")
+            val volumes = method.invoke(storageManager) as Array<*>
+            return volumes.map { StorageVolumeCompat.of(context, it as StorageVolume) }
         }
 
-        fun getExternalVolume(context: Context, isMounted: Boolean = true, isRemovable: Boolean = false): StorageVolumeCompat? {
+        fun getExternalVolume(
+            context: Context,
+            isMounted: Boolean = true,
+            isRemovable: Boolean = false
+        ): StorageVolumeCompat? {
             val volumes = getStorageVolumes(context)
             var v: StorageVolumeCompat? = null
 

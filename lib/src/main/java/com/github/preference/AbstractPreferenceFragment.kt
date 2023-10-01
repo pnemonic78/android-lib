@@ -19,6 +19,7 @@ import android.os.Build
 import android.os.Bundle
 import androidx.annotation.XmlRes
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -109,7 +110,10 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
      * @param newValue   the new value.
      * @return `true` if the user value should be set as the preference value (and persisted).
      */
-    protected open fun onCheckBoxPreferenceChange(preference: SwitchPreference?, newValue: Any?): Boolean {
+    protected open fun onCheckBoxPreferenceChange(
+        preference: SwitchPreference?,
+        newValue: Any?
+    ): Boolean {
         return true
     }
 
@@ -226,28 +230,31 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
         return if (index >= 0) preference.entries[index] else null
     }
 
+    // FIXME `setTargetFragment` still required, until "androidx.preference:preference-ktx"
+    //  fixes "Target fragment must implement TargetFragment interface" !
     override fun onDisplayPreferenceDialog(preference: Preference) {
-        val fragmentManager = fragmentManager ?: return
+        val fragmentManager = parentFragmentManager
         // check if dialog is already showing
         if (fragmentManager.findFragmentByTag(DIALOG_FRAGMENT_TAG) != null) {
             return
         }
+        val key = preference.key
         val f: DialogFragment
         when (preference) {
             is NumberPickerPreference -> {
-                f = NumberPreferenceDialog.newInstance(preference.getKey())
+                f = NumberPreferenceDialog.newInstance(key)
                 f.setTargetFragment(this, 0)
                 f.show(fragmentManager, DIALOG_FRAGMENT_TAG)
             }
 
             is RingtonePreference -> {
-                f = RingtonePreferenceDialog.newInstance(preference.getKey())
+                f = RingtonePreferenceDialog.newInstance(key)
                 f.setTargetFragment(this, 0)
                 f.show(fragmentManager, DIALOG_FRAGMENT_TAG)
             }
 
             is TimePreference -> {
-                f = TimePreferenceDialog.newInstance(preference.getKey())
+                f = TimePreferenceDialog.newInstance(key)
                 f.setTargetFragment(this, 0)
                 f.show(fragmentManager, DIALOG_FRAGMENT_TAG)
             }
