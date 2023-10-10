@@ -15,7 +15,8 @@
  */
 package com.github.graphics
 
-import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.Manifest
+import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.WallpaperManager
 import android.content.Context
@@ -27,6 +28,7 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
 import androidx.annotation.RequiresPermission
+import androidx.core.content.PermissionChecker
 import com.github.graphics.BitmapUtils.getPixel
 import timber.log.Timber
 
@@ -45,10 +47,15 @@ object DrawableUtils {
      * @return the color - [android.graphics.Color.TRANSPARENT] otherwise.
      */
     @JvmStatic
-    @RequiresPermission(READ_EXTERNAL_STORAGE)
     fun getWallpaperColor(context: Context): Int {
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O) {
-            return getWallpaperColorDrawable(context)
+            if (PermissionChecker.checkCallingOrSelfPermission(
+                    context,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ) == PermissionChecker.PERMISSION_GRANTED
+            ) {
+                return getWallpaperColorDrawable(context)
+            }
         }
         return getWallpaperColorPrimary(context)
     }
@@ -61,7 +68,11 @@ object DrawableUtils {
      * @param context the context.
      * @return the color - [android.graphics.Color.TRANSPARENT] otherwise.
      */
-    @RequiresPermission(READ_EXTERNAL_STORAGE)
+    @SuppressLint("InlinedApi")
+    @RequiresPermission(
+        anyOf = [Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.MANAGE_EXTERNAL_STORAGE],
+        conditional = true
+    )
     fun getWallpaperColorDrawable(context: Context): Int {
         val wallpaperManager = WallpaperManager.getInstance(context)
         var wallpaper: Drawable? = null

@@ -78,7 +78,6 @@ object BitmapUtils {
      * @return `true` if the wallpaper is "bright".
      */
     @JvmStatic
-    @RequiresPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
     fun isBrightWallpaper(context: Context): Boolean {
         return isBright(DrawableUtils.getWallpaperColor(context))
     }
