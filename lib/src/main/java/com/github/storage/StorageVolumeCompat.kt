@@ -3,7 +3,6 @@ package com.github.storage
 import android.annotation.TargetApi
 import android.content.Context
 import android.os.Build
-import android.os.Environment
 import java.io.File
 
 /**
@@ -54,10 +53,7 @@ class StorageVolumeCompat private constructor(
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 return toExternalVolume24(context, storageVolume)
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                return toExternalVolume21(context, storageVolume)
-            }
-            return toExternalVolume19(context, storageVolume)
+            return toExternalVolume21(context, storageVolume)
         }
 
         @TargetApi(Build.VERSION_CODES.R)
@@ -120,7 +116,6 @@ class StorageVolumeCompat private constructor(
             )
         }
 
-        @TargetApi(Build.VERSION_CODES.LOLLIPOP)
         private fun toExternalVolume21(
             context: Context,
             storageVolume: android.os.storage.StorageVolume
@@ -136,36 +131,6 @@ class StorageVolumeCompat private constructor(
             val maxFileSize = getLong(storageVolume, "getMaxFileSize")
             val uuid = getString(storageVolume, "getUuid")
             val state = getString(storageVolume, "getState")!!
-            return StorageVolumeCompat(
-                id,
-                directory,
-                description,
-                isPrimary,
-                isRemovable,
-                isEmulated,
-                allowMassStorage,
-                maxFileSize,
-                uuid,
-                state
-            )
-        }
-
-        @TargetApi(Build.VERSION_CODES.KITKAT)
-        private fun toExternalVolume19(
-            context: Context,
-            storageVolume: android.os.storage.StorageVolume
-        ): StorageVolumeCompat {
-            val id = getString(storageVolume, "getStorageId")!!
-            val directory = getFile(storageVolume, "getPathFile")
-            val description =
-                getString(storageVolume, "getDescription", Context::class.java, context) ?: ""
-            val isPrimary = getBoolean(storageVolume, "isPrimary")
-            val isRemovable = getBoolean(storageVolume, "isRemovable")
-            val isEmulated = getBoolean(storageVolume, "isEmulated")
-            val allowMassStorage = getBoolean(storageVolume, "allowMassStorage")
-            val maxFileSize = getLong(storageVolume, "getMaxFileSize")
-            val uuid = null
-            val state = Environment.MEDIA_UNKNOWN
             return StorageVolumeCompat(
                 id,
                 directory,
