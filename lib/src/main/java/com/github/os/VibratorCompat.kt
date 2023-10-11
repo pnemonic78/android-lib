@@ -8,17 +8,27 @@ import androidx.annotation.RequiresPermission
 
 class VibratorCompat(context: Context) {
 
-    private val delegate: VibratorImpl = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-        Vibrator33(context)
-    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        Vibrator26(context)
-    } else {
-        Vibrator1(context)
+    private val delegate: VibratorImpl =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            Vibrator33(context)
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Vibrator26(context)
+        } else {
+            Vibrator1(context)
+        }
+
+    fun hasVibrator(): Boolean {
+        return delegate.hasVibrator()
     }
 
     @RequiresPermission(Manifest.permission.VIBRATE)
     fun vibrate(durationMillis: Long, usage: Int = USAGE_UNKNOWN) {
         delegate.vibrate(durationMillis, usage)
+    }
+
+    @RequiresPermission(Manifest.permission.VIBRATE)
+    fun vibrate(pattern: LongArray, usage: Int = USAGE_UNKNOWN) {
+        delegate.vibrate(pattern, usage)
     }
 
     @RequiresPermission(Manifest.permission.VIBRATE)

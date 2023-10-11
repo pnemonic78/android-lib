@@ -15,4 +15,9 @@ internal open class Vibrator1(context: Context) : VibratorImpl() {
     override fun vibrate(vibrator: Vibrator, durationMillis: Long, usage: Int) {
         vibrator.vibrate(durationMillis)
     }
+
+    @RequiresPermission(Manifest.permission.VIBRATE)
+    override fun vibrate(vibrator: Vibrator, pattern: LongArray, usage: Int) {
+        vibrator.vibrate(pattern, 0)
+    }
 }
