@@ -351,7 +351,7 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
      * is removed from the list.
      */
     protected open inner class ArrayFilter : Filter() {
-        override fun performFiltering(prefix: CharSequence): FilterResults {
+        override fun performFiltering(prefix: CharSequence?): FilterResults {
             val results = FilterResults()
 
             if (!objectsFiltered) {
