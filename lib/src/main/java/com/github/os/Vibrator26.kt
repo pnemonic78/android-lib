@@ -21,4 +21,10 @@ internal open class Vibrator26(context: Context) : Vibrator1(context) {
         )
         vibrator.vibrate(vibe)
     }
+
+    @RequiresPermission(Manifest.permission.VIBRATE)
+    override fun vibrate(vibrator: Vibrator, pattern: LongArray, usage: Int) {
+        val vibe = VibrationEffect.createWaveform(pattern, 0)
+        vibrator.vibrate(vibe)
+    }
 }
