@@ -48,16 +48,17 @@ object DrawableUtils {
      */
     @JvmStatic
     fun getWallpaperColor(context: Context): Int {
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O) {
-            if (PermissionChecker.checkCallingOrSelfPermission(
-                    context,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                ) == PermissionChecker.PERMISSION_GRANTED
-            ) {
-                return getWallpaperColorDrawable(context)
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+            return getWallpaperColorPrimary(context)
         }
-        return getWallpaperColorPrimary(context)
+        if (PermissionChecker.checkCallingOrSelfPermission(
+                context,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PermissionChecker.PERMISSION_GRANTED
+        ) {
+            return getWallpaperColorDrawable(context)
+        }
+        return Color.TRANSPARENT
     }
 
     /**
@@ -110,7 +111,7 @@ object DrawableUtils {
      * @param context the context.
      * @return the color - [android.graphics.Color.TRANSPARENT] otherwise.
      */
-    @TargetApi(Build.VERSION_CODES.TIRAMISU)
+    @TargetApi(Build.VERSION_CODES.O_MR1)
     fun getWallpaperColorPrimary(context: Context): Int {
         val wallpaperManager = WallpaperManager.getInstance(context)
         val colors = wallpaperManager.getWallpaperColors(WallpaperManager.FLAG_SYSTEM)
