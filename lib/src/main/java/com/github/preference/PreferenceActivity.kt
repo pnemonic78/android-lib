@@ -100,8 +100,6 @@ abstract class PreferenceActivity : AppCompatActivity(), OnSharedPreferenceChang
         caller: PreferenceFragmentCompat,
         pref: Preference
     ): Boolean {
-//        startPreferencePanel(pref.getFragment(), pref.getExtras(), 0, pref.getTitle(), caller, 0);
-//        return true;
         return false
     }
 }
