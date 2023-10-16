@@ -18,13 +18,13 @@ package com.github.media
 import android.Manifest
 import android.content.ContentResolver
 import android.content.Context
-import android.content.pm.PackageManager
 import android.database.Cursor
 import android.media.Ringtone
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import android.provider.Settings
+import androidx.core.content.PermissionChecker
 import com.github.lib.R
 import java.io.File
 
@@ -50,7 +50,10 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
 
     init {
         isInit = true
-        isIncludeExternal = context.checkCallingOrSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+        isIncludeExternal = PermissionChecker.checkCallingOrSelfPermission(
+            context,
+            PERMISSION_RINGTONE
+        ) == PermissionChecker.PERMISSION_GRANTED
         if (type > 0) {
             setFilterColumnsList(type)
         }
@@ -215,8 +218,10 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
         const val TYPE_NOTIFICATION = android.media.RingtoneManager.TYPE_NOTIFICATION
         const val TYPE_ALARM = android.media.RingtoneManager.TYPE_ALARM
         const val TYPE_ALL = android.media.RingtoneManager.TYPE_ALL
-        const val EXTRA_RINGTONE_SHOW_DEFAULT = android.media.RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT
-        const val EXTRA_RINGTONE_SHOW_SILENT = android.media.RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT
+        const val EXTRA_RINGTONE_SHOW_DEFAULT =
+            android.media.RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT
+        const val EXTRA_RINGTONE_SHOW_SILENT =
+            android.media.RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT
 
         /**
          * Invalid [Uri] path that means 'default'.
@@ -268,6 +273,13 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
          */
         const val URI_COLUMN_INDEX = 2
 
+        @JvmStatic
+        val PERMISSION_RINGTONE = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            Manifest.permission.READ_MEDIA_AUDIO
+        } else {
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        }
+
         /**
          * Constructs a where clause that consists of at least one column being 1
          * (true). This is used to find all matching sounds for the given sound
@@ -304,6 +316,7 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
             return uri
         }
 
-        fun getRingtone(context: Context, uri: Uri?): Ringtone? = android.media.RingtoneManager.getRingtone(context, uri)
+        fun getRingtone(context: Context, uri: Uri?): Ringtone? =
+            android.media.RingtoneManager.getRingtone(context, uri)
     }
 }

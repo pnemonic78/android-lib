@@ -1,9 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- For wallpaper. -->
+    <!-- For wallpaper (v27) and ringtone (v32). -->
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="27" />
+        android:maxSdkVersion="32" />
+
+    <!-- For ringtone. -->
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_AUDIO"
+        android:minSdkVersion="33" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application>
         <provider
