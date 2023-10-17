@@ -19,13 +19,12 @@ import android.os.Build
 import android.os.Bundle
 import androidx.annotation.XmlRes
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.setFragmentResultListener
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceGroup
 import androidx.preference.PreferenceManager
-import androidx.preference.SwitchPreference
+import androidx.preference.TwoStatePreference
 import com.github.lib.R
 import com.github.preference.RingtonePreferenceSummaryProvider.Companion.getInstance
 import java.util.Calendar
@@ -94,7 +93,7 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
 
     override fun onPreferenceChange(preference: Preference, newValue: Any?): Boolean {
         notifyPreferenceChanged()
-        if (preference is SwitchPreference) {
+        if (preference is TwoStatePreference) {
             return onCheckBoxPreferenceChange(preference, newValue)
         }
         if (preference is TimePreference) {
@@ -111,7 +110,7 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
      * @return `true` if the user value should be set as the preference value (and persisted).
      */
     protected open fun onCheckBoxPreferenceChange(
-        preference: SwitchPreference?,
+        preference: TwoStatePreference,
         newValue: Any?
     ): Boolean {
         return true
