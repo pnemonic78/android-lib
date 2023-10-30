@@ -27,9 +27,9 @@ import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.github.widget.ArrayAdapter.ArrayViewHolder
-import timber.log.Timber
 import java.util.Collections
 import java.util.Locale
+import timber.log.Timber
 
 /**
  * Array adapter ported from [android.widget.ArrayAdapter] to [RecyclerView].
@@ -81,6 +81,7 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
      */
     @JvmField
     protected val originalValues: MutableList<T?> = mutableListOf()
+
     @JvmField
     protected var objectsFiltered = false
 
@@ -93,7 +94,8 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
      * instantiating views.
      * @param objects  The objects to represent in the ListView.
      */
-    constructor(@LayoutRes resource: Int, objects: Array<T>) : this(resource, 0, listOf<T>(*objects))
+    constructor(@LayoutRes resource: Int, objects: Array<T>) :
+        this(resource, 0, listOf<T>(*objects))
 
     /**
      * Constructor
@@ -103,7 +105,8 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
      * @param textViewResourceId The id of the TextView within the layout resource to be populated
      * @param objects            The objects to represent in the ListView.
      */
-    constructor(@LayoutRes resource: Int, @IdRes textViewResourceId: Int, objects: Array<T>) : this(resource, textViewResourceId, listOf<T>(*objects))
+    constructor(@LayoutRes resource: Int, @IdRes textViewResourceId: Int, objects: Array<T>) :
+        this(resource, textViewResourceId, listOf<T>(*objects))
 
     /**
      * Constructor
@@ -296,12 +299,18 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val view = LayoutInflater.from(parent.context).inflate(layoutResource, parent, false)
-        return createArrayViewHolder(view, textFieldId)
+        val inflater = LayoutInflater.from(parent.context)
+        return createArrayViewHolder(inflater, parent, viewType, textFieldId)
     }
 
     @Suppress("UNCHECKED_CAST")
-    protected open fun createArrayViewHolder(view: View, fieldId: Int): VH {
+    protected open fun createArrayViewHolder(
+        inflater: LayoutInflater,
+        parent: ViewGroup,
+        viewType: Int,
+        fieldId: Int
+    ): VH {
+        val view = inflater.inflate(layoutResource, parent, false)
         return ArrayViewHolder<T>(view, fieldId) as VH
     }
 
@@ -322,7 +331,7 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
         return ArrayFilter()
     }
 
-    open class ArrayViewHolder<T>(itemView: View, fieldId: Int) : ViewHolder(itemView) {
+    open class ArrayViewHolder<T>(itemView: View, @IdRes fieldId: Int) : ViewHolder(itemView) {
         @JvmField
         protected val textView: TextView
 
@@ -384,7 +393,8 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
                     if (valueText.startsWith(prefixString)) {
                         newValues.add(value)
                     } else {
-                        val words = valueText.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+                        val words = valueText.split(" ".toRegex()).dropLastWhile { it.isEmpty() }
+                            .toTypedArray()
                         for (word in words) {
                             if (word.startsWith(prefixString)) {
                                 newValues.add(value)
