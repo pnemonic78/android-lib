@@ -300,6 +300,7 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
         return createArrayViewHolder(view, textFieldId)
     }
 
+    @Suppress("UNCHECKED_CAST")
     protected open fun createArrayViewHolder(view: View, fieldId: Int): VH {
         return ArrayViewHolder<T>(view, fieldId) as VH
     }

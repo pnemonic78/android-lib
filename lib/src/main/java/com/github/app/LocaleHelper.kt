@@ -27,7 +27,7 @@ import com.github.util.LocaleUtils
  *
  * @author Moshe Waisberg
  */
-class LocaleHelper<P : LocalePreferences?>(context: Context) : LocaleCallbacks<P> {
+class LocaleHelper<P : LocalePreferences>(context: Context) : LocaleCallbacks<P> {
     override val localePreferences: P
 
     init {
@@ -35,7 +35,7 @@ class LocaleHelper<P : LocalePreferences?>(context: Context) : LocaleCallbacks<P
     }
 
     override fun attachBaseContext(context: Context): Context {
-        return LocaleUtils.applyLocale(context, localePreferences!!.locale)
+        return LocaleUtils.applyLocale(context, localePreferences.locale)
     }
 
     override fun onPreCreate(context: Context) {
