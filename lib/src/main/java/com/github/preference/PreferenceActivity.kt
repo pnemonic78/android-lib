@@ -67,7 +67,7 @@ abstract class PreferenceActivity : AppCompatActivity(), OnSharedPreferenceChang
                 val info = pm.getActivityInfo(componentName, 0)
                 val parentActivity = info.parentActivityName
                 parentIntent = Intent()
-                parentIntent.setClassName(this, parentActivity)
+                    .setClassName(this, parentActivity)
             } catch (ignore: PackageManager.NameNotFoundException) {
             }
         }

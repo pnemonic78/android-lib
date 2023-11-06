@@ -82,8 +82,8 @@ object AppWidgetUtils {
             return
         }
         val intent = Intent(context, appWidgetClass)
-        intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds)
+            .setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+            .putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds)
         context.sendBroadcast(intent)
     }
 
