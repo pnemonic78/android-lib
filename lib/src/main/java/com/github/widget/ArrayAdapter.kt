@@ -431,7 +431,9 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
         var position: Int
         synchronized(lock) {
             position = originalValues.indexOf(`object`)
-            originalValues.removeAt(position)
+            if (position >= 0) {
+                originalValues.removeAt(position)
+            }
             position = objects.indexOf(`object`)
             if (position >= 0) {
                 objects.removeAt(position)
