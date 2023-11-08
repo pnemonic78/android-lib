@@ -43,17 +43,17 @@ object LocaleUtils {
     /**
      * ISO 639 language code for "Hebrew".
      */
-    const val ISO639_HEBREW_FORMER = "he"
+    const val ISO639_HEBREW = "he"
 
     /**
      * ISO 639 language code for "Hebrew" (Java compatibility).
      */
-    const val ISO639_HEBREW = "iw"
+    const val ISO639_HEBREW_JAVA = "iw"
 
     /**
      * ISO 639 language code for "Yiddish" (Java compatibility).
      */
-    const val ISO639_YIDDISH_FORMER = "ji"
+    const val ISO639_YIDDISH_JAVA = "ji"
 
     /**
      * ISO 639 language code for "Persian (Farsi)".
@@ -121,12 +121,12 @@ object LocaleUtils {
         return when (locale.language) {
             ISO639_ARABIC,
             ISO639_HAUSA,
+            ISO639_HEBREW_JAVA,
             ISO639_HEBREW,
-            ISO639_HEBREW_FORMER,
             ISO639_PASHTO,
             ISO639_PERSIAN,
             ISO639_YIDDISH,
-            ISO639_YIDDISH_FORMER -> true
+            ISO639_YIDDISH_JAVA -> true
             else -> false
         }
     }
@@ -270,7 +270,7 @@ object LocaleUtils {
 
     @JvmStatic
     fun unique(values: Array<String?>): Array<Locale> {
-        val locales: MutableMap<String, Locale> = mutableMapOf()
+        val locales = mutableMapOf<String, Locale>()
         for (value in values) {
             val locale = parseLocale(value)
             locales[locale.toString()] = locale

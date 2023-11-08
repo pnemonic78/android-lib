@@ -65,14 +65,15 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
         return null
     }
 
-    protected fun initRingtone(key: String?): RingtonePreference? {
+    @Suppress("UNCHECKED_CAST")
+    protected fun <P : RingtonePreference> initRingtone(key: String?): P? {
         if (key.isNullOrEmpty()) {
             return null
         }
         val preference = findPreference<Preference>(key)
         if (preference is RingtonePreference) {
             preference.summaryProvider = getInstance()
-            return preference
+            return preference as P
         }
         return null
     }
@@ -92,7 +93,7 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
     }
 
     override fun onPreferenceChange(preference: Preference, newValue: Any?): Boolean {
-        notifyPreferenceChanged()
+        notifyPreferenceChanged(preference)
         if (preference is TwoStatePreference) {
             return onCheckBoxPreferenceChange(preference, newValue)
         }
@@ -124,7 +125,7 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
      * @param newValue   the possibly new value.
      */
     protected open fun onTimePreferenceChange(preference: TimePreference, newValue: Any?): Boolean {
-        if (newValue is Calendar?) {
+        if (newValue is Calendar) {
             //Set the value for the summary.
             preference.setTime(newValue)
         } else {
@@ -141,7 +142,7 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
     /**
      * Notification that the preference has changed and should do something external.
      */
-    protected open fun notifyPreferenceChanged() = Unit
+    protected open fun notifyPreferenceChanged(preference: Preference) = Unit
 
     protected fun validateIntent(key: String) {
         validateIntent(findPreference(key))

@@ -34,8 +34,8 @@ class StreamTests {
     fun fully() {
         val buf = ByteArray(1000)
         Arrays.fill(buf, 123.toByte())
-        val `in`: InputStream = ByteArrayInputStream(buf)
-        val full = StreamUtils.readFully(`in`)
+        val input: InputStream = ByteArrayInputStream(buf)
+        val full = StreamUtils.readFully(input)
         assertNotNull(full)
         for (i in 1000 downTo 1) {
             assertEquals(i.toLong(), full.available().toLong())
@@ -48,11 +48,11 @@ class StreamTests {
         val sample = "\u0590\u0591\u0000\u0010"
         val buf = sample.toByteArray(StandardCharsets.UTF_8)
         assertEquals((sample.length + 2).toLong(), buf.size.toLong())
-        var `in`: InputStream = ByteArrayInputStream(buf)
-        var s = StreamUtils.toString(`in`, StandardCharsets.UTF_8)
+        var input: InputStream = ByteArrayInputStream(buf)
+        var s = StreamUtils.toString(input, StandardCharsets.UTF_8)
         assertEquals(sample, s)
-        `in` = ByteArrayInputStream(buf)
-        s = StreamUtils.toString(`in`)
+        input = ByteArrayInputStream(buf)
+        s = StreamUtils.toString(input)
         assertEquals(sample, s)
     }
 
@@ -61,17 +61,17 @@ class StreamTests {
         val sample = "ABC\t123\r\n"
         val buf = sample.toByteArray(StandardCharsets.UTF_8)
         assertEquals(sample.length.toLong(), buf.size.toLong())
-        var `in`: InputStream = ByteArrayInputStream(buf)
-        var s = StreamUtils.toString(`in`)
+        var input: InputStream = ByteArrayInputStream(buf)
+        var s = StreamUtils.toString(input)
         assertEquals(sample, s)
-        `in` = ByteArrayInputStream(buf)
-        s = StreamUtils.toString(`in`, StandardCharsets.UTF_8)
+        input = ByteArrayInputStream(buf)
+        s = StreamUtils.toString(input, StandardCharsets.UTF_8)
         assertEquals(sample, s)
-        `in` = ByteArrayInputStream(buf)
-        s = StreamUtils.toString(`in`, StandardCharsets.US_ASCII)
+        input = ByteArrayInputStream(buf)
+        s = StreamUtils.toString(input, StandardCharsets.US_ASCII)
         assertEquals(sample, s)
-        `in` = ByteArrayInputStream(buf)
-        s = StreamUtils.toString(`in`, StandardCharsets.ISO_8859_1)
+        input = ByteArrayInputStream(buf)
+        s = StreamUtils.toString(input, StandardCharsets.ISO_8859_1)
         assertEquals(sample, s)
     }
 }

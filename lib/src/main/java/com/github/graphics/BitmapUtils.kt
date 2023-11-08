@@ -78,8 +78,9 @@ object BitmapUtils {
      * @return `true` if the wallpaper is "bright".
      */
     @JvmStatic
+    @Deprecated("moved to app", replaceWith = ReplaceWith("com.github.app.isBrightWallpaper"))
     fun isBrightWallpaper(context: Context): Boolean {
-        return isBright(DrawableUtils.getWallpaperColor(context))
+        return com.github.app.isBrightWallpaper(context)
     }
 }
 

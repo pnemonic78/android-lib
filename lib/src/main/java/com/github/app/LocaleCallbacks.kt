@@ -23,7 +23,7 @@ import com.github.preference.LocalePreferences
  *
  * @author Moshe Waisberg
  */
-interface LocaleCallbacks<P : LocalePreferences?> {
+interface LocaleCallbacks<P : LocalePreferences> {
     /**
      * Apply the locale here.
      *

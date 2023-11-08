@@ -46,7 +46,7 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
      * If a column (item from this list) exists in the Cursor, its value must
      * be true (value of 1) for the row to be returned.
      */
-    private val filterColumns: MutableList<String> = mutableListOf()
+    private val filterColumns = mutableListOf<String>()
 
     init {
         isInit = true
@@ -302,6 +302,7 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
             return sb.toString()
         }
 
+        @JvmStatic
         fun resolveUri(context: Context, uri: Uri): Uri? {
             val uriString = uri.toString()
             if (uriString.startsWith(SETTINGS_PATH)) {
@@ -318,5 +319,7 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
 
         fun getRingtone(context: Context, uri: Uri?): Ringtone? =
             android.media.RingtoneManager.getRingtone(context, uri)
+
+        fun getDefaultUri(type: Int): Uri? = android.media.RingtoneManager.getDefaultUri(type)
     }
 }

@@ -59,7 +59,7 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
      * The content of this list is referred to as "the array" in the documentation.
      */
     @JvmField
-    protected val objects: MutableList<T?> = mutableListOf()
+    protected val objects = mutableListOf<T?>()
 
     /**
      * If the inflated resource is not a TextView, `textFieldId` is used to find
@@ -80,7 +80,7 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
      * the filter is used. objects will then only contain the filtered values.
      */
     @JvmField
-    protected val originalValues: MutableList<T?> = mutableListOf()
+    protected val originalValues = mutableListOf<T?>()
 
     @JvmField
     protected var objectsFiltered = false
@@ -414,7 +414,7 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
             synchronized(lock) {
                 objects.clear()
                 if (results.count > 0) {
-                    objects.addAll((results.values as Collection<T?>))
+                    objects.addAll(results.values as Collection<T?>)
                 }
                 notifyDataSetChanged()
                 notifyOnChange = true

@@ -146,7 +146,7 @@ open class TimePreference @JvmOverloads constructor(
         fun parseTime(timeString: String?): Calendar? {
             if (timeString.isNullOrEmpty()) return null
             try {
-                val date = formatIso.parse(timeString)
+                val date = formatIso.parse(timeString)!!
                 val time = Calendar.getInstance()
                 time.time = date
                 return time

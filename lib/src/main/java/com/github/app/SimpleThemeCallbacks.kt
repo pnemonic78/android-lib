@@ -24,26 +24,19 @@ import com.github.preference.ThemePreferences
  *
  * @author Moshe Waisberg
  */
-open class SimpleThemeCallbacks<TP : ThemePreferences?> @JvmOverloads constructor(
+open class SimpleThemeCallbacks<TP : ThemePreferences> @JvmOverloads constructor(
     private val context: Context,
     private var preferences: TP? = null
 ) : ThemeCallbacks<TP> {
 
     override fun onPreCreate() {
-        context.setTheme(themePreferences!!.theme)
+        context.setTheme(themePreferences.theme)
     }
 
-    override val themePreferences: TP
-        get() {
-            var preferences: TP? = preferences
-            if (preferences == null) {
-                preferences = createPreferences(context)
-                this.preferences = preferences
-            }
-            return preferences!!
-        }
+    override val themePreferences: TP by lazy { preferences ?: createPreferences(context) }
 
-    protected fun createPreferences(context: Context): TP {
+    @Suppress("UNCHECKED_CAST")
+    protected open fun createPreferences(context: Context): TP {
         return SimpleThemePreferences(context) as TP
     }
 }

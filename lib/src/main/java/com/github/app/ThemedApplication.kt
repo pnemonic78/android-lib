@@ -25,7 +25,7 @@ import com.github.preference.ThemePreferences
  * @author Moshe Waisberg
  */
 @Deprecated("")
-abstract class ThemedApplication<P : ThemePreferences?> : Application(), ThemeCallbacks<P> {
+abstract class ThemedApplication<P : ThemePreferences> : Application(), ThemeCallbacks<P> {
 
     private val themeCallbacks: ThemeCallbacks<P> by lazy {
         SimpleThemeCallbacks(this, createPreferences(this))
@@ -43,5 +43,5 @@ abstract class ThemedApplication<P : ThemePreferences?> : Application(), ThemeCa
     override val themePreferences: P
         get() = themeCallbacks.themePreferences
 
-    protected abstract fun createPreferences(context: Context?): P
+    protected abstract fun createPreferences(context: Context): P
 }

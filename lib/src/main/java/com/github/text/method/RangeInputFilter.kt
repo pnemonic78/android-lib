@@ -32,8 +32,8 @@ open class RangeInputFilter(
     maximum: Double
 ) : DigitsKeyListener(sign, decimal) {
 
-    protected val minimum: Double
-    protected val maximum: Double
+    protected open val minimum: Double
+    protected open val maximum: Double
 
     /**
      * Creates a new range filter with only non-negative integer values.
@@ -76,7 +76,7 @@ open class RangeInputFilter(
         out = out ?: source.subSequence(start, end)
         var s = dest.toString()
         s = s.substring(0, dstart) + out + s.substring(dend)
-        if (!s.isEmpty()) {
+        if (s.isNotEmpty()) {
             if (sign) {
                 if ("-" == s || "+" == s) {
                     return out

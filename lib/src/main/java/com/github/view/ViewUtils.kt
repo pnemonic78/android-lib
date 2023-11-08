@@ -27,36 +27,18 @@ object ViewUtils {
     /**
      * Make all views at least the same width.
      *
-     * @param views the array of views.
-     */
-    @JvmStatic
-    fun applyMaxWidth(views: Array<View>) {
-        var maxWidth = 0
-        // First, calculate the maximum widths of the views.
-        for (view in views) {
-            maxWidth = max(maxWidth, view.measuredWidth)
-        }
-        // Then, apply the maximum width to all the views.
-        for (view in views) {
-            view.minimumWidth = maxWidth
-        }
-    }
-
-    /**
-     * Make all views at least the same width.
-     *
      * @param views the list of views.
      */
     @JvmStatic
-    fun applyMaxWidth(views: Iterable<View>) {
+    fun applyMaxWidth(views: Array<View?>) {
         var maxWidth = 0
         // First, calculate the maximum widths of the views.
         for (view in views) {
-            maxWidth = max(maxWidth, view.measuredWidth)
+            maxWidth = max(maxWidth, view?.measuredWidth ?: 0)
         }
         // Then, apply the maximum width to all the views.
         for (view in views) {
-            view.minimumWidth = maxWidth
+            view?.minimumWidth = maxWidth
         }
     }
 }

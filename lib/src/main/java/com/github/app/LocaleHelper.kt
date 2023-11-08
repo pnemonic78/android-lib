@@ -28,11 +28,8 @@ import com.github.util.LocaleUtils
  * @author Moshe Waisberg
  */
 class LocaleHelper<P : LocalePreferences>(context: Context) : LocaleCallbacks<P> {
-    override val localePreferences: P
-
-    init {
-        localePreferences = SimpleLocalePreferences(context) as P
-    }
+    @Suppress("UNCHECKED_CAST")
+    override val localePreferences: P = SimpleLocalePreferences(context) as P
 
     override fun attachBaseContext(context: Context): Context {
         return LocaleUtils.applyLocale(context, localePreferences.locale)
@@ -44,7 +41,7 @@ class LocaleHelper<P : LocalePreferences>(context: Context) : LocaleCallbacks<P>
         }
     }
 
-    protected fun onCreate(activity: Activity) {
+    private fun onCreate(activity: Activity) {
         resetTitle(activity)
     }
 }

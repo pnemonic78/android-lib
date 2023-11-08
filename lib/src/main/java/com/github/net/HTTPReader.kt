@@ -127,11 +127,11 @@ object HTTPReader {
         }
         var data: InputStream
         try {
-            conn.getInputStream().use { `in` ->
+            conn.getInputStream().use { input ->
                 // Do NOT use Content-Length header for an exact buffer size!
                 // It is not always reliable / accurate.
-                val dataSize = max(`in`.available(), conn.contentLength)
-                data = readFully(`in`, dataSize)
+                val dataSize = max(input.available(), conn.contentLength)
+                data = readFully(input, dataSize)
             }
         } finally {
             http?.disconnect()

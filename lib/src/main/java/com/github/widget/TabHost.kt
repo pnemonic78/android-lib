@@ -18,8 +18,12 @@ package com.github.widget
 import android.content.Context
 import android.util.AttributeSet
 
-class TabHost @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
-    android.widget.TabHost(context, attrs) {
+class TabHost @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) : android.widget.TabHost(context, attrs, defStyleAttr, defStyleRes) {
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         // Workaround for Issue 2516: TabHost/TabWidget steals focus from EditText

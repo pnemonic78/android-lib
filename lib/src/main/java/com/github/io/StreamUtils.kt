@@ -37,30 +37,29 @@ object StreamUtils {
     /**
      * Read all the bytes from the input stream.
      *
-     * @param in the input.
+     * @param input the input.
      * @return the array of bytes.
      * @throws IOException if an I/O error occurs.
      */
     @JvmStatic
     @Throws(IOException::class)
-    fun readFully(`in`: InputStream): InputStream {
-        var stream = `in`
-        stream = BufferedInputStream(stream)
+    fun readFully(input: InputStream): InputStream {
+        val stream = BufferedInputStream(input)
         return readFully(stream, stream.available())
     }
 
     /**
      * Read all the bytes from the input stream.
      *
-     * @param `in`   the input.
+     * @param input   the input.
      * @param size the initial buffer size.
      * @return the array of bytes.
      * @throws IOException if an I/O error occurs.
      */
     @JvmStatic
     @Throws(IOException::class)
-    fun readFully(`in`: InputStream, size: Int): InputStream {
-        val stream = `in`
+    fun readFully(input: InputStream, size: Int): InputStream {
+        val stream = input
         val bufSize = max(size, BUFFER_SIZE)
         val out = RawByteArrayOutputStream(bufSize)
         val buf = ByteArray(BUFFER_SIZE)
@@ -75,7 +74,7 @@ object StreamUtils {
     /**
      * Convert the stream bytes to a sequence of characters.
      *
-     * @param in the input.
+     * @param input the input.
      * @return the characters.
      * @throws IOException if an I/O error occurs.
      */
@@ -83,12 +82,11 @@ object StreamUtils {
     @JvmStatic
     @Throws(IOException::class)
     fun toCharSequence(
-        `in`: InputStream,
+        input: InputStream,
         charset: Charset = StandardCharsets.UTF_8
     ): CharSequence {
-        val stream = `in`
-        val reader: Reader = InputStreamReader(stream, charset)
-        val out = StringBuilder(stream.available())
+        val reader: Reader = InputStreamReader(input, charset)
+        val out = StringBuilder(input.available())
         val buf = CharArray(BUFFER_SIZE)
         var count: Int
         while (reader.read(buf).also { count = it } >= 0) {
@@ -100,28 +98,28 @@ object StreamUtils {
     /**
      * Convert the stream bytes to a string.
      *
-     * @param in the input.
+     * @param input the input.
      * @return the string.
      * @throws IOException if an I/O error occurs.
      */
     @JvmStatic
     @Throws(IOException::class)
-    fun toString(`in`: InputStream): String {
-        return toCharSequence(`in`).toString()
+    fun toString(input: InputStream): String {
+        return toCharSequence(input).toString()
     }
 
     /**
      * Convert the stream bytes to a string.
      *
-     * @param in      the input.
+     * @param input      the input.
      * @param charset the character encoding.
      * @return the string.
      * @throws IOException if an I/O error occurs.
      */
     @JvmStatic
     @Throws(IOException::class)
-    fun toString(`in`: InputStream, charset: Charset = StandardCharsets.UTF_8): String {
-        return toCharSequence(`in`, charset).toString()
+    fun toString(input: InputStream, charset: Charset = StandardCharsets.UTF_8): String {
+        return toCharSequence(input, charset).toString()
     }
 }
 
@@ -129,4 +127,5 @@ object StreamUtils {
 fun InputStream.readFully(): InputStream = StreamUtils.readFully(this)
 
 @Throws(IOException::class)
-fun InputStream.toString(charset: Charset = StandardCharsets.UTF_8): String = StreamUtils.toString(this, charset)
+fun InputStream.toString(charset: Charset = StandardCharsets.UTF_8): String =
+    StreamUtils.toString(this, charset)

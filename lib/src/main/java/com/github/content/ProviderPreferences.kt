@@ -42,7 +42,7 @@ class ProviderPreferences(private val context: Context) : SharedPreferences,
     }
 
     override fun getAll(): Map<String, *> {
-        val result: MutableMap<String, Any> = mutableMapOf()
+        val result = mutableMapOf<String, Any>()
         val uri = contentUri.buildUpon()
             .appendPath(Preferences.ALL)
             .build()

@@ -53,16 +53,6 @@ class TypefaceSpan : android.text.style.TypefaceSpan {
     /**
      * Create a new span.
      *
-     * @param tf the typeface.
-     */
-    @RequiresApi(Build.VERSION_CODES.P)
-    constructor(tf: Typeface, p: Boolean) : super(tf) {
-        typeface = tf
-    }
-
-    /**
-     * Create a new span.
-     *
      * @param src the parcel with the font family to read.
      */
     constructor(src: Parcel) : super(src)

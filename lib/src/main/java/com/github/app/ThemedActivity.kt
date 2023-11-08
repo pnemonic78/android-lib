@@ -25,7 +25,7 @@ import com.github.preference.ThemePreferences
  * @author Moshe Waisberg
  */
 @Deprecated("")
-abstract class ThemedActivity<P : ThemePreferences?> : AppCompatActivity(), ThemeCallbacks<P> {
+abstract class ThemedActivity<P : ThemePreferences> : AppCompatActivity(), ThemeCallbacks<P> {
 
     protected val themeCallbacks: ThemeCallbacks<P> = SimpleThemeCallbacks(this)
 

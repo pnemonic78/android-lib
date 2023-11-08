@@ -22,7 +22,7 @@ import com.github.preference.ThemePreferences
  *
  * @author Moshe Waisberg
  */
-interface ThemeCallbacks<P : ThemePreferences?> {
+interface ThemeCallbacks<P : ThemePreferences> {
     /** Apply the theme here. */
     fun onPreCreate()
 

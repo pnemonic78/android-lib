@@ -76,16 +76,13 @@ class PreferencesProvider : ContentProvider() {
         val match = uriMatcher.match(uri)
         var value: Any?
         var type: String
-        val types: MutableList<String>
-        val keys: MutableList<String>
-        val values: MutableList<Any?>
+        val types = mutableListOf<String>()
+        val keys = mutableListOf<String>()
+        val values = mutableListOf<Any?>()
         var cursor: Cursor? = null
         when (match) {
             ALL -> {
                 val all = delegate.all
-                values = ArrayList(all.size)
-                types = ArrayList(all.size)
-                keys = ArrayList(all.size)
                 for ((key1, value1) in all) {
                     key = key1
                     value = value1
@@ -121,73 +118,70 @@ class PreferencesProvider : ContentProvider() {
             }
             ALL_KEY -> {
                 type = Preferences.ALL
-                if (delegate.contains(key)) {
+                cursor = if (delegate.contains(key)) {
                     value = delegate.all[key]
-                    cursor = PreferencesCursor(type, key, value)
+                    PreferencesCursor(type, key, value)
                 } else {
-                    cursor = PreferencesCursor()
+                    PreferencesCursor()
                 }
             }
             BOOLEAN -> {
                 type = Preferences.BOOLEAN
-                if (delegate.contains(key)) {
+                cursor = if (delegate.contains(key)) {
                     value = if (delegate.getBoolean(key, false)) 1 else 0
-                    cursor = PreferencesCursor(type, key, value)
+                    PreferencesCursor(type, key, value)
                 } else {
-                    cursor = PreferencesCursor()
+                    PreferencesCursor()
                 }
             }
             FLOAT -> {
                 type = Preferences.FLOAT
-                if (delegate.contains(key)) {
+                cursor = if (delegate.contains(key)) {
                     value = delegate.getFloat(key, 0f)
-                    cursor = PreferencesCursor(type, key, value)
+                    PreferencesCursor(type, key, value)
                 } else {
-                    cursor = PreferencesCursor()
+                    PreferencesCursor()
                 }
             }
             INT -> {
                 type = Preferences.INT
-                if (delegate.contains(key)) {
+                cursor = if (delegate.contains(key)) {
                     value = delegate.getInt(key, 0)
-                    cursor = PreferencesCursor(type, key, value)
+                    PreferencesCursor(type, key, value)
                 } else {
-                    cursor = PreferencesCursor()
+                    PreferencesCursor()
                 }
             }
             LONG -> {
                 type = Preferences.LONG
-                if (delegate.contains(key)) {
+                cursor = if (delegate.contains(key)) {
                     value = delegate.getLong(key, 0)
-                    cursor = PreferencesCursor(type, key, value)
+                    PreferencesCursor(type, key, value)
                 } else {
-                    cursor = PreferencesCursor()
+                    PreferencesCursor()
                 }
             }
             STRING -> {
                 type = Preferences.STRING
-                if (delegate.contains(key)) {
+                cursor = if (delegate.contains(key)) {
                     value = delegate.getString(key, null)
-                    cursor = PreferencesCursor(type, key, value)
+                    PreferencesCursor(type, key, value)
                 } else {
-                    cursor = PreferencesCursor()
+                    PreferencesCursor()
                 }
             }
             STRING_SET -> {
                 type = Preferences.STRING_SET
-                if (delegate.contains(key)) {
+                cursor = if (delegate.contains(key)) {
                     val set = delegate.getStringSet(key, null)
-                    values = ArrayList()
                     if (set != null) {
                         values.addAll(set)
                     }
-                    types = ArrayList(values.size)
                     types.fill(type)
-                    keys = ArrayList(values.size)
                     keys.fill(key)
-                    cursor = PreferencesCursor(types, keys, values)
+                    PreferencesCursor(types, keys, values)
                 } else {
-                    cursor = PreferencesCursor()
+                    PreferencesCursor()
                 }
             }
         }

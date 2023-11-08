@@ -20,6 +20,7 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import androidx.annotation.IdRes
 import timber.log.Timber
 
 /**
@@ -91,7 +92,7 @@ object AppWidgetUtils {
     fun notifyAppWidgetViewDataChanged(
         context: Context,
         appWidgetClass: Class<out AppWidgetProvider>,
-        viewId: Int
+        @IdRes viewId: Int
     ) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         val appWidgetIds = getAppWidgetIds(context, appWidgetManager, appWidgetClass)
