@@ -19,6 +19,8 @@ import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.View
 import android.widget.TimePicker
+import com.github.widget.hours
+import com.github.widget.minutes
 import java.util.Calendar
 
 open class TimePreferenceDialog : PreferenceDialog() {
@@ -32,11 +34,9 @@ open class TimePreferenceDialog : PreferenceDialog() {
         checkNotNull(picker) { "Dialog view must contain a TimePicker with id 'edit'" }
         this.picker = picker
         picker.setIs24HourView(DateFormat.is24HourFormat(context))
-        val preference = timePreference
-        val time = preference.time
-        if (time != null) {
-            picker.currentHour = time[Calendar.HOUR_OF_DAY]
-            picker.currentMinute = time[Calendar.MINUTE]
+        timePreference.time?.let { time ->
+            picker.hours = time[Calendar.HOUR_OF_DAY]
+            picker.minutes = time[Calendar.MINUTE]
         }
     }
 
@@ -44,8 +44,8 @@ open class TimePreferenceDialog : PreferenceDialog() {
         val picker = this.picker ?: return
         if (positiveResult) {
             val time = Calendar.getInstance()
-            time[Calendar.HOUR_OF_DAY] = picker.currentHour
-            time[Calendar.MINUTE] = picker.currentMinute
+            time[Calendar.HOUR_OF_DAY] = picker.hours
+            time[Calendar.MINUTE] = picker.minutes
             val preference = timePreference
             if (preference.callChangeListener(time)) {
                 preference.setTime(time)
