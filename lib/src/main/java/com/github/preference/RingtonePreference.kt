@@ -19,17 +19,17 @@ import android.app.Activity
 import android.content.ContentUris
 import android.content.Context
 import android.content.res.TypedArray
-import android.media.AudioManager
 import android.media.Ringtone
 import android.net.Uri
 import android.util.AttributeSet
-import androidx.preference.R
+import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import com.github.media.RingtoneManager
 import com.github.util.TypedValueUtils.getAttr
 import timber.log.Timber
 
 /**
- * A [Preference] that allows the user to choose a ringtone from those on the device.
+ * A [androidx.preference.Preference] that allows the user to choose a ringtone from those on the device.
  * The chosen ringtone's URI will be persisted as a string.
  *
  * @author Moshe Waisberg
@@ -37,18 +37,22 @@ import timber.log.Timber
 open class RingtonePreference @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = getAttr(context, R.attr.dialogPreferenceStyle, android.R.attr.ringtonePreferenceStyle),
-    defStyleRes: Int = 0
+    @AttrRes defStyleAttr: Int = getAttr(
+        context,
+        androidx.preference.R.attr.dialogPreferenceStyle,
+        android.R.attr.ringtonePreferenceStyle
+    ),
+    @StyleRes defStyleRes: Int = 0
 ) : DialogPreference(context, attrs, defStyleAttr) {
 
     /**
-     * The ringotone type.
+     * The ringtone type.
      * One of [RingtoneManager.TYPE_ALARM] or [RingtoneManager.TYPE_NOTIFICATION] or [RingtoneManager.TYPE_RINGTONE], or [RingtoneManager.TYPE_ALL].
      */
     var ringtoneType = RingtoneManager.TYPE_RINGTONE
         set(value) {
-            field = value
             setRingtoneType(value, false)
+            field = value
         }
 
     /**
@@ -69,7 +73,7 @@ open class RingtonePreference @JvmOverloads constructor(
     private var entries: List<CharSequence?>? = null
     var entryValues: List<Uri?>? = null
         private set
-    private var ringtoneManager: RingtoneManager? = null
+    private val ringtoneManager: RingtoneManager = RingtoneManager(context)
     private var ringtoneSample: Ringtone? = null
 
     /**
@@ -113,7 +117,6 @@ open class RingtonePreference @JvmOverloads constructor(
         }
         a.recycle()
 
-        ringtoneManager = RingtoneManager(context)
         this.ringtoneType = ringtoneType
         this.showDefault = showDefault
         this.showSilent = showSilent
@@ -123,18 +126,18 @@ open class RingtonePreference @JvmOverloads constructor(
         val context = context
         if (type != ringtoneType || force) {
             if (entries != null) {
-                ringtoneManager = RingtoneManager(context)
                 entries = null
                 entryValues = null
             }
-            ringtoneManager?.setType(type)
+            ringtoneManager.setType(type)
 
             // Switch to the other default tone?
             var value = value
             var preserveDefault = false
             if (!value.isNullOrEmpty()) {
                 val valueUri = Uri.parse(value)
-                val defaultUri = defaultRingtoneUri ?: android.media.RingtoneManager.getDefaultUri(ringtoneType)
+                val defaultUri =
+                    defaultRingtoneUri ?: android.media.RingtoneManager.getDefaultUri(ringtoneType)
                 preserveDefault = (valueUri == defaultUri)
             }
 
@@ -142,7 +145,7 @@ open class RingtonePreference @JvmOverloads constructor(
             defaultRingtone = android.media.RingtoneManager.getRingtone(context, defaultRingtoneUri)
 
             if (preserveDefault && defaultRingtoneUri != null) {
-                value = ringtoneManager?.filterInternalMaybe(defaultRingtoneUri)
+                value = ringtoneManager.filterInternalMaybe(defaultRingtoneUri)
                 setDefaultValue(value)
                 getEntries() // Rebuild the entries for change listener.
                 if (callChangeListener(value)) {
@@ -154,7 +157,7 @@ open class RingtonePreference @JvmOverloads constructor(
 
         // The volume keys will control the stream that we are choosing a ringtone for
         if (context is Activity) {
-            context.volumeControlStream = ringtoneManager?.inferStreamType() ?: AudioManager.STREAM_RING
+            context.volumeControlStream = ringtoneManager.inferStreamType()
         }
     }
 
@@ -237,7 +240,7 @@ open class RingtonePreference @JvmOverloads constructor(
             entryValues = mutableListOf()
             this.entries = entries
             this.entryValues = entryValues
-            val manager = ringtoneManager!!
+            val manager = ringtoneManager
 
             if (showDefault) {
                 val uriPath = manager.filterInternalMaybe(defaultRingtoneUri)
@@ -265,7 +268,12 @@ open class RingtonePreference @JvmOverloads constructor(
                 do {
                     uri = Uri.parse(cursor.getString(RingtoneManager.URI_COLUMN_INDEX))
                     entries.add(cursor.getString(RingtoneManager.TITLE_COLUMN_INDEX))
-                    entryValues.add(ContentUris.withAppendedId(uri, cursor.getLong(RingtoneManager.ID_COLUMN_INDEX)))
+                    entryValues.add(
+                        ContentUris.withAppendedId(
+                            uri,
+                            cursor.getLong(RingtoneManager.ID_COLUMN_INDEX)
+                        )
+                    )
                 } while (cursor.moveToNext())
                 cursor.close()
             }
@@ -276,12 +284,10 @@ open class RingtonePreference @JvmOverloads constructor(
     fun playRingtone(position: Int) {
         ringtoneSample?.stop()
 
-        val ringtone: Ringtone? = if (position == silentPos) {
-            null
-        } else if (position == defaultRingtonePos) {
-            defaultRingtone
-        } else {
-            RingtoneManager.getRingtone(context, getRingtoneUri(position))
+        val ringtone: Ringtone? = when (position) {
+            silentPos -> null
+            defaultRingtonePos -> defaultRingtone
+            else -> RingtoneManager.getRingtone(context, getRingtoneUri(position))
         }
         ringtone?.play()
         ringtoneSample = ringtone
@@ -289,7 +295,7 @@ open class RingtonePreference @JvmOverloads constructor(
 
     fun stopAnyPlayingRingtone() {
         ringtoneSample?.stop()
-        ringtoneManager?.stopPreviousRingtone()
+        ringtoneManager.stopPreviousRingtone()
     }
 
     fun getRingtoneUri(position: Int): Uri? {
@@ -309,7 +315,7 @@ open class RingtonePreference @JvmOverloads constructor(
      * The value of the key. This should be one of the entries.
      */
     var value: String?
-        get() = ringtoneManager?.filterInternalMaybe(getPersistedString(defaultValue))
+        get() = ringtoneManager.filterInternalMaybe(getPersistedString(defaultValue))
         set(value) {
             // Always persist/notify the first time.
             val oldValue = getPersistedString(defaultValue)
@@ -333,10 +339,10 @@ open class RingtonePreference @JvmOverloads constructor(
      */
     fun getRingtoneTitle(uriString: String?): CharSequence? {
         if (uriString === DEFAULT_PATH) {
-            return ringtoneManager?.defaultTitle
+            return ringtoneManager.defaultTitle
         }
         if (uriString == SILENT_PATH) {
-            return ringtoneManager?.silentTitle
+            return ringtoneManager.silentTitle
         }
         val uri = Uri.parse(uriString)
         val index = findIndexOfValue(uri)
@@ -356,7 +362,12 @@ open class RingtonePreference @JvmOverloads constructor(
     }
 
     companion object {
-        private val ATTRIBUTES = intArrayOf(android.R.attr.ringtoneType, android.R.attr.showDefault, android.R.attr.showSilent, android.R.attr.defaultValue).sortedArray()
+        private val ATTRIBUTES = intArrayOf(
+            android.R.attr.ringtoneType,
+            android.R.attr.showDefault,
+            android.R.attr.showSilent,
+            android.R.attr.defaultValue
+        ).sortedArray()
         private val DEFAULT_PATH = RingtoneManager.DEFAULT_PATH
         private val DEFAULT_URI: Uri? = null
         val SILENT_PATH = RingtoneManager.SILENT_PATH

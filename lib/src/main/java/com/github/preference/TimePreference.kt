@@ -18,7 +18,10 @@ package com.github.preference
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import com.github.lib.R
+import com.github.util.TypedValueUtils
 import timber.log.Timber
 import java.text.DateFormat
 import java.text.ParseException
@@ -39,11 +42,13 @@ import java.util.Locale
 open class TimePreference @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = androidx.preference.R.attr.dialogPreferenceStyle,
-    defStyleRes: Int = 0
-) : DialogPreference(
-    context, attrs, defStyleAttr, defStyleRes
-) {
+    @AttrRes defStyleAttr: Int = TypedValueUtils.getAttr(
+        context,
+        androidx.preference.R.attr.dialogPreferenceStyle,
+        android.R.attr.dialogPreferenceStyle
+    ),
+    @StyleRes defStyleRes: Int = 0
+) : DialogPreference(context, attrs, defStyleAttr, defStyleRes) {
     /**
      * Gets the time from the [SharedPreferences].
      *

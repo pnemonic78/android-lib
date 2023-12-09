@@ -17,8 +17,10 @@ package com.github.preference
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.preference.DialogPreference
-import com.github.lib.R
+import com.github.util.TypedValueUtils
 
 /**
  * A base class for [Preference] objects that are
@@ -30,8 +32,12 @@ import com.github.lib.R
 open class DialogPreference @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = androidx.preference.R.attr.dialogPreferenceStyle,
-    defStyleRes: Int = 0
+    @AttrRes defStyleAttr: Int = TypedValueUtils.getAttr(
+        context,
+        androidx.preference.R.attr.dialogPreferenceStyle,
+        android.R.attr.dialogPreferenceStyle
+    ),
+    @StyleRes defStyleRes: Int = 0
 ) : DialogPreference(context, attrs, defStyleAttr, defStyleRes) {
 
     /**

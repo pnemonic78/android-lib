@@ -21,7 +21,10 @@ import android.text.Html
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.util.AttributeSet
+import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.preference.ListPreference
+import com.github.util.TypedValueUtils
 
 /**
  * List preference that re-parses the entries as HTML.
@@ -30,8 +33,14 @@ import androidx.preference.ListPreference
  */
 open class HtmlListPreference @JvmOverloads constructor(
     context: Context,
-    attrs: AttributeSet? = null
-) : ListPreference(context, attrs) {
+    attrs: AttributeSet? = null,
+    @AttrRes defStyleAttr: Int = TypedValueUtils.getAttr(
+        context,
+        androidx.preference.R.attr.dialogPreferenceStyle,
+        android.R.attr.dialogPreferenceStyle
+    ),
+    @StyleRes defStyleRes: Int = 0
+) : ListPreference(context, attrs, defStyleAttr, defStyleRes) {
 
     init {
         this.entries = entries ?: emptyArray()

@@ -18,7 +18,12 @@ package com.github.preference
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import com.github.lib.R
+import com.github.util.TypedValueUtils
+import kotlin.math.max
+import kotlin.math.min
 
 /**
  * Preference that shows a number picker.
@@ -28,10 +33,13 @@ import com.github.lib.R
 open class NumberPickerPreference @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = androidx.preference.R.attr.dialogPreferenceStyle,
-    defStyleRes: Int = 0
+    @AttrRes defStyleAttr: Int = TypedValueUtils.getAttr(
+        context,
+        androidx.preference.R.attr.dialogPreferenceStyle,
+        android.R.attr.dialogPreferenceStyle
+    ),
+    @StyleRes defStyleRes: Int = 0
 ) : DialogPreference(context, attrs, defStyleAttr, defStyleRes) {
-
     /**
      * The value.
      */
@@ -41,20 +49,34 @@ open class NumberPickerPreference @JvmOverloads constructor(
         }
 
     /**
-     * The range of the value bar to `0`...`max`.
+     * The upper bound.
      */
-    var max: Int
+    var max: Int = 100
+        set(value) {
+            val newValue = max(min, value)
+            if (newValue != field) {
+                field = newValue
+                notifyChanged()
+            }
+        }
 
     /**
-     * The minimum value.
+     * The lower bound.
      */
     var min = 0
+        set(value) {
+            val newValue = min(max, value)
+            if (newValue != field) {
+                field = newValue
+                notifyChanged()
+            }
+        }
 
     private var progressSet = false
 
     init {
         val a = context.obtainStyledAttributes(attrs, ATTRIBUTES, defStyleAttr, defStyleRes)
-        max = a.getInt(0, 100)
+        max = a.getInt(0, max)
         a.recycle()
         if (dialogLayoutResource == 0) {
             dialogLayoutResource = R.layout.preference_dialog_numberpicker
