@@ -57,9 +57,6 @@ dependencies {
     api("androidx.core:core-ktx:1.12.0")
     api("androidx.fragment:fragment-ktx:1.6.1")
 
-    // Events
-    api("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
-
     // Views
     api("androidx.recyclerview:recyclerview:1.3.1")
     api("androidx.constraintlayout:constraintlayout:2.1.4")
