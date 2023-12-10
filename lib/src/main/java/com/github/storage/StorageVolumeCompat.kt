@@ -172,7 +172,7 @@ class StorageVolumeCompat private constructor(
         private fun getString(target: Any, methodName: String): String? {
             val clazz = target.javaClass
             val method = clazz.getMethod(methodName)
-            return method.invoke(target) as String
+            return method.invoke(target) as String?
         }
 
         private fun getString(
@@ -183,7 +183,7 @@ class StorageVolumeCompat private constructor(
         ): String? {
             val clazz = target.javaClass
             val method = clazz.getMethod(methodName, clazz0)
-            return method.invoke(target, arg0) as String
+            return method.invoke(target, arg0) as String?
         }
     }
 }
