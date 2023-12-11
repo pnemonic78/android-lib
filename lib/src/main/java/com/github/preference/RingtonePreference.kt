@@ -73,7 +73,7 @@ open class RingtonePreference @JvmOverloads constructor(
     private var entries: List<CharSequence?>? = null
     var entryValues: List<Uri?>? = null
         private set
-    private val ringtoneManager: RingtoneManager = RingtoneManager(context)
+    private var ringtoneManager: RingtoneManager = RingtoneManager(context)
     private var ringtoneSample: Ringtone? = null
 
     /**
@@ -125,10 +125,12 @@ open class RingtonePreference @JvmOverloads constructor(
     protected fun setRingtoneType(type: Int, force: Boolean) {
         val context = context
         if (type != ringtoneType || force) {
-            if (entries != null) {
-                entries = null
-                entryValues = null
-            }
+            // Reset the list.
+            entries = null
+            entryValues = null
+            // Reset the cursor.
+            ringtoneManager = RingtoneManager(context)
+
             ringtoneManager.setType(type)
 
             // Switch to the other default tone?
@@ -137,12 +139,12 @@ open class RingtonePreference @JvmOverloads constructor(
             if (!value.isNullOrEmpty()) {
                 val valueUri = Uri.parse(value)
                 val defaultUri =
-                    defaultRingtoneUri ?: android.media.RingtoneManager.getDefaultUri(ringtoneType)
+                    defaultRingtoneUri ?: RingtoneManager.getDefaultUri(ringtoneType)
                 preserveDefault = (valueUri == defaultUri)
             }
 
-            defaultRingtoneUri = android.media.RingtoneManager.getDefaultUri(type)
-            defaultRingtone = android.media.RingtoneManager.getRingtone(context, defaultRingtoneUri)
+            defaultRingtoneUri = RingtoneManager.getDefaultUri(type)
+            defaultRingtone = RingtoneManager.getRingtone(context, defaultRingtoneUri)
 
             if (preserveDefault && defaultRingtoneUri != null) {
                 value = ringtoneManager.filterInternalMaybe(defaultRingtoneUri)
