@@ -48,17 +48,17 @@ android {
 
 dependencies {
     // Kotlin
-    api("org.jetbrains.kotlin:kotlin-stdlib:${BuildVersions.kotlin_version}")
-    api("org.jetbrains.kotlin:kotlin-stdlib-common:${BuildVersions.kotlin_version}")
+    api("org.jetbrains.kotlin:kotlin-stdlib:${BuildVersions.kotlinVersion}")
+    api("org.jetbrains.kotlin:kotlin-stdlib-common:${BuildVersions.kotlinVersion}")
 
     // Jetpack
-    api("androidx.activity:activity-ktx:1.7.2")
+    api("androidx.activity:activity-ktx:1.8.1")
     api("androidx.annotation:annotation:1.7.0")
     api("androidx.core:core-ktx:1.12.0")
-    api("androidx.fragment:fragment-ktx:1.6.1")
+    api("androidx.fragment:fragment-ktx:1.6.2")
 
     // Views
-    api("androidx.recyclerview:recyclerview:1.3.1")
+    api("androidx.recyclerview:recyclerview:1.3.2")
     api("androidx.constraintlayout:constraintlayout:2.1.4")
     api("androidx.preference:preference-ktx:1.2.1")
 
@@ -73,5 +73,5 @@ dependencies {
     androidTestImplementation("androidx.test:core:${BuildVersions.androidTestVersion}")
     androidTestImplementation("androidx.test:rules:${BuildVersions.androidTestVersion}")
     androidTestImplementation("androidx.test:runner:${BuildVersions.androidTestVersion}")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.ext:junit:${BuildVersions.junitExt}")
 }
