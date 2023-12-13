@@ -21,6 +21,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
@@ -82,7 +83,7 @@ abstract class PreferenceActivity : AppCompatActivity(), OnSharedPreferenceChang
         return restartParentActivityForUi || super.shouldUpRecreateTask(targetIntent)
     }
 
-    protected fun markRestartParentActivityForUi() {
+    private fun markRestartParentActivityForUi() {
         restartParentActivityForUi = true
     }
 
@@ -101,5 +102,15 @@ abstract class PreferenceActivity : AppCompatActivity(), OnSharedPreferenceChang
         pref: Preference
     ): Boolean {
         return false
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            if (supportFragmentManager.backStackEntryCount > 0) {
+                supportFragmentManager.popBackStack()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

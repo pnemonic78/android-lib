@@ -43,7 +43,7 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
         addChangeListeners(preferenceScreen)
     }
 
-    protected fun loadPreferences() {
+    private fun loadPreferences() {
         val context = requireContext()
         val xmlId = preferencesXml
         PreferenceManager.setDefaultValues(context, xmlId, false)
@@ -170,14 +170,14 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
         }
     }
 
-    protected fun addChangeListeners(preference: Preference) {
+    private fun addChangeListeners(preference: Preference) {
         preference.onPreferenceChangeListener = this
         if (preference is PreferenceGroup) {
             addChangeListeners(preference)
         }
     }
 
-    protected fun addChangeListeners(group: PreferenceGroup) {
+    private fun addChangeListeners(group: PreferenceGroup) {
         val count = group.preferenceCount
         for (i in 0 until count) {
             addChangeListeners(group.getPreference(i))
@@ -200,11 +200,11 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
         }
     }
 
-    fun findPreferenceParent(key: CharSequence): PreferenceGroup? {
+    private fun findPreferenceParent(key: CharSequence): PreferenceGroup? {
         return findPreferenceParent(key, preferenceScreen)
     }
 
-    protected fun findPreferenceParent(
+    private fun findPreferenceParent(
         key: CharSequence,
         parent: PreferenceGroup
     ): PreferenceGroup? {
