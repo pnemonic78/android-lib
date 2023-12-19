@@ -27,11 +27,13 @@ open class NumberPreferenceDialog : PreferenceDialog() {
         super.onBindDialogView(view)
         val picker: NumberPicker? = view.findViewById(android.R.id.edit)
         checkNotNull(picker) { "Dialog view must contain a NumberPicker with id 'edit'" }
-        this.picker = picker
         val preference = numberPickerPreference
-        picker.minValue = preference.min
-        picker.maxValue = preference.max
-        picker.value = preference.value
+        this.picker = picker.apply {
+            minValue = preference.min
+            maxValue = preference.max
+            value = preference.value
+            displayedValues = preference.displayedValues
+        }
     }
 
     override fun onDialogClosed(positiveResult: Boolean) {

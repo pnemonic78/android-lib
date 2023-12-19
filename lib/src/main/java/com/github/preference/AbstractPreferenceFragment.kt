@@ -65,6 +65,18 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
         return null
     }
 
+    protected fun initNumber(key: String?): NumberPickerPreference? {
+        if (key.isNullOrEmpty()) {
+            return null
+        }
+        val preference = findPreference<Preference>(key)
+        if (preference is NumberPickerPreference) {
+            preference.setSummaryProvider(NumberPickerPreference.SimpleSummaryProvider.instance)
+            return preference
+        }
+        return null
+    }
+
     @Suppress("UNCHECKED_CAST")
     protected fun <P : RingtonePreference> initRingtone(key: String?): P? {
         if (key.isNullOrEmpty()) {
