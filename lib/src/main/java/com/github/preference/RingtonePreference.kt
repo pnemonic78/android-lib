@@ -24,6 +24,7 @@ import android.net.Uri
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.annotation.StyleableRes
 import com.github.media.RingtoneManager
 import com.github.util.TypedValueUtils.getAttr
 import timber.log.Timber
@@ -107,7 +108,7 @@ open class RingtonePreference @JvmOverloads constructor(
         val a = context.obtainStyledAttributes(attrs, ATTRIBUTES, defStyleAttr, defStyleRes)
         val count = a.indexCount
         for (i in 0 until count) {
-            val index = a.getIndex(i)
+            @StyleableRes val index = a.getIndex(i)
             when (ATTRIBUTES[i]) {
                 android.R.attr.ringtoneType -> ringtoneType = a.getInt(index, ringtoneType)
                 android.R.attr.showDefault -> showDefault = a.getBoolean(index, showDefault)

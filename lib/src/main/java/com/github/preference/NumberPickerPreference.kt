@@ -73,22 +73,38 @@ open class NumberPickerPreference @JvmOverloads constructor(
             }
         }
 
-    var displayedValues: Array<String>? = null
+    var displayedValues: Array<String?>? = null
         protected set
 
     private var progressSet = false
 
     init {
-        val a = context.obtainStyledAttributes(attrs, ATTRIBUTES, defStyleAttr, defStyleRes)
-        val count = a.indexCount
-        for (i in 0 until count) {
-            val index = a.getIndex(i)
-            when (ATTRIBUTES[i]) {
-                android.R.attr.max -> max = a.getInt(index, max)
-                else -> min = a.getInt(index, min)
-            }
+        var a = context.obtainStyledAttributes(
+            attrs,
+            androidx.preference.R.styleable.ListPreference,
+            defStyleAttr,
+            defStyleRes
+        )
+        displayedValues = TypedValueUtils.getStringArray(
+            a,
+            androidx.preference.R.styleable.ListPreference_entryValues,
+            androidx.preference.R.styleable.ListPreference_android_entryValues
+        )
+        a.recycle()
+
+        a = context.obtainStyledAttributes(
+            attrs,
+            R.styleable.NumberPickerPreference,
+            defStyleAttr,
+            defStyleRes
+        )
+        min = max(0, a.getInt(R.styleable.NumberPickerPreference_min, min))
+        max = max(0, a.getInt(R.styleable.NumberPickerPreference_android_max, max))
+        if (a.getBoolean(R.styleable.NumberPickerPreference_useSimpleSummaryProvider, false)) {
+            summaryProvider = SimpleSummaryProvider.instance
         }
         a.recycle()
+
         if (dialogLayoutResource == 0) {
             dialogLayoutResource = R.layout.preference_dialog_numberpicker
         }
@@ -127,11 +143,18 @@ open class NumberPickerPreference @JvmOverloads constructor(
      * [NumberPickerPreference]. If no value has been set, the summary displayed will be 'Not set',
      * otherwise the summary displayed will be the entry set for this preference.
      */
-    class SimpleSummaryProvider private constructor() : SummaryProvider<NumberPickerPreference> {
+    class SimpleSummaryProvider private constructor() :
+        SummaryProvider<NumberPickerPreference> {
         override fun provideSummary(preference: NumberPickerPreference): CharSequence? {
             val newValue = preference.value
             if (newValue < 0) return null
-            return preference.displayedValues?.get(newValue) ?: newValue.toString()
+            val entryValues = preference.displayedValues
+            if (entryValues != null) {
+                val lastIndex = entryValues.lastIndex
+                val index = min(lastIndex, newValue - preference.min)
+                return entryValues[index]
+            }
+            return newValue.toString()
         }
 
         companion object {
@@ -144,14 +167,10 @@ open class NumberPickerPreference @JvmOverloads constructor(
     }
 
     companion object {
-        private val ATTRIBUTES = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            intArrayOf(
-                android.R.attr.max,
-                android.R.attr.min,
-                androidx.preference.R.attr.min
-            ).sortedArray()
+        private val attrAndroidMin = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            android.R.attr.min
         } else {
-            intArrayOf(android.R.attr.max, androidx.preference.R.attr.min).sortedArray()
+            androidx.preference.R.attr.min
         }
     }
 }

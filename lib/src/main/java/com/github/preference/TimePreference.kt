@@ -20,14 +20,15 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.annotation.StyleableRes
 import com.github.lib.R
 import com.github.util.TypedValueUtils
-import timber.log.Timber
 import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import timber.log.Timber
 
 /**
  * Preference that shows a time picker.
@@ -66,6 +67,18 @@ open class TimePreference @JvmOverloads constructor(
         private set
 
     init {
+        val a = context.obtainStyledAttributes(attrs, ATTRIBUTES, defStyleAttr, defStyleRes)
+        val count = a.indexCount
+        for (i in 0 until count) {
+            @StyleableRes val index = a.getIndex(i)
+            when (ATTRIBUTES[i]) {
+                attrUseSimpleSummaryProvider -> if (a.getBoolean(index, false)) {
+                    summaryProvider = TimePreferenceSummaryProvider(context)
+                }
+            }
+        }
+        a.recycle()
+
         if (dialogLayoutResource == 0) {
             dialogLayoutResource = R.layout.preference_dialog_timepicker
         }
@@ -140,6 +153,11 @@ open class TimePreference @JvmOverloads constructor(
         private const val PATTERN = "HH:mm"
 
         private val formatIso: DateFormat = SimpleDateFormat(PATTERN, Locale.US)
+
+        private val attrUseSimpleSummaryProvider =
+            androidx.preference.R.attr.useSimpleSummaryProvider
+
+        private val ATTRIBUTES = intArrayOf(attrUseSimpleSummaryProvider)
 
         /**
          * Parse the time value.

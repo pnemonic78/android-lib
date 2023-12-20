@@ -26,7 +26,6 @@ import androidx.preference.PreferenceGroup
 import androidx.preference.PreferenceManager
 import androidx.preference.TwoStatePreference
 import com.github.lib.R
-import com.github.preference.RingtonePreferenceSummaryProvider.Companion.getInstance
 import java.util.Calendar
 import timber.log.Timber
 
@@ -53,30 +52,6 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
     @get:XmlRes
     protected abstract val preferencesXml: Int
 
-    protected fun initList(key: String?): ListPreference? {
-        if (key.isNullOrEmpty()) {
-            return null
-        }
-        val preference = findPreference<Preference>(key)
-        if (preference is ListPreference) {
-            preference.setSummaryProvider(ListPreference.SimpleSummaryProvider.getInstance())
-            return preference
-        }
-        return null
-    }
-
-    protected fun initNumber(key: String?): NumberPickerPreference? {
-        if (key.isNullOrEmpty()) {
-            return null
-        }
-        val preference = findPreference<Preference>(key)
-        if (preference is NumberPickerPreference) {
-            preference.setSummaryProvider(NumberPickerPreference.SimpleSummaryProvider.instance)
-            return preference
-        }
-        return null
-    }
-
     @Suppress("UNCHECKED_CAST")
     protected fun <P : RingtonePreference> initRingtone(key: String?): P? {
         if (key.isNullOrEmpty()) {
@@ -84,7 +59,7 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
         }
         val preference = findPreference<Preference>(key)
         if (preference is RingtonePreference) {
-            preference.summaryProvider = getInstance()
+            preference.summaryProvider = RingtonePreferenceSummaryProvider.getInstance()
             return preference as P
         }
         return null
@@ -97,7 +72,6 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
         val preference = findPreference<Preference>(key)
         if (preference is TimePreference) {
             preference.setNeutralButtonText(R.string.off)
-            preference.summaryProvider = TimePreferenceSummaryProvider(preference)
             onTimePreferenceChange(preference, preference.value)
             return preference
         }
