@@ -16,7 +16,8 @@
 package com.github.preference
 
 import android.content.Context
-import android.content.res.Configuration
+import androidx.annotation.StyleRes
+import com.github.content.isNightMode
 import com.github.lib.R
 import com.github.preference.ThemePreferences.Values.THEME_DARK
 import com.github.preference.ThemePreferences.Values.THEME_DEFAULT
@@ -41,31 +42,34 @@ open class SimpleThemePreferences(context: Context) : SimplePreferences(context)
 
     override fun getTheme(value: String?): Int {
         return when (value) {
-            THEME_DARK -> androidx.appcompat.R.style.Theme_AppCompat
-            THEME_LIGHT -> androidx.appcompat.R.style.Theme_AppCompat_Light
-            else -> androidx.appcompat.R.style.Theme_AppCompat_DayNight
+            THEME_DARK -> ThemeDark
+            THEME_LIGHT -> ThemeLight
+            else -> ThemeDayNight
         }
     }
 
     override val theme: Int
         get() = getTheme(themeValue)
 
-    override fun isDarkTheme(value: String?): Boolean {
-        if (THEME_LIGHT == value) {
-            return false
+    override fun isDarkTheme(@StyleRes themeId: Int): Boolean {
+        return when (themeId) {
+            ThemeDark -> true
+            ThemeLight -> false
+            else -> context.isNightMode
         }
-        if (THEME_DEFAULT == value) {
-            val nightMode = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-            return when (nightMode) {
-                Configuration.UI_MODE_NIGHT_NO ->  false
-                Configuration.UI_MODE_NIGHT_YES ->  true
-                // Material
-                else -> false
-            }
-        }
-        return true
     }
 
     override val isDarkTheme: Boolean
-        get() = isDarkTheme(themeValue)
+        get() = isDarkTheme(theme)
+
+    companion object {
+        @StyleRes
+        private val ThemeDark = androidx.appcompat.R.style.Theme_AppCompat
+
+        @StyleRes
+        private val ThemeLight = androidx.appcompat.R.style.Theme_AppCompat_Light
+
+        @StyleRes
+        private val ThemeDayNight = androidx.appcompat.R.style.Theme_AppCompat_DayNight
+    }
 }

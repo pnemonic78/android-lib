@@ -65,10 +65,10 @@ interface ThemePreferences {
     /**
      * Is the theme dark?
      *
-     * @param value the theme value.
+     * @param themeId the theme id.
      * @return `true` if the theme has dark backgrounds and light texts.
      */
-    fun isDarkTheme(value: String?): Boolean
+    fun isDarkTheme(@StyleRes themeId: Int): Boolean
 
     /**
      * Is the theme dark?
