@@ -38,8 +38,8 @@ class StreamTests {
         val full = StreamUtils.readFully(input)
         assertNotNull(full)
         for (i in 1000 downTo 1) {
-            assertEquals(i.toLong(), full.available().toLong())
-            assertEquals(123, full.read().toLong())
+            assertEquals(i, full.available())
+            assertEquals(123, full.read())
         }
     }
 
@@ -47,7 +47,7 @@ class StreamTests {
     fun stringsUTF8() {
         val sample = "\u0590\u0591\u0000\u0010"
         val buf = sample.toByteArray(StandardCharsets.UTF_8)
-        assertEquals((sample.length + 2).toLong(), buf.size.toLong())
+        assertEquals((sample.length + 2), buf.size)
         var input: InputStream = ByteArrayInputStream(buf)
         var s = StreamUtils.toString(input, StandardCharsets.UTF_8)
         assertEquals(sample, s)
@@ -60,7 +60,7 @@ class StreamTests {
     fun stringsISO() {
         val sample = "ABC\t123\r\n"
         val buf = sample.toByteArray(StandardCharsets.UTF_8)
-        assertEquals(sample.length.toLong(), buf.size.toLong())
+        assertEquals(sample.length, buf.size)
         var input: InputStream = ByteArrayInputStream(buf)
         var s = StreamUtils.toString(input)
         assertEquals(sample, s)
