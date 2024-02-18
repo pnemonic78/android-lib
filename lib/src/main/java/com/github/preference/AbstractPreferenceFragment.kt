@@ -219,7 +219,7 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
     // FIXME `setTargetFragment` still required, until "androidx.preference:preference-ktx"
     //  fixes "Target fragment must implement TargetFragment interface" !
     override fun onDisplayPreferenceDialog(preference: Preference) {
-        val fragmentManager = parentFragmentManager
+        val fragmentManager = childFragmentManager
         // check if dialog is already showing
         if (fragmentManager.findFragmentByTag(DIALOG_FRAGMENT_TAG) != null) {
             return

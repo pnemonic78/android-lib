@@ -52,11 +52,11 @@ open class NumberPreferenceDialog : PreferenceDialog() {
 
     companion object {
         fun newInstance(key: String): NumberPreferenceDialog {
-            val dialog = NumberPreferenceDialog()
-            val b = Bundle(1)
-            b.putString(ARG_KEY, key)
-            dialog.arguments = b
-            return dialog
+            return NumberPreferenceDialog().apply {
+                arguments = Bundle(1).apply {
+                    putString(ARG_KEY, key)
+                }
+            }
         }
     }
 }
