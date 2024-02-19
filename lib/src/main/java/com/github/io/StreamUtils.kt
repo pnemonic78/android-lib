@@ -78,7 +78,6 @@ object StreamUtils {
      * @return the characters.
      * @throws IOException if an I/O error occurs.
      */
-    @JvmOverloads
     @JvmStatic
     @Throws(IOException::class)
     fun toCharSequence(

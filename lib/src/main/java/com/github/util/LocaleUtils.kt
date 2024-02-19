@@ -226,7 +226,6 @@ object LocaleUtils {
      * @return the sorted list of locales.
      */
     @JvmStatic
-    @JvmOverloads
     fun sort(values: Array<String>?, locale: Locale? = null): Array<Locale>? {
         if (values.isNullOrEmpty()) {
             return null
@@ -243,7 +242,6 @@ object LocaleUtils {
      * @return the sorted list of locales.
      */
     @JvmStatic
-    @JvmOverloads
     fun sortByDisplay(locales: Array<Locale>?, locale: Locale? = null): Array<Locale>? {
         if (locales.isNullOrEmpty()) {
             return locales
