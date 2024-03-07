@@ -1,6 +1,5 @@
 package com.github.json
 
-import androidx.annotation.Keep
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -13,7 +12,6 @@ import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-@Keep
 open class DateSerializer(private val formatter: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.US)) : KSerializer<Date?> {
     init {
         formatter.timeZone = TimeZone.getTimeZone("UTC")

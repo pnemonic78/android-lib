@@ -25,7 +25,8 @@ import android.os.Build
 import com.github.app.ActivityUtils.resetTitle
 import com.github.preference.LocalePreferences
 import com.github.preference.SimpleLocalePreferences
-import com.github.util.LocaleUtils
+import com.github.util.applyLocale
+import com.github.util.parseLocale
 
 /**
  * Wraps a callback delegate.
@@ -37,7 +38,7 @@ class LocaleHelper<P : LocalePreferences>(context: Context) : LocaleCallbacks<P>
     override val localePreferences: P = SimpleLocalePreferences(context) as P
 
     override fun attachBaseContext(context: Context): Context {
-        return LocaleUtils.applyLocale(context, localePreferences.locale)
+        return context.applyLocale(localePreferences.locale)
     }
 
     override fun onPreCreate(context: Context) {
@@ -62,8 +63,8 @@ class LocaleHelper<P : LocalePreferences>(context: Context) : LocaleCallbacks<P>
             if (ACTION_LOCALE_CHANGED == action) {
                 var contextForLocale: Context = application
                 val localeValue = intent.getStringExtra(EXTRA_LOCALE)
-                val locale = LocaleUtils.parseLocale(localeValue)
-                contextForLocale = LocaleUtils.applyLocale(contextForLocale, locale)
+                val locale = parseLocale(localeValue)
+                contextForLocale = contextForLocale.applyLocale(locale)
                 val newConfig = contextForLocale.resources.configuration
                 application.onConfigurationChanged(newConfig)
             }

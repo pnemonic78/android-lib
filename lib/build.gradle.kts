@@ -48,8 +48,7 @@ android {
 
 dependencies {
     // Kotlin
-    api("org.jetbrains.kotlin:kotlin-stdlib:${BuildVersions.kotlinVersion}")
-    api("org.jetbrains.kotlin:kotlin-stdlib-common:${BuildVersions.kotlinVersion}")
+    api(project(":android-lib:kotlin"))
 
     // Jetpack
     api("androidx.activity:activity-ktx:1.8.2")

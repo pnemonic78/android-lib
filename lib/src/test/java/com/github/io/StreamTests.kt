@@ -35,7 +35,7 @@ class StreamTests {
         val buf = ByteArray(1000)
         Arrays.fill(buf, 123.toByte())
         val input: InputStream = ByteArrayInputStream(buf)
-        val full = StreamUtils.readFully(input)
+        val full = com.github.io.StreamUtils.readFully(input)
         assertNotNull(full)
         for (i in 1000 downTo 1) {
             assertEquals(i, full.available())
@@ -49,10 +49,10 @@ class StreamTests {
         val buf = sample.toByteArray(StandardCharsets.UTF_8)
         assertEquals((sample.length + 2), buf.size)
         var input: InputStream = ByteArrayInputStream(buf)
-        var s = StreamUtils.toString(input, StandardCharsets.UTF_8)
+        var s = com.github.io.StreamUtils.toString(input, StandardCharsets.UTF_8)
         assertEquals(sample, s)
         input = ByteArrayInputStream(buf)
-        s = StreamUtils.toString(input)
+        s = com.github.io.StreamUtils.toString(input)
         assertEquals(sample, s)
     }
 
@@ -62,16 +62,16 @@ class StreamTests {
         val buf = sample.toByteArray(StandardCharsets.UTF_8)
         assertEquals(sample.length, buf.size)
         var input: InputStream = ByteArrayInputStream(buf)
-        var s = StreamUtils.toString(input)
+        var s = com.github.io.StreamUtils.toString(input)
         assertEquals(sample, s)
         input = ByteArrayInputStream(buf)
-        s = StreamUtils.toString(input, StandardCharsets.UTF_8)
+        s = com.github.io.StreamUtils.toString(input, StandardCharsets.UTF_8)
         assertEquals(sample, s)
         input = ByteArrayInputStream(buf)
-        s = StreamUtils.toString(input, StandardCharsets.US_ASCII)
+        s = com.github.io.StreamUtils.toString(input, StandardCharsets.US_ASCII)
         assertEquals(sample, s)
         input = ByteArrayInputStream(buf)
-        s = StreamUtils.toString(input, StandardCharsets.ISO_8859_1)
+        s = com.github.io.StreamUtils.toString(input, StandardCharsets.ISO_8859_1)
         assertEquals(sample, s)
     }
 }

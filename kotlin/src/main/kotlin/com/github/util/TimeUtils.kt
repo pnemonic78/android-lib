@@ -15,7 +15,6 @@
  */
 package com.github.util
 
-import android.text.format.DateUtils
 import java.util.Calendar
 
 /**
@@ -24,6 +23,12 @@ import java.util.Calendar
  * @author Moshe Waisberg
  */
 object TimeUtils {
+    const val SECOND_IN_MILLIS: Long = 1000
+    const val MINUTE_IN_MILLIS = SECOND_IN_MILLIS * 60
+    const val HOUR_IN_MILLIS = MINUTE_IN_MILLIS * 60
+    const val DAY_IN_MILLIS = HOUR_IN_MILLIS * 24
+    const val WEEK_IN_MILLIS = DAY_IN_MILLIS * 7
+
     /**
      * Round-up the time.
      *
@@ -110,8 +115,8 @@ object TimeUtils {
      */
     @JvmStatic
     fun isSameDay(expected: Long, actual: Long, timeZoneOffset: Int): Boolean {
-        val midnight1 = roundDown(expected, DateUtils.DAY_IN_MILLIS)
-        val midnight2 = midnight1 + DateUtils.DAY_IN_MILLIS
+        val midnight1 = roundDown(expected, DAY_IN_MILLIS)
+        val midnight2 = midnight1 + DAY_IN_MILLIS
         val actualWithOffset = actual + timeZoneOffset
         return actualWithOffset in midnight1 until midnight2
     }

@@ -16,11 +16,8 @@
 package com.github.preference
 
 import android.content.Context
-import android.content.res.Resources
-import android.os.Build
-import android.os.LocaleList
-import com.github.util.LocaleUtils.getDefaultLocale
-import com.github.util.LocaleUtils.parseLocale
+import com.github.util.getDefaultLocale
+import com.github.util.parseLocale
 import java.util.Locale
 
 /**
@@ -37,11 +34,7 @@ open class SimpleLocalePreferences : SimplePreferences, LocalePreferences {
         get() {
             val value = preferences.getString(LocalePreferences.KEY_LOCALE, null)
             return if (value.isNullOrEmpty()) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    getDefaultLocale(LocaleList.getAdjustedDefault())
-                } else {
-                    getDefaultLocale(Resources.getSystem())
-                }
+                context.getDefaultLocale()
             } else {
                 parseLocale(value)
             }

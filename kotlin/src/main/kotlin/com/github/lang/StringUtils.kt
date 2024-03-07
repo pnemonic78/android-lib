@@ -1,4 +1,4 @@
-package com.github.util
+package com.github.lang
 
 /**
  * String utilities.
