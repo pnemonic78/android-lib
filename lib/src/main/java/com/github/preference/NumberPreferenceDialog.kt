@@ -18,6 +18,8 @@ package com.github.preference
 import android.os.Bundle
 import android.view.View
 import android.widget.NumberPicker
+import kotlin.math.max
+import kotlin.math.min
 
 open class NumberPreferenceDialog : PreferenceDialog() {
 
@@ -31,7 +33,7 @@ open class NumberPreferenceDialog : PreferenceDialog() {
         this.picker = picker.apply {
             minValue = preference.min
             maxValue = preference.max
-            value = preference.value
+            value = min(max(preference.min, preference.value), preference.max)
             displayedValues = preference.displayedValues
         }
     }

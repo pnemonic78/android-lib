@@ -146,15 +146,15 @@ open class NumberPickerPreference @JvmOverloads constructor(
     class SimpleSummaryProvider private constructor() :
         SummaryProvider<NumberPickerPreference> {
         override fun provideSummary(preference: NumberPickerPreference): CharSequence? {
-            val newValue = preference.value
-            if (newValue < 0) return null
+            var index = preference.value
+            if (index < 0) return null
             val entryValues = preference.displayedValues
             if (entryValues != null) {
                 val lastIndex = entryValues.lastIndex
-                val index = min(lastIndex, newValue - preference.min)
+                index = min(lastIndex, index - preference.min)
                 return entryValues[index]
             }
-            return newValue.toString()
+            return index.toString()
         }
 
         companion object {

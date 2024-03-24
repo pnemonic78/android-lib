@@ -69,13 +69,28 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
         if (key.isNullOrEmpty()) {
             return null
         }
-        val preference = findPreference<Preference>(key)
-        if (preference is TimePreference) {
-            preference.setNeutralButtonText(R.string.off)
-            onTimePreferenceChange(preference, preference.value)
-            return preference
+        val preference = findPreference<TimePreference?>(key) ?: return null
+        return initTime(preference)
+    }
+
+    protected fun initTime(preference: TimePreference): TimePreference {
+        preference.setNeutralButtonText(R.string.off)
+        onTimePreferenceChange(preference, preference.value)
+        return preference
+    }
+
+    protected fun initNumber(key: String?): NumberPickerPreference? {
+        if (key.isNullOrEmpty()) {
+            return null
         }
-        return null
+        val preference = findPreference<NumberPickerPreference?>(key) ?: return null
+        preference.setNeutralButtonText(R.string.off)
+        return preference
+    }
+
+    protected fun initNumber(preference: NumberPickerPreference): NumberPickerPreference {
+        preference.setNeutralButtonText(R.string.off)
+        return preference
     }
 
     override fun onPreferenceChange(preference: Preference, newValue: Any?): Boolean {
