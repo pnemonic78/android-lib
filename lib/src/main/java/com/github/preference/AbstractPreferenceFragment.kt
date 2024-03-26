@@ -52,24 +52,24 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
     @get:XmlRes
     protected abstract val preferencesXml: Int
 
-    @Suppress("UNCHECKED_CAST")
-    protected fun <P : RingtonePreference> initRingtone(key: String?): P? {
+    protected inline fun <reified P : RingtonePreference> initRingtone(key: String?): P? {
         if (key.isNullOrEmpty()) {
             return null
         }
-        val preference = findPreference<Preference>(key)
-        if (preference is RingtonePreference) {
-            preference.summaryProvider = RingtonePreferenceSummaryProvider.getInstance()
-            return preference as P
-        }
-        return null
+        val preference = findPreferenceLenient<P>(key) ?: return null
+        return initRingtone(preference)
+    }
+
+    protected fun <P : RingtonePreference> initRingtone(preference: P): P {
+        preference.summaryProvider = RingtonePreferenceSummaryProvider.getInstance()
+        return preference
     }
 
     protected fun initTime(key: String?): TimePreference? {
         if (key.isNullOrEmpty()) {
             return null
         }
-        val preference = findPreference<TimePreference?>(key) ?: return null
+        val preference = findPreferenceLenient<TimePreference>(key) ?: return null
         return initTime(preference)
     }
 
@@ -83,9 +83,8 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
         if (key.isNullOrEmpty()) {
             return null
         }
-        val preference = findPreference<NumberPickerPreference?>(key) ?: return null
-        preference.setNeutralButtonText(R.string.off)
-        return preference
+        val preference = findPreferenceLenient<NumberPickerPreference>(key) ?: return null
+        return initNumber(preference)
     }
 
     protected fun initNumber(preference: NumberPickerPreference): NumberPickerPreference {
@@ -262,6 +261,11 @@ abstract class AbstractPreferenceFragment : PreferenceFragmentCompat(),
 
             else -> super.onDisplayPreferenceDialog(preference)
         }
+    }
+
+    protected inline fun <reified T : Preference> findPreferenceLenient(key: CharSequence): T? {
+        val preference = findPreference<Preference>(key) ?: return null
+        return (preference as? T)
     }
 
     companion object {
