@@ -16,13 +16,13 @@
 package com.github.util
 
 import android.text.format.DateUtils
+import java.util.Calendar
+import java.util.TimeZone
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import java.util.Calendar
-import java.util.TimeZone
 
 /**
  * Test times.
@@ -54,7 +54,6 @@ class TimeTests {
     }
 
     @Test
-    @Throws(Exception::class)
     fun roundUpNegativeSecond() {
         assertEquals(0L, TimeUtils.roundUp(0, DateUtils.SECOND_IN_MILLIS))
         assertEquals(0L, TimeUtils.roundUp(-111, DateUtils.SECOND_IN_MILLIS))
