@@ -14,6 +14,10 @@ val Int.isOdd get() = this.and(1) == 1
 
 fun sqr(a: Double): Double = a * a
 
+fun sqr(a: Int): Long = sqr(a.toLong())
+
+fun sqr(a: Long): Long = a * a
+
 operator fun IntArray.times(value: Int): IntArray {
     return IntArray(size) { i -> this[i] * value }
 }
