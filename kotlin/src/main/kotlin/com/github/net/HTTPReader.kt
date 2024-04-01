@@ -41,6 +41,7 @@ object HTTPReader {
     /**
      * Content types that are XML text.
      */
+    @JvmField
     val CONTENT_XML = arrayOf(CONTENT_APP_XML, CONTENT_TEXT_XML)
 
     /**

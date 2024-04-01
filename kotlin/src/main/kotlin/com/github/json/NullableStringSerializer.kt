@@ -9,6 +9,7 @@ import kotlinx.serialization.encoding.Encoder
 
 typealias NullableString = String?
 
+@OptIn(ExperimentalSerializationApi::class)
 object NullableStringSerializer : KSerializer<NullableString> {
     override val descriptor = PrimitiveSerialDescriptor("java.lang.String", PrimitiveKind.STRING)
 
@@ -19,7 +20,6 @@ object NullableStringSerializer : KSerializer<NullableString> {
         return decoder.decodeNull()
     }
 
-    @OptIn(ExperimentalSerializationApi::class)
     override fun serialize(encoder: Encoder, value: NullableString) {
         if (value == null) {
             encoder.encodeNull()

@@ -61,9 +61,6 @@ dependencies {
     api("androidx.constraintlayout:constraintlayout:2.1.4")
     api("androidx.preference:preference-ktx:1.2.1")
 
-    // JSON
-    api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
-
     // Logging
     api("com.jakewharton.timber:timber:${BuildVersions.timberVersion}")
 

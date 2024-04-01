@@ -15,6 +15,7 @@
  */
 package com.github.util
 
+import com.github.lang.RegexMinus
 import java.util.Arrays
 import java.util.Locale
 
@@ -63,6 +64,28 @@ object LocaleUtils {
      * ISO 639 language code for "Yiddish".
      */
     const val ISO639_YIDDISH = "yi"
+
+    /** ISO 639 code for Norwegian Bokmål. */
+    const val ISO639_NB = "nb"
+
+    /** ISO 639 code for Norwegian. */
+    const val ISO639_NO = "no"
+
+    /** ISO 3166 country code for Israel.  */
+    const val ISO3166_ISRAEL = "IL"
+
+    /** ISO 3166 country code for Palestine.  */
+    const val ISO3166_PALESTINE = "PS"
+
+    @JvmStatic
+    fun toLanguageCode(language: String?): String {
+        if (language.isNullOrEmpty()) return Locale.ENGLISH.language
+        val tokens = language.split(RegexMinus).dropLastWhile { it.isEmpty() }
+        val s1 = tokens[0]
+        val s2 = if (tokens.size > 1) tokens[1] else ""
+        val locale = Locale(s1, s2)
+        return locale.language
+    }
 
     /**
      * Sort the locales by their display names.
@@ -129,6 +152,7 @@ fun Locale.isLocaleRTL(): Boolean {
         LocaleUtils.ISO639_PERSIAN,
         LocaleUtils.ISO639_YIDDISH,
         LocaleUtils.ISO639_YIDDISH_JAVA -> true
+
         else -> false
     }
 }
@@ -146,4 +170,8 @@ fun parseLocale(localeValue: String?): Locale {
     } else {
         Locale.forLanguageTag(localeValue)
     }
+}
+
+fun String?.toLanguageCode(): String {
+    return LocaleUtils.toLanguageCode(this)
 }
