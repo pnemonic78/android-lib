@@ -66,15 +66,15 @@ object TimeUtils {
      */
     @JvmStatic
     fun isSameDay(expected: Calendar, actual: Calendar): Boolean {
-        val e1 = expected[Calendar.ERA]
-        val y1 = expected[Calendar.YEAR]
-        val m1 = expected[Calendar.MONTH]
-        val d1 = expected[Calendar.DAY_OF_MONTH]
+        val e1 = expected.era
+        val y1 = expected.year
+        val m1 = expected.month
+        val d1 = expected.dayOfMonth
 
-        val e2 = actual[Calendar.ERA]
-        val y2 = actual[Calendar.YEAR]
-        val m2 = actual[Calendar.MONTH]
-        val d2 = actual[Calendar.DAY_OF_MONTH]
+        val e2 = actual.era
+        val y2 = actual.year
+        val m2 = actual.month
+        val d2 = actual.dayOfMonth
 
         return (e1 == e2) && (y1 == y2) && (m1 == m2) && (d1 == d2)
     }

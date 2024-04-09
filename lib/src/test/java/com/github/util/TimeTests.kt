@@ -95,14 +95,14 @@ class TimeTests {
         cal.add(Calendar.DAY_OF_MONTH, 1)
         assertFalse(TimeUtils.isSameDay(cal, time))
         cal.timeInMillis = time
-        cal[Calendar.HOUR_OF_DAY] = 0
-        cal[Calendar.MINUTE] = 59
-        cal[Calendar.SECOND] = 59
+        cal.hour = 0
+        cal.minute = 59
+        cal.second = 59
         time = cal.timeInMillis
         for (j in 0..23) {
             for (i in 0..23) {
                 cal.timeInMillis = now
-                cal[Calendar.HOUR_OF_DAY] = i
+                cal.hour = i
                 assertTrue("j=$j,i=$i", TimeUtils.isSameDay(cal, time))
             }
             time += DateUtils.HOUR_IN_MILLIS
@@ -113,30 +113,30 @@ class TimeTests {
         val today = 1591116511014L
         cal = Calendar.getInstance(timeZone)
         cal.timeInMillis = today
-        assertEquals(2020, cal[Calendar.YEAR])
-        assertEquals(Calendar.JUNE, cal[Calendar.MONTH])
-        assertEquals(2, cal[Calendar.DAY_OF_MONTH])
-        assertEquals(19, cal[Calendar.HOUR_OF_DAY])
-        assertEquals(48, cal[Calendar.MINUTE])
+        assertEquals(2020, cal.year)
+        assertEquals(Calendar.JUNE, cal.month)
+        assertEquals(2, cal.dayOfMonth)
+        assertEquals(19, cal.hour)
+        assertEquals(48, cal.minute)
         val midnight1 = TimeUtils.roundDown(today, DateUtils.DAY_IN_MILLIS)
         assertEquals(1591056000000L, midnight1)
         cal = Calendar.getInstance(timeZone)
         cal.timeInMillis = midnight1
-        assertEquals(2020, cal[Calendar.YEAR])
-        assertEquals(Calendar.JUNE, cal[Calendar.MONTH])
-        assertEquals(2, cal[Calendar.DAY_OF_MONTH])
-        assertEquals(3, cal[Calendar.HOUR_OF_DAY])
-        assertEquals(0, cal[Calendar.MINUTE])
-        assertEquals(0, cal[Calendar.SECOND])
-        assertEquals(0, cal[Calendar.MILLISECOND])
+        assertEquals(2020, cal.year)
+        assertEquals(Calendar.JUNE, cal.month)
+        assertEquals(2, cal.dayOfMonth)
+        assertEquals(3, cal.hour)
+        assertEquals(0, cal.minute)
+        assertEquals(0, cal.second)
+        assertEquals(0, cal.millisecond)
         time = 1591047482685L //solar midnight
         cal = Calendar.getInstance(timeZone)
         cal.timeInMillis = time
-        assertEquals(2020, cal[Calendar.YEAR])
-        assertEquals(Calendar.JUNE, cal[Calendar.MONTH])
-        assertEquals(2, cal[Calendar.DAY_OF_MONTH])
-        assertEquals(0, cal[Calendar.HOUR_OF_DAY])
-        assertEquals(38, cal[Calendar.MINUTE])
+        assertEquals(2020, cal.year)
+        assertEquals(Calendar.JUNE, cal.month)
+        assertEquals(2, cal.dayOfMonth)
+        assertEquals(0, cal.hour)
+        assertEquals(38, cal.minute)
         val offset3 = (3 * DateUtils.HOUR_IN_MILLIS).toInt()
         assertEquals(10800000, offset3)
         val offset = timeZone.getOffset(time)
@@ -157,11 +157,11 @@ class TimeTests {
         assertTrue(TimeUtils.isSameDay(cal, levana))
         cal = Calendar.getInstance()
         cal.timeZone = TimeZone.getTimeZone("America/New_York")
-        cal[Calendar.YEAR] = 2018
-        cal[Calendar.MONTH] = Calendar.SEPTEMBER
-        cal[Calendar.DAY_OF_MONTH] = 24
-        cal[Calendar.HOUR_OF_DAY] = 9
-        cal[Calendar.MINUTE] = 30
+        cal.year = 2018
+        cal.month = Calendar.SEPTEMBER
+        cal.dayOfMonth = 24
+        cal.hour = 9
+        cal.minute = 30
         assertTrue(TimeUtils.isSameDay(cal, levana))
     }
 }

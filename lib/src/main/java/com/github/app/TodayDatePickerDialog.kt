@@ -19,6 +19,9 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.content.DialogInterface
 import com.github.lib.R
+import com.github.util.dayOfMonth
+import com.github.util.month
+import com.github.util.year
 import java.util.Calendar
 
 /**
@@ -62,9 +65,6 @@ class TodayDatePickerDialog : DatePickerDialog {
 
     private fun setToday() {
         val today = Calendar.getInstance()
-        val year = today[Calendar.YEAR]
-        val monthOfYear = today[Calendar.MONTH]
-        val dayOfMonth = today[Calendar.DAY_OF_MONTH]
-        updateDate(year, monthOfYear, dayOfMonth)
+        updateDate(today.year, today.month, today.dayOfMonth)
     }
 }
