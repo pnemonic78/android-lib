@@ -16,6 +16,7 @@
 package com.github.util
 
 import java.util.Calendar
+import java.util.Date
 
 /**
  * Time utilities.
@@ -119,5 +120,10 @@ object TimeUtils {
         val midnight2 = midnight1 + DAY_IN_MILLIS
         val actualWithOffset = actual + timeZoneOffset
         return actualWithOffset in midnight1 until midnight2
+    }
+
+    @JvmStatic
+    fun isSameDay(cal: Calendar, date: Date): Boolean {
+        return isSameDay(cal, date.time)
     }
 }
