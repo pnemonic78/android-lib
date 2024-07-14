@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     kotlin("jvm")
-    kotlin("plugin.serialization") version BuildVersions.kotlinVersion
+    kotlin("plugin.serialization") version BuildVersions.kotlin
 }
 
 java {
@@ -32,5 +32,5 @@ dependencies {
     api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
     // Testing
-    testImplementation("junit:junit:${BuildVersions.junitVersion}")
+    testImplementation("junit:junit:${BuildVersions.junit}")
 }

@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk = BuildVersions.compileSdkVersion
+    compileSdk = BuildVersions.compileSdk
     namespace = "com.github.lib"
 
     defaultConfig {
-        minSdk = BuildVersions.minSdkVersion
-        targetSdk = BuildVersions.targetSdkVersion
+        minSdk = BuildVersions.minSdk
+        targetSdk = BuildVersions.targetSdk
     }
 
     buildTypes {
@@ -51,10 +51,10 @@ dependencies {
     api(project(":android-lib:kotlin"))
 
     // Jetpack
-    api("androidx.activity:activity-ktx:1.8.2")
-    api("androidx.annotation:annotation:1.7.1")
-    api("androidx.core:core-ktx:1.12.0")
-    api("androidx.fragment:fragment-ktx:1.6.2")
+    api("androidx.activity:activity-ktx:1.9.0")
+    api("androidx.annotation:annotation:1.8.0")
+    api("androidx.core:core-ktx:1.13.1")
+    api("androidx.fragment:fragment-ktx:1.8.1")
 
     // Views
     api("androidx.recyclerview:recyclerview:1.3.2")
@@ -62,12 +62,12 @@ dependencies {
     api("androidx.preference:preference-ktx:1.2.1")
 
     // Logging
-    api("com.jakewharton.timber:timber:${BuildVersions.timberVersion}")
+    api("com.jakewharton.timber:timber:${BuildVersions.timber}")
 
     // Testing
-    testImplementation("junit:junit:${BuildVersions.junitVersion}")
-    androidTestImplementation("androidx.test:core:${BuildVersions.androidTestVersion}")
-    androidTestImplementation("androidx.test:rules:${BuildVersions.androidTestVersion}")
-    androidTestImplementation("androidx.test:runner:${BuildVersions.androidTestVersion}")
+    testImplementation("junit:junit:${BuildVersions.junit}")
+    androidTestImplementation("androidx.test:core:${BuildVersions.androidTest}")
+    androidTestImplementation("androidx.test:rules:${BuildVersions.androidTest}")
+    androidTestImplementation("androidx.test:runner:${BuildVersions.androidTest}")
     androidTestImplementation("androidx.test.ext:junit:${BuildVersions.junitExt}")
 }

@@ -1,16 +1,16 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    kotlin("plugin.serialization") version BuildVersions.kotlinVersion
+    kotlin("plugin.serialization") version BuildVersions.kotlin
 }
 
 android {
-    compileSdk = BuildVersions.compileSdkVersion
+    compileSdk = BuildVersions.compileSdk
     namespace = "com.github.kotlin"
 
     defaultConfig {
-        minSdk = BuildVersions.minSdkVersion
-        targetSdk = BuildVersions.targetSdkVersion
+        minSdk = BuildVersions.minSdk
+        targetSdk = BuildVersions.targetSdk
     }
 
     buildTypes {
@@ -37,5 +37,5 @@ dependencies {
     api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
     // Testing
-    testImplementation("junit:junit:${BuildVersions.junitVersion}")
+    testImplementation("junit:junit:${BuildVersions.junit}")
 }

@@ -32,8 +32,8 @@ open class RangeInputFilter(
     maximum: Double
 ) : DigitsKeyListener(sign, decimal) {
 
-    protected open val minimum: Double
-    protected open val maximum: Double
+    protected val minimum: Double
+    protected val maximum: Double
 
     /**
      * Creates a new range filter with only non-negative integer values.
