@@ -20,8 +20,10 @@ import android.content.ComponentName
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_META_DATA
+import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.Display
 import kotlin.math.min
 import timber.log.Timber
 
@@ -104,3 +106,12 @@ fun Activity.restart(savedState: Bundle?) = ActivityUtils.restartActivity(this, 
 
 fun Activity.restart() = ActivityUtils.restartActivity(this)
 
+fun Activity.findDisplay(): Display {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        val display = this.display
+        if (display != null) return display
+    }
+
+    @Suppress("DEPRECATION")
+    return windowManager.defaultDisplay
+}
