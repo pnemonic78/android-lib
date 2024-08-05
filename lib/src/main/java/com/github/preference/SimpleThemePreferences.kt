@@ -19,6 +19,7 @@ import android.content.Context
 import androidx.annotation.StyleRes
 import com.github.content.isNightMode
 import com.github.lib.R
+import com.github.preference.ThemePreferences.Companion.KEY_THEME
 import com.github.preference.ThemePreferences.Values.THEME_DARK
 import com.github.preference.ThemePreferences.Values.THEME_DEFAULT
 import com.github.preference.ThemePreferences.Values.THEME_LIGHT
@@ -38,7 +39,7 @@ open class SimpleThemePreferences(context: Context) : SimplePreferences(context)
     }
 
     override val themeValue: String?
-        get() = preferences.getString(ThemePreferences.KEY_THEME, THEME_DEFAULT)
+        get() = preferences.getString(KEY_THEME, THEME_DEFAULT)
 
     override fun getTheme(value: String?): Int {
         return when (value) {

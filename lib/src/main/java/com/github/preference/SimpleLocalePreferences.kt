@@ -16,6 +16,7 @@
 package com.github.preference
 
 import android.content.Context
+import com.github.preference.LocalePreferences.Companion.KEY_LOCALE
 import com.github.util.getDefaultLocale
 import com.github.util.parseLocale
 import java.util.Locale
@@ -32,7 +33,7 @@ open class SimpleLocalePreferences : SimplePreferences, LocalePreferences {
 
     override val locale: Locale
         get() {
-            val value = preferences.getString(LocalePreferences.KEY_LOCALE, null)
+            val value = preferences.getString(KEY_LOCALE, null)
             return if (value.isNullOrEmpty()) {
                 context.getDefaultLocale()
             } else {
