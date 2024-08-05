@@ -21,11 +21,13 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.res.Resources
 import android.os.Build
 import com.github.app.ActivityUtils.resetTitle
 import com.github.preference.LocalePreferences
 import com.github.preference.SimpleLocalePreferences
 import com.github.util.applyLocale
+import com.github.util.getDefaultLocale
 import com.github.util.parseLocale
 
 /**
@@ -63,7 +65,10 @@ class LocaleHelper<P : LocalePreferences>(context: Context) : LocaleCallbacks<P>
             if (ACTION_LOCALE_CHANGED == action) {
                 var contextForLocale: Context = application
                 val localeValue = intent.getStringExtra(EXTRA_LOCALE)
-                val locale = parseLocale(localeValue)
+                var locale = parseLocale(localeValue)
+                if (locale.language.isNullOrEmpty()) {
+                    locale = Resources.getSystem().getDefaultLocale()
+                }
                 contextForLocale = contextForLocale.applyLocale(locale)
                 val newConfig = contextForLocale.resources.configuration
                 application.onConfigurationChanged(newConfig)
