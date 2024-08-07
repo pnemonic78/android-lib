@@ -6,26 +6,16 @@
     <string name="add">Lisama</string>
     <string name="filter" msgid="2018011724373033887">"Filter"</string>
 
-    <!-- Date -->
-    <string name="twelve_hour_time_format">h:mm:ss a</string>
-    <string name="twenty_four_hour_time_format">HH:mm:ss</string>
-    <string name="month_day_year" formatted="false">%-e %B %Y</string>
-
     <!-- Ringtone -->
     <string name="ringtone_default" msgid="3332469542084549546">"Vaikehelin"</string>
     <string name="notification_sound_default" msgid="5309766396223094324">"Märguande vaikeheli"</string>
     <string name="alarm_sound_default" msgid="6854264112790616066">"Äratuse vaikeheli"</string>
     <string name="ringtone_silent" msgid="7937634392408977062">Puudub</string>
 
-    <!-- Vibration -->
-    <!--TODO string name="keywords_vibrate_for_calls" msgid="1019870409730074899">"Ukudlidliza"</string-->
-
     <!-- Preferences -->
-    <string name="settings_label" msgid="1626402585530130914">Seaded</string>
     <string name="tts_general_section_title" msgid="4402572014604490502">Üldine</string>
     <string name="pref_appearance_title">Välimus</string>
-    201
-    202
+
     <!-- Theme. -->
     <string name="settings_screen_theme">Teema</string>
     <string name="night_mode_yes">Tume</string>

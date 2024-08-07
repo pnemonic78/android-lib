@@ -6,22 +6,16 @@
     <string name="add">Добавяне</string>
     <string name="filter" msgid="2018011724373033887">Филтриране</string>
 
-    <!-- Date -->
-    <string name="twelve_hour_time_format">h:mm:ss a</string>
-    <string name="twenty_four_hour_time_format">H:mm:ss</string>
-    <string name="month_day_year" formatted="false">%d %B %Y</string>
-
     <!-- Ringtone -->
     <string name="ringtone_default" msgid="3332469542084549546">"Стандартна мелодия"</string>
     <string name="notification_sound_default" msgid="5309766396223094324">"Стандартен звук за известяване"</string>
     <string name="alarm_sound_default" msgid="6854264112790616066">"Стандартен звук за будилника"</string>
     <string name="ringtone_silent" msgid="7937634392408977062">Без</string>
-    <string name="notification_volume_title" msgid="2012640760341080408">"Известие"</string>
 
     <!-- Preferences -->
-    <string name="settings_label" msgid="1626402585530130914">Настройки</string>
     <string name="tts_general_section_title" msgid="4402572014604490502">Общи</string>
     <string name="pref_appearance_title">появяване</string>
+
     <!-- Theme. -->
     <string name="settings_screen_theme">Тема</string>
     <string name="night_mode_no">Светло</string>

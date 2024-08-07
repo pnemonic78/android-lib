@@ -11,6 +11,56 @@ android {
         minSdk = BuildVersions.minSdk
         targetSdk = BuildVersions.targetSdk
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val locales = listOf(
+            "af",
+            "ar",
+            "bg",
+            "cs",
+            "da",
+            "de",
+            "el",
+            "en",
+            "en_AU",
+            "en_CA",
+            "en_GB",
+            "en_IE",
+            "en_IN",
+            "en_NZ",
+            "en_US",
+            "en_ZA",
+            "es",
+            "es_US",
+            "et",
+            "fa",
+            "fi",
+            "fr",
+            "hi",
+            "hu",
+            "in",
+            "it",
+            "iw",
+            "ja",
+            "ko",
+            "lt",
+            "lv",
+            "ms",
+            "nb",
+            "nl",
+            "pl",
+            "pt",
+            "pt_PT",
+            "ro",
+            "ru",
+            "sv",
+            "th",
+            "tr",
+            "uk",
+            "vi",
+            "zh_CN",
+            "zu"
+        )
+        resourceConfigurations += locales
     }
 
     buildTypes {
@@ -42,6 +92,7 @@ android {
                 srcDir(file("../platform/packages/apps/Contacts/res"))
                 srcDir(file("../platform/packages/apps/DeskClock/res"))
                 srcDir(file("../platform/packages/apps/Gallery2/res"))
+                srcDir(file("../platform/packages/apps/Settings/res"))
             }
         }
     }
@@ -52,10 +103,10 @@ dependencies {
     api(project(":android-lib:kotlin"))
 
     // Jetpack
-    api("androidx.activity:activity-ktx:1.9.0")
-    api("androidx.annotation:annotation:1.8.0")
+    api("androidx.activity:activity-ktx:1.9.1")
+    api("androidx.annotation:annotation:1.8.1")
     api("androidx.core:core-ktx:1.13.1")
-    api("androidx.fragment:fragment-ktx:1.8.1")
+    api("androidx.fragment:fragment-ktx:1.8.2")
 
     // Views
     api("androidx.recyclerview:recyclerview:1.3.2")

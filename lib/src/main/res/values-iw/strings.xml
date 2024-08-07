@@ -6,12 +6,6 @@
     <string name="add">הוסף</string>
     <string name="filter" msgid="2018011724373033887">סינון</string>
 
-    <!-- Date -->
-    <string name="twelve_hour_time_format">h:mm:ss a</string>
-    <string name="twenty_four_hour_time_format">H:mm:ss</string>
-    <string name="month_day_year" formatted="false">%-e ב%B %Y</string>
-    <string name="notification_volume_title" msgid="2012640760341080408">"התראה"</string>
-
     <!-- Ringtone -->
     <string name="ringtone_default" msgid="3332469542084549546">"רינגטון ברירת מחדל"</string>
     <string name="notification_sound_default" msgid="5309766396223094324">"צליל ברירת מחדל להתראה"</string>
@@ -19,7 +13,6 @@
     <string name="ringtone_silent" msgid="7937634392408977062">ללא</string>
 
     <!-- Preferences -->
-    <string name="settings_label" msgid="1626402585530130914">הגדרות</string>
     <string name="tts_general_section_title" msgid="4402572014604490502">כללי</string>
     <string name="pref_appearance_title">מראה</string>
 
@@ -33,4 +26,6 @@
     <string name="locale_title">שפה</string>
     <string name="locale_default">שפת ברירת מחדל</string>
 
+    <!-- Reminder -->
+    <string name="alarm">"אזעקה"</string>
 </resources>

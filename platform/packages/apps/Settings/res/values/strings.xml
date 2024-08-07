@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_screen_theme" msgid="2137262503543943871">"Theme"</string>
+    <!-- Sound & display settings screen, theme setting value to prefer a light-colored user interface [CHAR LIMIT=30] -->
+    <string name="night_mode_no">Light</string>
+    <!-- Sound & display settings screen, theme setting value to prefer a dark-colored user interface [CHAR LIMIT=30] -->
+    <string name="night_mode_yes">Dark</string>
+    <!-- [CHAR LIMIT=60] Name of setting that changes the UI to dark -->
+    <string name="dark_ui_mode">Dark theme</string>
+    <!-- Name of setting for switching device theme [CHAR LIMIT=60] -->
+    <string name="device_theme">Device theme</string>
+    <!-- Name of default device theme [CHAR LIMIT=60] -->
+    <string name="default_theme">Default</string>
+</resources>
