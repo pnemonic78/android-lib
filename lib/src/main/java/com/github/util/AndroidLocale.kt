@@ -34,10 +34,7 @@ fun Context.applyLocale(locale: Locale): Context {
     val res = resources ?: Resources.getSystem()!!
     val config = res.configuration
     config.setLocale(locale)
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N_MR1) {
-        @Suppress("DEPRECATION")
-        res.updateConfiguration(config, res.displayMetrics)
-    }
+    resources?.updateConfiguration(config, res.displayMetrics)
     return createConfigurationContext(config)
 }
 
