@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
+
+    <string name="ok" translatable="false">@android:string/ok</string>
+    <string name="cancel" translatable="false">@android:string/cancel</string>
+    <string name="off" translatable="false">@string/switch_off_text</string>
+    <string name="on" translatable="false">@string/switch_on_text</string>
+
+    <!-- Dates -->
+    <string name="menu_today" translatable="false">@string/today</string>
+    <string name="never" translatable="false">@string/auto_silence_never</string>
+
+    <!-- Choice in the ringtone picker. If chosen, the default ringtone will be used. -->
+    <string name="ringtone_default" translatable="false">@string/notification_alert_title</string>
+    <!-- Choice in the alarm sound picker. If chosen, the default alarm sound will be used. -->
+    <string name="alarm_sound_default" translatable="false">@string/default_alarm_ringtone_title</string>
+    <!-- Choice in the ringtone picker. If chosen, there will be silence instead of a ringtone played. -->
+    <string name="ringtone_silent" translatable="false">@string/notification_silence_title</string>
+    <string name="alarm" translatable="false">@string/menu_alarm</string>
+    <string name="notifications" translatable="false">@string/preferences_alerts_title</string>
+
+    <!-- Vibration -->
+    <string name="vibration" translatable="false">@string/alarm_vibrate</string>
+
+    <!-- Preferences -->
+    <string name="title_activity_settings" translatable="false">@string/menu_settings</string>
+    <string name="pref_general_title" translatable="false">@string/general_category_title</string>
+    <string name="pref_appearance_title" translatable="false">@string/category_name_appearance</string>
+
+    <!-- Theme. -->
+    <string name="theme_title" translatable="false">@string/settings_screen_theme</string>
+    <string name="theme_dark" translatable="false">@string/dark_ui_title</string>
+    <string name="theme_light" translatable="false">@string/light_ui_title</string>
+    <string name="theme_default" translatable="false">@string/default_theme</string>
+
+    <!-- Locale (language) -->
+    <string name="locale_title" translatable="false">@string/app_locale_preference_title</string>
+
+</resources>

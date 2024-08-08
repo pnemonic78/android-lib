@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="switch_on_text" msgid="5664542327776075105">"사용"</string>
-    <string name="switch_off_text" msgid="1315547447393646667">"사용 안함"</string>
-    <string name="add">"추가"</string>
-    <string name="filter" msgid="2018011724373033887">필터</string>
-
     <!-- Ringtone -->
     <string name="ringtone_default" msgid="1744846699922263043">"기본 벨소리"</string>
-    <string name="notification_sound_default" msgid="8630353701915294299">"기본 알림 소리"</string>
-    <string name="alarm_sound_default" msgid="5488847775252870314">"기본 알람 소리"</string>
-    <string name="ringtone_silent" msgid="7937634392408977062">"없음"</string>
-
-    <!-- Preferences -->
-    <string name="tts_general_section_title" msgid="4402572014604490502">"기본설정"</string>
-    <!--TODO string name="pref_appearance_title">появяване</string-->
 
     <!-- Theme. -->
-    <!--TODO string name="settings_screen_theme">Тема</string-->
-    <!--TODO string name="night_mode_no">Светло</string-->
-    <!--TODO string name="night_mode_yes">Тъмно</string-->
-    <!--TODO string name="theme_default">Стандартна тема</string-->
-
-    <!-- Locale (language) -->
-    <string name="locale_title">"언어"</string>
-    <!--TODO string name="locale_default">Стандартен език</string-->
-
+    <string name="settings_screen_theme">"주제"</string>
+    <string name="light_ui_title">"밝은 모드"</string>
 </resources>

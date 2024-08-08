@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="switch_on_text" msgid="5664542327776075105">"Vuliwe"</string>
-    <string name="switch_off_text" msgid="1315547447393646667">"Valiwe"</string>
-    <string name="add">"Yengeza"</string>
-    <string name="filter" msgid="2018011724373033887">Hlunga</string>
-
     <!-- Ringtone -->
     <string name="ringtone_default" msgid="3789758980357696936">"Iringithoni emisiwe"</string>
-    <string name="notification_sound_default" msgid="8630353701915294299">"Umsindo wesaziso ozenzakalelayo"</string>
-    <string name="alarm_sound_default" msgid="5488847775252870314">"Umsindo we-alamu ozenzakalelayo"</string>
-    <string name="ringtone_silent" msgid="7937634392408977062">"Akunalutho"</string>
-
-    <!-- Preferences -->
-    <string name="tts_general_section_title" msgid="4402572014604490502">"Okuvamile"</string>
-    <!--TODO string name="pref_appearance_title">появяване</string-->
 
     <!-- Theme. -->
-    <!--TODO string name="settings_screen_theme">Тема</string-->
-    <!--TODO string name="night_mode_no">Светло</string-->
-    <!--TODO string name="night_mode_yes">Тъмно</string-->
-    <!--TODO string name="theme_default">Стандартна тема</string-->
-
-    <!-- Locale (language) -->
-    <string name="locale_title">"Ulimi"</string>
-    <!--TODO string name="locale_default">Стандартен език</string-->
-
+    <string name="settings_screen_theme">"Itimu"</string>
+    <string name="light_ui_title">"Imodi ekhanyayo"</string>
 </resources>

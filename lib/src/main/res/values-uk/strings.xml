@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="switch_on_text" msgid="5664542327776075105">"Увімкнено"</string>
-    <string name="switch_off_text" msgid="1315547447393646667">"Вимкнено"</string>
-    <string name="add">Додати</string>
-    <string name="filter" msgid="2018011724373033887">Фільтрув.</string>
-
     <!-- Ringtone -->
     <string name="ringtone_default" msgid="3332469542084549546">"Сигнал дзвінка за умовчанням"</string>
-    <string name="notification_sound_default" msgid="5309766396223094324">"Звук сповіщення за умовчанням"</string>
-    <string name="alarm_sound_default" msgid="6854264112790616066">"Звук сигналу за умовчанням"</string>
-    <string name="ringtone_silent" msgid="7937634392408977062">Немає</string>
-
-    <!-- Preferences -->
-    <string name="tts_general_section_title" msgid="4402572014604490502">Загальні</string>
-    <string name="pref_appearance_title">Вигляд</string>
 
     <!-- Theme. -->
     <string name="settings_screen_theme">Тема</string>
-    <string name="night_mode_no">Світла</string>
-    <string name="night_mode_yes">Темна</string>
-    <string name="theme_default">Тема за умовчанням</string>
-
-    <!-- Locale (language) -->
-    <string name="locale_title">Мова</string>
-    <string name="locale_default">Мова за умовчанням</string>
-
+    <string name="light_ui_title">"Яскравий режим"</string>
 </resources>

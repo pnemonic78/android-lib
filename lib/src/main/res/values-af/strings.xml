@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="switch_on_text" msgid="5664542327776075105">"Aan"</string>
-    <string name="switch_off_text" msgid="1315547447393646667">"Af"</string>
-    <string name="add">Add</string>
-    <string name="filter" msgid="2018011724373033887">"Filter"</string>
-
     <!-- Ringtone -->
     <string name="ringtone_default" msgid="1744846699922263043">"Verstekluitoon"</string>
-    <string name="notification_sound_default" msgid="8630353701915294299">"Verstekkennisgewingklank"</string>
-    <string name="alarm_sound_default" msgid="5488847775252870314">"Verstekwekkerklank"</string>
-    <string name="ringtone_silent" msgid="7937634392408977062">"Geen"</string>
-
-    <!-- Preferences -->
-    <string name="tts_general_section_title" msgid="4402572014604490502">"Algemeen"</string>
-    <string name="pref_appearance_title">"Voorkoms"</string>
 
     <!-- Theme. -->
-    <!--TODO string name="settings_screen_theme">Тема</string-->
-    <!--TODO string name="night_mode_no">Светло</string-->
-    <!--TODO string name="night_mode_yes">Тъмно</string-->
-    <!--TODO string name="theme_default">Стандартна тема</string-->
-
-    <!-- Locale (language) -->
-    <string name="locale_title">"Taal"</string>
-    <!--TODO string name="locale_default">Стандартен език</string-->
-
+    <string name="settings_screen_theme">"Tema"</string>
+    <string name="light_ui_title">"Lichtmodus"</string>
 </resources>

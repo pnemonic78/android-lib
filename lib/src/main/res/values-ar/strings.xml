@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="switch_on_text" msgid="5664542327776075105">"مفعّل"</string>
-    <string name="switch_off_text" msgid="1315547447393646667">"غير مفعّل"</string>
-    <string name="add">إضافة</string>
-    <string name="filter" msgid="2018011724373033887">تصفية</string>
-
     <!-- Ringtone -->
     <string name="ringtone_default" msgid="3332469542084549546">"نغمة الرنين الافتراضية"</string>
-    <string name="notification_sound_default" msgid="5309766396223094324">"صوت الإشعار الافتراضي"</string>
-    <string name="alarm_sound_default" msgid="6854264112790616066">"صوت التنبيه الافتراضي"</string>
-    <string name="ringtone_silent" msgid="7937634392408977062">"لا شيء"</string>
-
-    <!-- Preferences -->
-    <string name="tts_general_section_title" msgid="4402572014604490502">"عامة"</string>
-    <string name="pref_appearance_title">مظهر</string>
 
     <!-- Theme. -->
     <string name="settings_screen_theme" msgid="2137262503543943871">"المظهر"</string>
-    <string name="night_mode_no" msgid="7682792841791457238">"فاتح"</string>
-    <string name="night_mode_yes" msgid="4847655033618591567">"داكن"</string>
-    <string name="theme_default">السمة الافتراضية</string>
-
-    <!-- Locale (language) -->
-    <string name="locale_title">لغة</string>
-    <string name="locale_default">اللغة الافتراضية</string>
-
+    <string name="light_ui_title">"وضع الضوء"</string>
 </resources>

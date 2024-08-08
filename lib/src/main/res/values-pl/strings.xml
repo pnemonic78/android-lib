@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="switch_on_text" msgid="5664542327776075105">"Wł."</string>
-    <string name="switch_off_text" msgid="1315547447393646667">"Wył."</string>
-    <string name="add">Dodaj</string>
-    <string name="filter" msgid="2018011724373033887">Filtr</string>
-
     <!-- Ringtone -->
     <string name="ringtone_default" msgid="3332469542084549546">"Dzwonek domyślny"</string>
-    <string name="notification_sound_default" msgid="5309766396223094324">"Domyślny dźwięk powiadomienia"</string>
-    <string name="alarm_sound_default" msgid="6854264112790616066">"Domyślny dźwięk alarmu"</string>
-    <string name="ringtone_silent" msgid="7937634392408977062">Brak</string>
-
-    <!-- Preferences -->
-    <string name="tts_general_section_title" msgid="4402572014604490502">Ogólne</string>
-    <string name="pref_appearance_title">Wygląd</string>
 
     <!-- Theme. -->
     <string name="settings_screen_theme">Motyw</string>
-    <string name="night_mode_no">Jasny</string>
-    <string name="night_mode_yes">Ciemny</string>
-    <string name="theme_default">Domyślny motyw</string>
-
-    <!-- Locale (language) -->
-    <string name="locale_title">Język</string>
-    <string name="locale_default">Domyślny język</string>
-
+    <string name="light_ui_title">"Tryb jasny"</string>
 </resources>

@@ -1,30 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="switch_on_text" msgid="5664542327776075105">"פועל"</string>
-    <string name="switch_off_text" msgid="1315547447393646667">"כבוי"</string>
-    <string name="add">הוסף</string>
-    <string name="filter" msgid="2018011724373033887">סינון</string>
-
     <!-- Ringtone -->
     <string name="ringtone_default" msgid="3332469542084549546">"רינגטון ברירת מחדל"</string>
-    <string name="notification_sound_default" msgid="5309766396223094324">"צליל ברירת מחדל להתראה"</string>
-    <string name="alarm_sound_default" msgid="6854264112790616066">"צליל ברירת מחדל להתרעה"</string>
-    <string name="ringtone_silent" msgid="7937634392408977062">ללא</string>
-
-    <!-- Preferences -->
-    <string name="tts_general_section_title" msgid="4402572014604490502">כללי</string>
-    <string name="pref_appearance_title">מראה</string>
 
     <!-- Theme. -->
     <string name="settings_screen_theme">עיצוב</string>
-    <string name="night_mode_no">בהיר</string>
-    <string name="night_mode_yes">כהה</string>
-    <string name="theme_default">עיצוב ברירת מחדל</string>
-
-    <!-- Locale (language) -->
-    <string name="locale_title">שפה</string>
-    <string name="locale_default">שפת ברירת מחדל</string>
+    <string name="light_ui_title">"מצב בהיר"</string>
 
     <!-- Reminder -->
     <string name="alarm">"אזעקה"</string>
