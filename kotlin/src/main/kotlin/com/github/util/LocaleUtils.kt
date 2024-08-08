@@ -79,7 +79,7 @@ object LocaleUtils {
 
     @JvmStatic
     fun toLanguageCode(language: String?): String {
-        if (language.isNullOrEmpty()) return Locale.ENGLISH.language
+        if (language.isNullOrEmpty()) return ""
         val tokens = language.split(RegexMinus).dropLastWhile { it.isEmpty() }
         val s1 = tokens[0]
         val s2 = if (tokens.size > 1) tokens[1] else ""
@@ -160,16 +160,20 @@ fun Locale.isLocaleRTL(): Boolean {
 /**
  * Parse the locale
  *
- * @param localeValue the locale to parse. For example, `fr` for "French", or `en_UK` for
+ * @param localeValue the locale to parse. For example, `fr` for "French", or `en-UK` for
  * "English (United Kingdom)".
  * @return the locale - empty otherwise.
  */
 fun parseLocale(localeValue: String?): Locale {
-    return if (localeValue.isNullOrEmpty()) {
-        Locale("")
-    } else {
-        Locale.forLanguageTag(localeValue)
+    if (localeValue.isNullOrEmpty()) {
+        return Locale("")
     }
+    val localeForTag = Locale.forLanguageTag(localeValue)
+    if (localeForTag.language.isNullOrEmpty()) {
+        val localeJava = localeValue.replace("_", "-")
+        return Locale.forLanguageTag(localeJava)
+    }
+    return localeForTag
 }
 
 fun String?.toLanguageCode(): String {

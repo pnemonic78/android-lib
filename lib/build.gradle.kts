@@ -61,6 +61,7 @@ android {
             "zu"
         )
         resourceConfigurations += locales
+        buildConfigField("String[]", "LOCALES", locales.toJavaString())
     }
 
     buildTypes {
@@ -73,6 +74,7 @@ android {
     }
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
 
