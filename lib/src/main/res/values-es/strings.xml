@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="switch_on_text" msgid="5664542327776075105">"Activado"</string>
-    <string name="switch_off_text" msgid="1315547447393646667">"Desactivado"</string>
-    <string name="add">Añadir</string>
-    <string name="filter" msgid="2018011724373033887">Filtrar</string>
-
     <!-- Ringtone -->
     <string name="ringtone_default" msgid="3332469542084549546">"Tono predeterminado"</string>
-    <string name="notification_sound_default" msgid="5309766396223094324">"Sonido de notificación predeterminado"</string>
-    <string name="alarm_sound_default" msgid="6854264112790616066">"Sonido de alarma predeterminado"</string>
-    <string name="ringtone_silent" msgid="7937634392408977062">Ninguno</string>
-
-    <!-- Preferences -->
-    <string name="tts_general_section_title" msgid="4402572014604490502">General</string>
-    <string name="pref_appearance_title">Apariencia</string>
 
     <!-- Theme. -->
     <string name="settings_screen_theme">Tema</string>
-    <string name="night_mode_no">Claro</string>
-    <string name="night_mode_yes">Oscuro</string>
-    <string name="theme_default">Tema predeterminado</string>
-
-    <!-- Locale (language) -->
-    <string name="locale_title">Idioma</string>
-    <string name="locale_default">Idioma predeterminado</string>
-
+    <string name="light_ui_title">"Modo Brillante"</string>
 </resources>

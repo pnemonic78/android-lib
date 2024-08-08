@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="switch_on_text" msgid="5664542327776075105">"Aan"</string>
-    <string name="switch_off_text" msgid="1315547447393646667">"Uit"</string>
-    <string name="add">Toevoegen</string>
-    <string name="filter" msgid="2018011724373033887">"Filter"</string>
-
     <!-- Ringtone -->
     <string name="ringtone_default" msgid="3332469542084549546">"Standaardbeltoon"</string>
-    <string name="notification_sound_default" msgid="5309766396223094324">"Standaardmeldingsgeluid"</string>
-    <string name="alarm_sound_default" msgid="6854264112790616066">"Standaardalarmgeluid"</string>
-    <string name="ringtone_silent" msgid="7937634392408977062">Geen</string>
-
-    <!-- Preferences -->
-    <string name="tts_general_section_title" msgid="4402572014604490502">Algemeen</string>
-    <string name="pref_appearance_title">Uiterlijk</string>
 
     <!-- Theme. -->
     <string name="settings_screen_theme">Thema</string>
-    <string name="night_mode_no">Lichte</string>
-    <string name="night_mode_yes">Donker</string>
-    <string name="theme_default">Standaardthema</string>
-
-    <!-- Locale (language) -->
-    <string name="locale_title">Taal</string>
-    <string name="locale_default">Standaardtaal</string>
-
+    <string name="light_ui_title">"Heldere modus"</string>
 </resources>

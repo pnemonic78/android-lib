@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="switch_on_text" msgid="5664542327776075105">"Sees"</string>
-    <string name="switch_off_text" msgid="1315547447393646667">"Väljas"</string>
-    <string name="add">Lisama</string>
-    <string name="filter" msgid="2018011724373033887">"Filter"</string>
-
     <!-- Ringtone -->
     <string name="ringtone_default" msgid="3332469542084549546">"Vaikehelin"</string>
-    <string name="notification_sound_default" msgid="5309766396223094324">"Märguande vaikeheli"</string>
-    <string name="alarm_sound_default" msgid="6854264112790616066">"Äratuse vaikeheli"</string>
-    <string name="ringtone_silent" msgid="7937634392408977062">Puudub</string>
-
-    <!-- Preferences -->
-    <string name="tts_general_section_title" msgid="4402572014604490502">Üldine</string>
-    <string name="pref_appearance_title">Välimus</string>
 
     <!-- Theme. -->
     <string name="settings_screen_theme">Teema</string>
-    <string name="night_mode_yes">Tume</string>
-    <string name="night_mode_no">Hele</string>
-    <string name="theme_default">Teema vaikeheli</string>
-
-    <!-- Locale (language) -->
-    <string name="locale_title">Keel</string>
-    <string name="locale_default">Keel vaikeheli</string>
-
+    <string name="light_ui_title">"Helge režiim"</string>
 </resources>

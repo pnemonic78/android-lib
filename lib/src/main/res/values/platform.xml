@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
-    <!-- Dates -->
-    <string name="month_day_year" formatted="false">%B %-e, %Y</string>
-</resources>

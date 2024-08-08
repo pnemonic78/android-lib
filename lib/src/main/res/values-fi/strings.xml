@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="switch_on_text" msgid="5664542327776075105">"Päällä"</string>
-    <string name="switch_off_text" msgid="1315547447393646667">"Ei päällä"</string>
-    <string name="add">Lisätä</string>
-    <string name="filter" msgid="2018011724373033887">Suodata</string>
-
     <!-- Ringtone -->
     <string name="ringtone_default" msgid="3332469542084549546">"Oletussoittoääni"</string>
-    <string name="notification_sound_default" msgid="5309766396223094324">"Ilmoituksen oletusääni"</string>
-    <string name="alarm_sound_default" msgid="6854264112790616066">"Hälytyksen oletusääni"</string>
-    <string name="ringtone_silent" msgid="7937634392408977062">Ei mitään</string>
-
-    <!-- Preferences -->
-    <string name="tts_general_section_title" msgid="4402572014604490502">Yleiset</string>
-    <string name="pref_appearance_title">Ulkonäkö</string>
 
     <!-- Theme. -->
     <string name="settings_screen_theme">Teema</string>
-    <string name="night_mode_no">Vaalea</string>
-    <string name="night_mode_yes">Tumma</string>
-    <string name="theme_default">Teema oletusääni</string>
-
-    <!-- Locale (language) -->
-    <string name="locale_title">Kieli</string>
-    <string name="locale_default">Kieli oletusääni</string>
-
+    <string name="light_ui_title">"Kirkas tila"</string>
 </resources>
