@@ -23,10 +23,10 @@ import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.annotation.ChecksSdkIntAtLeast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import com.github.app.InsetsActivity
 import com.github.lib.R
 
 /**
@@ -34,7 +34,8 @@ import com.github.lib.R
  *
  * @author Moshe Waisberg
  */
-abstract class PreferenceActivity : AppCompatActivity(), OnSharedPreferenceChangeListener,
+abstract class PreferenceActivity : InsetsActivity(),
+    OnSharedPreferenceChangeListener,
     PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.O)

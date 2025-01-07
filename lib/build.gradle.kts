@@ -105,14 +105,15 @@ dependencies {
     api(project(":android-lib:kotlin"))
 
     // Jetpack
-    api("androidx.activity:activity-ktx:1.9.1")
-    api("androidx.annotation:annotation:1.8.1")
-    api("androidx.core:core-ktx:1.13.1")
-    api("androidx.fragment:fragment-ktx:1.8.2")
+    api("androidx.activity:activity-ktx:1.9.3")
+    api("androidx.annotation:annotation:1.9.1")
+    api("androidx.appcompat:appcompat:1.7.0")
+    api("androidx.core:core-ktx:1.16.0-alpha01")
+    api("androidx.fragment:fragment-ktx:1.8.5")
 
     // Views
     api("androidx.recyclerview:recyclerview:1.3.2")
-    api("androidx.constraintlayout:constraintlayout:2.1.4")
+    api("androidx.constraintlayout:constraintlayout:2.2.0")
     api("androidx.preference:preference-ktx:1.2.1")
 
     // Logging

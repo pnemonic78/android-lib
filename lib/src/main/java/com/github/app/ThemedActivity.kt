@@ -16,7 +16,6 @@
 package com.github.app
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.github.preference.ThemePreferences
 
 /**
@@ -25,7 +24,7 @@ import com.github.preference.ThemePreferences
  * @author Moshe Waisberg
  */
 @Deprecated("")
-abstract class ThemedActivity<P : ThemePreferences> : AppCompatActivity(), ThemeCallbacks<P> {
+abstract class ThemedActivity<P : ThemePreferences> : InsetsActivity(), ThemeCallbacks<P> {
 
     protected val themeCallbacks: ThemeCallbacks<P> = SimpleThemeCallbacks(this)
 
