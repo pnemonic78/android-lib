@@ -26,6 +26,12 @@ var Calendar.dayOfMonth: Int
         this[Calendar.DAY_OF_MONTH] = value
     }
 
+var Calendar.dayOfWeek: Int
+    get() = this[Calendar.DAY_OF_WEEK]
+    set(value) {
+        this[Calendar.DAY_OF_WEEK] = value
+    }
+
 var Calendar.hour: Int
     get() = this[Calendar.HOUR_OF_DAY]
     set(value) {
