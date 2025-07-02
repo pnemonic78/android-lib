@@ -9,7 +9,6 @@ android {
 
     defaultConfig {
         minSdk = BuildVersions.minSdk
-        targetSdk = BuildVersions.targetSdk
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         val locales = listOf(
