@@ -33,5 +33,5 @@ android {
 
 dependencies {
     api(libs.kotlinx.serialization.json)
-    testImplementation(libs.test.junit)
+    testImplementation(libs.bundles.test)
 }
