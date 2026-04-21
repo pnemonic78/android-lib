@@ -25,6 +25,8 @@ import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.annotation.StyleableRes
+import androidx.core.content.withStyledAttributes
+import androidx.core.net.toUri
 import com.github.media.RingtoneManager
 import com.github.util.TypedValueUtils.getAttr
 import timber.log.Timber
@@ -105,18 +107,18 @@ open class RingtonePreference @JvmOverloads constructor(
         var showDefault = false
         var showSilent = false
 
-        val a = context.obtainStyledAttributes(attrs, ATTRIBUTES, defStyleAttr, defStyleRes)
-        val count = a.indexCount
-        for (i in 0 until count) {
-            @StyleableRes val index = a.getIndex(i)
-            when (ATTRIBUTES[i]) {
-                android.R.attr.ringtoneType -> ringtoneType = a.getInt(index, ringtoneType)
-                android.R.attr.showDefault -> showDefault = a.getBoolean(index, showDefault)
-                android.R.attr.showSilent -> showSilent = a.getBoolean(index, showSilent)
-                android.R.attr.defaultValue -> defaultValue = onGetDefaultValue(a, index)
+        context.withStyledAttributes(attrs, ATTRIBUTES, defStyleAttr, defStyleRes) {
+            val count = indexCount
+            for (i in 0 until count) {
+                @StyleableRes val index = getIndex(i)
+                when (ATTRIBUTES[i]) {
+                    android.R.attr.ringtoneType -> ringtoneType = getInt(index, ringtoneType)
+                    android.R.attr.showDefault -> showDefault = getBoolean(index, showDefault)
+                    android.R.attr.showSilent -> showSilent = getBoolean(index, showSilent)
+                    android.R.attr.defaultValue -> defaultValue = onGetDefaultValue(this, index)
+                }
             }
         }
-        a.recycle()
 
         this.ringtoneType = ringtoneType
         this.showDefault = showDefault
@@ -138,7 +140,7 @@ open class RingtonePreference @JvmOverloads constructor(
             var value = value
             var preserveDefault = false
             if (!value.isNullOrEmpty()) {
-                val valueUri = Uri.parse(value)
+                val valueUri = value.toUri()
                 val defaultUri =
                     defaultRingtoneUri ?: RingtoneManager.getDefaultUri(ringtoneType)
                 preserveDefault = (valueUri == defaultUri)
@@ -191,7 +193,7 @@ open class RingtonePreference @JvmOverloads constructor(
         if (uriString === DEFAULT_PATH) {
             return defaultRingtoneUri
         }
-        return if (uriString.isNullOrEmpty()) SILENT_URI else Uri.parse(uriString)
+        return if (uriString.isNullOrEmpty()) SILENT_URI else uriString.toUri()
     }
 
     override fun onGetDefaultValue(a: TypedArray, index: Int): String? {
@@ -203,7 +205,7 @@ open class RingtonePreference @JvmOverloads constructor(
 
         // If we are setting to the default value, we should persist it.
         if (!defaultValue.isNullOrEmpty()) {
-            onSaveRingtone(Uri.parse(defaultValue))
+            onSaveRingtone(defaultValue.toUri())
         }
     }
 
@@ -267,9 +269,9 @@ open class RingtonePreference @JvmOverloads constructor(
 
             val cursor = manager.cursor
             if (cursor.moveToFirst()) {
-                var uri: Uri?
+                var uri: Uri
                 do {
-                    uri = Uri.parse(cursor.getString(RingtoneManager.URI_COLUMN_INDEX))
+                    uri = cursor.getString(RingtoneManager.URI_COLUMN_INDEX).toUri()
                     entries.add(cursor.getString(RingtoneManager.TITLE_COLUMN_INDEX))
                     entryValues.add(
                         ContentUris.withAppendedId(
@@ -347,7 +349,7 @@ open class RingtonePreference @JvmOverloads constructor(
         if (uriString == SILENT_PATH) {
             return ringtoneManager.silentTitle
         }
-        val uri = Uri.parse(uriString)
+        val uri = uriString!!.toUri()
         val index = findIndexOfValue(uri)
         if (index > POS_UNKNOWN) {
             return entries!![index]

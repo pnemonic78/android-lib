@@ -22,6 +22,7 @@ import java.net.URLDecoder
 import java.net.URLEncoder
 import java.nio.charset.Charset
 import timber.log.Timber
+import androidx.core.net.toUri
 
 /**
  * Preferences provider columns.
@@ -36,7 +37,7 @@ object Preferences {
 
     @JvmStatic
     fun CONTENT_URI(context: Context): Uri {
-        return Uri.parse("content://" + AUTHORITY(context))
+        return ("content://" + AUTHORITY(context)).toUri()
     }
 
     /**

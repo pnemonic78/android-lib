@@ -25,6 +25,7 @@ import android.os.Build
 import android.provider.MediaStore
 import android.provider.Settings
 import androidx.core.content.PermissionChecker
+import androidx.core.net.toUri
 import com.github.lib.R
 import java.io.File
 
@@ -160,7 +161,7 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
                 }
             }
         }
-        val uri = Uri.parse(uriString)
+        val uri = uriString.toUri()
         val uriResolved = resolveUri(context, uri)
         if (uri !== uriResolved) {
             if (uriResolved == null) {
@@ -311,7 +312,7 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
                 if (cursor != null && cursor.moveToFirst()) {
                     val path = cursor.getString(URI_COLUMN_INDEX)
                     cursor.close()
-                    return if (path == null) null else Uri.parse(path)
+                    return path?.toUri()
                 }
             }
             return uri
