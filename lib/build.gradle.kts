@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -82,8 +84,10 @@ android {
         targetCompatibility = BuildVersions.jvm
     }
 
-    kotlinOptions {
-        jvmTarget = BuildVersions.jvm.toString()
+    kotlin {
+        compilerOptions {
+            jvmTarget = JvmTarget.fromTarget(BuildVersions.jvm.toString())
+        }
     }
 
     sourceSets {
@@ -100,8 +104,8 @@ android {
 }
 
 dependencies {
-    api(project(":kotlin"))
-    //api(project(":android-lib:kotlin"))
+//    api(project(":kotlin"))
+    api(project(":android-lib:kotlin"))
 
     // Jetpack
     api(libs.annotation)
