@@ -7,17 +7,17 @@ plugins {
 }
 
 android {
-    compileSdk = libs.versions.compileSdk.toInt()
+    compileSdk = libs.versions.android.compileSdk.toInt()
     namespace = "com.github.kotlin"
 
     defaultConfig {
-        minSdk = libs.versions.minSdk.toInt()
+        minSdk = libs.versions.android.minSdk.toInt()
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFile(getDefaultProguardFile("proguard-android.txt"))
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
             proguardFile("proguard-rules.pro")
             consumerProguardFile("proguard-rules.pro")
         }
