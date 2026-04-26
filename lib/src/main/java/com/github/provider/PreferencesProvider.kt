@@ -25,6 +25,7 @@ import androidx.preference.PreferenceManager
 import com.github.provider.Preferences.AUTHORITY
 import com.github.provider.Preferences.fromStringSet
 import com.github.provider.Preferences.toStringSet
+import androidx.core.content.edit
 
 /**
  * Content provider that wraps a real [android.content.SharedPreferences].
@@ -199,13 +200,13 @@ class PreferencesProvider : ContentProvider() {
         var result = 0
         when (match) {
             ALL -> {
-                delegate.edit().clear().apply()
+                delegate.edit { clear() }
                 result = 1
             }
             else -> {
                 val key = uri.lastPathSegment
                 if (delegate.contains(key)) {
-                    delegate.edit().remove(key).apply()
+                    delegate.edit { remove(key) }
                     result = 1
                 }
             }
