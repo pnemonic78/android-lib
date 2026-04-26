@@ -17,11 +17,16 @@ package com.github.preference
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.activity.ComponentActivity
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
-import androidx.core.content.PermissionChecker
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.github.app.ActivityUtils.isPermissionGranted
+import com.github.lang.BooleanCallback
+import com.github.lang.VoidCallback
 import com.github.media.RingtoneManager
 import com.github.util.TypedValueUtils
 
@@ -42,46 +47,96 @@ class PermitRingtonePreference @JvmOverloads constructor(
     ),
     @StyleRes defStyleRes: Int = 0
 ) : RingtonePreference(context, attrs, defStyleAttr, defStyleRes) {
-    private var requestPermissionsFragment: Fragment? = null
-    private var requestPermissionsCode = 0
-    private var requestPermissions = false
+    private var requestPermissionLauncher: ActivityResultLauncher<String>? = null
 
     override fun onClick() {
-        if (requestPermissions) {
-            val context = context
-            if (PermissionChecker.checkCallingOrSelfPermission(
-                    context,
-                    PERMISSION_RINGTONE
-                ) != PermissionChecker.PERMISSION_GRANTED
-            ) {
-                val owner = requestPermissionsFragment
-                val requestCode = requestPermissionsCode
-                if (owner != null) {
-                    owner.requestPermissions(arrayOf(PERMISSION_RINGTONE), requestCode)
-                    return
-                }
-            }
+        val launcher = requestPermissionLauncher
+        if (launcher != null) {
+            launcher.launch(PERMISSION_RINGTONE)
+            return
         }
         super.onClick()
     }
 
-    fun setRequestPermissionsCode(owner: Fragment, requestPermissionsCode: Int) {
-        this.requestPermissionsFragment = owner
-        this.requestPermissionsCode = requestPermissionsCode
-        this.requestPermissions = true
-    }
+    fun markRequestPermissions(owner: Fragment) {
+        val callback = ActivityResultCallback { isGranted: Boolean ->
+            val launcher = requestPermissionLauncher!!
 
-    fun onRequestPermissionsResult(permissions: Array<String>, grantResults: IntArray) {
-        // Rebuild the list to include allowed tones.
-        if (isPermissionGranted(PERMISSION_RINGTONE, permissions, grantResults)) {
-            setRingtoneType(ringtoneType, true)
+            if (isGranted) {
+                // Don't ask again.
+                requestPermissionLauncher = null
+                launcher.unregister()
+
+                setRingtoneType(ringtoneType, true)
+                // Show the list.
+                onClick()
+            } else {
+                // Permission denied: handle accordingly
+                if (owner.shouldShowRequestPermissionRationale(PERMISSION_RINGTONE)) {
+                    showRationaleDialog(context, title) {
+                        launcher.launch(PERMISSION_RINGTONE)
+                    }
+                } else {
+                    // Don't ask again.
+                    requestPermissionLauncher = null
+                    // Show the list anyway.
+                    onClick()
+                }
+            }
         }
-        // Show the list anyway.
-        requestPermissions = false
-        onClick()
+        requestPermissionLauncher = owner.registerForActivityResult(
+            ActivityResultContracts.RequestPermission(),
+            callback
+        )
     }
 
     companion object {
         val PERMISSION_RINGTONE = RingtoneManager.PERMISSION_RINGTONE
+
+        fun askPermission(
+            caller: ComponentActivity,
+            message: CharSequence? = null,
+            callback: BooleanCallback? = null
+        ) {
+            val context: Context = caller
+            var launcher: ActivityResultLauncher<String>? = null
+            val callback = ActivityResultCallback { isGranted: Boolean ->
+                if (isGranted) {
+                    launcher!!.unregister()
+                    callback?.invoke(true)
+                } else {
+                    // Permission denied: handle accordingly
+                    if (caller.shouldShowRequestPermissionRationale(PERMISSION_RINGTONE)) {
+                        showRationaleDialog(context, caller.title, message) {
+                            launcher!!.launch(PERMISSION_RINGTONE)
+                        }
+                    } else {
+                        callback?.invoke(false)
+                    }
+                }
+            }
+
+            launcher = caller.registerForActivityResult(
+                ActivityResultContracts.RequestPermission(),
+                callback
+            )
+            launcher.launch(PERMISSION_RINGTONE)
+        }
+
+        fun showRationaleDialog(
+            context: Context,
+            title: CharSequence? = null,
+            message: CharSequence? = null,
+            callback: VoidCallback
+        ) {
+            AlertDialog.Builder(context)
+                .setTitle(title ?: "Ringtone Permission")
+                .setMessage(
+                    message ?: "App needs permission to play ringtone audio from external files."
+                )
+                .setOnDismissListener { callback() }
+                .setPositiveButton(android.R.string.ok) { _, _ -> }
+                .show()
+        }
     }
 }
