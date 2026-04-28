@@ -1,16 +1,16 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    alias(alibs.plugins.android.library)
+    alias(alibs.plugins.kotlin.android)
 }
 
 android {
-    compileSdk = libs.versions.android.compileSdk.toInt()
+    compileSdk = alibs.versions.android.compileSdk.toInt()
     namespace = "com.github.lib"
 
     defaultConfig {
-        minSdk = libs.versions.android.minSdk.toInt()
+        minSdk = alibs.versions.android.minSdk.toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         val locales = listOf(
@@ -108,16 +108,16 @@ dependencies {
     api(project(":android-lib:kotlin"))
 
     // Jetpack
-    api(libs.annotation)
-    api(libs.appcompat)
-    api(libs.bundles.ktx)
+    api(alibs.annotation)
+    api(alibs.appcompat)
+    api(alibs.bundles.ktx)
 
     // Views
-    api(libs.constraintLayout)
-    api(libs.recyclerview)
+    api(alibs.constraintLayout)
+    api(alibs.recyclerview)
 
-    api(libs.log.timber)
+    api(alibs.log.timber)
 
-    testImplementation(libs.bundles.test)
-    androidTestImplementation(libs.bundles.test.android)
+    testImplementation(alibs.bundles.test)
+    androidTestImplementation(alibs.bundles.test.android)
 }

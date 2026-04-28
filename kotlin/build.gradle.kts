@@ -1,17 +1,17 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
+    alias(alibs.plugins.android.library)
+    alias(alibs.plugins.kotlin.android)
+    alias(alibs.plugins.kotlin.serialization)
 }
 
 android {
-    compileSdk = libs.versions.android.compileSdk.toInt()
+    compileSdk = alibs.versions.android.compileSdk.toInt()
     namespace = "com.github.kotlin"
 
     defaultConfig {
-        minSdk = libs.versions.android.minSdk.toInt()
+        minSdk = alibs.versions.android.minSdk.toInt()
     }
 
     buildTypes {
@@ -36,6 +36,6 @@ android {
 }
 
 dependencies {
-    api(libs.kotlinx.serialization.json)
-    testImplementation(libs.bundles.test)
+    api(alibs.kotlinx.serialization.json)
+    testImplementation(alibs.bundles.test)
 }
