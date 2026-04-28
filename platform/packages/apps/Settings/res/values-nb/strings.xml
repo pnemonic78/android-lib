@@ -992,7 +992,7 @@
 <!--    <string name="wifi_dpp_add_device" msgid="8695656122114721335">"Legg til en enhet"</string>-->
 <!--    <string name="wifi_dpp_connect_network_using_qr_code" msgid="6975258007798254937">"Bruk en QR-kode for å legge til en enhet på dette nettverket"</string>-->
 <!--    <string name="wifi_dpp_qr_code_is_not_valid_format" msgid="5190689503019328279">"QR-kode er ikke et gyldig format"</string>-->
-<!--    <string name="retry" msgid="7542103800274026915">"Prøv på nytt"</string>-->
+    <string name="retry" msgid="7542103800274026915">"Prøv på nytt"</string>
 <!--    <string name="wifi_shared" msgid="8850748923537589782">"Del med andre brukere av enheten"</string>-->
 <!--    <string name="wifi_unchanged" msgid="8026045290856150191">"(uendret)"</string>-->
 <!--    <string name="wifi_unspecified" msgid="4561964943472312208">"Velg"</string>-->

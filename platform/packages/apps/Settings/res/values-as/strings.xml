@@ -992,7 +992,7 @@
 <!--    <string name="wifi_dpp_add_device" msgid="8695656122114721335">"ডিভাইচ যোগ কৰক"</string>-->
 <!--    <string name="wifi_dpp_connect_network_using_qr_code" msgid="6975258007798254937">"এই নেটৱৰ্কটোত কোনো ডিভাইচ যোগ কৰিবলৈ এটা কিউআৰ ক’ড ব্যৱহাৰ কৰক"</string>-->
 <!--    <string name="wifi_dpp_qr_code_is_not_valid_format" msgid="5190689503019328279">"কিউআৰ ক\'ডটো মান্য ফৰ্মেট নহয়"</string>-->
-<!--    <string name="retry" msgid="7542103800274026915">"আকৌ চেষ্টা কৰক"</string>-->
+    <string name="retry" msgid="7542103800274026915">"আকৌ চেষ্টা কৰক"</string>
 <!--    <string name="wifi_shared" msgid="8850748923537589782">"ডিভাইচৰ অন্য ব্যৱহাৰকাৰীৰ সৈতে শ্বেয়াৰ কৰক"</string>-->
 <!--    <string name="wifi_unchanged" msgid="8026045290856150191">"(সালসলনি নাই)"</string>-->
 <!--    <string name="wifi_unspecified" msgid="4561964943472312208">"অনুগ্ৰহ কৰি বাছনি কৰক"</string>-->

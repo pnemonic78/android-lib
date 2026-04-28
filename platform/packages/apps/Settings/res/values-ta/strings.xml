@@ -992,7 +992,7 @@
 <!--    <string name="wifi_dpp_add_device" msgid="8695656122114721335">"சாதனத்தைச் சேர்க்கவும்"</string>-->
 <!--    <string name="wifi_dpp_connect_network_using_qr_code" msgid="6975258007798254937">"நெட்வொர்க்கில் சாதனத்தைச் சேர்க்க QR குறியீட்டைப் பயன்படுத்தவும்"</string>-->
 <!--    <string name="wifi_dpp_qr_code_is_not_valid_format" msgid="5190689503019328279">"QR குறியீடு சரியான வடிவமில்லை"</string>-->
-<!--    <string name="retry" msgid="7542103800274026915">"மீண்டும் முயல்க"</string>-->
+    <string name="retry" msgid="7542103800274026915">"மீண்டும் முயல்க"</string>
 <!--    <string name="wifi_shared" msgid="8850748923537589782">"பிற சாதனப் பயனர்களுடன் பகிர்"</string>-->
 <!--    <string name="wifi_unchanged" msgid="8026045290856150191">"(மாற்றப்படவில்லை)"</string>-->
 <!--    <string name="wifi_unspecified" msgid="4561964943472312208">"தேர்ந்தெடுக்கவும்"</string>-->

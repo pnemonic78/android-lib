@@ -992,7 +992,7 @@
 <!--    <string name="wifi_dpp_add_device" msgid="8695656122114721335">"Shto pajisje"</string>-->
 <!--    <string name="wifi_dpp_connect_network_using_qr_code" msgid="6975258007798254937">"Përdor një kod QR për të shtuar një pajisje në këtë rrjet"</string>-->
 <!--    <string name="wifi_dpp_qr_code_is_not_valid_format" msgid="5190689503019328279">"Kodi QR nuk është në format të vlefshëm"</string>-->
-<!--    <string name="retry" msgid="7542103800274026915">"Riprovo"</string>-->
+    <string name="retry" msgid="7542103800274026915">"Riprovo"</string>
 <!--    <string name="wifi_shared" msgid="8850748923537589782">"Ndaje me përdoruesit e tjerë të pajisjes"</string>-->
 <!--    <string name="wifi_unchanged" msgid="8026045290856150191">"(i pandryshuar)"</string>-->
 <!--    <string name="wifi_unspecified" msgid="4561964943472312208">"Zgjidh"</string>-->

@@ -992,7 +992,7 @@
 <!--    <string name="wifi_dpp_add_device" msgid="8695656122114721335">"Eszköz hozzáadása"</string>-->
 <!--    <string name="wifi_dpp_connect_network_using_qr_code" msgid="6975258007798254937">"Használjon QR-kódot, ha új eszközt szeretne hozzáadni a hálózathoz"</string>-->
 <!--    <string name="wifi_dpp_qr_code_is_not_valid_format" msgid="5190689503019328279">"A QR-kód nem érvényes formátum"</string>-->
-<!--    <string name="retry" msgid="7542103800274026915">"Újra"</string>-->
+    <string name="retry" msgid="7542103800274026915">"Újra"</string>
 <!--    <string name="wifi_shared" msgid="8850748923537589782">"Megosztás az eszköz más felhasználóival"</string>-->
 <!--    <string name="wifi_unchanged" msgid="8026045290856150191">"(nem változott)"</string>-->
 <!--    <string name="wifi_unspecified" msgid="4561964943472312208">"Kérjük, válasszon"</string>-->

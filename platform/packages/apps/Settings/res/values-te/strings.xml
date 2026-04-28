@@ -992,7 +992,7 @@
 <!--    <string name="wifi_dpp_add_device" msgid="8695656122114721335">"పరికరాన్ని జోడించండి"</string>-->
 <!--    <string name="wifi_dpp_connect_network_using_qr_code" msgid="6975258007798254937">"ఈ నెట్‌వర్క్‌కు పరికరాన్ని జోడించడానికి QR కోడ్‌ను ఉపయోగించండి"</string>-->
 <!--    <string name="wifi_dpp_qr_code_is_not_valid_format" msgid="5190689503019328279">"QR కోడ్ చెల్లుబాటు అయ్యే ఫార్మాట్‌లో లేదు"</string>-->
-<!--    <string name="retry" msgid="7542103800274026915">"మళ్లీ ప్రయత్నించు"</string>-->
+    <string name="retry" msgid="7542103800274026915">"మళ్లీ ప్రయత్నించు"</string>
 <!--    <string name="wifi_shared" msgid="8850748923537589782">"ఇతర పరికర యూజర్‌లతో షేర్ చేయండి"</string>-->
 <!--    <string name="wifi_unchanged" msgid="8026045290856150191">"(మారలేదు)"</string>-->
 <!--    <string name="wifi_unspecified" msgid="4561964943472312208">"దయచేసి ఎంచుకోండి"</string>-->
