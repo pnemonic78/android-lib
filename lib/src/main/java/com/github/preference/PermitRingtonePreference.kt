@@ -60,7 +60,7 @@ class PermitRingtonePreference @JvmOverloads constructor(
 
     fun markRequestPermissions(owner: Fragment) {
         val callback = ActivityResultCallback { isGranted: Boolean ->
-            val launcher = requestPermissionLauncher!!
+            val launcher = requestPermissionLauncher ?: return@ActivityResultCallback
 
             if (isGranted) {
                 // Don't ask again.
