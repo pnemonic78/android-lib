@@ -41,7 +41,7 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
      * The resource indicating what views to inflate to display the content of this
      * array adapter.
      */
-    @LayoutRes private val layoutResource: Int,
+    @field:LayoutRes private val layoutResource: Int,
     @IdRes textViewResourceId: Int = 0,
     objects: List<T?> = emptyList()
 ) : RecyclerView.Adapter<VH>(), Filterable {
@@ -282,6 +282,10 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
 
     fun getItem(position: Int): T? {
         return objects[position]
+    }
+
+    operator fun get(index: Int): T? {
+        return objects[index]
     }
 
     /**
