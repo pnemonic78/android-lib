@@ -6,6 +6,7 @@ androidGradlePlugin = "8.13.2"
 androidTest = "1.7.0"
 annotation = "1.10.0"
 appcompat = "1.7.1"
+assertj = "3.27.6"
 cardview = "1.0.0"
 compose = "1.11.0"
 compose-bom = "2026.02.00"
@@ -58,6 +59,7 @@ test-android-core = { module = "androidx.test:core", version.ref = "androidTest"
 test-android-junit = { module = "androidx.test.ext:junit", version.ref = "junitx" }
 test-android-rules = { module = "androidx.test:rules", version.ref = "androidTest" }
 test-android-runner = { module = "androidx.test:runner", version.ref = "androidTest" }
+test-assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 test-junit = { module = "junit:junit", version.ref = "junit" }
 test-robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 work-runtime = { module = "androidx.work:work-runtime", version.ref = "work" }
@@ -81,6 +83,7 @@ ktx = [
     "preference-ktx"
 ]
 test = [
+    "test-assertj-core",
     "test-junit",
     "test-robolectric"
 ]
