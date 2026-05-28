@@ -25,8 +25,7 @@ import com.github.content.ProviderPreferences
  *
  * @author Moshe Waisberg
  */
-open class SimplePreferences @JvmOverloads constructor(
-    @JvmField
+open class SimplePreferences(
     protected val context: Context,
     multiProcess: Boolean = false
 ) {
@@ -35,7 +34,6 @@ open class SimplePreferences @JvmOverloads constructor(
      *
      * @return the shared preferences.
      */
-    @JvmField
     val preferences: SharedPreferences = if (multiProcess)
         ProviderPreferences(context)
     else

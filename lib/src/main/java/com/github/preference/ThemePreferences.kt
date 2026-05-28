@@ -25,15 +25,12 @@ import androidx.annotation.StyleRes
 interface ThemePreferences {
     object Values {
         /** Default theme. */
-        @JvmField
         var THEME_DEFAULT: String? = null
 
         /** Dark theme. */
-        @JvmField
         var THEME_DARK: String? = null
 
         /** Light theme. */
-        @JvmField
         var THEME_LIGHT: String? = null
     }
 

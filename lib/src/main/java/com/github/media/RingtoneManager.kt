@@ -227,19 +227,16 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
         /**
          * Invalid [Uri] path that means 'default'.
          */
-        @JvmField
         val DEFAULT_PATH: String? = null
 
         /**
          * Empty [Uri] that means 'silent'.
          */
-        @JvmField
         val SILENT_URI = Uri.EMPTY
 
         /**
          * Empty [Uri] path that means 'silent'.
          */
-        @JvmField
         val SILENT_PATH = SILENT_URI.toString()
 
         private val INTERNAL_PATH = MediaStore.Audio.Media.INTERNAL_CONTENT_URI.toString()

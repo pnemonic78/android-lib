@@ -22,8 +22,7 @@ import java.util.Locale
  *
  * @author Moshe Waisberg
  */
-class LocaleNameComparator @JvmOverloads constructor(private val locale: Locale? = null) :
-    Comparator<Locale> {
+class LocaleNameComparator(private val locale: Locale? = null) : Comparator<Locale> {
     override fun compare(lhs: Locale, rhs: Locale): Int {
         val name1 = lhs.getDisplayName(locale ?: lhs)
         val name2 = rhs.getDisplayName(locale ?: rhs)

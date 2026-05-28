@@ -24,7 +24,7 @@ import com.github.preference.ThemePreferences
  *
  * @author Moshe Waisberg
  */
-open class SimpleThemeCallbacks<TP : ThemePreferences> @JvmOverloads constructor(
+open class SimpleThemeCallbacks<TP : ThemePreferences>(
     private val context: Context,
     private var preferences: TP? = null
 ) : ThemeCallbacks<TP> {

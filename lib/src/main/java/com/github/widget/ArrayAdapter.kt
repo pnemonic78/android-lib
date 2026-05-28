@@ -336,18 +336,13 @@ open class ArrayAdapter<T, VH : ArrayViewHolder<T>> @JvmOverloads constructor(
     }
 
     open class ArrayViewHolder<T>(itemView: View, @IdRes fieldId: Int) : ViewHolder(itemView) {
-        @JvmField
-        protected val textView: TextView
-
-        init {
-            textView = try {
-                (if (fieldId == 0) itemView else itemView.findViewById(fieldId)) as TextView
-            } catch (e: ClassCastException) {
-                Timber.e(e, "You must supply a resource ID for a TextView")
-                throw IllegalStateException(
-                    "ArrayAdapter requires the resource ID to be a TextView", e
-                )
-            }
+        protected val textView: TextView = try {
+            (if (fieldId == 0) itemView else itemView.findViewById(fieldId)) as TextView
+        } catch (e: ClassCastException) {
+            Timber.e(e, "You must supply a resource ID for a TextView")
+            throw IllegalStateException(
+                "ArrayAdapter requires the resource ID to be a TextView", e
+            )
         }
 
         open fun bind(item: T?) {
