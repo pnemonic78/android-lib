@@ -17,7 +17,6 @@ package com.github.preference
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.os.Build
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
@@ -163,14 +162,6 @@ open class NumberPickerPreference @JvmOverloads constructor(
              * [androidx.preference.Preference.SummaryProvider] implementation.
              */
             val instance: SimpleSummaryProvider by lazy { SimpleSummaryProvider() }
-        }
-    }
-
-    companion object {
-        private val attrAndroidMin = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            android.R.attr.min
-        } else {
-            androidx.preference.R.attr.min
         }
     }
 }
