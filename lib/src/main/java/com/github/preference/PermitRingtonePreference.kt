@@ -37,7 +37,7 @@ import com.github.util.TypedValueUtils
  *
  * @author Moshe Waisberg
  */
-class PermitRingtonePreference @JvmOverloads constructor(
+open class PermitRingtonePreference @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = TypedValueUtils.getAttr(

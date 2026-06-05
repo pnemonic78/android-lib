@@ -6,7 +6,7 @@ class RingtonePreferenceSummaryProvider private constructor() :
     Preference.SummaryProvider<RingtonePreference> {
 
     override fun provideSummary(preference: RingtonePreference): CharSequence? {
-        return preference.getRingtoneTitle(preference.value)
+        return preference.ringtoneTitle
     }
 
     companion object {

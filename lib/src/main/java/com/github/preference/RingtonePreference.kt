@@ -19,17 +19,18 @@ import android.app.Activity
 import android.content.ContentUris
 import android.content.Context
 import android.content.res.TypedArray
-import android.media.Ringtone
 import android.net.Uri
+import android.os.Build
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.annotation.StyleableRes
+import androidx.core.content.ContextCompat.createAttributionContext
 import androidx.core.content.withStyledAttributes
 import androidx.core.net.toUri
+import com.github.media.RingtoneCompat
 import com.github.media.RingtoneManager
 import com.github.util.TypedValueUtils.getAttr
-import timber.log.Timber
 
 /**
  * A [androidx.preference.Preference] that allows the user to choose a ringtone from those on the device.
@@ -77,7 +78,7 @@ open class RingtonePreference @JvmOverloads constructor(
     var entryValues: List<Uri?>? = null
         private set
     private var ringtoneManager: RingtoneManager = RingtoneManager(context)
-    private var ringtoneSample: Ringtone? = null
+    private var ringtoneSample: RingtoneCompat? = null
 
     /**
      * The position in the list of the 'Silent' item.
@@ -100,7 +101,9 @@ open class RingtonePreference @JvmOverloads constructor(
      * will stop the previous ringtone. However, the RingtoneManager doesn't
      * manage the default ringtone for us, so we should stop this one manually.
      */
-    private var defaultRingtone: Ringtone? = null
+    private var defaultRingtone: RingtoneCompat? = null
+
+    var attributionTag: String? = null
 
     init {
         var ringtoneType: Int = this.ringtoneType
@@ -112,6 +115,7 @@ open class RingtonePreference @JvmOverloads constructor(
             for (i in 0 until count) {
                 @StyleableRes val index = getIndex(i)
                 when (ATTRIBUTES[i]) {
+                    android.R.attr.attributionTags -> attributionTag = getString(index)
                     android.R.attr.ringtoneType -> ringtoneType = getInt(index, ringtoneType)
                     android.R.attr.showDefault -> showDefault = getBoolean(index, showDefault)
                     android.R.attr.showSilent -> showSilent = getBoolean(index, showSilent)
@@ -126,14 +130,13 @@ open class RingtonePreference @JvmOverloads constructor(
     }
 
     protected fun setRingtoneType(type: Int, force: Boolean) {
-        val context = context
+        val context = createAttributionContext(context, attributionTag)
         if (type != ringtoneType || force) {
             // Reset the list.
             entries = null
             entryValues = null
             // Reset the cursor.
             ringtoneManager = RingtoneManager(context)
-
             ringtoneManager.setType(type)
 
             // Switch to the other default tone?
@@ -141,13 +144,13 @@ open class RingtonePreference @JvmOverloads constructor(
             var preserveDefault = false
             if (!value.isNullOrEmpty()) {
                 val valueUri = value.toUri()
-                val defaultUri =
-                    defaultRingtoneUri ?: RingtoneManager.getDefaultUri(ringtoneType)
+                val defaultUri = defaultRingtoneUri ?: RingtoneManager.getDefaultUri(ringtoneType)
                 preserveDefault = (valueUri == defaultUri)
             }
 
             defaultRingtoneUri = RingtoneManager.getDefaultUri(type)
-            defaultRingtone = RingtoneManager.getRingtone(context, defaultRingtoneUri)
+            defaultRingtone =
+                RingtoneManager.getRingtone(context, attributionTag, defaultRingtoneUri)
 
             if (preserveDefault && defaultRingtoneUri != null) {
                 value = ringtoneManager.filterInternalMaybe(defaultRingtoneUri)
@@ -161,8 +164,9 @@ open class RingtonePreference @JvmOverloads constructor(
         }
 
         // The volume keys will control the stream that we are choosing a ringtone for
-        if (context is Activity) {
-            context.volumeControlStream = ringtoneManager.inferStreamType()
+        val activityContext = this.context
+        if (activityContext is Activity) {
+            activityContext.volumeControlStream = ringtoneManager.inferStreamType()
         }
     }
 
@@ -190,7 +194,7 @@ open class RingtonePreference @JvmOverloads constructor(
      */
     protected open fun onRestoreRingtone(): Uri? {
         val uriString = value
-        if (uriString === DEFAULT_PATH) {
+        if (uriString == DEFAULT_PATH) {
             return defaultRingtoneUri
         }
         return if (uriString.isNullOrEmpty()) SILENT_URI else uriString.toUri()
@@ -289,12 +293,15 @@ open class RingtonePreference @JvmOverloads constructor(
     fun playRingtone(position: Int) {
         ringtoneSample?.stop()
 
-        val ringtone: Ringtone? = when (position) {
+        val ringtone: RingtoneCompat? = when (position) {
             silentPos -> null
             defaultRingtonePos -> defaultRingtone
-            else -> RingtoneManager.getRingtone(context, getRingtoneUri(position))
+            else -> RingtoneManager.getRingtone(context, attributionTag, getRingtoneUri(position))
+        }?.apply {
+            setType(ringtoneType)
+            prepare()
+            play()
         }
-        ringtone?.play()
         ringtoneSample = ringtone
     }
 
@@ -354,25 +361,27 @@ open class RingtonePreference @JvmOverloads constructor(
         if (index > POS_UNKNOWN) {
             return entries!![index]
         }
-        val context = context
-        val ringtone: Ringtone? = RingtoneManager.getRingtone(context, uri)
-        if (ringtone != null) {
-            try {
-                return ringtone.getTitle(context)
-            } catch (e: Exception) {
-                Timber.e(e)
-            }
-        }
-        return null
+        val ringtone = RingtoneManager.getRingtone(context, attributionTag, uri)
+        return ringtone.getTitle()
     }
 
     companion object {
-        private val ATTRIBUTES = intArrayOf(
-            android.R.attr.ringtoneType,
-            android.R.attr.showDefault,
-            android.R.attr.showSilent,
-            android.R.attr.defaultValue
-        ).sortedArray()
+        private val ATTRIBUTES = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            intArrayOf(
+                android.R.attr.attributionTags,
+                android.R.attr.defaultValue,
+                android.R.attr.ringtoneType,
+                android.R.attr.showDefault,
+                android.R.attr.showSilent,
+            ).sortedArray()
+        } else {
+            intArrayOf(
+                android.R.attr.defaultValue,
+                android.R.attr.ringtoneType,
+                android.R.attr.showDefault,
+                android.R.attr.showSilent,
+            ).sortedArray()
+        }
         private val DEFAULT_PATH = RingtoneManager.DEFAULT_PATH
         private val DEFAULT_URI: Uri? = null
         val SILENT_PATH = RingtoneManager.SILENT_PATH

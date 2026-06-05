@@ -18,12 +18,13 @@ package com.github.media
 import android.Manifest
 import android.content.ContentResolver
 import android.content.Context
+import android.content.pm.Attribution
 import android.database.Cursor
-import android.media.Ringtone
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import android.provider.Settings
+import androidx.annotation.RequiresApi
 import androidx.core.content.PermissionChecker
 import androidx.core.net.toUri
 import com.github.lib.R
@@ -36,7 +37,8 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
 
     private var isInit = false
     private var cursor: Cursor? = null
-    private var type = 0
+    var type = 0
+        private set
 
     /**
      * Is external media included?
@@ -80,7 +82,7 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
             if (isIncludeExternal) {
                 try {
                     cursor = super.getCursor()
-                } catch (e: SecurityException) {
+                } catch (_: SecurityException) {
                     isIncludeExternal = false
                     cursor = getInternalRingtones()
                 }
@@ -232,7 +234,7 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
         /**
          * Empty [Uri] that means 'silent'.
          */
-        val SILENT_URI = Uri.EMPTY
+        val SILENT_URI: Uri = Uri.EMPTY
 
         /**
          * Empty [Uri] path that means 'silent'.
@@ -246,7 +248,6 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
 
         private val INTERNAL_COLUMNS = arrayOf(
             MediaStore.Audio.Media._ID,
-            MediaStore.Audio.Media.TITLE,
             MediaStore.Audio.Media.TITLE,
             MediaStore.Audio.Media.TITLE_KEY
         )
@@ -301,8 +302,8 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
         }
 
         @JvmStatic
-        fun resolveUri(context: Context, uri: Uri): Uri? {
-            val uriString = uri.toString()
+        fun resolveUri(context: Context, uri: Uri?): Uri? {
+            val uriString = uri?.toString() ?: return null
             if (uriString.startsWith(SETTINGS_PATH)) {
                 val resolver = context.contentResolver
                 val cursor = resolver.query(uri, SETTINGS_COLUMNS, null, null, null)
@@ -315,8 +316,17 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
             return uri
         }
 
-        fun getRingtone(context: Context, uri: Uri?): Ringtone? =
-            android.media.RingtoneManager.getRingtone(context, uri)
+        fun getRingtone(context: Context, attributionTag: String?, uri: Uri?): RingtoneCompat {
+            return RingtoneCompat(context, attributionTag).apply {
+                if (uri != null) {
+                    setDataSource(context, uri)
+                }
+            }
+        }
+
+        @RequiresApi(Build.VERSION_CODES.S)
+        fun getRingtone(context: Context, attribution: Attribution, uri: Uri?): RingtoneCompat =
+            getRingtone(context, attribution.tag, uri)
 
         fun getDefaultUri(type: Int): Uri? = android.media.RingtoneManager.getDefaultUri(type)
     }
