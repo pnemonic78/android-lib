@@ -17,7 +17,6 @@ package com.github.preference
 
 import android.content.Context
 import android.util.AttributeSet
-import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -25,7 +24,6 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.github.lang.BooleanCallback
 import com.github.lang.VoidCallback
 import com.github.media.RingtoneManager
 import com.github.util.TypedValueUtils
@@ -92,36 +90,6 @@ open class PermitRingtonePreference @JvmOverloads constructor(
 
     companion object {
         val PERMISSION_RINGTONE = RingtoneManager.PERMISSION_RINGTONE
-
-        fun askPermission(
-            caller: ComponentActivity,
-            message: CharSequence? = null,
-            callback: BooleanCallback? = null
-        ) {
-            val context: Context = caller
-            var launcher: ActivityResultLauncher<String>? = null
-            val callback = ActivityResultCallback { isGranted: Boolean ->
-                if (isGranted) {
-                    launcher!!.unregister()
-                    callback?.invoke(true)
-                } else {
-                    // Permission denied: handle accordingly
-                    if (caller.shouldShowRequestPermissionRationale(PERMISSION_RINGTONE)) {
-                        showRationaleDialog(context, caller.title, message) {
-                            launcher!!.launch(PERMISSION_RINGTONE)
-                        }
-                    } else {
-                        callback?.invoke(false)
-                    }
-                }
-            }
-
-            launcher = caller.registerForActivityResult(
-                ActivityResultContracts.RequestPermission(),
-                callback
-            )
-            launcher.launch(PERMISSION_RINGTONE)
-        }
 
         fun showRationaleDialog(
             context: Context,

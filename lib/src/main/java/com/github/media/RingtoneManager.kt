@@ -28,6 +28,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.PermissionChecker
 import androidx.core.net.toUri
 import com.github.lib.R
+import timber.log.Timber
 import java.io.File
 
 /**
@@ -246,6 +247,10 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
         private val SETTINGS_PATH = Settings.System.CONTENT_URI.toString()
         private const val FILE_PATH = ContentResolver.SCHEME_FILE + ":/"
 
+        val ALARM_URI = getDefaultUri(TYPE_ALARM)
+        val NOTIFICATION_URI = getDefaultUri(TYPE_NOTIFICATION)
+        val RINGTONE_URI = getDefaultUri(TYPE_RINGTONE)
+
         private val INTERNAL_COLUMNS = arrayOf(
             MediaStore.Audio.Media._ID,
             MediaStore.Audio.Media.TITLE,
@@ -316,16 +321,21 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
             return uri
         }
 
-        fun getRingtone(context: Context, attributionTag: String?, uri: Uri?): RingtoneCompat {
-            return RingtoneCompat(context, attributionTag).apply {
-                if (uri != null) {
-                    setDataSource(context, uri)
+        fun getRingtone(context: Context, attributionTag: String?, uri: Uri?): RingtoneCompat? {
+            return try {
+                RingtoneCompat(context, attributionTag).apply {
+                    if (uri != null) {
+                        setDataSource(context, uri)
+                    }
                 }
+            } catch (e: Exception) {
+                Timber.e(e, "error getting ringtone %s", uri)
+                null
             }
         }
 
         @RequiresApi(Build.VERSION_CODES.S)
-        fun getRingtone(context: Context, attribution: Attribution, uri: Uri?): RingtoneCompat =
+        fun getRingtone(context: Context, attribution: Attribution, uri: Uri?): RingtoneCompat? =
             getRingtone(context, attribution.tag, uri)
 
         fun getDefaultUri(type: Int): Uri? = android.media.RingtoneManager.getDefaultUri(type)

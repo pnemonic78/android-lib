@@ -30,6 +30,12 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.net.toUri
 import com.github.media.RingtoneCompat
 import com.github.media.RingtoneManager
+import com.github.media.RingtoneManager.Companion.ALARM_URI
+import com.github.media.RingtoneManager.Companion.DEFAULT_PATH
+import com.github.media.RingtoneManager.Companion.NOTIFICATION_URI
+import com.github.media.RingtoneManager.Companion.RINGTONE_URI
+import com.github.media.RingtoneManager.Companion.SILENT_PATH
+import com.github.media.RingtoneManager.Companion.SILENT_URI
 import com.github.util.TypedValueUtils.getAttr
 
 /**
@@ -220,6 +226,8 @@ open class RingtonePreference @JvmOverloads constructor(
      * @return The index of the value, or -1 if not found.
      */
     fun findIndexOfValue(value: Uri?): Int {
+        val entries = getEntries()
+        if (entries.isEmpty()) return POS_UNKNOWN
         val entryValues = entryValues ?: return POS_UNKNOWN
         if ((value === DEFAULT_URI) || (value == defaultRingtoneUri)) {
             return defaultRingtonePos
@@ -356,13 +364,28 @@ open class RingtonePreference @JvmOverloads constructor(
         if (uriString == SILENT_PATH) {
             return ringtoneManager.silentTitle
         }
-        val uri = uriString!!.toUri()
+        val uri = uriString?.toUri() ?: return null
+        when (ringtoneManager.type) {
+            RingtoneManager.TYPE_ALARM -> if (uri == ALARM_URI) {
+                return ringtoneManager.defaultTitle
+            }
+
+            RingtoneManager.TYPE_NOTIFICATION -> if (uri == NOTIFICATION_URI) {
+                return ringtoneManager.defaultTitle
+            }
+
+            RingtoneManager.TYPE_RINGTONE -> if (uri == RINGTONE_URI) {
+                return ringtoneManager.defaultTitle
+            }
+        }
+
         val index = findIndexOfValue(uri)
         if (index > POS_UNKNOWN) {
             return entries!![index]
         }
+
         val ringtone = RingtoneManager.getRingtone(context, attributionTag, uri)
-        return ringtone.getTitle()
+        return ringtone?.getTitle()
     }
 
     companion object {
@@ -382,10 +405,7 @@ open class RingtonePreference @JvmOverloads constructor(
                 android.R.attr.showSilent,
             ).sortedArray()
         }
-        private val DEFAULT_PATH = RingtoneManager.DEFAULT_PATH
         private val DEFAULT_URI: Uri? = null
-        val SILENT_PATH = RingtoneManager.SILENT_PATH
-        private val SILENT_URI = RingtoneManager.SILENT_URI
         private const val POS_UNKNOWN = -1
     }
 }

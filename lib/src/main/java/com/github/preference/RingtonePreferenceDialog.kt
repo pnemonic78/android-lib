@@ -19,6 +19,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import com.github.lib.R
+import com.github.media.RingtoneManager.Companion.SILENT_PATH
 
 open class RingtonePreferenceDialog : PreferenceDialog() {
 
@@ -55,7 +56,7 @@ open class RingtonePreferenceDialog : PreferenceDialog() {
         preference.stopAnyPlayingRingtone()
         if (positiveResult && selectedIndex >= 0) {
             val uri = preference.getRingtoneUri(selectedIndex)
-            if (preference.callChangeListener(uri?.toString() ?: RingtonePreference.SILENT_PATH)) {
+            if (preference.callChangeListener(uri?.toString() ?: SILENT_PATH)) {
                 preference.setValue(uri)
             }
         }
