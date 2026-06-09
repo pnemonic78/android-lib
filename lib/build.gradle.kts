@@ -13,57 +13,6 @@ android {
     defaultConfig {
         minSdk = alibs.versions.android.minSdk.get().toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        val locales = listOf(
-            "af",
-            "ar",
-            "bg",
-            "cs",
-            "da",
-            "de",
-            "el",
-            "en",
-            "en_AU",
-            "en_CA",
-            "en_GB",
-            "en_IE",
-            "en_IN",
-            "en_NZ",
-            "en_US",
-            "en_ZA",
-            "es",
-            "es_US",
-            "et",
-            "fa",
-            "fi",
-            "fr",
-            "hi",
-            "hu",
-            "in",
-            "it",
-            "iw",
-            "ja",
-            "ko",
-            "lt",
-            "lv",
-            "ms",
-            "nb",
-            "nl",
-            "pl",
-            "pt",
-            "pt_PT",
-            "ro",
-            "ru",
-            "sv",
-            "th",
-            "tr",
-            "uk",
-            "vi",
-            "zh_CN",
-            "zu"
-        )
-        resourceConfigurations += locales
-        buildConfigField("String[]", "LOCALES", locales.toJavaString())
     }
 
     buildTypes {
@@ -94,11 +43,11 @@ android {
     sourceSets {
         getByName("main") {
             res {
-                srcDir(file("../platform/packages/apps/Calendar/res"))
-                srcDir(file("../platform/packages/apps/Contacts/res"))
-                srcDir(file("../platform/packages/apps/DeskClock/res"))
-                srcDir(file("../platform/packages/apps/Gallery2/res"))
-                srcDir(file("../platform/packages/apps/Settings/res"))
+                directories.add("../platform/packages/apps/Calendar/res")
+                directories.add("../platform/packages/apps/Contacts/res")
+                directories.add("../platform/packages/apps/DeskClock/res")
+                directories.add("../platform/packages/apps/Gallery2/res")
+                directories.add("../platform/packages/apps/Settings/res")
             }
         }
     }
