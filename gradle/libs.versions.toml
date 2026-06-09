@@ -2,7 +2,7 @@
 activity = "1.13.0"
 android-compileSdk = "37"
 android-minSdk = "23"
-androidGradlePlugin = "8.13.2"
+androidGradlePlugin = "9.2.1"
 androidTest = "1.7.0"
 annotation = "1.10.0"
 appcompat = "1.7.1"

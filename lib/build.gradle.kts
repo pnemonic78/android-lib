@@ -2,15 +2,16 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(alibs.plugins.android.library)
-    alias(alibs.plugins.kotlin.android)
 }
 
 android {
-    compileSdk = alibs.versions.android.compileSdk.toInt()
+    compileSdk {
+        version = release(alibs.versions.android.compileSdk.get().toInt())
+    }
     namespace = "com.github.lib"
 
     defaultConfig {
-        minSdk = alibs.versions.android.minSdk.toInt()
+        minSdk = alibs.versions.android.minSdk.get().toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         val locales = listOf(
