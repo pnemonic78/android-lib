@@ -15,11 +15,16 @@
  */
 package com.github.view
 
+import android.app.Activity
 import android.content.Context
+import android.content.ContextWrapper
+import android.graphics.Point
+import android.graphics.Rect
 import android.os.Build
 import android.view.Display
 import android.view.View
 import android.view.ViewParent
+import android.view.Window
 import android.view.WindowManager
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.lifecycle.lifecycleScope
@@ -75,3 +80,34 @@ fun View.findDisplay(): Display {
 
 val View.lifecycleScope: CoroutineScope
     get() = findViewTreeLifecycleOwner()!!.lifecycleScope
+
+// If the view is not attached to an activity, then no window is available.
+fun View.findWindow(): Window? {
+    var context: Context = this.context
+
+    do {
+        val contextPrevious = context
+        if (context is Activity) {
+            return context.window
+        }
+        if (context is ContextWrapper) {
+            context = context.baseContext
+        }
+    } while (context != contextPrevious)
+
+    return null
+}
+
+fun View.getWindowBounds(): Rect {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        val window = findWindow() ?: return Rect()
+        val metrics = window.windowManager.currentWindowMetrics
+        metrics.bounds
+    } else {
+        val display = findDisplay()
+        val size = Point()
+        @Suppress("DEPRECATION")
+        display.getRealSize(size)
+        Rect(0, 0, size.x, size.y)
+    }
+}
