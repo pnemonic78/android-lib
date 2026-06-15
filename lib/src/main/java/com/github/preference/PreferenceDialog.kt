@@ -19,12 +19,25 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.preference.PreferenceDialogFragmentCompat
+import androidx.preference.DialogPreference.TargetFragment
+import androidx.preference.Preference
 
 abstract class PreferenceDialog : PreferenceDialogFragmentCompat() {
 
     private var neutralButtonText: CharSequence? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        if (targetFragment == null) {
+            val key = arguments?.getString(ARG_KEY)
+            parentFragmentManager.fragments.forEach {
+                if (it is TargetFragment) {
+                    if (key == null || it.findPreference<Preference>(key) != null) {
+                        setTargetFragment(it, 0)
+                        return@forEach
+                    }
+                }
+            }
+        }
         super.onCreate(savedInstanceState)
         neutralButtonText = if (savedInstanceState == null) {
             val preference = preference as DialogPreference

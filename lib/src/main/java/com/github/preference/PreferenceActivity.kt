@@ -46,10 +46,12 @@ abstract class PreferenceActivity : InsetsActivity(),
         PreferenceManager.getDefaultSharedPreferences(this)
             .registerOnSharedPreferenceChangeListener(this)
         setContentView(R.layout.preference_activity)
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.settings_container, createMainFragment())
-            .commit()
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.settings_container, createMainFragment())
+                .commit()
+        }
     }
 
     protected abstract fun createMainFragment(): PreferenceFragmentCompat
