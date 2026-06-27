@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(alibs.plugins.kotlin.jvm)
+    kotlin("jvm")
     alias(alibs.plugins.kotlin.serialization)
 }
 
