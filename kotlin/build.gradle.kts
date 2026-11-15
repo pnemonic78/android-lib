@@ -28,11 +28,11 @@ android {
         sourceCompatibility = BuildVersions.jvm
         targetCompatibility = BuildVersions.jvm
     }
+}
 
-    kotlin {
-        compilerOptions {
-            jvmTarget = JvmTarget.fromTarget(BuildVersions.jvm.toString())
-        }
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.fromTarget(BuildVersions.jvm.toString())
     }
 }
 
