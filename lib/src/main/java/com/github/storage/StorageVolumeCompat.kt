@@ -50,10 +50,7 @@ class StorageVolumeCompat private constructor(
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 return toExternalVolume30(context, storageVolume)
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                return toExternalVolume24(context, storageVolume)
-            }
-            return toExternalVolume21(context, storageVolume)
+            return toExternalVolume24(context, storageVolume)
         }
 
         @TargetApi(Build.VERSION_CODES.R)
@@ -86,7 +83,6 @@ class StorageVolumeCompat private constructor(
             )
         }
 
-        @TargetApi(Build.VERSION_CODES.N)
         private fun toExternalVolume24(
             context: Context,
             storageVolume: android.os.storage.StorageVolume

@@ -140,28 +140,24 @@ class RingtoneManager(private val context: Context) : android.media.RingtoneMana
             // Is definitely internal.
             return uriString
         }
-        var dangerousUri = false
+        val dangerousUri: Boolean
         if (uriString.startsWith(EXTERNAL_PATH)) {
             dangerousUri = true
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            dangerousUri = if (uriString.startsWith(FILE_PATH)) {
-                true
-            } else {
-                val file = File(uriString)
-                file.exists() && file.isFile
-            }
+        } else if (uriString.startsWith(FILE_PATH)) {
+            dangerousUri = true
+        } else {
+            val file = File(uriString)
+            dangerousUri = file.exists() && file.isFile
         }
         if (dangerousUri) {
             // Try a 'default' tone.
             uriString = getDefaultUri(type).toString()
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                if (uriString.startsWith(FILE_PATH)) {
-                    return SILENT_PATH
-                }
-                val file = File(uriString)
-                if (file.exists() && file.isFile) {
-                    return SILENT_PATH
-                }
+            if (uriString.startsWith(FILE_PATH)) {
+                return SILENT_PATH
+            }
+            val file = File(uriString)
+            if (file.exists() && file.isFile) {
+                return SILENT_PATH
             }
         }
         val uri = uriString.toUri()

@@ -2,24 +2,16 @@ package com.github.storage
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Build
 import android.os.Environment
 import android.os.storage.StorageManager
-import android.os.storage.StorageVolume
 
 class StorageManagerCompat {
     companion object {
         @SuppressLint("NewApi")
         fun getStorageVolumes(context: Context): List<StorageVolumeCompat> {
             val storageManager = context.getSystemService(Context.STORAGE_SERVICE) as StorageManager
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                val volumes = storageManager.storageVolumes
-                return volumes.map { StorageVolumeCompat.of(context, it) }
-            }
-            val clazz = storageManager.javaClass
-            val method = clazz.getMethod("getVolumeList")
-            val volumes = method.invoke(storageManager) as Array<*>
-            return volumes.map { StorageVolumeCompat.of(context, it as StorageVolume) }
+            val volumes = storageManager.storageVolumes
+            return volumes.map { StorageVolumeCompat.of(context, it) }
         }
 
         fun getExternalVolume(

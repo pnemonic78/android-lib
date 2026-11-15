@@ -15,9 +15,7 @@
  */
 package com.github.content
 
-import android.annotation.TargetApi
 import android.content.Intent
-import android.os.Build
 import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.atomic.AtomicLong
 
@@ -28,7 +26,6 @@ import java.util.concurrent.atomic.AtomicLong
  */
 object IntentUtils {
     @JvmStatic
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     fun putExtras(src: Intent, dest: android.os.PersistableBundle) {
         val extras = src.extras
         if (extras == null || extras.isEmpty) {
@@ -63,7 +60,6 @@ object IntentUtils {
     }
 
     @JvmStatic
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     fun readExtras(dest: Intent, src: android.os.PersistableBundle?) {
         if (src == null || src.isEmpty) {
             return

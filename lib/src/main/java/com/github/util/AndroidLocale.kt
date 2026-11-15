@@ -15,11 +15,9 @@
  */
 package com.github.util
 
-import android.annotation.TargetApi
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
-import android.os.Build
 import android.os.LocaleList
 import java.util.Locale
 
@@ -79,13 +77,8 @@ fun Context.getDefaultLocale(): Locale {
  *
  * @return the locale.
  */
-@TargetApi(Build.VERSION_CODES.N)
 fun Configuration.getDefaultLocale(): Locale {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        return locales.getDefaultLocale()
-    }
-    @Suppress("DEPRECATION")
-    return locale ?: Locale.getDefault()
+    return locales.getDefaultLocale()
 }
 
 /**
@@ -102,7 +95,6 @@ fun Resources.getDefaultLocale(): Locale {
  *
  * @return the locale.
  */
-@TargetApi(Build.VERSION_CODES.N)
 fun LocaleList.getDefaultLocale(): Locale {
     var locales = this
     if (locales.isEmpty) {
